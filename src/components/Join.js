@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import '../stylesheets/Signin.css';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 import BasicNavBar from './BasicNavBar';
 
-function Signin(){
+function Join(){
 
     const { register, handleSubmit } = useForm();
     const [result, setResult] = useState("");
@@ -38,12 +39,21 @@ function Signin(){
         margin="dense"
         fullWidth 
       />
-      <input className="login_btn" type="submit" value={"로그인"}/>
-      <Link to="/"><p className='forgotPwd'>비밀번호를 잊었다면?</p></Link>
+      <input className="join_btn" type="submit" value={"확인"}/>
+      <div className='join_txt'>
+          <p>
+          가입하면: <br />
+          • 다른 기기에서 로그인 가능합니다.<br />
+          • 다른 사용자들과 함께 할 수 있습니다.
+          </p>
+          <p>가입 시 다음 사항에 동의하는 것으로 간주합니다. &nbsp;
+          <Link to="/text" className='termOfUse'>이용약관</Link>과 <Link className='policy' to="/text">개인정보 정책</Link>
+          </p>
+      </div>
       </form>
-      )
+)
 
 }
 
-export default Signin;
+export default Join;
 
