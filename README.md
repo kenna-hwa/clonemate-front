@@ -89,3 +89,14 @@ CloneTodo 웹 페이지 구성
       </div>
       <br>
 </details>
+
+<details>
+      <summary> <b>2021/12/19</b> </summary>
+      <div markdown="1">       
+      <br>
+       - 회원가입 페이지 버튼 구현
+            <br>
+       - Navbar 생성 (main - MainNavBar, page - BasicNavBar)
+      </div>
+      <br>
+</details>
