@@ -1,0 +1,18 @@
+form{
+    margin: 0 auto;
+    width: 60vw;
+}
+.login_btn{
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    background: #eeeeee80;
+    border: 1px solid #ddd;
+    color: #aaa;
+}
+.forgotPwd{
+    color: #aaa;
+    font-size: 13px;
+    margin: 15px;
+    text-align: center;
+}
