@@ -20,3 +20,72 @@ CloneTodo 웹 페이지 구성
       ◾ 알람 라이브러리 : Firebase Cloud Messaging API
       ◾ 입력유효성관리 라이브러리 : React Hook Form
       ◾ 상태관리 라이브러리 : Recoil
+
+## ✔ 진행 기록
+
+<details>
+      <summary> <b>2021/12/05</b> </summary>
+      <div markdown="1">       
+      <br>
+      - 개발환경 셋팅 시작 
+      <br>
+      - Initialize project using Create React App
+      </div>
+      <br>
+</details>
+    
+<details>
+      <summary> <b>2021/12/06</b> </summary>
+      <div markdown="1">       
+      <br>
+      - React 폴더 트리 생성
+      <br>
+      - Merge branch 'main' of https://github.com/kenna-hwa/clonemate-front
+      </div>
+      <br>
+</details>
+
+<details>
+      <summary> <b>2021/12/08</b> </summary>
+      <div markdown="1">       
+      <br>
+      - 리액트 Material-UI 설치 후 테스트
+      </div>
+      <br>
+</details>
+
+<details>
+      <summary> <b>2021/12/09</b> </summary>
+      <div markdown="1">       
+      <br>
+       - 메인 화면 버튼 구현
+      </div>
+      <br>
+</details>
+
+<details>
+      <summary> <b>2021/12/10</b> </summary>
+      <div markdown="1">       
+      <br>
+       - 첫 Pull Request
+      </div>
+      <br>
+</details>
+
+<details>
+      <summary> <b>2021/12/13 - 12/14</b> </summary>
+      <div markdown="1">       
+      <br>
+       - React Route 적용
+      </div>
+      <br>
+</details>
+
+<details>
+      <summary> <b>2021/12/15</b> </summary>
+      <div markdown="1">       
+      <br>
+       - 로그인 페이지 버튼 구현
+      </div>
+      <br>
+</details>
