@@ -7,6 +7,7 @@ import Signin from "./Signin";
 import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import MainNavBar from "./MainNavBar";
+import Main from "./Main";
 
 
 const theme = createTheme({
@@ -51,6 +52,7 @@ const theme = createTheme({
     mainnav: {
       main: '#FAFAFA'
     },
+ 
   },
 });
 
@@ -61,7 +63,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <Switch>
         <Route exact path="/">
-        <MainNavBar/>
           <div className="App">
             <div className="header">
               <img className="main_img" src="images/todomate.jpg" />
@@ -93,6 +94,10 @@ function App() {
               </Button>
             </div>
           </div>
+        </Route>
+        <Route exact path="/Main">
+        <MainNavBar/>
+          <Main />
         </Route>
         <Route exact path="/join">
         <BasicNavBar/>
