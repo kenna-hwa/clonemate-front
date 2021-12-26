@@ -52,7 +52,21 @@ const theme = createTheme({
     mainnav: {
       main: '#FAFAFA'
     },
- 
+    main: {
+      main: '#e4f2b4'
+    },
+    content: {
+      main: '#23fa43'
+    },
+    explore: {
+      main: '#2a5dc9'
+    },
+    feed: {
+      main: '#f66a55'
+    },
+    calendar: {
+      main: '#9f4cd6'
+    },
   },
 });
 
@@ -95,9 +109,8 @@ function App() {
             </div>
           </div>
         </Route>
-        <Route exact path="/Main">
-        <MainNavBar/>
-          <Main />
+        <Route exact path="/main">
+          <Main/>
         </Route>
         <Route exact path="/join">
         <BasicNavBar/>
@@ -107,6 +120,7 @@ function App() {
         <BasicNavBar/>
           <Signin />
         </Route>
+
         </Switch>
     </ThemeProvider>
   );
