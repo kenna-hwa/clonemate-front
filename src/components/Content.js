@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from './Calendar';
+import CalendarBox from './CalendarBox';
 import Explore from './Explore';
 import Feed from './Feed';
 import Box from '@mui/material/Box';

@@ -5,7 +5,6 @@ import '../stylesheets/Signin.css';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import BasicNavBar from './BasicNavBar';
 
 function Join(){
 

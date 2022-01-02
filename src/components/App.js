@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../stylesheets/App.css";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -6,7 +6,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import Signin from "./Signin";
 import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
-import MainNavBar from "./MainNavBar";
+import Goals from "./Goals";
 import Main from "./Main";
 
 
@@ -73,6 +73,28 @@ const theme = createTheme({
 function App() {
   let history = useHistory();
 
+  // 목표goals 페이지 goal 아이템
+  let [goal, goalChange] = useState(
+    [
+          { 
+            id : 0,
+            title: '목표 만들기',
+            done: true
+          },
+          {
+            id: 1,
+            title: '목표 만들기 2',
+            done: false
+          },
+          {
+            id: 2,
+            title: '목표 만들기 3',
+            done: false
+          },
+    
+    ]
+  )
+
   return (
     <ThemeProvider theme={theme}>
       <Switch>
@@ -120,7 +142,10 @@ function App() {
         <BasicNavBar/>
           <Signin />
         </Route>
-
+        <Route exact path="/goals">
+        <BasicNavBar/>
+          <Goals goal={goal} key={goal.id} />
+        </Route>
         </Switch>
     </ThemeProvider>
   );
