@@ -8,7 +8,8 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import MainNavBar from "./MainNavBar";
 import Main from "./Main";
-
+import More from "./More";
+import MorePolicy from "./MorePolicy";
 
 const theme = createTheme({
   components: {
@@ -120,7 +121,17 @@ function App() {
         <BasicNavBar/>
           <Signin />
         </Route>
+        <Route exact path="/text/use">
+        <BasicNavBar/>
+          <More />
+        </Route>
 
+        <Route exact path="/text/policy">
+        <BasicNavBar/>
+          <MorePolicy />
+        </Route>
+
+        
         </Switch>
     </ThemeProvider>
   );
