@@ -6,6 +6,16 @@
   margin-left: 25px;
   margin-right: 25px;
   margin-bottom: 15px;
-  /* background: ivory; */
+  font-size: 14px;
+}
+
+/* 모바일 넓이 - 비율이 다름 -> 수정필요 */
+.formOfAnnounce {
+  margin: 0 auto;
+  width: 62%;
+}
+.textOfAnnounce {
+  margin-top: 15px;
+  margin-bottom: 15px;
   font-size: 16px;
 }

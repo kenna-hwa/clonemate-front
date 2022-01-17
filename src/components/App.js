@@ -12,7 +12,7 @@ import GoalForm from "./GoalForm";
 import GoalEditForm from "./GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
-
+import MoreAnnounce from "./MoreAnnounce";
 
 const theme = createTheme({
   components: {
@@ -219,6 +219,10 @@ function App() {
         <Route exact path="/text/policy">
         <BasicNavBar/>
           <MorePolicy />
+        </Route>
+        <Route exact path="/announcements">
+        <BasicNavBar/>
+          <MoreAnnounce />
         </Route>
         </Switch>
     </ThemeProvider>
