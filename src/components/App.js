@@ -10,6 +10,8 @@ import Goals from "./Goals";
 import Main from "./Main";
 import GoalForm from "./GoalForm";
 import GoalEditForm from "./GoalEditForm";
+import More from "./More";
+import MorePolicy from "./MorePolicy";
 
 
 const theme = createTheme({
@@ -209,6 +211,14 @@ function App() {
           readOnly === 'read' ? <GoalForm addGoal={addGoal} /> : <GoalEditForm editGoal={editGoal} />
         }
           <Goals goal={goal.items} addGoal={addGoal} deleteGoal={deleteGoal} editToGoalForm={editToGoalForm} readOnly={readOnly} readOnlyChange={readOnlyChange}  />
+        </Route>
+        <Route exact path="/text/use">
+        <BasicNavBar/>
+          <More />
+        </Route>
+        <Route exact path="/text/policy">
+        <BasicNavBar/>
+          <MorePolicy />
         </Route>
         </Switch>
     </ThemeProvider>
