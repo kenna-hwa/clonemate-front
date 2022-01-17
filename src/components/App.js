@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../stylesheets/App.css";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -8,6 +8,8 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import Goals from "./Goals";
 import Main from "./Main";
+import GoalForm from "./GoalForm";
+import GoalEditForm from "./GoalEditForm";
 
 
 const theme = createTheme({
@@ -71,29 +73,88 @@ const theme = createTheme({
 });
 
 function App() {
+  
+  /* Hook 선언 시작 */
+  
   let history = useHistory();
+  let [readOnly, readOnlyChange] = useState('read');
+
+ 
+
+  /* Dummy State 시작 */
 
   // 목표goals 페이지 goal 아이템
   let [goal, goalChange] = useState(
-    [
-          { 
-            id : 0,
-            title: '목표 만들기',
-            done: true
-          },
-          {
-            id: 1,
-            title: '목표 만들기 2',
-            done: false
-          },
-          {
-            id: 2,
-            title: '목표 만들기 3',
-            done: false
-          },
+     { 
+       items: [{
+          title: '첫번째',
+          id: 'ID-0',
+        },
+        {           
+          title: '두번째',
+          id: 'ID-1',
+
+      }]
+    }
+  );
+
+  /* Dummy State 끝 */
+
+  /* Hook 선언 끝 */
+
+
+  /* 함수 선언 시작 */
+
+
+  //목표 추가 함수
+  function addGoal(item){
+
+    const thisItems = goal.items; // goal State 원본 카피
+    item.id = 'ID-' + thisItems.length; //key를 위한 id 추가
+    thisItems.push(item) // 카피한 goal 리스트에 아이템 추가
+    goalChange({items: thisItems}); //goalChange를 이용해 state 변경
+    document.querySelector("#goalform_textfield").value = '';
+    console.log('add items :', goal.items)
+  }
+
+  //목표 GoalForm으로 보내기 함수
+  function editToGoalForm(id){
+    const thisItems = goal.items; // goal State 원본 카피
+    const currentEditItems = thisItems.filter(e => e.id === id)
+    TextFieldControl(currentEditItems);
+  }
+
+  //TextField id, value 변경 함수
+
+  function TextFieldControl(currentEditItems) {
+    const TextField = document.querySelector("#goaleditform_textfield");
+    TextField.value = currentEditItems[0].title;
+    TextField.id = currentEditItems[0].id;
+  }
+
+  //목표 수정 함수
+  function editGoal(e){
+
+    const thisItems = goal.items; // goal State 원본 카피
     
-    ]
-  )
+    let idx  = thisItems.findIndex((item)=>{ return item.id === e.id })//findIndex 사용
+    thisItems[idx].title = e.title;
+    goalChange( {items : thisItems } ); //goalChange를 이용해 state 변경
+    document.querySelector(`#ID-${idx}`).value = '';
+    console.log('edit items :', goal.items)
+  }
+
+  //목표 삭제 함수
+  function deleteGoal(targetId, item){
+
+    const thisItems = item; // goal State 원본 카피
+    console.log('Before Update Items :', item );
+    const newItems = thisItems.filter(e => e.id !== targetId)
+    goalChange({items: newItems})
+  }
+
+  /* 함수 선언 끝 */
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -144,7 +205,10 @@ function App() {
         </Route>
         <Route exact path="/goals">
         <BasicNavBar/>
-          <Goals goal={goal} key={goal.id} />
+        {
+          readOnly === 'read' ? <GoalForm addGoal={addGoal} /> : <GoalEditForm editGoal={editGoal} />
+        }
+          <Goals goal={goal.items} addGoal={addGoal} deleteGoal={deleteGoal} editToGoalForm={editToGoalForm} readOnly={readOnly} readOnlyChange={readOnlyChange}  />
         </Route>
         </Switch>
     </ThemeProvider>
