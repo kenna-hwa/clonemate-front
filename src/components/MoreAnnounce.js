@@ -1,11 +1,7 @@
 import React from 'react';
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import '../stylesheets/More.css';
-import { TextField } from '@mui/material';
-import { Route, Link } from 'react-router-dom';
-
 import BasicNavBar from './BasicNavBar';
+import { Container } from '@mui/material';
 
 function MoreAnnounce(){
     const HorizonLine = ({ text }) => {
@@ -30,7 +26,8 @@ function MoreAnnounce(){
     return (
 
     <form className='formOfAnnounce'>
-      <div className='textOfAnnounce'>
+      <BasicNavBar/>
+      <Container maxWidth="md" className='textOfAnnounce'>
 
         Premium 구독 기능이 추가되었습니다. Premium 구독을 이용하시면 광고가 제거되고 추가
         스티커를 이용하실 수 있으며 향후 Premium 사용자만을 위한 기능을 이용하실 수 있습니다.
@@ -62,7 +59,7 @@ function MoreAnnounce(){
         <br />
         <HorizonLine />
 
-      </div>
+      </Container>
     </form>
     )
 

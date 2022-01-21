@@ -12,7 +12,7 @@
 /* 모바일 넓이 - 비율이 다름 -> 수정필요 */
 .formOfAnnounce {
   margin: 0 auto;
-  width: 62.5%;
+  width: 100%;
 }
 .textOfAnnounce {
   margin-top: 10px;
