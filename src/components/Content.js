@@ -8,7 +8,8 @@ import Box from '@mui/material/Box';
 export default function Content() {
 
     return (
-        <Box className='content-wrap' backgroundColor='#23fa4350' sx={{ position: 'relative', display: 'flex', width: '100vw', height: '100vh' }}>
+        <Box className='content-wrap' sx={{ position: 'relative', display: 'flex', width: '100vw', height: '100vh' }}>
+        
         <Explore />
         <Feed />
 

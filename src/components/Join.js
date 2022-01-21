@@ -8,16 +8,22 @@ import { Link } from 'react-router-dom';
 
 function Join(){
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
     const [result, setResult] = useState("");
-    const onSubmit = (data) => setResult(JSON.stringify(data));
-  
+    const onSubmit = (data) => {
+      setResult(JSON.stringify(data));
+      console.log(result)
+    }
+    const onError = (error) => {
+      console.log(error);
+    };
+    console.log(watch())
 
     return (
 
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit,onError)}>
     <TextField
-    {...register("Email")} 
+      {...register("userId")} //값을 불러오기 위한 이름
         id="standard-email-input"
         label="이메일"
         type="email"
@@ -28,7 +34,7 @@ function Join(){
         fullWidth 
       />
       <TextField
-       {...register("Password")} 
+       {...register("userPwd", {minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
         id="standard-password-input"
         label="비밀번호"
         type="password"
@@ -39,6 +45,7 @@ function Join(){
         fullWidth 
       />
       <input className="join_btn" type="submit" value={"확인"}/>
+      
       <div className='join_txt'>
           <p>
           가입하면: <br />

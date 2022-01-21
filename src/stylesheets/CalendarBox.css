@@ -1,0 +1,89 @@
+.MuiPickersStaticWrapper-staticWrapperRoot {
+  width: 100%;
+  min-width: none !important;
+  background-color: #00000000 !important;
+}
+
+.MuiPickersStaticWrapper-staticWrapperRoot .MuiPickersToolbar-toolbar {
+  display: none;
+}
+
+.MuiPickersBasePicker-pickerView {
+  max-width: 32vw !important;
+  min-width: 350px;
+  min-height: 0 !important;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersCalendarHeader-daysHeader {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersCalendar-week {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersCalendarHeader-transitionContainer p {
+  text-align: left;
+  padding-left: 26px;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersCalendarHeader-iconButton {
+  background-color: #00000000;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersCalendar-transitionContainer {
+  min-height: 500px !important;
+}
+
+.MuiPickersBasePicker-pickerView .MuiIconButton-root {
+  border-radius: 0;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPickersDay-daySelected {
+  background-color: #00000000;
+}
+
+.MuiPickersBasePicker-pickerView .dateTile_wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.MuiPickersBasePicker-pickerView .MuiPaper-root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.MuiPickersBasePicker-pickerView .todoDataNum {
+  position: relative;
+  font-size: 0.688em;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  top: -65%;
+}
+/*# sourceMappingURL=CalendarBox.css.map */

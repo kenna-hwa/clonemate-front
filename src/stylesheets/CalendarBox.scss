@@ -1,0 +1,82 @@
+.MuiPickersStaticWrapper-staticWrapperRoot{ 
+ 
+    //  달력 wrapper
+    width: 100%;
+    min-width: none!important;
+
+    background-color: #00000000!important;
+
+
+    .MuiPickersToolbar-toolbar{
+        display: none;
+    }
+
+}
+
+.MuiPickersBasePicker-pickerView{
+    // 달력
+    max-width: 32vw!important;
+    min-width: 350px;
+    min-height: 0!important;
+
+
+    .MuiPickersCalendarHeader-daysHeader{
+        //요일
+        justify-content: space-around;
+    }
+    .MuiPickersCalendar-week{
+        //날짜 가로 줄
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+
+    .MuiPickersCalendarHeader-transitionContainer{
+       p{
+        text-align: left;
+        padding-left: 26px;
+       }
+    }
+
+    .MuiPickersCalendarHeader-iconButton{
+        //이전, 이후
+        background-color: #00000000;
+        order: 2;
+
+    }
+
+    .MuiPickersCalendar-transitionContainer{
+        min-height: 500px!important;
+    }
+
+    .MuiIconButton-root{
+        border-radius: 0;
+    }
+
+    .MuiPickersDay-daySelected{
+        background-color: #00000000;
+    }
+
+    .dateTile_wrap{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .MuiPaper-root{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .todoDataNum {
+        position: relative;
+        font-size: 0.688em;
+        font-weight: 600;
+        text-align: center;
+        color: #fff;
+        top: -65%;
+      }
+    
+
+}

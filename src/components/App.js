@@ -55,22 +55,7 @@ const theme = createTheme({
     },
     mainnav: {
       main: '#FAFAFA'
-    },
-    main: {
-      main: '#e4f2b4'
-    },
-    content: {
-      main: '#23fa43'
-    },
-    explore: {
-      main: '#2a5dc9'
-    },
-    feed: {
-      main: '#f66a55'
-    },
-    calendar: {
-      main: '#9f4cd6'
-    },
+    }
   },
 });
 
