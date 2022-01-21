@@ -198,18 +198,9 @@ function App() {
         }
           <Goals goal={goal.items} addGoal={addGoal} deleteGoal={deleteGoal} editToGoalForm={editToGoalForm} readOnly={readOnly} readOnlyChange={readOnlyChange}  />
         </Route>
-        <Route exact path="/text/use">
-        <BasicNavBar/>
-          <More />
-        </Route>
-        <Route exact path="/text/policy">
-        <BasicNavBar/>
-          <MorePolicy />
-        </Route>
-        <Route exact path="/announcements">
-        <BasicNavBar/>
-          <MoreAnnounce />
-        </Route>
+        <Route exact path="/text/use" component={More}/>
+        <Route exact path="/text/policy" component={MorePolicy}/>
+        <Route exact path="/announcements" component={MoreAnnounce}/>
         </Switch>
     </ThemeProvider>
   );

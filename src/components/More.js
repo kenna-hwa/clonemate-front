@@ -1,20 +1,15 @@
 import React from 'react';
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import '../stylesheets/More.css';
-import { TextField } from '@mui/material';
-import { Route, Link } from 'react-router-dom';
-
 import BasicNavBar from './BasicNavBar';
 
 function More(){
-
     // 1) className='textOfUSe' 와 className='textOfPolicy' 의 -> 같은 링크, 다른 페이지 해결 하기 
     // 2) 스크롤바 모양 변경 하기 
     // 3) NavBar fontsize 변경 하기 
     return (
 
     <form className='formOfText'>
+      <BasicNavBar/>
       <div className='textOfUse'>
           
         "todo list" Term of Use <br />
