@@ -1,3 +1,13 @@
+// 캘린더 헤더 연-월 정렬
+
+.yearMM{
+    position: relative;
+    font-size: 0.875em;
+    font-weight: 800;
+    top: 35px;
+    left: 20px;
+}
+
 .MuiPickersStaticWrapper-staticWrapperRoot{ 
  
     //  달력 wrapper
@@ -10,6 +20,7 @@
     .MuiPickersToolbar-toolbar{
         display: none;
     }
+    
 
 }
 
@@ -41,7 +52,11 @@
         //이전, 이후
         background-color: #00000000;
         order: 2;
+        margin: 0 -5px;
+    }
 
+    .MuiTypography-body1{
+        display: none;
     }
 
     .MuiPickersCalendar-transitionContainer{
@@ -71,11 +86,11 @@
 
     .todoDataNum {
         position: relative;
-        font-size: 0.688em;
+        font-size: 0.6em;
         font-weight: 600;
         text-align: center;
         color: #fff;
-        top: -65%;
+        top: -55%;
       }
     
 

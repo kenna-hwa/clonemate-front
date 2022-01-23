@@ -1,3 +1,11 @@
+.yearMM {
+  position: relative;
+  font-size: 0.875em;
+  font-weight: 800;
+  top: 35px;
+  left: 20px;
+}
+
 .MuiPickersStaticWrapper-staticWrapperRoot {
   width: 100%;
   min-width: none !important;
@@ -35,6 +43,11 @@
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
+  margin: 0 -5px;
+}
+
+.MuiPickersBasePicker-pickerView .MuiTypography-body1 {
+  display: none;
 }
 
 .MuiPickersBasePicker-pickerView .MuiPickersCalendar-transitionContainer {
@@ -80,10 +93,10 @@
 
 .MuiPickersBasePicker-pickerView .todoDataNum {
   position: relative;
-  font-size: 0.688em;
+  font-size: 0.6em;
   font-weight: 600;
   text-align: center;
   color: #fff;
-  top: -65%;
+  top: -55%;
 }
 /*# sourceMappingURL=CalendarBox.css.map */

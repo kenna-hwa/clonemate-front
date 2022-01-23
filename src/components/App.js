@@ -3,6 +3,8 @@ import "../stylesheets/App.css";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Switch, Route, useHistory } from "react-router-dom";
+import { koKR } from '@mui/material/locale';
+
 import Signin from "./Signin";
 import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
@@ -57,6 +59,8 @@ const theme = createTheme({
       main: '#FAFAFA'
     }
   },
+  koKR,
+
 });
 
 function App() {
