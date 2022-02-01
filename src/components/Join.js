@@ -44,6 +44,24 @@ function Join(){
         margin="dense"
         fullWidth 
       />
+      <TextField
+       {...register("userName", {minLength:{ value: 5, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
+        id="standard-name-input"
+        label="이름"
+        type="name"
+        autoComplete="current-name"
+        variant="standard"
+        helperText="Please enter Name"
+        margin="dense"
+        fullWidth 
+      />
+      <TextField
+       {...register("hiddenUserId")}  //값을 불러오기 위한 이름
+        id="standard-id-input"
+        type="hidden"
+        autoComplete="current-id"
+        variant="standard"
+      />
       <input className="join_btn" type="submit" value={"확인"}/>
       
       <div className='join_txt'>

@@ -1,0 +1,191 @@
+// GoalForm 
+
+.goals-form-dialog-box{
+
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+
+    // form
+
+        .goals-form{
+            width: 90%;
+            margin: 0 auto;
+
+            .goals-form-grid-wrap{
+                width: 100%;
+                margin: 0 auto;
+                
+                .goals-form-text-wrap{ //textField
+
+                    .MuiTextField-root{
+                        width: 98%;
+
+
+                        #goalform_textfield{ //input
+                            font-weight: 600;
+                            width: 100%;
+                            padding: 12px;
+
+                            ::placeholder{
+                                font-weight: 600;
+                            }
+
+                        }
+
+                            .css-1480iag-MuiInputBase-root-MuiInput-root:before{
+                                width: 100%;
+                                margin: 0 auto;
+                                content: '';
+                                border-bottom: 3px solid #000;
+                                left: 7px;
+                            }
+                        }
+                    }
+
+                .goals-form-privacy-wrap{//Privacy
+                    display: flex; 
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .goals-form-privacy{
+                        width: 100%;
+                       p{ //공개 설정
+                        display: inline-block;
+                        width: 70%;
+                        text-align: left;
+                        color: #000;
+                        font-weight: 600;
+                       }
+                       span{
+                           display: inline-block;
+                           width: 30%;
+                           text-align: right;
+                           color: #000;
+                           font-weight: 600;
+                        }
+
+                    }
+                }
+
+                .goals-form-color-wrap{//Color
+                    display: flex; 
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .goals-form-color{
+                        width: 100%;
+                       p{ //공개 설정
+                        display: inline-block;
+                        width: 70%;
+                        text-align: left;
+                        color: #000;
+                        font-weight: 600;
+                       }
+                       span{
+                           display: inline-block;
+                           width: 30%;
+                           text-align: right;
+                           color: #000;
+                           font-weight: 600;
+                        }
+
+                    }
+                }
+
+                .goals-form-submit{//확인
+                    position: absolute;
+                    height: auto;
+                    top:-52px;
+                    right: 0;
+                    button{
+                        font-size: 15px;
+                        font-weight: 700;
+                        color: #000;
+                    }
+                }
+
+                .goals-listItem-delete-btn{
+                    width: 100%;
+                    margin: 10px auto 0;
+                    background-color: #eee;
+                    color: #ff0000;
+                }
+            }
+        }
+
+
+  
+}  // Dialog 
+
+
+.group-dialog-wrap{
+    
+    position: relative;
+
+    .group-dialog-title{
+        font-size: 1.025em;
+        font-weight: 600;
+        text-align: center;
+        margin: 0.5em;
+    }
+
+    .group-dialog{
+
+        .group-dialog-box{
+
+            position: relative;
+            display: flex;
+            width: 320px;
+            height: 200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            flex-flow: column wrap;
+            
+            .group-dialog-form-box{
+
+                .group-privacy-wrap{// privacyDialog
+                    display: flex;
+                    width: 300px;
+                    height: 200px;
+                    margin: 0 auto;
+                    flex-flow: column nowrap;
+                    padding-top: 20px;
+                    padding-left: 30px;
+                    box-sizing: border-box;
+                    
+                    .css-ahj2mt-MuiTypography-root{
+                        font-size: 0.875em;
+                        font-weight: 600;
+                    }
+                }
+
+                .group-color-wrap{// colorDialog
+                    display: flex;
+                    width: 300px;
+                    height: 250px;
+                    margin: 0 auto;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-left: 30px;
+
+                    .css-1hbvpl3-MuiSvgIcon-root{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .group-dialog-button{
+        width: 320px;
+        margin: 0 auto;
+        color: #000;
+    }
+}

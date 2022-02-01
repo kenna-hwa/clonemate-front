@@ -1,54 +1,80 @@
-import React from "react";
-import {  Button, InputBase, List, ListItem  } from "@mui/material";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {  Button, List, ListItem  } from "@mui/material";
+import { Box } from "@mui/system";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-export default function Goals(props) {
+import '../stylesheets/Goal.css';
 
-  /* props 선언 시작 */
+import { goalsData, goalReadOnly } from "../atoms/todoData";
 
-  let goalItems = props.goal;
-  let deleteGoal = props.deleteGoal;
-  let editToGoalForm = props.editToGoalForm;
-  let readOnly = props.readOnly;
-  let readOnlyChange = props.readOnlyChange;
 
-  /* props 선언 끝 */
+export default function Goals() {
+
+  
+  /* Hook 선언 시작 */
+
+  let history = useHistory();
+
+
+   /* atom 시작 */
+  
+  let goal = useRecoilValue(goalsData);// 목표goals 아이템
+  let [readOnly, readOnlyChange] = useRecoilState(goalReadOnly); //목표 수정표시
+
+
+
+  /* Dummy State 끝 */
+
+
+  
+  useEffect(()=>{
+    // recoil 에서 정보 갱신이 되었으면 하는데..?
+    // goalItems = useRecoilState(goalsData)
+  })
+
+
+
+  /* Hook 선언 끝 */
+ 
+
 
 
   /* 함수 시작 */
+
+
+  //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
+  function editToGoalForm(id){
+    window.location.replace(`/goalEditForm/`+id)
+  }
+
   
   //목표 수정 이벤트핸들러 함수
-  async function editEventHandler(e){
+  async function clickGoaltoEdit(e){
     const { id } = e.target;
     await readOnlyChange(readOnly='edit');
-    console.log(readOnly)
+    console.log("readOnly", readOnly, id )
     await editToGoalForm(id)
   }
 
-  //목표 삭제 이벤트핸들러 함수
-
-    function deleteEventHandler(e) {
-      let deleteId = e.target.id;
-      console.log( 'id : ',  deleteId)
-      deleteGoal(deleteId, goalItems)
-    }
 
 /* 함수 끝 */
 
 
   return (
-    <List>
+    <Box className="goals-list-box">
+    <List className="goals-list-wrap" >
         {
-        goalItems.map((item, idx) => {
-         
-        return ( <ListItem className="goals-wrap" id={item.id} key={idx} onClick={editEventHandler} > 
-                    <InputBase id={item.id} name={item.id} value={item.title} fullWidth></InputBase>
-                    <Button aria-label="Delete Todo" id={item.id} onClick={deleteEventHandler} sx={{ fontSize: '14px' }}>
-                        삭제
-                    </Button>
+        goal.map((item, idx) => {
+        return ( <ListItem className="goals-list" id={item.goal_id} key={item.goal_id} > 
+                    <Button className="goals-listItem-btn" id={item.goal_id} name={item.goal_id} sx={{ color:item.title_color }} onClick={clickGoaltoEdit} >{item.title}</Button >
+                    <ArrowForwardIosIcon className="goals-clickToEdit-btn"/>
                 </ListItem>
                 );
             })
         }
     </List>
+    </Box>
   );
 }

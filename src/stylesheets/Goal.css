@@ -1,0 +1,47 @@
+.goals-list-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.goals-list-box .goals-list-wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.goals-list-box .goals-list-wrap .goals-list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.goals-list-box .goals-list-wrap .goals-list .goals-listItem-btn {
+  width: 80%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding-left: 2em;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.goals-list-box .goals-list-wrap .goals-list .goals-clickToEdit-btn {
+  font-size: 10px;
+  color: #aaa;
+}
+/*# sourceMappingURL=Goal.css.map */

@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import {Paper, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import { ko } from "date-fns/locale";
-import format from "date-fns/format";
+import { useRecoilState } from "recoil";
+import { calendarData } from "../atoms/todoData";
 
 import '../stylesheets/CalendarBox.css';
-import * as apiAxios from '../api/axios';
-
-// import CalendarPicker from '@mui/lab/CalendarPicker';
-// import AdapterDateFns from '@mui/lab/AdapterDateFns';
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-
 
 export const styles = makeStyles(() => ({ //define CSS for different date types
     notInThisMonthDayPaper: {
@@ -108,28 +103,22 @@ export const styles = makeStyles(() => ({ //define CSS for different date types
 
 }));
 
-//서버에서 값 받아오는 경우
+export default function CalendarBox(props) {
 
-export async function fetchPostInfo (param) {
-    const getTodoDataForCalendar = await apiAxios.getData(param);
-    // console.log(getTodoDataForCalendar);
-
-}
-
-
-//ajax 통신을 통해 받아온 값 (theDayhasTodo, todoNum, todoChecked)
-const getTodoDataForCalendar = [ { theDayhasTodo: '2022-01-08', todoNum: 2, todoChecked: 'n' }, { theDayhasTodo: '2022-01-14', todoNum: 4, todoChecked: 'n', }, { theDayhasTodo: '2022-01-27', todoNum: 6, todoChecked: 'y' } ];
-
-
-
-export default function CalendarBox() {
-
-
-    //컴포넌트 실행 시 서버에서 처음 값 받아오기
+   //컴포넌트 실행 시 서버에서 처음 값 받아오기
 
     // useEffect(() => {
-    //     getTodoDataForCalendar();
+    //     calendarTodoData();
     // }, []);
+
+
+    
+    //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
+    let [calendarTodoData, setCalendarTodoData] = useRecoilState(calendarData);
+
+    // const calendarTodoData = [ { numCountTodo: 8, numTodoCount: 2, completeYn: 'n' }, { numCountTodo: 13, numTodoCount: 4, completeYn: 'n', }, { numCountTodo: 29, numTodoCount: 6, completeYn: 'y' } ];
+
+ 
 
     const today = new Date(); // 오늘 날짜 객체
     const classes = styles(); // import those CSS
@@ -137,9 +126,9 @@ export default function CalendarBox() {
     let todoObj = {};
 
     // 데이터가 있는 날
-    const theDayhasTodoArr = getTodoDataForCalendar.map(item => parseInt(item.theDayhasTodo.split('-')[2]));
+    const theDayhasTodoArr = calendarTodoData.map(item => parseInt(item.numCountTodo));
     // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
-    getTodoDataForCalendar.map(item =>  todoObj[parseInt(item.theDayhasTodo.split('-')[2])] = item.todoChecked!=='y'? item.todoNum : '✓');
+    calendarTodoData.map(item =>  todoObj[parseInt(item.numCountTodo)] = item.completeYn!=='y'? item.numCountTodo : '✓');
 
 
     //날짜 타일 변경 함수
@@ -211,28 +200,3 @@ export default function CalendarBox() {
     );
 }
 
-/* renderDay props로 함수가 필요함
-day: Date,
-selectedDate : Date,
-isInCrrentMonth: boolean,
-dayComponent: Element
-
-이 props를 입력한 다음 날짜 타일로 렌더링 할 수 있는 요소를 반환한다.
-DatePicker는 이 함수를 표시된 모든 날짜로 호출
-
-필요한 경우
-- 투두가 없는 날 : normal date tile
-- 투두가 있는 날 : todo date tile (갯수)
-- 투두를 모두 완료한 날 : complete date tile(색상, check✔)
-
-만든 함수를 enderDate 요소에 지정
-그러면 DatePicker가 날짜를 렌더링 하고 날짜 타일을 요청할 때마다 호출해준다. 만든 함수가 날짜를 확인하고 적절한 날짜 타일을 반환한다.
-
-따라서 데이터는 
-- 투두가 있는 날 theDayhasTodo
-- 투두가 있는 날의 투두 갯수 todoNum
-- 투두가 있는 날의 투두 완료 정보 (해당 날짜의 checked 의 값이 모두 y인가?) todoChecked
-
- 투두 있으면 -> dateTile에 투두가 있는 날의 투두 갯수 넣음
-     투두가 모두 완료 되면 -> 투두 갯수가 v 표시로 변환됨
-*/ 

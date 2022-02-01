@@ -5,7 +5,8 @@ import Feed from './Feed';
 import Box from '@mui/material/Box';
 
 
-export default function Content() {
+export default function Content(props) {
+
 
     return (
         <Box className='content-wrap' sx={{ position: 'relative', display: 'flex', width: '100vw', height: '100vh' }}>
