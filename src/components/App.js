@@ -9,6 +9,7 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import Goals from "./Goals";
 import Main from "./Main";
+
 import GoalForm from "./GoalForm";
 import GoalEditForm from "./GoalEditForm";
 import More from "./More";
@@ -155,6 +156,15 @@ function App() {
         <Route exact path="/text/use" component={More}/>
         <Route exact path="/text/policy" component={MorePolicy}/>
         <Route exact path="/announcements" component={MoreAnnounce}/>
+        <Route exact path="/text/use">
+        <BasicNavBar/>
+          <More />
+        </Route>
+
+        <Route exact path="/text/policy">
+        <BasicNavBar/>
+          <MorePolicy />
+        </Route>
         </Switch>
     </ThemeProvider>
   );
