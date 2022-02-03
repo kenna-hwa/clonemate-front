@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import '../stylesheets/Signin.css';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+import BasicNavBar from './BasicNavBar';
+import More from './More';
 
 function Join(){
 

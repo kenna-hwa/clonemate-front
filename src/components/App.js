@@ -9,11 +9,14 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import Goals from "./Goals";
 import Main from "./Main";
+
 import GoalForm from "./GoalForm";
 import GoalEditForm from "./GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
 import MoreAnnounce from "./MoreAnnounce";
+import Explore from "./Explore";
+import ExploreSearch from "./ExploreSearch";
 
 import "../stylesheets/App.css";
 
@@ -142,9 +145,26 @@ function App() {
         <BasicNavBar/> 
          <GoalEditForm />  
         </Route>
+        <Route exact path="/explore">
+        <BasicNavBar/>
+          <Explore />
+        </Route>
+        <Route exact path="/exploreSearch">
+        <BasicNavBar/>
+          <ExploreSearch />
+        </Route>
         <Route exact path="/text/use" component={More}/>
         <Route exact path="/text/policy" component={MorePolicy}/>
         <Route exact path="/announcements" component={MoreAnnounce}/>
+        <Route exact path="/text/use">
+        <BasicNavBar/>
+          <More />
+        </Route>
+
+        <Route exact path="/text/policy">
+        <BasicNavBar/>
+          <MorePolicy />
+        </Route>
         </Switch>
     </ThemeProvider>
   );
