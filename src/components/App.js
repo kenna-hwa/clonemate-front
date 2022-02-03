@@ -14,6 +14,8 @@ import GoalEditForm from "./GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
 import MoreAnnounce from "./MoreAnnounce";
+import Explore from "./Explore";
+import ExploreSearch from "./ExploreSearch";
 
 import "../stylesheets/App.css";
 
@@ -141,6 +143,14 @@ function App() {
         <Route exact path="/goalEditForm/:originID">
         <BasicNavBar/> 
          <GoalEditForm />  
+        </Route>
+        <Route exact path="/explore">
+        <BasicNavBar/>
+          <Explore />
+        </Route>
+        <Route exact path="/exploreSearch">
+        <BasicNavBar/>
+          <ExploreSearch />
         </Route>
         <Route exact path="/text/use" component={More}/>
         <Route exact path="/text/policy" component={MorePolicy}/>
