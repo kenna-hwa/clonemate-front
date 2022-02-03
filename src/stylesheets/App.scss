@@ -1,0 +1,39 @@
+// @import './abstracts/variables';
+// @import './abstracts/mixin';
+@import './abstracts/font';
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100vh;
+  margin: auto;
+
+  .header{
+    width: 90%;
+    margin-bottom: 50px;
+
+      .main_img{
+        width: 400px;
+      }
+  }
+  
+  .start_btn{
+    width: 90%;
+    
+    button{
+      width: 80%;
+      font-weight: 400;
+      font-size: 12px;
+  
+    &:nth-child(1){
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+

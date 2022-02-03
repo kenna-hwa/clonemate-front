@@ -1,5 +1,8 @@
+@import './abstracts/font';
 // 캘린더 헤더 연-월 정렬
-
+body{
+    font-family: 'Pretendard','Hahmlet';
+}
 .yearMM{
     position: relative;
     font-size: 0.875em;
@@ -32,8 +35,15 @@
 
 
     .MuiPickersCalendarHeader-daysHeader{
+        
+        
         //요일
         justify-content: space-around;
+        span{
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-size: 12px;
+        }
     }
     .MuiPickersCalendar-week{
         //날짜 가로 줄
@@ -42,9 +52,11 @@
     }
 
     .MuiPickersCalendarHeader-transitionContainer{
-       p{
+      
+        p{
         text-align: left;
         padding-left: 26px;
+        font-family: 'Pretendard','Hahmlet';
        }
     }
 
@@ -60,6 +72,7 @@
     }
 
     .MuiPickersCalendar-transitionContainer{
+        font-family: 'Pretendard';
         min-height: 500px!important;
     }
 

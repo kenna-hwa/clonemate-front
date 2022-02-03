@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import AddIcon from '@material-ui/icons/Add';
 
+import '../stylesheets/Nav.css';
 
 
 export default function BasicNavBar () {
@@ -30,8 +31,8 @@ export default function BasicNavBar () {
   let { id } = useParams();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="basicnav" sx={{ boxShadow:"none" }}>
+    <Box className="basic_nav_box">
+      <AppBar className="basic_nav_appbar" >
         <Toolbar>
         <IconButton
             size="large"
@@ -42,7 +43,7 @@ export default function BasicNavBar () {
           >
          <NavigateBeforeIcon onClick={history.goBack} />
           </IconButton>
-          <Typography className="navbar_title" variant="h6" component="div" color="inherit" fontSize={16} fontWeight={600} sx={{ margin: "auto", transform: "translateX(-50%)" }}>
+          <Typography className="navbar_title" variant="h6" component="div">
 
           {/* 삼항연산자로 navbar 제목 붙이기 */}
           {

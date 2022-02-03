@@ -1,5 +1,10 @@
-// GoalForm 
+@import './abstracts/font';
 
+// GoalForm 
+body{
+  font-family: 'Pretendard';
+
+}
 .goals-form-dialog-box{
 
     position: relative;
@@ -9,7 +14,7 @@
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
-
+    font-family: 'Pretendard';
 
     // form
 
@@ -20,20 +25,23 @@
             .goals-form-grid-wrap{
                 width: 100%;
                 margin: 0 auto;
+                font-family: 'Pretendard';
+
                 
                 .goals-form-text-wrap{ //textField
+                    font-family: inherit;
 
                     .MuiTextField-root{
                         width: 98%;
 
-
                         #goalform_textfield{ //input
-                            font-weight: 600;
+                            font-family: 'Pretendard';
+                            font-weight: 900;
                             width: 100%;
                             padding: 12px;
 
                             ::placeholder{
-                                font-weight: 600;
+                                font-weight: 900;
                             }
 
                         }
@@ -52,6 +60,7 @@
                     display: flex; 
                     justify-content: space-between;
                     align-items: center;
+                    font-family: inherit;
 
                     .goals-form-privacy{
                         width: 100%;
@@ -60,14 +69,16 @@
                         width: 70%;
                         text-align: left;
                         color: #000;
-                        font-weight: 600;
+                        font-family: 'Pretendard';
+                        font-weight: 800;
                        }
                        span{
                            display: inline-block;
                            width: 30%;
                            text-align: right;
                            color: #000;
-                           font-weight: 600;
+                            font-family: 'Pretendard';
+                            font-weight: 800;
                         }
 
                     }
@@ -85,14 +96,16 @@
                         width: 70%;
                         text-align: left;
                         color: #000;
-                        font-weight: 600;
+                        font-family: 'Pretendard';
+                        font-weight: 800;
                        }
                        span{
                            display: inline-block;
                            width: 30%;
                            text-align: right;
                            color: #000;
-                           font-weight: 600;
+                           font-family: 'Pretendard';
+                           font-weight: 800;
                         }
 
                     }
@@ -105,7 +118,8 @@
                     right: 0;
                     button{
                         font-size: 15px;
-                        font-weight: 700;
+                        font-family: 'Pretendard';
+                        font-weight: 900;
                         color: #000;
                     }
                 }
