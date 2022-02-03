@@ -1,0 +1,32 @@
+@import './abstracts/font';
+@import './abstracts/variables';
+
+body{
+    font-family: 'Pretendard', 'Hahmlet';
+    .css-1tddgg8-MuiPaper-root-MuiAppBar-root{
+        background: $main-navbar-gray;
+        box-shadow: none;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .basic_nav_box{
+        flex-grow: 1;
+        .basic_nav_appbar{
+            position: static;
+            color: $text-black;
+            box-shadow: none;
+            background: $bg-white;
+    
+            .navbar_title{
+                color: inherit;
+                margin: 0 auto;
+                transform: translate(-50%);
+                font-family: 'Pretendard';
+                font-size: 1em;
+                font-weight: 900;
+            }
+        }
+    }
+    
+}
+

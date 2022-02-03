@@ -1,15 +1,27 @@
-import React from "react";
-import "../stylesheets/App.css";
+import React, { useRef, useState } from "react";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { koKR } from '@mui/material/locale';
 import { Switch, Route, useHistory } from "react-router-dom";
+
 import Signin from "./Signin";
 import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
-import MainNavBar from "./MainNavBar";
+import Goals from "./Goals";
 import Main from "./Main";
+
+import GoalForm from "./GoalForm";
+import GoalEditForm from "./GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
+import MoreAnnounce from "./MoreAnnounce";
+import Explore from "./Explore";
+import ExploreSearch from "./ExploreSearch";
+
+import "../stylesheets/App.css";
+
+import { goalsData } from "../atoms/todoData";
+
 
 const theme = createTheme({
   components: {
@@ -52,27 +64,27 @@ const theme = createTheme({
     },
     mainnav: {
       main: '#FAFAFA'
-    },
-    main: {
-      main: '#e4f2b4'
-    },
-    content: {
-      main: '#23fa43'
-    },
-    explore: {
-      main: '#2a5dc9'
-    },
-    feed: {
-      main: '#f66a55'
-    },
-    calendar: {
-      main: '#9f4cd6'
-    },
+    }
   },
+  koKR,
+
 });
 
 function App() {
+  
+  /* Hook 선언 시작 */
+  
   let history = useHistory();
+
+
+  /* Hook 선언 끝 */
+
+
+  /* 함수 선언 시작 */
+
+
+  /* 함수 선언 끝 */
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -111,7 +123,7 @@ function App() {
           </div>
         </Route>
         <Route exact path="/main">
-          <Main/>
+          <Main />
         </Route>
         <Route exact path="/join">
         <BasicNavBar/>
@@ -121,6 +133,29 @@ function App() {
         <BasicNavBar/>
           <Signin />
         </Route>
+        <Route exact path="/goals">
+        <BasicNavBar/>
+          <Goals  />
+        </Route>
+        <Route exact path="/goalForm">
+         <BasicNavBar/> 
+         <GoalForm />  
+        </Route>
+        <Route exact path="/goalEditForm/:originID">
+        <BasicNavBar/> 
+         <GoalEditForm />  
+        </Route>
+        <Route exact path="/explore">
+        <BasicNavBar/>
+          <Explore />
+        </Route>
+        <Route exact path="/exploreSearch">
+        <BasicNavBar/>
+          <ExploreSearch />
+        </Route>
+        <Route exact path="/text/use" component={More}/>
+        <Route exact path="/text/policy" component={MorePolicy}/>
+        <Route exact path="/announcements" component={MoreAnnounce}/>
         <Route exact path="/text/use">
         <BasicNavBar/>
           <More />
@@ -130,8 +165,6 @@ function App() {
         <BasicNavBar/>
           <MorePolicy />
         </Route>
-
-        
         </Switch>
     </ThemeProvider>
   );

@@ -11,6 +11,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
+import '../stylesheets/Nav.css';
+
 export default function MainNavBar() {
   //하위
   const [state, setState] = useState({ right: false });
@@ -52,11 +54,11 @@ export default function MainNavBar() {
   return (
     <>
       {["right"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Box>
+        <React.Fragment key={anchor} >
+          <Box >
             <AppBar
+              
               position="static"
-              color="mainnav"
               sx={{
                 boxShadow: "none",
                 flexDirection: "row-reverse",

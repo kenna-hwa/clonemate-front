@@ -62,48 +62,89 @@
   font-weight: 800;
 }
 
-.App {
-  text-align: center;
+.feed-box {
+  position: relative;
+  width: 75vw;
+  height: auto;
+  top: 0;
+  right: 0;
+  padding: 0.75em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.feed-box h2 {
+  font-family: 'Hahmlet';
+  font-size: 2.25em;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem {
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90%;
-  height: 100vh;
-  margin: auto;
+  width: auto;
+  padding: .3em .6em;
+  background-color: #f5f5f5;
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.App .header {
-  width: 90%;
-  margin-bottom: 50px;
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-icon {
+  font-size: 15px;
+  color: #000;
+  margin-right: .5em;
 }
 
-.App .header .main_img {
-  width: 400px;
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text {
+  width: auto;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 
-.App .start_btn {
-  width: 90%;
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text .MuiListItemText-primary {
+  width: auto;
+  margin-right: .5em;
+  letter-spacing: -0.25px;
+  font-size: 13px;
+  font-family: 'Pretendard';
+  font-weight: 900;
 }
 
-.App .start_btn button {
-  width: 80%;
-  font-weight: 400;
-  font-size: 12px;
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 0;
+  width: 16px;
+  height: 16px;
+  background: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
 }
 
-.App .start_btn button:nth-child(1) {
-  margin-bottom: 1em;
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon span {
+  color: #000;
 }
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=Feed.css.map */

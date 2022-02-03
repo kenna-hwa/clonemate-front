@@ -1,0 +1,304 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hahmlet';
+  src: local(※), url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-ExtraBold.woff2") format("woff2");
+  unicode-range: U+0041-005A, U+0061-007A;
+  font-weight: 800;
+}
+
+body {
+  font-family: 'Pretendard';
+}
+
+.goals-form-dialog-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+.goals-form-dialog-box .goals-form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Pretendard';
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap {
+  font-family: inherit;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root {
+  width: 98%;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root #goalform_textfield {
+  font-family: 'Pretendard';
+  font-weight: 900;
+  width: 100%;
+  padding: 12px;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root #goalform_textfield ::-webkit-input-placeholder {
+  font-weight: 900;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root #goalform_textfield :-ms-input-placeholder {
+  font-weight: 900;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root #goalform_textfield ::-ms-input-placeholder {
+  font-weight: 900;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root #goalform_textfield ::placeholder {
+  font-weight: 900;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-text-wrap .MuiTextField-root .css-1480iag-MuiInputBase-root-MuiInput-root:before {
+  width: 100%;
+  margin: 0 auto;
+  content: '';
+  border-bottom: 3px solid #000;
+  left: 7px;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-privacy-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: inherit;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-privacy-wrap .goals-form-privacy {
+  width: 100%;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-privacy-wrap .goals-form-privacy p {
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+  color: #000;
+  font-family: 'Pretendard';
+  font-weight: 800;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-privacy-wrap .goals-form-privacy span {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  color: #000;
+  font-family: 'Pretendard';
+  font-weight: 800;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-color-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-color-wrap .goals-form-color {
+  width: 100%;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-color-wrap .goals-form-color p {
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+  color: #000;
+  font-family: 'Pretendard';
+  font-weight: 800;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-color-wrap .goals-form-color span {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  color: #000;
+  font-family: 'Pretendard';
+  font-weight: 800;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-submit {
+  position: absolute;
+  height: auto;
+  top: -52px;
+  right: 0;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-form-submit button {
+  font-size: 15px;
+  font-family: 'Pretendard';
+  font-weight: 900;
+  color: #000;
+}
+
+.goals-form-dialog-box .goals-form .goals-form-grid-wrap .goals-listItem-delete-btn {
+  width: 100%;
+  margin: 10px auto 0;
+  background-color: #eee;
+  color: #ff0000;
+}
+
+.group-dialog-wrap {
+  position: relative;
+}
+
+.group-dialog-wrap .group-dialog-title {
+  font-size: 1.025em;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.5em;
+}
+
+.group-dialog-wrap .group-dialog .group-dialog-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 320px;
+  height: 200px;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.group-dialog-wrap .group-dialog .group-dialog-box .group-dialog-form-box .group-privacy-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  padding-top: 20px;
+  padding-left: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.group-dialog-wrap .group-dialog .group-dialog-box .group-dialog-form-box .group-privacy-wrap .css-ahj2mt-MuiTypography-root {
+  font-size: 0.875em;
+  font-weight: 600;
+}
+
+.group-dialog-wrap .group-dialog .group-dialog-box .group-dialog-form-box .group-color-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 250px;
+  margin: 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 30px;
+}
+
+.group-dialog-wrap .group-dialog .group-dialog-box .group-dialog-form-box .group-color-wrap .css-1hbvpl3-MuiSvgIcon-root {
+  display: none;
+}
+
+.group-dialog-wrap .group-dialog-button {
+  width: 320px;
+  margin: 0 auto;
+  color: #000;
+}
+/*# sourceMappingURL=GoalForm.css.map */

@@ -1,4 +1,6 @@
 import React from 'react';
+import '../stylesheets/More.css';
+import BasicNavBar from './BasicNavBar';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import '../stylesheets/More.css';
@@ -15,6 +17,7 @@ function MorePolicy(){
     return (
 
     <form className='formOfText'>
+      <BasicNavBar/>
       <div className='textOfUse'>
           
       Personal Information Processing Policy (Privacy Policy) <br />

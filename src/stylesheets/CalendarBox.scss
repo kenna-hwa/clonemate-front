@@ -1,0 +1,110 @@
+@import './abstracts/font';
+// 캘린더 헤더 연-월 정렬
+body{
+    font-family: 'Pretendard','Hahmlet';
+}
+.yearMM{
+    position: relative;
+    font-size: 0.875em;
+    font-weight: 800;
+    top: 35px;
+    left: 20px;
+}
+
+.MuiPickersStaticWrapper-staticWrapperRoot{ 
+ 
+    //  달력 wrapper
+    width: 100%;
+    min-width: none!important;
+
+    background-color: #00000000!important;
+
+
+    .MuiPickersToolbar-toolbar{
+        display: none;
+    }
+    
+
+}
+
+.MuiPickersBasePicker-pickerView{
+    // 달력
+    max-width: 32vw!important;
+    min-width: 350px;
+    min-height: 0!important;
+
+
+    .MuiPickersCalendarHeader-daysHeader{
+        
+        
+        //요일
+        justify-content: space-around;
+        span{
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+    .MuiPickersCalendar-week{
+        //날짜 가로 줄
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+
+    .MuiPickersCalendarHeader-transitionContainer{
+      
+        p{
+        text-align: left;
+        padding-left: 26px;
+        font-family: 'Pretendard','Hahmlet';
+       }
+    }
+
+    .MuiPickersCalendarHeader-iconButton{
+        //이전, 이후
+        background-color: #00000000;
+        order: 2;
+        margin: 0 -5px;
+    }
+
+    .MuiTypography-body1{
+        display: none;
+    }
+
+    .MuiPickersCalendar-transitionContainer{
+        font-family: 'Pretendard';
+        min-height: 500px!important;
+    }
+
+    .MuiIconButton-root{
+        border-radius: 0;
+    }
+
+    .MuiPickersDay-daySelected{
+        background-color: #00000000;
+    }
+
+    .dateTile_wrap{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .MuiPaper-root{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .todoDataNum {
+        position: relative;
+        font-size: 0.6em;
+        font-weight: 600;
+        text-align: center;
+        color: #fff;
+        top: -55%;
+      }
+    
+
+}
