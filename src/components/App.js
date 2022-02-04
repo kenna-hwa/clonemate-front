@@ -137,11 +137,11 @@ function App() {
         <BasicNavBar/>
           <Goals  />
         </Route>
-        <Route exact path="/goalForm">
+        <Route exact path="/goals/goalForm">
          <BasicNavBar/> 
          <GoalForm />  
         </Route>
-        <Route exact path="/goalEditForm/:originID">
+        <Route exact path="/goals/goalEditForm/:originID">
         <BasicNavBar/> 
          <GoalEditForm />  
         </Route>

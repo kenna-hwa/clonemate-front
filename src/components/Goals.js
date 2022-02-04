@@ -46,7 +46,7 @@ export default function Goals() {
 
   //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
   function editToGoalForm(id){
-    window.location.replace(`/goalEditForm/`+id)
+    window.location.replace(`/goals/goalEditForm/`+id)
   }
 
   

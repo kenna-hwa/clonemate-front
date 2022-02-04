@@ -77,12 +77,9 @@ export default function GoalForm(){
         thisItems.push(item);
         // console.log("additem2", thisItems)
         setGoal(thisItems, console.log(thisItems)) ;//setGoal를 이용해 state 변경
-
-
     }
-    // console.log(goal)
-
-    const onSubmit = (data) => { //react-form-hook submit 함수
+    // console.log(goal)//react-form-hook submit 함수
+    const onSubmit = (data) => { 
         setCreactGoalState(JSON.stringify(createGoalState));
         addGoal(createGoalState);
         window.location.replace("/goals")

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import BasicNavBar from './BasicNavBar';
 import More from './More';
 
-function Join(){
+export default function Join(){
 
     const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
     const [result, setResult] = useState("");
@@ -90,6 +90,4 @@ function Join(){
 )
 
 }
-
-export default Join;
 
