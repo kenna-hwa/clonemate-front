@@ -22,7 +22,8 @@ export default function Explore(props) {
                     <AddIcon onClick={moveExForm} />
                 </Avatar>
             </Stack>
-            <h1 className='nickname'>Nickname</h1>
+            <h1 className='explore-user-nickname'>Nickname</h1>
+            <p className='explore-user-info'>프로필에 자기소개를 입력해보세요</p>
             <CalendarBox calendarData={calendarData} />       
         </Box>
     );

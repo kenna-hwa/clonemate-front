@@ -116,8 +116,6 @@ export default function CalendarBox(props) {
     //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
     let [calendarTodoData, setCalendarTodoData] = useRecoilState(calendarData);
 
-    // const calendarTodoData = [ { numCountTodo: 8, numTodoCount: 2, completeYn: 'n' }, { numCountTodo: 13, numTodoCount: 4, completeYn: 'n', }, { numCountTodo: 29, numTodoCount: 6, completeYn: 'y' } ];
-
  
 
     const today = new Date(); // 오늘 날짜 객체
@@ -126,10 +124,11 @@ export default function CalendarBox(props) {
     let todoObj = {};
 
     // 데이터가 있는 날
-    const theDayhasTodoArr = calendarTodoData.map(item => parseInt(item.numCountTodo));
+    const theDayhasTodoArr = calendarTodoData.map((data,i) => data.arrTodoInfo[0].numTodoDay);
+    // console.log('theDayhasTodoArr',theDayhasTodoArr)
     // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
-    calendarTodoData.map(item =>  todoObj[parseInt(item.numCountTodo)] = item.completeYn!=='y'? item.numCountTodo : '✓');
-
+    calendarTodoData.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
+    // console.log('todoObj',todoObj)
 
     //날짜 타일 변경 함수
     function getDayElement(day, selectedDate, isInCurrentMonth, dayComponent) {
@@ -153,7 +152,8 @@ export default function CalendarBox(props) {
             if (isHasTodoData) { //HasTodoData가 있을 때 = todo가 있는 날 -> 갯수 표시 todoChecked가 y 면 색상변환 
 
                 let d = day.getDate();
-
+                console.log(todoObj, d)
+                console.log('todoObj[d]', todoObj[d])
 
                 dateTile = (
                     <Paper className={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected ? classes.selectedDayPaper : isToday ? classes.todayPaper : classes.normalDayPaper } ref={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected? classes.selectedDayPaper : isToday? classes.todayPaper : classes.normalDayPaper}>

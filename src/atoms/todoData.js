@@ -8,11 +8,32 @@ export const textState = atom({
 
 export const calendarData = atom({
     key: 'calendarData', // unique ID (with respect to other atoms/selectors)
-    default:  [ 
-      { numTodoDay: 8, numCountTodo: 2, completeYn: 'n' }, 
-      { numTodoDay: 13, numCountTodo: 4, completeYn: 'n', }, 
-      { numTodoDay: 29, numCountTodo: 6, completeYn: 'y' } ] // default value (aka initial value)
-  });
+    default: [ {
+              "numTodoYear": 2022,          //연도
+              "numTodoMonth": 2,            //월
+              "numMonthTodoCount": 11,      //해당 월 투두 개수
+              "arrTodoInfo": [
+                {
+                  "numTodoDay": 2,             //일
+                  "numTodoCount": 1,            //해당 연월일 투두 개수
+                  "ynComplete": "Y",            //해당 연원일 투두 전부 완료 여부
+                },
+              ]
+          },
+          {
+            "numTodoYear": 2022,          //연도
+            "numTodoMonth": 2,            //월
+            "numMonthTodoCount": 11,      //해당 월 투두 개수
+            "arrTodoInfo": [
+              {
+                "numTodoDay": 23,             //일
+                "numTodoCount": 5,            //해당 연월일 투두 개수
+                "ynComplete": "N",            //해당 연원일 투두 전부 완료 여부
+              },
+            ]
+        } ,
+        ]
+  });// default value (aka initial value)
 
 
 export const goalsData = atom({ 
@@ -22,16 +43,16 @@ export const goalsData = atom({
       "goal_id": 0,
       "next_goal_id": 1,
       "title": "첫 번째 목표",
-      "privacy": "PUBLIC",
-      "bg_color": "",
+      "privacy": "PUB",
+      "box_color": "",
       "title_color": "#3CB371"
     },
     {
       "goal_id": 1,
       "next_goal_id": 2,
       "title": "두 번째 목표",
-      "privacy": "PRIVATE",
-      "bg_color": "",
+      "privacy": "PRI",
+      "box_color": "",
       "title_color": "#C71585"
     }
   ]

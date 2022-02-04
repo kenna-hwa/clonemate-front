@@ -48,7 +48,7 @@ export default function BasicNavBar () {
           {/* 삼항연산자로 navbar 제목 붙이기 */}
           {
              urlPath === '/signin'? `로그인` : urlPath === '/join'?  `가입하기` 
-             : urlPath === '/goals'? `목표` : urlPath === '/goalForm/'? `목표` 
+             : urlPath === '/goals/'? `목표` : urlPath === '/goalForm/'? `목표` 
              : urlPath === `/goalEditForm/${id}`? `목표` : urlPath === `/exploreSearch`? `팔로우` 
              : urlPath === `/text/use`? `이용약관` : urlPath === `/text/policy`? `개인정보 정책` 
              : urlPath === `/Announcements`? `공지사항` :null
@@ -63,7 +63,7 @@ export default function BasicNavBar () {
             sx={{ mr: 2 }}
           >
            {
-             urlPath === '/goals'? <AddIcon onClick={moveGoalForm} /> : null
+             urlPath === '/goals/'? <AddIcon onClick={moveGoalForm} /> : null
            }
         </IconButton>
         </Toolbar>

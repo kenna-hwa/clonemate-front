@@ -92,7 +92,7 @@ function App() {
         <Route exact path="/">
           <div className="App">
             <div className="header">
-              <img className="main_img" src="images/todomate.jpg" />
+              <img className="main_img" src="./images/todomate.jpg" />
               <h1>todo mate</h1>
               <h3>할 일을 작성, 계획, 관리하세요.</h3>
             </div>

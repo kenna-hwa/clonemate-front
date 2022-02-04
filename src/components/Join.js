@@ -57,6 +57,17 @@ function Join(){
         fullWidth 
       />
       <TextField
+       {...register("userIntro", {message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
+        id="standard-intro-input"
+        label="자기소개"
+        type="text"
+        autoComplete="current-intro"
+        variant="standard"
+        helperText="Please enter Intro"
+        margin="dense"
+        fullWidth 
+      />
+      <TextField
        {...register("hiddenUserId")}  //값을 불러오기 위한 이름
         id="standard-id-input"
         type="hidden"

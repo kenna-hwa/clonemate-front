@@ -144,7 +144,7 @@ export default function GoalForm(){
                     <TextField id="goalform_textfield" variant="standard" placeholder={'목표 입력'} onChange={onInputChange} /> 
                 </Grid>
                 <Grid item xs={12} className="goals-form-privacy-wrap" > 
-                   <Button className="goals-form-privacy" onClick={handlePrivacyDialogOpen}><p>공개 설정 </p><span> {createGoalState.privacy ==='HIDDEN'? '🙄 숨기기' : createGoalState.privacy === 'PRIVATE'? '😎 나만보기' : createGoalState.privacy === 'FOLLOWINGS'? '🤫 일부공개' : createGoalState.privacy === 'PUBLIC'? '🤗 전체공개' : '🤗 전체공개'} ▾ </span></Button>
+                   <Button className="goals-form-privacy" onClick={handlePrivacyDialogOpen}><p>공개 설정 </p><span> {createGoalState.privacy ==='HID'? '🙄 숨기기' : createGoalState.privacy === 'PRI'? '😎 나만보기' : createGoalState.privacy === 'FOL'? '🤫 일부공개' : createGoalState.privacy === 'PUB'? '🤗 전체공개' : '🤗 전체공개'} ▾ </span></Button>
                 </Grid>
                 <Grid item xs={12} className="goals-form-color-wrap" > 
                    <Button className="goals-form-color" onClick={handleColorDialogOpen}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.title_color}`}}></i>▾ </span></Button>
@@ -172,10 +172,10 @@ export default function GoalForm(){
                             name="radio-buttons-group-privacy"
                             onChange={handlePrivacyChange}
                         >
-                            <FormControlLabel value="HIDDEN" control={<Radio  />} label="숨기기" />
-                            <FormControlLabel value="PRIVATE" control={<Radio />} label="나만보기" />
-                            <FormControlLabel value="FOLLOWINGS" control={<Radio />} label="일부공개" />
-                            <FormControlLabel value="PUBLIC" control={<Radio />} label="전체공개" />
+                            <FormControlLabel value="HID" control={<Radio  />} label="숨기기" />
+                            <FormControlLabel value="PRI" control={<Radio />} label="나만보기" />
+                            <FormControlLabel value="FOL" control={<Radio />} label="일부공개" />
+                            <FormControlLabel value="PUB" control={<Radio />} label="전체공개" />
                         </RadioGroup>
                     </FormControl>
                 </Box>

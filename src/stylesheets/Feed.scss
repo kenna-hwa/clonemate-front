@@ -21,6 +21,10 @@
         .goals-list-wrap{
 
             .goals-listItem{
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: start;
+                align-items: flex-start;
                 margin-bottom: 1em;
                 border-radius: 8px;
 
@@ -68,7 +72,11 @@
                         span{
                             color: #000;
                         }
-                  } 
+                    } 
+
+                }
+                .goals-listItem-input{
+                    display: block;
                 }
             }
         }

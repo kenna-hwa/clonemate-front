@@ -81,6 +81,19 @@
 }
 
 .feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-bottom: 1em;
   border-radius: 8px;
 }
@@ -146,5 +159,9 @@
 
 .feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon span {
   color: #000;
+}
+
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-input {
+  display: block;
 }
 /*# sourceMappingURL=Feed.css.map */

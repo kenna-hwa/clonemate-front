@@ -7,7 +7,6 @@ import '../stylesheets/More.css';
 import { TextField } from '@mui/material';
 import { Route, Link } from 'react-router-dom';
 
-import BasicNavBar from './BasicNavBar';
 
 function More(){
 
