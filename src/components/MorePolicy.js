@@ -1,12 +1,6 @@
 import React from 'react';
 import '../stylesheets/More.css';
 import BasicNavBar from './BasicNavBar';
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import '../stylesheets/More.css';
-import { TextField } from '@mui/material';
-import { Route, Link } from 'react-router-dom';
-
 
 function MorePolicy(){
 
