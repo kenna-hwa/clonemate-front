@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useRef, useState } from "react";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -21,7 +23,6 @@ import ExploreSearch from "./ExploreSearch";
 import "../stylesheets/App.css";
 
 import { goalsData } from "../atoms/todoData";
-
 
 const theme = createTheme({
   components: {

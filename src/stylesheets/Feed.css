@@ -161,7 +161,251 @@
   color: #000;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-input {
+.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-todo-input-title {
   display: block;
+}
+
+.goals-todo-input-list-Box {
+  width: 100%;
+  min-width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
+  margin-right: 0.5em;
+  color: #afafaf;
+  cursor: pointer;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input {
+  width: 100%;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::-webkit-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input:-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input:focus-visible {
+  position: relative;
+  border-bottom: 1px solid #000;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  cursor: pointer;
+  padding: 0 0 10px 2px;
+  top: 5px;
+}
+
+.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
+  position: relative;
+  color: #afafaf;
+  top: -1px;
+  cursor: pointer;
+}
+
+.goals-todo-input-create-Box {
+  min-width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.goals-todo-input-create-Box .goals-todo-input-create-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-check-icon {
+  position: relative;
+  margin-right: 0.5em;
+  color: #afafaf;
+  cursor: pointer;
+}
+
+.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-field {
+  position: relative;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  cursor: pointer;
+  padding: 0 0 10px 0;
+  top: 5px;
+}
+
+.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-field:focus-visible {
+  outline: 0;
+}
+
+.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-btn {
+  position: relative;
+  color: #afafaf;
+  top: -1px;
+  visibility: hidden;
+}
+
+.feed-todo-modal-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 230px;
+  border-radius: 8px;
+  padding: 1.5em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  font-family: 'Pretendard';
+  background-color: #ffffff;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap .feed-todo-modal-head {
+  width: 250px;
+  height: 2.2em;
+  font-family: 'Pretendard';
+  font-size: 1em;
+  margin: 0 auto 0.3em;
+  word-wrap: break-word;
+  word-break: keep-all;
+  text-align: center;
+  text-overflow: ellipsis;
+  /* 말줄임 적용 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap .feed-todo-modal-icon-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap .feed-todo-modal-icon-wrap button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f5f5f5;
+  width: 45px;
+  height: 45px;
+  margin: 12px 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap .feed-todo-modal-icon-wrap button .feed-modal-icon {
+  font-family: 'Pretendard';
+  color: #1c1c1c;
+  font-size: 1.5em;
+}
+
+.feed-todo-modal-box .feed-todo-modal-wrap .feed-todo-modal-icon-wrap button span {
+  display: inline-block;
+  position: absolute;
+  width: 52px;
+  font-size: 0.65em;
+  letter-spacing: -0.2px;
+  top: 50px;
 }
 /*# sourceMappingURL=Feed.css.map */

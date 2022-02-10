@@ -152,8 +152,8 @@ export default function CalendarBox(props) {
             if (isHasTodoData) { //HasTodoData가 있을 때 = todo가 있는 날 -> 갯수 표시 todoChecked가 y 면 색상변환 
 
                 let d = day.getDate();
-                console.log(todoObj, d)
-                console.log('todoObj[d]', todoObj[d])
+                // console.log(todoObj, d)
+                // console.log('todoObj[d]', todoObj[d])
 
                 dateTile = (
                     <Paper className={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected ? classes.selectedDayPaper : isToday ? classes.todayPaper : classes.normalDayPaper } ref={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected? classes.selectedDayPaper : isToday? classes.todayPaper : classes.normalDayPaper}>

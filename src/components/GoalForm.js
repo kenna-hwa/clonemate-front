@@ -25,11 +25,12 @@ export default function GoalForm(){
 
 
     let [createGoalState, setCreactGoalState] = useState({"goal_id": "",
+                                                    "preGoalId":"",
                                                     "next_goal_id": "",
                                                     "title": "",
                                                     "privacy": "PUBLIC",
                                                     "bg_color": "",
-                                                    "title_color": "#000000"});
+                                                    "title_color": ""});
 
     let [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
     let [colorDialogOpen, setColorDialogOpen] = useState(false);
@@ -67,19 +68,27 @@ export default function GoalForm(){
 
     /* 함수 선언 시작 */
 
+
+    const onInputChange = (e) => {
+
+        const new_goal_item = createGoalState;
+        new_goal_item.title = e.target.value;
+        setCreactGoalState(new_goal_item)
+    }
     
     //목표 추가 함수
-    function addGoal(item){
-        const thisItems = [...goal]; // goal State 원본 카피
-        // console.log("additem1", thisItems)
-        item.goal_id = thisItems.length; //key를 위한 id 추가
-        item.next_goal_id = (thisItems.length+1 ); //key를 위한 id 추가
-        thisItems.push(item);
-        // console.log("additem2", thisItems)
-        setGoal(thisItems, console.log(thisItems)) ;//setGoal를 이용해 state 변경
+    const addGoal = (data) => {
+        const copy_goal_state = [...goal]; // goal State 원본 카피        
+        // console.log("adddata1", copy_goal_state)
+        data.goal_id = copy_goal_state.length; //key를 위한 id 추가
+        data.next_goal_id = (copy_goal_state.length+1 ); //key를 위한 id 추가
+        copy_goal_state.push(data);
+        // console.log("adddata2", copy_goal_state)
+        setGoal(copy_goal_state, console.log(copy_goal_state)) ;//setGoal를 이용해 state 변경
     }
-    // console.log(goal)//react-form-hook submit 함수
-    const onSubmit = (data) => { 
+
+    // submit 실행 함수
+    const onSubmit = (data) => { //react-form-hook submit 함수
         setCreactGoalState(JSON.stringify(createGoalState));
         addGoal(createGoalState);
         window.location.replace("/goals")
@@ -123,13 +132,6 @@ export default function GoalForm(){
     };
 
 
-    function onInputChange(e) {
-
-        const new_goal_item = createGoalState;
-        new_goal_item.title = e.target.value;
-        setCreactGoalState(new_goal_item)
-    }
-
     /* 함수 선언 끝 */
 
 
@@ -172,7 +174,7 @@ export default function GoalForm(){
                             <FormControlLabel value="HID" control={<Radio  />} label="숨기기" />
                             <FormControlLabel value="PRI" control={<Radio />} label="나만보기" />
                             <FormControlLabel value="FOL" control={<Radio />} label="일부공개" />
-                            <FormControlLabel value="PUB" control={<Radio />} label="전체공개" />
+                            <FormControlLabel value="PUBLIC" control={<Radio />} label="전체공개" />
                         </RadioGroup>
                     </FormControl>
                 </Box>
