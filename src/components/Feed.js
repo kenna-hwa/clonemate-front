@@ -1,6 +1,12 @@
-import React, { useEffect, useState, useRef, forwardRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
-import {  Button, List, ListItem, ListItemText, InputBase, Modal, Typography, Input, } from "@mui/material";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import CalendarPicker from '@mui/lab/CalendarPicker';
+import { ko } from "date-fns/locale";
+
+
+import {  Button, List, ListItem, ListItemText, Modal, } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRecoilState, useRecoilValue } from "recoil";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
@@ -15,7 +21,7 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 import '../stylesheets/Feed.css'
 
-import { goalsData, todoData, todoReadOnly } from "../atoms/todoData";
+import { goalsData, todoData, datesData } from "../atoms/todoData";
 
 
 export default function Feed() {
@@ -24,17 +30,21 @@ export default function Feed() {
 /* Hook 선언 시작 */
 
 /* atom 시작 */
+    let dateData = useRecoilValue(datesData);
     let goal = useRecoilValue(goalsData);
     let [originTodo, setOriginTodo] = useRecoilState(todoData);
     let todo = [...originTodo];
-    // console.log("originTodo" ,originTodo)
+    
+    let dtToday = dateData.dtToday;
+    let dtTomorrow = dateData.dtTomorrow;
 
     const [modalOpen, setModalOpen] = useState(false);
+    const [calendarOpen, setCalendarOpen] = useState(false);
+
     let [isGoalSelected, setIsGoalSelected] = useState(Array(goal.length).fill(false) );
     let [todoReadOnly, setTodoReadOnly] = useState(Array(todo.length).fill(true));
     // console.log("inputREAD" , todoReadOnly)
     let [selectedTodo, setSelectedTodo] = useState("");
-
     let [selectedInputIndex, setSelectedInputIndex] = useState("");
 
 /* Hook 선언 끝 */
@@ -64,6 +74,10 @@ const clickTodoModalHandler = (e) => {
 // 투두 클릭시 모달 노출 on off
 const handleTodoModalOpen = () => setModalOpen(true);
 const handleTodoModalClose = () => setModalOpen(false);
+
+// 투두 클릭시 캘린더 노출 on off
+const handleCalendarModalOpen = () => setCalendarOpen(true);
+const handleCalendarModalClose = () => setCalendarOpen(false);
 
 //모달 내부 이벤트
 
@@ -115,13 +129,30 @@ const todoCheckBoxEventHandler = (e) => {
         originTodo[index].check_yn = 'Y'
     };
     setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
-
-
 }
 
 //투두 내일 하기 이벤트 핸들러 
 const todoDelayNextDayEventHandler = (e) => {
+    console.log(e.currentTarget)
+    let index = parseInt(e.currentTarget.dataset.index);
+    console.log(index)
+    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
+    originTodo[index].date = dtTomorrow;
+    originTodo[index].end_repeat_date = dtTomorrow;
+    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    handleTodoModalClose();
+}
 
+//투두 날짜 바꾸기 이벤트 핸들러
+const todoChangeDateEventHandler = (e) => {
+    let dtNewDate = e.currentTarget.dataset.day;
+    let index = parseInt(e.currentTarget.dataset.index);
+    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
+    originTodo[index].date = dtNewDate;
+    originTodo[index].end_repeat_date = dtNewDate;
+    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    handleTodoModalClose();
+    handleCalendarModalClose();
 }
 
 //투두 삭제 이벤트 핸들러 -> 나중에는 삭제가 아니라 바로 ajax로 Delete 메소드 던지는게 빠르지 않을까욧
@@ -171,7 +202,7 @@ const clickTodoDeleteHandler = (e) => {
                                 </Box>
                             )
                         })}
-                        {isGoalSelected[index] ? <CreateInput id={goal.goal_id} isGoalSelected={isGoalSelected} setIsGoalSelected={setIsGoalSelected} />: null}
+                        {isGoalSelected[index] ? <CreateInput id={goal.goal_id} isGoalSelected={isGoalSelected} setIsGoalSelected={setIsGoalSelected} dtToday={dtToday} />: null}
                     </ListItem>
                             )
                         })
@@ -183,7 +214,7 @@ const clickTodoDeleteHandler = (e) => {
         </Box>
 
         {/* 모달 생성 */}
-        <TodoModal modalOpen={modalOpen} handleTodoModalClose={handleTodoModalClose} selectedTodo={selectedTodo} clickTodoEditHandler={clickTodoEditHandler} clickTodoDeleteHandler={clickTodoDeleteHandler} selectedInputIndex={selectedInputIndex} todoDelayNextDayEventHandler={todoDelayNextDayEventHandler}  />
+        <TodoModal modalOpen={modalOpen} handleTodoModalClose={handleTodoModalClose} selectedTodo={selectedTodo} clickTodoEditHandler={clickTodoEditHandler} clickTodoDeleteHandler={clickTodoDeleteHandler} selectedInputIndex={selectedInputIndex} todoDelayNextDayEventHandler={todoDelayNextDayEventHandler} calendarOpen={calendarOpen} handleCalendarModalOpen={handleCalendarModalOpen} handleCalendarModalClose={handleCalendarModalClose} todoChangeDateEventHandler={todoChangeDateEventHandler} />
         </>
     );
 }
@@ -193,7 +224,7 @@ export function CreateInput(props) {
 
 
     let id = props.id;
-    let defaultDate = new Date().toJSON().substring(0,10);
+    const dtToday = props.dtToday;
     const isGoalSelected = props.isGoalSelected;
     const setIsGoalSelected = props.setIsGoalSelected;
 
@@ -245,12 +276,12 @@ export function CreateInput(props) {
         data.todo_id = copy_todo_state.length;
         data.goal_id = parseInt(id); //key를 위한 id 추가
         data.next_todo_id = copy_todo_state.length+1;
-        data.date = defaultDate;
-        data.end_repeat_date = defaultDate;
+        data.date = dtToday;
+        data.end_repeat_date = dtToday;
         copy_todo_state.push(data);
         setTodo(copy_todo_state, console.log(copy_todo_state))
     }
-    
+
     const onSubmit =  (data) => { 
         const index = data.goal_id
         const newArr = [...isGoalSelected];
@@ -291,8 +322,16 @@ export function TodoModal (props) {
     const selectedInputIndex = props.selectedInputIndex;
     const clickTodoDeleteHandler = props.clickTodoDeleteHandler;
     const todoDelayNextDayEventHandler = props.todoDelayNextDayEventHandler;
+    const calendarOpen = props.calendarOpen;
+    const handleCalendarModalOpen = props.handleCalendarModalOpen;
+    const handleCalendarModalClose = props.handleCalendarModalClose;
+    const todoChangeDateEventHandler = props.todoChangeDateEventHandler;
+
 
     return(
+        <>
+        <DatePickerCalender calendarOpen={calendarOpen} handleCalendarModalOpen={handleCalendarModalOpen} selectedInputIndex={selectedInputIndex} handleCalendarModalClose={handleCalendarModalClose} handleTodoModalClose={handleTodoModalClose} todoChangeDateEventHandler={todoChangeDateEventHandler} /> 
+
         <Modal open={modalOpen}
         onClose={handleTodoModalClose}
         aria-labelledby="modal-modal-title"
@@ -304,11 +343,60 @@ export function TodoModal (props) {
                 <Box className="feed-todo-modal-icon-wrap">
                     <button className="feed-todo-edit-icon" data-index={selectedInputIndex} onClick={clickTodoEditHandler} ><EditIcon className="feed-modal-icon" /><span>수정</span></button>
                     <button className="feed-todo-delay-icon" data-index={selectedInputIndex} onClick={todoDelayNextDayEventHandler} ><SkipNextIcon className="feed-modal-icon" /><span>내일 하기</span></button>
-                    <button className="feed-todo-date-change-icon" data-index={selectedInputIndex} ><SyncAltIcon className="feed-modal-icon" /><span>날짜 바꾸기</span></button>
+                    <button className="feed-todo-date-change-icon" data-index={selectedInputIndex} ><SyncAltIcon className="feed-modal-icon" onClick={handleCalendarModalOpen} /><span>날짜 바꾸기</span></button>
                     <button className="feed-todo-order-change-icon" data-index={selectedInputIndex} ><WrapTextIcon className="feed-modal-icon" /><span>순서 변경</span></button>
                     <button className="feed-todo-delete-icon" data-index={selectedInputIndex} onClick={clickTodoDeleteHandler}  ><DeleteOutlineIcon className="feed-modal-icon" /><span>삭제</span></button>
                 </Box>
             </Box>
+
+        </Modal>  
+        </>
+    )
+}
+
+export function DatePickerCalender(props) {
+
+    const selectedInputIndex = props.selectedInputIndex;
+    const [selectedNewDate, setSelectedNewDate] = useState(new Date());
+    const  week = new Array('일', '월', '화', '수', '목', '금', '토');
+    const calendarOpen = props.calendarOpen;
+    const handleCalendarModalClose = props.handleCalendarModalClose;
+    const handleTodoModalClose = props.handleTodoModalClose;
+    const todoChangeDateEventHandler = props.todoChangeDateEventHandler;
+    const selectedDate = selectedNewDate.toJSON().substring(0,10);
+
+    let selectedYear = selectedNewDate.getFullYear();
+    let selectedMonth = selectedNewDate.getMonth()+1;
+    let selectedDay = selectedNewDate.getDate();
+    let selectedLabel = selectedNewDate.getDay();
+    let todayLabel = week[selectedLabel];
+
+
+    useEffect(()=>{
+        handleTodoModalClose()
+    },[])
+    
+    return (
+        <Modal open={calendarOpen}
+        onClose={handleCalendarModalClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="todo-modal-datePicker-wrap"
+         >
+        <Box className="todo-modal-datePicker-box">
+            <LocalizationProvider locale={ko} dateAdapter={AdapterDateFns}>
+                <div className="todo-modal-datePicker-box-title-wrap">
+                    <p>선택한 날짜</p>
+                    <span>{selectedYear +`년 `+ selectedMonth +`월 `+ selectedDay+ `일 ` + todayLabel + `요일`}</span>
+                </div>
+                <CalendarPicker className="todo-modal-datePicker" date={selectedNewDate} onChange={(newDate) => setSelectedNewDate(newDate)} />
+                <div className="todo-modal-datePicker-btn-wrap">
+                <Button className="todo-modal-datePicker-btn" data-index={selectedInputIndex} data-day={selectedDate} onClick={todoChangeDateEventHandler}>확인</Button> <Button className="todo-modal-datePicker-btn" onClick={handleCalendarModalClose}>취소</Button>
+                </div>
+            </LocalizationProvider>
+        </Box>
         </Modal>  
     )
+
+
 }

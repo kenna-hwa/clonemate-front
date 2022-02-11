@@ -1,9 +1,26 @@
 import { atom } from "recoil";
 
+
 export const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
 });
+
+const minDate = new Date('2019-01-01T00:00:00.000');
+const maxDate = new Date('2035-01-01T00:00:00.000');
+
+const today = new Date();
+const tomorrow = new Date(today);
+const nextDay = new Date(tomorrow.setDate(today.getDate()+1))
+
+export const datesData = atom({
+  key: 'datesData',
+  default : {
+    "dtToday" : today.toJSON().substring(0, 10),
+    "dtTomorrow" : nextDay.toJSON().substring(0, 10)
+  }
+
+})
 
 
 export const calendarData = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기

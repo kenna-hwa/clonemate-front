@@ -262,3 +262,128 @@
     }
 
 }
+
+.todo-modal-datePicker-wrap{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: $text-black;
+
+    .todo-modal-datePicker-box{
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .todo-modal-datePicker-box-title-wrap{
+            text-align: center;
+            p{
+                font-size: 14px;
+            }
+            span{
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+        .todo-modal-datePicker{
+            display: flex;
+            justify-content: center;
+            padding: 0 10px;
+
+            .css-1dozdou{ // 연, 월, 날짜변경 버튼
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 5px 0 18px;
+                // background-color: red;
+
+                .css-l0iinn{ //연 월 버튼
+
+                    div{
+                        font-family: 'Pretendard';
+                        font-size: 18px;
+                    
+                            &:nth-child(1){
+                                order:2;
+                            }
+                            &:nth-child(2){
+                                order:1;
+                                :after{
+                                    display: inline-block;
+                                    content: "년";
+                                }
+                            }
+                        }
+                    button{
+                        order: 3;
+                    }
+                }
+
+            }
+            .MuiCalendarPicker-viewTransitionContainer{ // 캘린더 전체
+                overflow-y: hidden;
+
+                div{
+                    .css-1n2mv2k{ //캘린더 요일
+                        
+                        span{ //개별 요일
+                            font-size: 13px;
+                            font-family: 'Pretendard';
+                            font-weight: 500;
+                        }
+                    }
+                    .css-dhopo2{ //캘린더 날짜
+                        min-height: 260px;
+                        
+                        .css-i6bazn{//개별 날짜
+                            display: flex;
+                            flex-flow: column;
+                            justify-content: space-between;
+                        
+                            .css-mvmu1r{
+                                margin: 1px 0;
+                                div{
+                                    div{
+                                        margin: 0;
+                                    }
+                                    button{
+                                        font-family: 'Pretendard';
+                                        font-weight: 300; 
+                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .todo-modal-datePicker-btn-wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .todo-modal-datePicker-btn{
+            position: relative;
+            width: 110px;
+            height: 40px;
+            font-family: 'Pretendard';
+            font-weight: 400; 
+            background: $goal-btn-gray;
+            border: $goal-btn-border-gray;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: $text-black
+            
+        }
+        button:nth-child(1){
+            margin-right: 25px;
+        }
+    }
+}
+.css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){
+    border: 1px soild $goal-btn-border-gray;
+    border-radius: 50%;
+}
