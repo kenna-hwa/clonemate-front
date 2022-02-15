@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -8,7 +9,6 @@ import { ko } from "date-fns/locale";
 
 import {  Button, List, ListItem, ListItemText, Modal, } from "@mui/material";
 import { Box } from "@mui/system";
-import { useRecoilState, useRecoilValue } from "recoil";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -189,7 +189,7 @@ const clickTodoDeleteHandler = (e) => {
                               
                                 {goal.goal_id === parseInt(todo.goal_id) ? (<>
                                 <div className="goals-todo-input-list-check-wrap">
-                                {todo.check_yn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon"onClick={todoCheckBoxEventHandler} data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon"onClick={todoCheckBoxEventHandler} data-index={index} /> }
+                                {todo.check_yn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> }
                                     <input key={`todo${index}`} id="todo-input" className="goals-todo-list-input" type="text" maxLength={"80"} 
                                     name={todo.title} data-index={index} readOnly={todoReadOnly[index]} value={todo.title} 
                                     onChange={todoEditEventHandler} onKeyDown={enterKeyEventHandler} 

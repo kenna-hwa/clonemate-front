@@ -7,6 +7,7 @@
     "@date-io/dayjs": "^2.11.0",
     "@date-io/luxon": "^2.11.1",
     "@date-io/moment": "^2.11.0",
+    "@dnd-kit/core": "^5.0.1",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@material-table/core": "^0.2.20",
@@ -23,7 +24,11 @@
     "axios": "^0.25.0",
     "date-fns": "^2.27.0",
     "history": "^5.1.0",
+    "immutable": "^4.0.0",
     "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dnd": "^15.1.1",
+    "react-dnd-html5-backend": "^15.1.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.22.0",
     "react-router": "^6.1.1",
@@ -58,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "react-error-overlay": "^6.0.9"
   }
 }

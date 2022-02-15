@@ -40,8 +40,9 @@ export default function BasicNavBar () {
             color="inherit"
             aria-label="back"
             sx={{ mr: 2 }}
+            onClick={history.goBack} 
           >
-         <NavigateBeforeIcon onClick={history.goBack} />
+         <NavigateBeforeIcon />
           </IconButton>
           <Typography className="navbar_title" variant="h6" component="div">
 

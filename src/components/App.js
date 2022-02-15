@@ -11,7 +11,7 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import Goals from "./Goals";
 import Main from "./Main";
-
+import OrderItem from "./OrderItem";
 import GoalForm from "./GoalForm";
 import GoalEditForm from "./GoalEditForm";
 import More from "./More";
@@ -145,6 +145,10 @@ function App() {
         <Route exact path="/goals/goalEditForm/:originID">
         <BasicNavBar/> 
          <GoalEditForm />  
+        </Route>
+        <Route exact path="/orderitem">
+        <BasicNavBar/> 
+         <OrderItem />  
         </Route>
         <Route exact path="/explore">
         <BasicNavBar/>

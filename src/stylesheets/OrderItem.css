@@ -1,0 +1,257 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hahmlet';
+  src: local(※), url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-ExtraBold.woff2") format("woff2");
+  unicode-range: U+0041-005A, U+0061-007A;
+  font-weight: 800;
+}
+
+.order-box {
+  position: relative;
+  width: 75vw;
+  height: auto;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  padding: 0.75em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 8px;
+}
+
+.order-box .goals-listItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  padding: .3em .6em;
+  background-color: #f5f5f5;
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap .goals-listItem-icon {
+  font-size: 15px;
+  color: #000;
+  margin-right: .5em;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap .goals-listItem-text {
+  width: auto;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap .goals-listItem-text .MuiListItemText-primary {
+  width: auto;
+  margin-right: .5em;
+  letter-spacing: -0.25px;
+  font-size: 13px;
+  font-family: 'Pretendard';
+  font-weight: 900;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 0;
+  width: 16px;
+  height: 16px;
+  background: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+}
+
+.order-box .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon span {
+  color: #000;
+}
+
+.order-box .goals-todo-input-title {
+  display: block;
+}
+
+.goals-todo-input-list-Box {
+  width: 100%;
+  min-width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
+  margin-right: 0.5em;
+  color: #afafaf;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list {
+  width: 100%;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  outline: 0;
+  border: 0;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-webkit-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:focus-visible {
+  position: relative;
+  border: none;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+}
+
+.goals-todo-input-list-Box .goals-todo-list-input-btn {
+  visibility: hidden;
+}
+
+.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
+  position: relative;
+  color: #afafaf;
+  top: -1px;
+}
+/*# sourceMappingURL=OrderItem.css.map */

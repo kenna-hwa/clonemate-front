@@ -70,7 +70,23 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
       "title": "두 번째 목표",
       "privacy": "PRI",
       "box_color": "",
+      "title_color": "#234d22"
+    },
+    {
+      "goal_id": 2,
+      "next_goal_id": 3,
+      "title": "세 번째 목표",
+      "privacy": "PRI",
+      "box_color": "",
       "title_color": "#C71585"
+    },
+    {
+      "goal_id": 3,
+      "next_goal_id": 4,
+      "title": "네 번째 목표",
+      "privacy": "PRI",
+      "box_color": "",
+      "title_color": "#21bdbd"
     }
   ]
 })
