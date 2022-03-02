@@ -174,4 +174,39 @@ body {
   color: #fff;
   top: -55%;
 }
+
+.todo-modal-dayPicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.todo-modal-dayPicker #dayPicker-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1c1c1c;
+  font-family: 'Pretendard';
+  margin-bottom: 10px;
+}
+
+.todo-modal-dayPicker #dayPicker-checkbox-btn-wrap {
+  margin-bottom: 20px;
+}
+
+.todo-modal-dayPicker #dayPicker-checkbox-btn-wrap .dayPicker-checkbox-btn .dayPicker-checkbox {
+  margin-right: 20px;
+}
+
+.todo-modal-dayPicker #dayPicker-checkbox-btn-wrap .dayPicker-checkbox-btn span {
+  font-size: 14px;
+  color: #1c1c1c;
+  font-family: 'Pretendard';
+}
 /*# sourceMappingURL=CalendarBox.css.map */

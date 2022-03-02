@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Button, List, ListItem, ListItemText } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Button, List, ListItem, ListItemText } from "@mui/material";
 import { DragDropContext, Droppable, Draggable, resetServerContext, } from "react-beautiful-dnd";
 
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
@@ -62,7 +61,7 @@ function todoDragEndEventHandler(result) {
     <DragDropContext onDragEnd={goalDragEndEventHandler}>
     <Droppable  droppableId="GOALS" type="GOALS">
     {(provided, snapshot) => (
-    <div className="order-box" {...provided.droppableProps}
+    <Box className="order-box" {...provided.droppableProps}
     ref={provided.innerRef}>
 
 
@@ -78,8 +77,8 @@ function todoDragEndEventHandler(result) {
                             <ListItemText className="goals-listItem-add-icon" ><span>+</span></ListItemText>
                         </div>
 
-{/* 
-                        <TodoList goal={goal} todo={todo} /> */}
+                    
+                            <TodoList goal={goal} todo={todo} />
 
                         </ListItem>
                     )}}
@@ -87,7 +86,7 @@ function todoDragEndEventHandler(result) {
             )
                               
             })}  {/* goal.map */}
-    </div> /* order-box */
+    </Box> /* order-box */
     )}
     </Droppable>
     </DragDropContext>

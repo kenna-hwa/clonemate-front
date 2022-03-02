@@ -1,5 +1,6 @@
 @import './abstracts/variables';
 @import './abstracts/font';
+@import './abstracts/mixin';
 
 .feed-box{
     position: relative;
@@ -143,52 +144,7 @@
     
 }
 
-.goals-todo-input-create-Box{
-    
-    min-width: 320px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.1em;
-    box-sizing: border-box;
-
-    .goals-todo-input-create-wrap{
-        display: flex;
-        width: 100%;
-        align-items: center;
-
-        .goals-todo-input-create-check-icon{
-            position: relative;
-            margin-right: 0.5em;
-            color: $text-gray;
-            cursor: pointer;
-        }
-        .goals-todo-input-create-field{
-            position: relative;
-            width: 100%;
-            border:none;
-            border-bottom: 1px solid #000;
-            outline: none;
-            font-family: 'Pretendard';
-            font-size: 0.95em;
-            cursor: pointer;
-            padding: 0 0 10px 0;
-            top: 5px;
-
-            &:focus-visible{
-                outline: 0;
-            }
-            
-        }
-        .goals-todo-input-btn{
-            position: relative;
-            color: $text-gray;
-            top: -1px;
-            visibility: hidden;
-        }      
-    }
-}
+@include todo-list;
 
 .feed-todo-modal-box{
     display: flex;
@@ -386,4 +342,24 @@
 .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){
     border: 1px soild $goal-btn-border-gray;
     border-radius: 50%;
+}
+
+.feed-move-to-routines{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    bottom: 10%;
+    left: 90%;
+    box-shadow: 2px 3px 5px 0 #00000025;
+    border-radius: 50%;
+    border: none;
+    font-family: 'Pretendard';
+    cursor: pointer;
+
+    @media (max-width: 750px){
+        display: none;
+    }
 }

@@ -19,6 +19,7 @@ import MorePolicy from "./MorePolicy";
 import MoreAnnounce from "./MoreAnnounce";
 import Explore from "./Explore";
 import ExploreSearch from "./ExploreSearch";
+import Routines from "./Routines";
 
 import "../stylesheets/App.css";
 
@@ -149,6 +150,10 @@ function App() {
         <Route exact path="/orderitem">
         <BasicNavBar/> 
          <OrderItem />  
+        </Route>
+        <Route exact path="/routines">
+        <BasicNavBar/> 
+         <Routines />  
         </Route>
         <Route exact path="/explore">
         <BasicNavBar/>

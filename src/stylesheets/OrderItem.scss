@@ -1,6 +1,8 @@
 @import './abstracts/variables';
 @import './abstracts/font';
+@import './abstracts/mixin';
 
+//목표
 .order-box{
     position: relative;
     width: 75vw;
@@ -79,60 +81,4 @@
         
 }
 
-
-.goals-todo-input-list-Box{
-    width: 100%;
-    min-width: 320px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.1em;
-    box-sizing: border-box;
-
-    .goals-todo-input-list-check-wrap{
-        display: flex;
-        align-items: center;
-        flex-flow: row nowrap;
-        width: 100%;
-
-        .goals-todo-list-input-check-icon{
-            margin-right: 0.5em;
-            color: $text-gray;
-        }
-        .goals-todo-list{
-            width: 100%;
-            font-family: 'Pretendard';
-            font-size: 0.95em;
-            outline: 0;
-            border: 0;
-
-            &::placeholder {
-                color: $text-black;
-            }
-
-            &:focus-visible{
-                position: relative;
-                // border-bottom: 1px solid #000;
-                border: none;
-                outline: none;
-                font-family: 'Pretendard';
-                font-size: 0.95em;
-                // padding: 0 0 10px 2px;
-                // top: 5px;
-            }
-        }
-    }
-
-    .goals-todo-list-input-btn{
-        
-        visibility: hidden;
-
-        .goals-todo-list-input-btn-icon{
-            position: relative;
-            color: $text-gray;
-            top: -1px;
-        }
-    }
-    
-}
+@include todo;

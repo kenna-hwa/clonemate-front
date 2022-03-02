@@ -250,65 +250,84 @@
   cursor: pointer;
 }
 
-.goals-todo-input-create-Box {
+.goals-todo-input-list-Box {
+  width: 100%;
   min-width: 320px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   padding: 0.1em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.goals-todo-input-create-Box .goals-todo-input-create-wrap {
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  margin: 10px 0;
 }
 
-.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-check-icon {
-  position: relative;
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
   margin-right: 0.5em;
   color: #afafaf;
-  cursor: pointer;
 }
 
-.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-field {
-  position: relative;
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list {
   width: 100%;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  outline: 0;
+  border: 0;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-webkit-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-ms-input-placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::placeholder {
+  color: #1c1c1c;
+}
+
+.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:focus-visible {
+  position: relative;
   border: none;
-  border-bottom: 1px solid #000;
   outline: none;
   font-family: 'Pretendard';
   font-size: 0.95em;
-  cursor: pointer;
-  padding: 0 0 10px 0;
-  top: 5px;
 }
 
-.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-create-field:focus-visible {
-  outline: 0;
+.goals-todo-input-list-Box .goals-todo-list-input-btn {
+  display: none;
 }
 
-.goals-todo-input-create-Box .goals-todo-input-create-wrap .goals-todo-input-btn {
+.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
   position: relative;
   color: #afafaf;
   top: -1px;
-  visibility: hidden;
 }
 
 .feed-todo-modal-box {
@@ -567,5 +586,34 @@
 .css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
   border: 1px soild #f3f3f3;
   border-radius: 50%;
+}
+
+.feed-move-to-routines {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60px;
+  height: 60px;
+  bottom: 10%;
+  left: 90%;
+  -webkit-box-shadow: 2px 3px 5px 0 #00000025;
+          box-shadow: 2px 3px 5px 0 #00000025;
+  border-radius: 50%;
+  border: none;
+  font-family: 'Pretendard';
+  cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .feed-move-to-routines {
+    display: none;
+  }
 }
 /*# sourceMappingURL=Feed.css.map */

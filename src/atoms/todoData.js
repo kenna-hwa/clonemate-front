@@ -22,6 +22,15 @@ export const datesData = atom({
 
 })
 
+export const selectedNewDate = atom({
+  key: "selectedNewDate",
+  default: new Date()
+})
+
+export const selectedNewEndDate = atom({
+  key: "selectedNewEndDate",
+  default: new Date()
+})
 
 export const calendarData = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기
     key: 'calendarData', // unique ID (with respect to other atoms/selectors)
@@ -96,6 +105,19 @@ export const goalReadOnly = atom({
   default: "read"
 })
 
+export const createRepeatDay = atom({
+  key: "createRepeatDay",
+  default: {
+  "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+  "mon": "N",
+  "tue": "N",
+  "wed": "N",
+  "thu": "N",
+  "fri": "N",
+  "sat": "N",
+}
+});
+
 export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린더에서 날짜 클릭하면 해당 날짜로 값 받아오기 // 더미 데이터는 2022-02-05
   key: "todoData",
   default: [
@@ -159,4 +181,19 @@ export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린�
 export const todoReadOnly = atom({
   key: "todoReadOnly",
   default: true
+})
+
+export const dateCalendarOpen = atom({
+  key: "dateCalendarOpen",
+  default: false
+})
+
+export const endRepeatDateCalendarOpen = atom({
+  key: "endRepeatDateCalendarOpen",
+  default: false
+})
+
+export const repeatDayCalendarOpen = atom({
+  key: "repeatDayCalendarOpen",
+  default: false
 })

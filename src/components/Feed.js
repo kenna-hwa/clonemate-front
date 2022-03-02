@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -18,10 +19,11 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import WrapTextIcon from '@material-ui/icons/WrapText';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 import '../stylesheets/Feed.css'
 
-import { goalsData, todoData, datesData } from "../atoms/todoData";
+import { goalsData, todoData, datesData, calendarOpen, selectedNewDate } from "../atoms/todoData";
 
 
 export default function Feed() {
@@ -30,22 +32,27 @@ export default function Feed() {
 /* Hook 선언 시작 */
 
 /* atom 시작 */
+
     let dateData = useRecoilValue(datesData);
     let goal = useRecoilValue(goalsData);
     let [originTodo, setOriginTodo] = useRecoilState(todoData);
     let todo = [...originTodo];
+    let [calendarOpen, setCalendarOpen] = useRecoilState(calendarOpen);
     
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;
 
     const [modalOpen, setModalOpen] = useState(false);
-    const [calendarOpen, setCalendarOpen] = useState(false);
+
 
     let [isGoalSelected, setIsGoalSelected] = useState(Array(goal.length).fill(false) );
     let [todoReadOnly, setTodoReadOnly] = useState(Array(todo.length).fill(true));
     // console.log("inputREAD" , todoReadOnly)
     let [selectedTodo, setSelectedTodo] = useState("");
     let [selectedInputIndex, setSelectedInputIndex] = useState("");
+
+
+    let history = useHistory();
 
 /* Hook 선언 끝 */
 
@@ -211,6 +218,7 @@ const clickTodoDeleteHandler = (e) => {
 
                 </List>
             </Box>
+            <button className="feed-move-to-routines" title="기간이 있는 할 일 작성하기" onClick={()=>{history.push("/routines")}}><BorderColorIcon /></button>
         </Box>
 
         {/* 모달 생성 */}
@@ -263,7 +271,7 @@ export function CreateInput(props) {
     /* 함수 선언 시작 */
 
     //input 함수
-    const onInputChange = (e) => {
+    const onChangeTitleEventHandler = (e) => {
         setCreactTodoState({...createTodoState, title: e.target.value})
         // console.log(createTodoState)
     }
@@ -303,7 +311,7 @@ export function CreateInput(props) {
                 <form onSubmit={handleSubmit(onSubmit,onError)}>
                     <div className="goals-todo-input-create-wrap">
                     <CheckBoxOutlineBlankIcon className="goals-todo-input-create-check-icon"/>
-                    <input {...register("title")} ref={createInput} id="todo-input" className="goals-todo-input-create-field"  placeholder="할 일을 입력해주세요." type="text" maxLength={"35"} onChange={onInputChange} onBlur={handleSubmit(onSubmit, onError)} /> 
+                    <input {...register("title")} ref={createInput} id="todo-input" className="goals-todo-input-create-field"  placeholder="할 일을 입력해주세요." type="text" maxLength={"35"} onChange={onChangeTitleEventHandler} onBlur={handleSubmit(onSubmit, onError)} /> 
                     <input {...register("goal_id")} id="todo-goal-id-input" className="todo-goal-create-id" type="hidden" value={id} /> 
                     <Button type="submit" className="goals-todo-input-btn"><MoreHorizIcon className="goals-todo-list-input-btn-icon" /></Button>
                     </div>

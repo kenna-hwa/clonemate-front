@@ -17,7 +17,8 @@ export default function Main(props) {
 
   
     return (
-        <Box className='main-wrap' sx={{ position: 'relative', width: '100vw', height: '100vh' }}>
+        <Box className='main-wrap' sx={{ position: 'relative',     overflow: 'hidden'
+    }}>
         <MainNavBar />
         <Content goal={goalItems} calendarData={calendarData} />
         </Box>
