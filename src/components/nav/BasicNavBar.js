@@ -1,6 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import AddIcon from '@material-ui/icons/Add';
 
-import '../stylesheets/Nav.css';
+import '../../stylesheets/Nav.css';
 
 
 export default function BasicNavBar () {
@@ -23,7 +22,7 @@ export default function BasicNavBar () {
 
   //목표 생성 페이지 이동
   function moveGoalForm(){
-    window.location.replace("/goalForm")
+    window.location.replace("/goals/goalForm")
   }
 
   //url pathname 변수화
@@ -40,18 +39,18 @@ export default function BasicNavBar () {
             color="inherit"
             aria-label="back"
             sx={{ mr: 2 }}
+            onClick={history.goBack} 
           >
-         <NavigateBeforeIcon onClick={history.goBack} />
+         <NavigateBeforeIcon />
           </IconButton>
           <Typography className="navbar_title" variant="h6" component="div">
 
           {/* 삼항연산자로 navbar 제목 붙이기 */}
           {
-             urlPath === '/signin'? `로그인` : urlPath === '/join'?  `가입하기` 
-             : urlPath === '/goals'? `목표` : urlPath === '/goalForm/'? `목표` 
-             : urlPath === `/goalEditForm/${id}`? `목표` : urlPath === `/exploreSearch`? `팔로우` 
-             : urlPath === `/text/use`? `이용약관` : urlPath === `/text/policy`? `개인정보 정책` 
-             : urlPath === `/Announcements`? `공지사항` :null
+             urlPath.includes(`signin`)? `로그인` : urlPath.includes(`join`)?  `가입하기` 
+             : urlPath.includes(`goals`)? `목표` : urlPath.includes(`exploreSearch`)? `팔로우` 
+             : urlPath.includes(`use`)? `이용약관` : urlPath.includes(`policy`)? `개인정보 정책` 
+             : urlPath.includes(`announcements`)? `공지사항` : urlPath.includes(`routines`) ? `기한이 있는 할 일 설정` : null
            }
           </Typography>
           
@@ -63,7 +62,7 @@ export default function BasicNavBar () {
             sx={{ mr: 2 }}
           >
            {
-             urlPath === '/goals'? <AddIcon onClick={moveGoalForm} /> : null
+             urlPath ===`/goals`? <AddIcon onClick={moveGoalForm} /> : null
            }
         </IconButton>
         </Toolbar>

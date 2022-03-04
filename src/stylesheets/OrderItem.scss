@@ -1,0 +1,84 @@
+@import './abstracts/variables';
+@import './abstracts/font';
+@import './abstracts/mixin';
+
+//목표
+.order-box{
+    position: relative;
+    width: 75vw;
+    height: auto;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    padding: 0.75em;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: flex-start;
+    border-radius: 8px;
+
+        .goals-listItem{
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: start;
+            align-items: flex-start;
+            margin-bottom: 1em;
+            border-radius: 8px;
+
+            .goals-listItem-text-wrap{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    width: auto;
+                    padding: .3em .6em;
+                    background-color: $goal-btn-gray;
+                    border: 1px solid $goal-btn-border-gray;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+
+                .goals-listItem-icon{
+                    font-size: 15px;
+                    color: #000;
+                    margin-right: .5em;
+                }
+
+                .goals-listItem-text{
+                    width: auto;
+                    flex: none;
+                       .MuiListItemText-primary{
+                        width: auto;
+                        margin-right: .5em;
+                        letter-spacing: -0.25px;
+                        font-size: 13px;
+                        font-family: 'Pretendard';
+                        font-weight: 900;
+                    }
+                    
+                }
+
+                .goals-listItem-add-icon {
+                    display: flex;
+                    min-width: 0;
+                    width: 16px;
+                    height: 16px;
+                    background: white;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    
+                    span{
+                        color: #000;
+                    }
+                } 
+
+            }
+        }
+            .goals-todo-input-title{
+                display: block;
+            }
+        
+}
+
+@include todo;

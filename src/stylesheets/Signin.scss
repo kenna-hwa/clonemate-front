@@ -1,0 +1,40 @@
+@import './abstracts/variables';
+@import './abstracts/font';
+
+form{
+    margin: 0 auto;
+    width: 60vw;
+    font-family: 'Pretendard';
+}
+#submit_btn{
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    background: #eeeeee80;
+    border: 1px solid #ddd;
+    color: $text-black;
+    font-family: 'Pretendard';
+    font-size: 14px;
+    font-weight: 500;
+}
+.forgotPwd{
+    color: #aaa;
+    font-size: 13px;
+    margin: 15px;
+    text-align: center;
+}
+
+.join_txt{
+    width: 445px;
+    color: #333;
+    font-size: 13px;
+    margin: 15px auto;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+a{
+    color:#01a2f8;
+    font-weight: 600;
+    text-decoration: none;
+}

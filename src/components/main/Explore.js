@@ -1,8 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import CalendarBox from './CalendarBox';
 import { Avatar, Stack } from '@mui/material';
 import AddIcon from '@material-ui/icons/Add';
+
+import CalendarBox from './CalendarBox';
 
 export default function Explore(props) {
 
@@ -11,7 +12,6 @@ export default function Explore(props) {
     function moveExForm(){
         window.location.replace("/exploreSearch")
     }
-    let urlPath = window.location.pathname;
 
     return (
         <Box className='explore-wrap' sx={{ position: 'relative', width: '24vw', minWidth: '350px', top: 0, padding: '2em'}} >        
@@ -22,7 +22,8 @@ export default function Explore(props) {
                     <AddIcon onClick={moveExForm} />
                 </Avatar>
             </Stack>
-            <h1 className='nickname'>Nickname</h1>
+            <h1 className='explore-user-nickname'>Nickname</h1>
+            <p className='explore-user-info'>프로필에 자기소개를 입력해보세요</p>
             <CalendarBox calendarData={calendarData} />       
         </Box>
     );

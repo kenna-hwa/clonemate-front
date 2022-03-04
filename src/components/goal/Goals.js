@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {  Button, List, ListItem  } from "@mui/material";
 import { Box } from "@mui/system";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import '../stylesheets/Goal.css';
+import '../../stylesheets/Goal.css';
 
-import { goalsData, goalReadOnly } from "../atoms/todoData";
+import { goalsData } from "../../atoms/todoData";
 
 
 export default function Goals() {
@@ -15,19 +15,14 @@ export default function Goals() {
   
   /* Hook 선언 시작 */
 
-  let history = useHistory();
-
-
    /* atom 시작 */
   
   let goal = useRecoilValue(goalsData);// 목표goals 아이템
-  let [readOnly, readOnlyChange] = useRecoilState(goalReadOnly); //목표 수정표시
+  let [readOnly, readOnlyChange] = useState('read'); //목표 수정표시
 
 
 
   /* Dummy State 끝 */
-
-
   
   useEffect(()=>{
     // recoil 에서 정보 갱신이 되었으면 하는데..?
@@ -46,7 +41,7 @@ export default function Goals() {
 
   //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
   function editToGoalForm(id){
-    window.location.replace(`/goalEditForm/`+id)
+    window.location.replace(`/goals/goalEditForm/`+id)
   }
 
   

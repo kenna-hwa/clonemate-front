@@ -1,5 +1,4 @@
-// @import './abstracts/variables';
-// @import './abstracts/mixin';
+@import './abstracts/variables';
 @import './abstracts/font';
 
 .App {
@@ -16,9 +15,12 @@
   .header{
     width: 90%;
     margin-bottom: 50px;
-
       .main_img{
         width: 400px;
+      }
+
+      h1{
+        font-family: 'Hahmlet';
       }
   }
   
@@ -29,9 +31,15 @@
       width: 80%;
       font-weight: 400;
       font-size: 12px;
+      background-color: $goal-btn-gray !important;
+      color: $text-black;
   
-    &:nth-child(1){
+      &:nth-child(1){
         margin-bottom: 1em;
+        color: $text-black !important;
+    }
+      &:hover{
+        box-shadow: none;
       }
     }
   }

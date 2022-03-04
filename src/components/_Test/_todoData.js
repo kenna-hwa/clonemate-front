@@ -1,16 +1,18 @@
 import { atom } from "recoil";
 
-//아톰 예시 입니다.
+
 export const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
 });
 
+const minDate = new Date('2019-01-01T00:00:00.000');
+const maxDate = new Date('2035-01-01T00:00:00.000');
+
 const today = new Date();
 const tomorrow = new Date(today);
 const nextDay = new Date(tomorrow.setDate(today.getDate()+1))
 
-// Goal, Todo 캘린더 모달용 날짜 state
 export const datesData = atom({
   key: 'datesData',
   default : {
@@ -19,6 +21,7 @@ export const datesData = atom({
   }
 
 })
+
 export const selectedNewDate = atom({
   key: "selectedNewDate",
   default: new Date()
@@ -29,9 +32,8 @@ export const selectedNewEndDate = atom({
   default: new Date()
 })
 
-// Feed 좌측 캘린더 state -> CalendarBox 컴포넌트에서 dtFeedCalendarOverview 로 사용
-export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기
-    key: 'objFeedCalendarOverview', // unique ID (with respect to other atoms/selectors)
+export const calendarData = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기
+    key: 'calendarData', // unique ID (with respect to other atoms/selectors)
     default: [ {
               "numTodoYear": 2022,          //연도
               "numTodoMonth": 2,            //월
@@ -58,73 +60,6 @@ export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이
         } ,
         ]
   });// default value (aka initial value)
-
-// todo 더미데이터 수정 220304
-
-// 
-export const objTodosDataResult = atom({
-  key: 'objTodosDataResult',
-  default: [
-  {
-  goalTitle : "첫 번째 목표",
-  goalOrderNo : 1,
-  goalTitleColor : "#cccccc",
-  todos : [
-       {goalId: 1,
-        todoId: 1,
-        orderNo: 1,
-        title: "첫 번째 목표의 첫 번째 할 일",
-        date: "2022-02-13",
-        endRepeatDate: "2022-02-13",
-        repeatDays: {
-          THU: "N",
-          WEN: "N",
-          TUE: "N",
-          SAT: "N",
-          FRI: "N",
-          MON: "N",
-          SUN: "N"
-        },
-        checkYn: "N"
-        },
-        {goalId: 1,
-          todoId: 1,
-          orderNo: 2,
-          title: "첫 번째 목표의 두 번째 할 일",
-          date: "2022-02-13",
-          endRepeatDate: "2022-02-14",
-          repeatDays: {
-            THU: "N",
-            WEN: "N",
-            TUE: "N",
-            SAT: "N",
-            FRI: "N",
-            MON: "N",
-            SUN: "N"
-          },
-          checkYn: "N"
-      },
-      {goalId: 1,
-        todoId: 1,
-        orderNo: 2,
-        title: "첫 번째 목표의 세 번째 할 일",
-        date: "2022-02-13",
-        endRepeatDate: "2022-02-17",
-        repeatDays: {
-          THU: "N",
-          WEN: "Y",
-          TUE: "N",
-          SAT: "N",
-          FRI: "Y",
-          MON: "N",
-          SUN: "N"
-        },
-        checkYn: "N"
-      },
-  ]}
-]
-})
-
 
 
 export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
@@ -165,6 +100,10 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
   ]
 })
 
+export const goalReadOnly = atom({
+  key: "goalReadOnly",
+  default: "read"
+})
 
 export const createRepeatDay = atom({
   key: "createRepeatDay",

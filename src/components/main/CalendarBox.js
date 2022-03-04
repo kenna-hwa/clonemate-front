@@ -4,10 +4,11 @@ import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import {Paper, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import { ko } from "date-fns/locale";
-import { useRecoilState } from "recoil";
-import { calendarData } from "../atoms/todoData";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import '../stylesheets/CalendarBox.css';
+import '../../stylesheets/CalendarBox.css';
+import { objFeedCalendarOverview } from "../../atoms/todoData";
+
 
 export const styles = makeStyles(() => ({ //define CSS for different date types
     notInThisMonthDayPaper: {
@@ -105,18 +106,16 @@ export const styles = makeStyles(() => ({ //define CSS for different date types
 
 export default function CalendarBox(props) {
 
-   //컴포넌트 실행 시 서버에서 처음 값 받아오기
+//컴포넌트 실행 시 서버에서 처음 값 받아오기 여기서 ajax
 
-    // useEffect(() => {
-    //     calendarTodoData();
-    // }, []);
+// useEffect(() => {
+//     dtFeedCalendarOverview();
+// }, []);
 
 
     
     //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
-    let [calendarTodoData, setCalendarTodoData] = useRecoilState(calendarData);
-
-    // const calendarTodoData = [ { numCountTodo: 8, numTodoCount: 2, completeYn: 'n' }, { numCountTodo: 13, numTodoCount: 4, completeYn: 'n', }, { numCountTodo: 29, numTodoCount: 6, completeYn: 'y' } ];
+    let dtFeedCalendarOverview = useRecoilValue(objFeedCalendarOverview);
 
  
 
@@ -126,10 +125,11 @@ export default function CalendarBox(props) {
     let todoObj = {};
 
     // 데이터가 있는 날
-    const theDayhasTodoArr = calendarTodoData.map(item => parseInt(item.numCountTodo));
+    const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo[0].numTodoDay);
+    // console.log('theDayhasTodoArr',theDayhasTodoArr)
     // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
-    calendarTodoData.map(item =>  todoObj[parseInt(item.numCountTodo)] = item.completeYn!=='y'? item.numCountTodo : '✓');
-
+    dtFeedCalendarOverview.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
+    // console.log('todoObj',todoObj)
 
     //날짜 타일 변경 함수
     function getDayElement(day, selectedDate, isInCurrentMonth, dayComponent) {
@@ -153,7 +153,8 @@ export default function CalendarBox(props) {
             if (isHasTodoData) { //HasTodoData가 있을 때 = todo가 있는 날 -> 갯수 표시 todoChecked가 y 면 색상변환 
 
                 let d = day.getDate();
-
+                // console.log(todoObj, d)
+                // console.log('todoObj[d]', todoObj[d])
 
                 dateTile = (
                     <Paper className={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected ? classes.selectedDayPaper : isToday ? classes.todayPaper : classes.normalDayPaper } ref={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected? classes.selectedDayPaper : isToday? classes.todayPaper : classes.normalDayPaper}>
@@ -178,7 +179,7 @@ export default function CalendarBox(props) {
             </Paper>)
 
         }
-        return dateTile
+        return dateTile;
     }
 
   

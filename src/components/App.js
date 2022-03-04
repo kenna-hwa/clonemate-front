@@ -1,27 +1,29 @@
+/* eslint-disable */
+
 import React, { useRef, useState } from "react";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { koKR } from '@mui/material/locale';
 import { Switch, Route, useHistory } from "react-router-dom";
 
-import Signin from "./Signin";
-import Join from "./Join";
-import BasicNavBar from "./BasicNavBar";
-import Goals from "./Goals";
-import Main from "./Main";
-
-import GoalForm from "./GoalForm";
-import GoalEditForm from "./GoalEditForm";
+import Signin from "./usercontrol/Signin";
+import Join from "./usercontrol/Join";
+import BasicNavBar from "./nav/BasicNavBar";
+import Goals from "./goal/Goals";
+import Main from "./main/Main";
+import OrderItem from "./order/OrderItem";
+import GoalForm from "./goal/GoalForm";
+import GoalEditForm from "./goal/GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
 import MoreAnnounce from "./MoreAnnounce";
-import Explore from "./Explore";
+import Explore from "./main/Explore";
 import ExploreSearch from "./ExploreSearch";
+import Routines from "./routines/Routines";
 
 import "../stylesheets/App.css";
 
 import { goalsData } from "../atoms/todoData";
-
 
 const theme = createTheme({
   components: {
@@ -92,13 +94,13 @@ function App() {
         <Route exact path="/">
           <div className="App">
             <div className="header">
-              <img className="main_img" src="images/todomate.jpg" />
+              <img className="main_img" src="./images/todomate.jpg" />
               <h1>todo mate</h1>
               <h3>할 일을 작성, 계획, 관리하세요.</h3>
             </div>
             <div className="start_btn">
               <Button 
-                className="join_btn" 
+                className="join_link_btn" 
                 color="btn"
                 variant="contained" 
                 sx={{ boxShadow: 'none'}}
@@ -109,7 +111,7 @@ function App() {
                 가입하기
               </Button>
               <Button
-                className="signin_btn"
+                className="signin_ link_btn"
                 color="btn"
                 variant="contained"
                 sx={{ boxShadow: 'none'}}
@@ -137,13 +139,21 @@ function App() {
         <BasicNavBar/>
           <Goals  />
         </Route>
-        <Route exact path="/goalForm">
+        <Route exact path="/goals/goalForm">
          <BasicNavBar/> 
          <GoalForm />  
         </Route>
-        <Route exact path="/goalEditForm/:originID">
+        <Route exact path="/goals/goalEditForm/:originID">
         <BasicNavBar/> 
          <GoalEditForm />  
+        </Route>
+        <Route exact path="/orderitem">
+        <BasicNavBar/> 
+         <OrderItem />  
+        </Route>
+        <Route exact path="/routines">
+        <BasicNavBar/> 
+         <Routines />  
         </Route>
         <Route exact path="/explore">
         <BasicNavBar/>
@@ -156,15 +166,6 @@ function App() {
         <Route exact path="/text/use" component={More}/>
         <Route exact path="/text/policy" component={MorePolicy}/>
         <Route exact path="/announcements" component={MoreAnnounce}/>
-        <Route exact path="/text/use">
-        <BasicNavBar/>
-          <More />
-        </Route>
-
-        <Route exact path="/text/policy">
-        <BasicNavBar/>
-          <MorePolicy />
-        </Route>
         </Switch>
     </ThemeProvider>
   );

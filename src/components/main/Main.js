@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 
-import MainNavBar from './MainNavBar';
+import MainNavBar from '../nav/MainNavBar';
 import Content from './Content';
 
 export default function Main(props) {
@@ -17,7 +17,8 @@ export default function Main(props) {
 
   
     return (
-        <Box className='main-wrap' sx={{ position: 'relative', width: '100vw', height: '100vh' }}>
+        <Box className='main-wrap' sx={{ position: 'relative',     overflow: 'hidden'
+    }}>
         <MainNavBar />
         <Content goal={goalItems} calendarData={calendarData} />
         </Box>

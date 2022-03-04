@@ -1,4 +1,7 @@
+@import './abstracts/variables';
 @import './abstracts/font';
+@import './abstracts/mixin';
+
 // 캘린더 헤더 연-월 정렬
 body{
     font-family: 'Pretendard','Hahmlet';
@@ -29,8 +32,7 @@ body{
 
 .MuiPickersBasePicker-pickerView{
     // 달력
-    max-width: 32vw!important;
-    min-width: 350px;
+    width: 310px;
     min-height: 0!important;
 
 
@@ -108,3 +110,35 @@ body{
     
 
 }
+
+.todo-modal-dayPicker{
+    display: flex;
+    width: 300px;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+
+    #dayPicker-label{
+        font-size: 15px;
+        font-weight: 600;
+        color: $text-black;
+        font-family: 'Pretendard';
+        margin-bottom: 10px;
+    }
+
+    #dayPicker-checkbox-btn-wrap{
+              margin-bottom: 20px;
+              .dayPicker-checkbox-btn{
+            .dayPicker-checkbox{
+                margin-right: 20px;
+            }
+            span{
+                font-size: 14px;
+                color: $text-black;
+                font-family: 'Pretendard';
+            }
+         }
+    }
+
+}
+

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { useRecoilState } from "recoil";
-
 import { Button, Grid, Box, TextField, RadioGroup, FormLabel, FormControlLabel, Radio } from "@mui/material";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
+import { useRecoilState } from "recoil";
 
-import '../stylesheets/GoalForm.css';
+import '../../stylesheets/GoalForm.css';
 
-import { goalsData } from "../atoms/todoData";
+import { goalsData } from "../../atoms/todoData";
 
-export default function GoalEditForm(){
 
+export default function GoalForm(){
 
     /* Hook 선언 시작 */
 
@@ -24,21 +21,16 @@ export default function GoalEditForm(){
     
     let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
 
-     let history = useHistory();
-
-
-    let { originID } = useParams();//url Params 따오기
-
     const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
 
-    let [editGoalState, setEditGoalState] = useState('');
 
-    useEffect(()=>{
-        let originGoalState = [...goal]; //원본 goal 가지고 옴
-        let originGoal;
-        originGoal = originGoalState[originID]
-        setEditGoalState(originGoal)
-    },[])
+    let [createGoalState, setCreactGoalState] = useState({"goal_id": "",
+                                                    "preGoalId":"",
+                                                    "next_goal_id": "",
+                                                    "title": "",
+                                                    "privacy": "PUBLIC",
+                                                    "bg_color": "",
+                                                    "title_color": ""});
 
     let [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
     let [colorDialogOpen, setColorDialogOpen] = useState(false);
@@ -70,42 +62,49 @@ export default function GoalEditForm(){
         "#c9df8a",//green
         ])
 
+    const privacyObj = {
+        'HID' : '숨기기 🙄' ,
+        'PRI' : '나만보기 😎' ,
+        'FOL' : '일부공개 🤫' ,
+        'PUB' : '전체공개 🤗' ,
+    }
+
+
     /* Hook 선언 끝 */
 
     /* 함수 선언 시작 */
+
+
+    const onInputChange = (e) => {
+
+        const new_goal_item = createGoalState;
+        new_goal_item.title = e.target.value;
+        setCreactGoalState(new_goal_item)
+    }
     
-    //목표 수정 함수
-    function editGoal(item){
-        const thisItems ={...goal[item.goal_id]}; // goal State 원본 카피
-        setGoal(thisItems.title = item.title); //setGoal를 이용해 state 변경
-        // document.querySelector("#goalform_textfield").value = '';
-        return true;
+    //목표 추가 함수
+    const addGoal = (data) => {
+        const copy_goal_state = [...goal]; // goal State 원본 카피        
+        // console.log("adddata1", copy_goal_state)
+        data.goal_id = copy_goal_state.length; //key를 위한 id 추가
+        data.next_goal_id = (copy_goal_state.length+1 ); //key를 위한 id 추가
+        copy_goal_state.push(data);
+        // console.log("adddata2", copy_goal_state)
+        setGoal(copy_goal_state, console.log(copy_goal_state)) ;//setGoal를 이용해 state 변경
     }
 
-    //목표 삭제 함수
-    function deleteGoal(e){
-        let id = parseInt(e.target.id);
-        const thisItems = [...goal]; // goal State 원본 카피
-        let newItems = thisItems.filter(goal =>  goal.goal_id !== id
-        )
-        setGoal(newItems) ;//setGoal를 이용해 state 변경
-        console.log(newItems)
-        window.location.replace(`/goals/`);//목표로 돌아가기
-    }
-
-    const onSubmit = (data) => {
-        setEditGoalState(JSON.stringify(editGoalState));
-        console.log(editGoalState)
-
-        let res = editGoal(editGoalState);
-
-        if(res) window.location.replace(`/goals/`);//목표로 돌아가기
-
+    // submit 실행 함수
+    const onSubmit = (data) => { //react-form-hook submit 함수
+        setCreactGoalState(JSON.stringify(createGoalState));
+        addGoal(createGoalState);
+        window.location.replace("/goals")
     }
 
     const onError = (error) => {
     console.log(error);
     };
+
+
 
 
     const handlePrivacyDialogOpen = () => {
@@ -128,50 +127,40 @@ export default function GoalEditForm(){
         }
     };
     const handlePrivacyChange = (e) => {
-        const privacy = e.target.value;
-        // const new_goal_item = {...editGoalState};       
-        // new_goal_item.title_color = e.target.value;
-        // setEditGoalState(new_goal_item);
-        setEditGoalState({...editGoalState, privacy: privacy })
-
+        const new_goal_item = createGoalState;
+        new_goal_item.privacy = e.target.value;
+        setCreactGoalState(new_goal_item);
     };
     const handleColorChange = (e) => {
-        const title_color = e.target.value;
-        setEditGoalState({...editGoalState, title_color: title_color })
-
+        const new_goal_item = createGoalState;
+        new_goal_item.title_color = e.target.value;
+        setCreactGoalState(new_goal_item);
     };
 
 
-    function onInputChange(e) {
-        const title = e.target.value || '';
-        setEditGoalState({...editGoalState, title: title })
-    }
-
     /* 함수 선언 끝 */
+
 
     return(
         <Box className="goals-form-dialog-box">
             <form onSubmit={handleSubmit(onSubmit,onError)} className="goals-form">
-            <Grid container spacing={1} className="goals-form-grid-wrap">
-            <Grid item xs={12} className="goals-form-text-wrap">
-                <TextField id="goalform_textfield" variant="standard" value={editGoalState.title || ''} onChange={onInputChange} /> 
+                <Grid container spacing={1} className="goals-form-grid-wrap">
+                <Grid item xs={12} className="goals-form-text-wrap">
+                    <TextField id="goalform_textfield" variant="standard" placeholder={'목표 입력'} onChange={onInputChange} /> 
                 </Grid>
-                <Grid item xs={12} className="goals-form-privacy-wrap" >  
-                   <Button className="goals-form-privacy" onClick={handlePrivacyDialogOpen}><p >공개 설정 </p><span> {editGoalState.privacy ==='HIDDEN'? '🙄 숨기기' : editGoalState.privacy === 'PRIVATE'? '😎 나만보기' : editGoalState.privacy === 'FOLLOWINGS'? '🤫 일부공개' : editGoalState.privacy === 'PUBLIC'? '🤗 전체공개' : '🤗 전체공개'} ▾ </span></Button>
+                <Grid item xs={12} className="goals-form-privacy-wrap" > 
+                   <Button className="goals-form-privacy" onClick={handlePrivacyDialogOpen}><p>공개 설정 </p><span> 
+                       { privacyObj[createGoalState.privacy] } ▾ </span></Button>
                 </Grid>
                 <Grid item xs={12} className="goals-form-color-wrap" > 
-                   <Button className="goals-form-color" onClick={handleColorDialogOpen}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${editGoalState.title_color}`}}></i>▾ </span></Button>
+                   <Button className="goals-form-color" onClick={handleColorDialogOpen}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.title_color}`}}></i>▾ </span></Button>
                 </Grid>
                 {/* 확인은 임시 css */}
                 <Grid item xs={12} className="goals-form-submit">
-                    <Button color="secondary"
-                    className="goals-form-submit-btn" type="submit" >
+                    <Button color="secondary" className="goals-form-submit-btn" type="submit" >
                         확인
                     </Button>    
                 </Grid>
-                <Button className="goals-listItem-delete-btn" aria-label="Delete Todo" id={editGoalState.goal_id} onClick={deleteGoal} >
-                       삭제
-                </Button>
                 </Grid>
             </form>
 
@@ -189,10 +178,10 @@ export default function GoalEditForm(){
                             name="radio-buttons-group-privacy"
                             onChange={handlePrivacyChange}
                         >
-                            <FormControlLabel value="HIDDEN" control={<Radio  />} label="숨기기" />
-                            <FormControlLabel value="PRIVATE" control={<Radio />} label="나만보기" />
-                            <FormControlLabel value="FOLLOWINGS" control={<Radio />} label="일부공개" />
-                            <FormControlLabel value="PUBLIC" control={<Radio />} label="전체공개" />
+                            <FormControlLabel value="HID" control={<Radio  />} label={privacyObj["HID"]} />
+                            <FormControlLabel value="PRI" control={<Radio />} label={privacyObj["PRI"]} />
+                            <FormControlLabel value="FOL" control={<Radio />} label={privacyObj["FOL"]}/>
+                            <FormControlLabel value="PUBLIC" control={<Radio />} label={privacyObj["PUBLICc"]} />
                         </RadioGroup>
                     </FormControl>
                 </Box>

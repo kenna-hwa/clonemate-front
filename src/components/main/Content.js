@@ -1,11 +1,10 @@
 import React from 'react';
-import CalendarBox from './CalendarBox';
-import Explore from './Explore';
-import Feed from './Feed';
 import Box from '@mui/material/Box';
 
+import Explore from './Explore';
+import Feed from './Feed';
 
-export default function Content(props) {
+export default function Content() {
 
 
     return (
