@@ -1,6 +1,6 @@
 import React from 'react';
-import '../stylesheets/More.css';
-import BasicNavBar from './nav/BasicNavBar';
+import '../../stylesheets/More.css';
+import BasicNavBar from '../nav/BasicNavBar';
 
 function More(){
 
