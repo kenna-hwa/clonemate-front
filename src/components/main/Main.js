@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 
-import MainNavBar from './MainNavBar';
+import MainNavBar from '../nav/MainNavBar';
 import Content from './Content';
 
 export default function Main(props) {

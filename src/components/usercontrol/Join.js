@@ -1,11 +1,9 @@
-import React from 'react';
-import { useState } from "react";
+import React ,  { useState } from 'react';
 import { useForm } from "react-hook-form";
-import '../stylesheets/Signin.css';
-import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
-import BasicNavBar from './BasicNavBar';
-import More from './More';
+import { Button, TextField } from '@mui/material';
+
+import '../../stylesheets/Signin.css';
 
 export default function Join(){
 
@@ -24,7 +22,7 @@ export default function Join(){
 
     <form onSubmit={handleSubmit(onSubmit,onError)}>
     <TextField
-      {...register("userId")} //값을 불러오기 위한 이름
+      {...register("userId", {required: true,})} //값을 불러오기 위한 이름
         id="standard-email-input"
         label="이메일"
         type="email"
@@ -35,7 +33,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userPwd", {minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
+       {...register("userPwd", {required: true, minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
         id="standard-password-input"
         label="비밀번호"
         type="password"
@@ -46,7 +44,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userName", {minLength:{ value: 5, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
+       {...register("userName", {required: true, minLength:{ value: 2, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
         id="standard-name-input"
         label="이름"
         type="name"
@@ -57,7 +55,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userIntro", {message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
+       {...register("userIntro", {required: true, message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
         id="standard-intro-input"
         label="자기소개"
         type="text"
@@ -74,7 +72,7 @@ export default function Join(){
         autoComplete="current-id"
         variant="standard"
       />
-      <input className="join_btn" type="submit" value={"확인"}/>
+      <Button id="submit_btn">확인</Button>
       
       <div className='join_txt'>
           <p>

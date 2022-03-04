@@ -1,9 +1,10 @@
-import React from 'react';
-import { useState } from "react";
+import React ,  { useState } from 'react';
 import { useForm } from "react-hook-form";
-import '../stylesheets/Signin.css';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+
+import '../../stylesheets/Signin.css';
+
 
 function Signin(){
 
@@ -18,6 +19,7 @@ function Signin(){
     <TextField
     {...register("Email")} 
         id="standard-email-input"
+        className='user-control-input'
         label="이메일"
         type="email"
         autoComplete="current-email"
@@ -37,7 +39,8 @@ function Signin(){
         margin="dense"
         fullWidth 
       />
-      <input className="login_btn" type="submit" value={"로그인"}/>
+      <Button id="submit_btn">확인</Button>
+
       <Link to="/"><p className='forgotPwd'>비밀번호를 잊었다면?</p></Link>
       </form>
       )

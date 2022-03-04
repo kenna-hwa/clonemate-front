@@ -31,11 +31,13 @@
       width: 80%;
       font-weight: 400;
       font-size: 12px;
-      background-color: $goal-btn-gray;
+      background-color: $goal-btn-gray !important;
+      color: $text-black;
   
       &:nth-child(1){
         margin-bottom: 1em;
-      }
+        color: $text-black !important;
+    }
       &:hover{
         box-shadow: none;
       }

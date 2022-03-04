@@ -1,6 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import AddIcon from '@material-ui/icons/Add';
 
-import '../stylesheets/Nav.css';
+import '../../stylesheets/Nav.css';
 
 
 export default function BasicNavBar () {

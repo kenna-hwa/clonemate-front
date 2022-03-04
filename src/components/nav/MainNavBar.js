@@ -11,7 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-import '../stylesheets/Nav.css';
+import '../../stylesheets/Nav.css';
 
 export default function MainNavBar() {
   //하위

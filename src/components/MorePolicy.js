@@ -1,6 +1,7 @@
 import React from 'react';
+
 import '../stylesheets/More.css';
-import BasicNavBar from './BasicNavBar';
+import BasicNavBar from './nav/BasicNavBar';
 
 function MorePolicy(){
 

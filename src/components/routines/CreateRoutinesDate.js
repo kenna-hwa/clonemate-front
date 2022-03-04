@@ -6,7 +6,7 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { ko } from "date-fns/locale";
 import { Box, Button, Modal } from "@mui/material";
 
-import { datesData, selectedNewDate } from "../atoms/todoData";
+import { datesData, selectedNewDate } from "../../atoms/todoData";
 
 
 export default function CreateRoutinesDate(props) {

@@ -8,7 +8,7 @@ import CreateRoutinesDay from "./CreateRoutinesDay";
 
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, selectedNewDate, selectedNewEndDate, repeatDayCalendarOpen, createRepeatDay } from "../atoms/todoData";
+import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, selectedNewDate, selectedNewEndDate, repeatDayCalendarOpen, createRepeatDay } from "../../atoms/todoData";
 
 // input 생성
 export default function CreateRoutinesForm(props) {

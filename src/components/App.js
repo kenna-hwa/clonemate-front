@@ -6,20 +6,20 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { koKR } from '@mui/material/locale';
 import { Switch, Route, useHistory } from "react-router-dom";
 
-import Signin from "./Signin";
-import Join from "./Join";
-import BasicNavBar from "./BasicNavBar";
-import Goals from "./Goals";
-import Main from "./Main";
-import OrderItem from "./OrderItem";
-import GoalForm from "./GoalForm";
-import GoalEditForm from "./GoalEditForm";
+import Signin from "./usercontrol/Signin";
+import Join from "./usercontrol/Join";
+import BasicNavBar from "./nav/BasicNavBar";
+import Goals from "./goal/Goals";
+import Main from "./main/Main";
+import OrderItem from "./order/OrderItem";
+import GoalForm from "./goal/GoalForm";
+import GoalEditForm from "./goal/GoalEditForm";
 import More from "./More";
 import MorePolicy from "./MorePolicy";
 import MoreAnnounce from "./MoreAnnounce";
-import Explore from "./Explore";
+import Explore from "./main/Explore";
 import ExploreSearch from "./ExploreSearch";
-import Routines from "./Routines";
+import Routines from "./routines/Routines";
 
 import "../stylesheets/App.css";
 
@@ -100,7 +100,7 @@ function App() {
             </div>
             <div className="start_btn">
               <Button 
-                className="join_btn" 
+                className="join_link_btn" 
                 color="btn"
                 variant="contained" 
                 sx={{ boxShadow: 'none'}}
@@ -111,7 +111,7 @@ function App() {
                 가입하기
               </Button>
               <Button
-                className="signin_btn"
+                className="signin_ link_btn"
                 color="btn"
                 variant="contained"
                 sx={{ boxShadow: 'none'}}

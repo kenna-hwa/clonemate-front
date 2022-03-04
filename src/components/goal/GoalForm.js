@@ -8,9 +8,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
 import { useRecoilState } from "recoil";
 
-import '../stylesheets/GoalForm.css';
+import '../../stylesheets/GoalForm.css';
 
-import { goalsData } from "../atoms/todoData";
+import { goalsData } from "../../atoms/todoData";
 
 
 export default function GoalForm(){

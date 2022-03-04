@@ -4,10 +4,11 @@ import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import {Paper, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import { ko } from "date-fns/locale";
-import { useRecoilState } from "recoil";
-import { calendarData } from "../atoms/todoData";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import '../stylesheets/CalendarBox.css';
+import '../../stylesheets/CalendarBox.css';
+import { objFeedCalendarOverview } from "../../atoms/todoData";
+
 
 export const styles = makeStyles(() => ({ //define CSS for different date types
     notInThisMonthDayPaper: {
@@ -105,16 +106,16 @@ export const styles = makeStyles(() => ({ //define CSS for different date types
 
 export default function CalendarBox(props) {
 
-   //컴포넌트 실행 시 서버에서 처음 값 받아오기
+//컴포넌트 실행 시 서버에서 처음 값 받아오기 여기서 ajax
 
-    // useEffect(() => {
-    //     calendarTodoData();
-    // }, []);
+// useEffect(() => {
+//     dtFeedCalendarOverview();
+// }, []);
 
 
     
     //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
-    let [calendarTodoData, setCalendarTodoData] = useRecoilState(calendarData);
+    let dtFeedCalendarOverview = useRecoilValue(objFeedCalendarOverview);
 
  
 
@@ -124,10 +125,10 @@ export default function CalendarBox(props) {
     let todoObj = {};
 
     // 데이터가 있는 날
-    const theDayhasTodoArr = calendarTodoData.map((data,i) => data.arrTodoInfo[0].numTodoDay);
+    const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo[0].numTodoDay);
     // console.log('theDayhasTodoArr',theDayhasTodoArr)
     // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
-    calendarTodoData.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
+    dtFeedCalendarOverview.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
     // console.log('todoObj',todoObj)
 
     //날짜 타일 변경 함수
@@ -178,7 +179,7 @@ export default function CalendarBox(props) {
             </Paper>)
 
         }
-        return dateTile
+        return dateTile;
     }
 
   

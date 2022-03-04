@@ -16,10 +16,8 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
-import '../stylesheets/Routines.css';
-
-
-import { goalsData, todoData, datesData, dateCalendarOpen, selectedNewDate } from "../atoms/todoData";
+import '../../stylesheets/Routines.css';
+import { goalsData, todoData, datesData, dateCalendarOpen, selectedNewDate } from "../../atoms/todoData";
 
 import EditRoutinesForm from './EditRoutinesForm';
 import CreateRoutinesForm from "./CreateRoutinesForm";

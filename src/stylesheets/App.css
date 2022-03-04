@@ -105,11 +105,13 @@
   width: 80%;
   font-weight: 400;
   font-size: 12px;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
+  color: #1c1c1c;
 }
 
 .App .start_btn button:nth-child(1) {
   margin-bottom: 1em;
+  color: #1c1c1c !important;
 }
 
 .App .start_btn button:hover {

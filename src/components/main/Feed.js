@@ -21,9 +21,8 @@ import WrapTextIcon from '@material-ui/icons/WrapText';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 
-import '../stylesheets/Feed.css'
-
-import { goalsData, todoData, datesData, calendarOpen, selectedNewDate } from "../atoms/todoData";
+import '../../stylesheets/Feed.css'
+import { objTodosDataResult, goalsData, todoData, datesData, selectedNewDate } from "../../atoms/todoData";
 
 
 export default function Feed() {
@@ -35,9 +34,15 @@ export default function Feed() {
 
     let dateData = useRecoilValue(datesData);
     let goal = useRecoilValue(goalsData);
+
     let [originTodo, setOriginTodo] = useRecoilState(todoData);
     let todo = [...originTodo];
-    let [calendarOpen, setCalendarOpen] = useRecoilState(calendarOpen);
+
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+
+
+
+    let [calendarOpen, setCalendarOpen] = useState('false');
     
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;

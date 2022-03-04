@@ -8,9 +8,9 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
-import { goalsData, todoData, datesData } from "../atoms/todoData";
+import { goalsData, todoData, datesData } from "../../atoms/todoData";
 
-import "../stylesheets/OrderItem.css";
+import "../../stylesheets/OrderItem.css";
 
 export default function OrderItem() {
   /* Hook 선언 시작 */

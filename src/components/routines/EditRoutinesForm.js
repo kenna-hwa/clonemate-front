@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Box, Button } from "@mui/material";
 
-import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, selectedNewDate, selectedNewEndDate, repeatDayCalendarOpen, createRepeatDay } from "../atoms/todoData";
+import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, selectedNewDate, selectedNewEndDate, repeatDayCalendarOpen, createRepeatDay } from "../../atoms/todoData";
 
 // 할 일 클릭 - 수정 모달 - input 생성
 export default function EditRoutinesForm(props) {
