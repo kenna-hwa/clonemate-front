@@ -14,11 +14,11 @@ import Main from "./main/Main";
 import OrderItem from "./order/OrderItem";
 import GoalForm from "./goal/GoalForm";
 import GoalEditForm from "./goal/GoalEditForm";
-import More from "./More";
-import MorePolicy from "./MorePolicy";
-import MoreAnnounce from "./MoreAnnounce";
+import More from "./policy/More";
+import MorePolicy from "./policy/MorePolicy";
+import MoreAnnounce from "./policy/MoreAnnounce";
 import Explore from "./main/Explore";
-import ExploreSearch from "./ExploreSearch";
+import ExploreSearch from "./exploresearch/ExploreSearch";
 import Routines from "./routines/Routines";
 
 import "../stylesheets/App.css";

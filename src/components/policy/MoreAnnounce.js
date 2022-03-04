@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from '@mui/material';
 
-import '../stylesheets/More.css';
-import BasicNavBar from './nav/BasicNavBar';
+import '../../stylesheets/More.css';
+import BasicNavBar from '../nav/BasicNavBar';
 
 function MoreAnnounce(){
     const HorizonLine = ({ text }) => {

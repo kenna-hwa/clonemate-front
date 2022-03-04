@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: inherit;
+
+  display: flex;
+  width: 100%;
+  padding: 10px 10px;
+  margin: 10px;
+  justify-content: space-between;
+  align-items: stretch;
+  -webkit-box-orient: horizontal;
+}
+/*
+  .button {
+    width: 100%;
+    order: -1;
+  } */
+.button1 {
+  display: none;
+
+  order: 1;
+}
