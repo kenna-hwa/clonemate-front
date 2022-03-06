@@ -23,6 +23,7 @@ import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 import '../../stylesheets/Feed.css'
 import { objTodosDataResult, goalsData, todoData, datesData, selectedNewDate } from "../../atoms/todoData";
+import { blue } from "@mui/material/colors";
 
 
 export default function Feed() {
@@ -33,27 +34,29 @@ export default function Feed() {
 /* atom 시작 */
 
     let dateData = useRecoilValue(datesData);
-    let goal = useRecoilValue(goalsData);
 
-    let [originTodo, setOriginTodo] = useRecoilState(todoData);
-    let todo = [...originTodo];
-
+    // atom에서 goal+todo 데이터 가져오기
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let todoDataArray = [...dtTodos];
 
 
-
-    let [calendarOpen, setCalendarOpen] = useState('false');
-    
+    //날짜 관련
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;
 
+
+    //모달, 캘린더 on/off 정보
     const [modalOpen, setModalOpen] = useState(false);
+    const [calendarOpen, setCalendarOpen] = useState(false);
 
+    //목표 클릭 여부 확인 배열 생성
+    let [isGoalSelected, setIsGoalSelected] = useState(Array(todoDataArray.length).fill(false) );
 
-    let [isGoalSelected, setIsGoalSelected] = useState(Array(goal.length).fill(false) );
-    let [todoReadOnly, setTodoReadOnly] = useState(Array(todo.length).fill(true));
-    // console.log("inputREAD" , todoReadOnly)
-    let [selectedTodo, setSelectedTodo] = useState("");
+    let [readOnly, setReadOnly] = useState(true);
+    // console.log("todoReadOnly", readOnly)
+
+    //선택한 todo의 정보 저장
+    let [selectedTodoData, setSelectedTodoData] = useState({});
     let [selectedInputIndex, setSelectedInputIndex] = useState("");
 
 
@@ -63,24 +66,29 @@ export default function Feed() {
 
 /* 함수 선언 시작 */
 
-//목표 클릭 시 이벤트 핸들러
+//목표 클릭 시 새로운 투두 작성 이벤트 핸들러
 const clickCreateTodoHandler = (e) => {
     const index = e.currentTarget.dataset.index;
-    const newArr = Array(goal.length).fill(false) ;
+    const newArr = Array(todoDataArray.length).fill(false) ;
     newArr[index] = true;
     setIsGoalSelected(newArr)
 }
 
-/* 모달 관련 */
+/* 모달 on off 관련 */
 
 //투두 클릭 시 모달 등장 이벤트 핸들러
 const clickTodoModalHandler = (e) => {
-    // console.log("click index", e.currentTarget.dataset.key)
-    const index = parseInt(e.currentTarget.dataset.index);
-    if(todoReadOnly[index] === false) return false;
+    if(readOnly === false) return false;
+    
+    const goal_index = e.currentTarget.dataset.goalid-1;
+    const todo_index = e.currentTarget.dataset.todoid-1;
+
+    //모달열기 -> selectedTodoData에 클릭한 todo 정보 넣기 -> todo index 전달하기
+    console.log(e.currentTarget.dataset)
+
     handleTodoModalOpen()
-    setSelectedTodo(selectedTodo = todo[index])
-    setSelectedInputIndex(index);
+    setSelectedTodoData(todoDataArray[goal_index].todos[todo_index])
+    setSelectedInputIndex(todo_index);
 }
 
 // 투두 클릭시 모달 노출 on off
@@ -91,7 +99,9 @@ const handleTodoModalClose = () => setModalOpen(false);
 const handleCalendarModalOpen = () => setCalendarOpen(true);
 const handleCalendarModalClose = () => setCalendarOpen(false);
 
-//모달 내부 이벤트
+
+
+/* 투두 수정 이벤트 관련 함수 */
 
 //엔터키 인식 readonly 변경
 const enterKeyEventHandler = (e) => {
@@ -102,30 +112,53 @@ const enterKeyEventHandler = (e) => {
 
 //외부 클릭 readonly 변경
 const inputLostFocusEventHandler = (e) => {
-    let newArr = Array(todo.length).fill(true);
-    setTodoReadOnly(newArr)
+    setReadOnly(true)
 }
 
-//투두 수정 이벤트 핸들러
+//투두 수정 버튼 클릭 이벤트 핸들러
 const clickTodoEditHandler = (e) => {
-    console.log("현재 인덱스 ", e.currentTarget.dataset.index)
-    const index = parseInt(e.currentTarget.dataset.index);
-    const newArr = Array(todo.length).fill(true);
-    newArr[index] = false;
-    console.log("newArr[index]", index, newArr[index], newArr)
-    setTodoReadOnly(newArr)
+    readOnly === false ? setReadOnly(true) : setReadOnly(false);
     handleTodoModalClose();
 }
 
-const todoEditEventHandler = (e) => {
-    console.log("현재 인덱스 ", e.currentTarget.dataset.index)
-    let index = parseInt(e.currentTarget.dataset.index);
-    let value = e.target.value;
-    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
-    originTodo[index].title = value;
-    // if(value.length > 34) alert("글자 수는 35자까지입니다.");
-    // console.log("change",originTodo[index].title)
-    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+//투두 input onchange 이벤트
+// 방법 1 인덱스 사용
+// const onChangetodoEditEventHandler = (e) => {
+//     console.log("입력 정보 ", e.currentTarget.value)
+//     const goal_index = e.currentTarget.dataset.goalid-1;
+//     const todo_index = e.currentTarget.dataset.todoid-1;
+
+//     let current_value = e.currentTarget.value;
+//     const copy_todoDataArray = JSON.parse(JSON.stringify(todoDataArray)); // todoDataArray의 todo State 원본 카피
+
+//     copy_todoDataArray[goal_index].todos[todo_index].title = current_value;
+//     setDtTodos(copy_todoDataArray) ;//setDtTodos 이용해 state 변경
+// }
+
+
+// 방법 2 map 에 이중 조건문 사용
+
+const onChangetodoEditEventHandler = (e) => {
+    // console.log("입력 정보 ", e.currentTarget.value)
+
+    const goal_id = parseInt(e.currentTarget.dataset.goalid);
+    const todo_id = parseInt(e.currentTarget.dataset.todoid);
+
+
+    let current_value = e.currentTarget.value;
+    const copy_todoDataArray = JSON.parse(JSON.stringify(todoDataArray));
+
+    copy_todoDataArray.map((data)=>{
+        data.todos.map((todo)=>{
+            if(todo.goalId === goal_id){
+                    if(todo.todoId === todo_id){
+                        todo.title = current_value;
+                        console.log("todo, " , todo.title)
+                    }
+            }
+        })
+    })
+    setDtTodos(copy_todoDataArray) ;//setDtTodos 이용해 state 변경
 }
 
 //투두 체크박스 클릭 이벤트 핸들러
@@ -133,14 +166,14 @@ const todoCheckBoxEventHandler = (e) => {
     e.stopPropagation(); 
     let index = parseInt(e.currentTarget.dataset.index);
     console.log("check click" , e.target.dataset.index)
-    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
+    const originTodo = JSON.parse(JSON.stringify(todoDataArray)); // todoDataArray State 원본 카피
     // console.log("originTodo", originTodo)
     if(originTodo[index].check_yn === 'Y'){
         originTodo[index].check_yn = 'N'
     } else {
         originTodo[index].check_yn = 'Y'
     };
-    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    setDtTodos(originTodo) ;//setOriginTodo를 이용해 state 변경
 }
 
 //투두 내일 하기 이벤트 핸들러 
@@ -148,10 +181,10 @@ const todoDelayNextDayEventHandler = (e) => {
     console.log(e.currentTarget)
     let index = parseInt(e.currentTarget.dataset.index);
     console.log(index)
-    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
+    const originTodo = JSON.parse(JSON.stringify(todoDataArray)); // todoDataArray State 원본 카피
     originTodo[index].date = dtTomorrow;
     originTodo[index].end_repeat_date = dtTomorrow;
-    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    setDtTodos(originTodo) ;//setOriginTodo를 이용해 state 변경
     handleTodoModalClose();
 }
 
@@ -159,10 +192,10 @@ const todoDelayNextDayEventHandler = (e) => {
 const todoChangeDateEventHandler = (e) => {
     let dtNewDate = e.currentTarget.dataset.day;
     let index = parseInt(e.currentTarget.dataset.index);
-    const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
+    const originTodo = JSON.parse(JSON.stringify(todoDataArray)); // todoDataArray State 원본 카피
     originTodo[index].date = dtNewDate;
     originTodo[index].end_repeat_date = dtNewDate;
-    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    setDtTodos(originTodo) ;//setOriginTodo를 이용해 state 변경
     handleTodoModalClose();
     handleCalendarModalClose();
 }
@@ -171,10 +204,10 @@ const todoChangeDateEventHandler = (e) => {
 const clickTodoDeleteHandler = (e) => {
     console.log("현재 인덱스 ", e.currentTarget.dataset.index)
     let index = parseInt(e.currentTarget.dataset.index);
-    const originTodo = [...todo]; // todo State 원본 카피
+    const originTodo = [...todoDataArray]; // todoDataArray State 원본 카피
     // console.log("originTodo",originTodo)
-    originTodo.splice(index, 1) //원본 todo 배열에서 해당 index 찾아서 1개 삭제
-    setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
+    originTodo.splice(index, 1) //원본 todoDataArray 배열에서 해당 index 찾아서 1개 삭제
+    setDtTodos(originTodo) ;//setOriginTodo를 이용해 state 변경
     handleTodoModalClose();
 }
 
@@ -187,34 +220,49 @@ const clickTodoDeleteHandler = (e) => {
             <Box className="feed-goals-list-box">
                 <List className="goals-list-wrap" >
                     {
-                    goal.map((goal, index) => {
-                    return ( <ListItem className="goals-listItem" id={goal.goal_id} key={goal.goal_id} > 
-                        <Button className="goals-listItem-text-wrap" isselected={isGoalSelected[index]} id={goal.goal_id} onClick={(e)=>{(clickCreateTodoHandler(e))}} data-index={index} >
+                    todoDataArray.map((data, idx) => {
+                        // console.log("Data", data)
+
+                    return ( <ListItem className="goals-listItem" id={data.goalOrderNo} key={data.goalOrderNo} > 
+                        <Button className="goals-listItem-text-wrap" isselected={isGoalSelected[idx]} id={data.goal_id} onClick={(e)=>{(clickCreateTodoHandler(e))}} data-index={idx} >
                         <LibraryBooksIcon className="goals-listItem-icon" />
-                                <ListItemText className="goals-listItem-text" id={goal.goal_id} name={goal.goal_id} sx={{ color:goal.title_color }}  >{goal.title}</ListItemText>
+                                <ListItemText className="goals-listItem-text" id={data.goalOrderNo} name={data.goalOrderNo} sx={{ color:data.goalTitleColor }}  >{data.goalTitle}</ListItemText>
                             <ListItemText className="goals-listItem-add-icon" ><span>+</span></ListItemText>
                         </Button>
-                        {todo.map((todo,index)=>{
-                            // {console.log("todo", todo.check_yn)}
+
+                        {data.todos.map((todo,index)=>{
+                            // {console.log("todo", todo)}
                             return (
-                                <Box className="goals-todo-input-list-Box" key={index} onClick={clickTodoModalHandler} data-index={index}>
+                                <Box className="goals-todo-input-list-Box" key={index}>
                               
-                                {goal.goal_id === parseInt(todo.goal_id) ? (<>
-                                <div className="goals-todo-input-list-check-wrap">
-                                {todo.check_yn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> }
-                                    <input key={`todo${index}`} id="todo-input" className="goals-todo-list-input" type="text" maxLength={"80"} 
-                                    name={todo.title} data-index={index} readOnly={todoReadOnly[index]} value={todo.title} 
-                                    onChange={todoEditEventHandler} onKeyDown={enterKeyEventHandler} 
-                                    onBlur={inputLostFocusEventHandler}  />
+                                <div className="goals-todo-input-list-check-wrap"
+                                >
+                                {todo.checkYn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-todoid={todo.todoId} 
+                                style={{ color: data.goalTitleColor }}
+                                /> : 
+                                <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" 
+                                onClick={todoCheckBoxEventHandler} data-index={todo.todoId} 
+                                style={{ color: data.goalTitleColor }}
+                                /> }
+                                    <input key={`todo${index}`} id="todo-input" className="goals-todo-list-input"type="text" 
+                                    name={todo.title} 
+                                    data-index={index}
+                                    data-goalid={todo.goalId} 
+                                    data-todoid={todo.todoId} 
+                                    value={todo.title} 
+                                    onClick={clickTodoModalHandler} 
+                                    onChange={onChangetodoEditEventHandler} onKeyDown={enterKeyEventHandler} 
+                                    onBlur={inputLostFocusEventHandler}  
+                                    readOnly={readOnly} 
+                                    />
                                     
                                 </div>
                                 <Button className="goals-todo-list-input-btn" ><MoreHorizIcon className="goals-todo-list-input-btn-icon" /></Button>
-                                </>
-                                ) : null} 
+                               
                                 </Box>
                             )
                         })}
-                        {isGoalSelected[index] ? <CreateInput id={goal.goal_id} isGoalSelected={isGoalSelected} setIsGoalSelected={setIsGoalSelected} dtToday={dtToday} />: null}
+                        {isGoalSelected[idx] ? <CreateInput id={idx} isGoalSelected={isGoalSelected} setIsGoalSelected={setIsGoalSelected} dtToday={dtToday} />: null}
                     </ListItem>
                             )
                         })
@@ -227,7 +275,7 @@ const clickTodoDeleteHandler = (e) => {
         </Box>
 
         {/* 모달 생성 */}
-        <TodoModal modalOpen={modalOpen} handleTodoModalClose={handleTodoModalClose} selectedTodo={selectedTodo} clickTodoEditHandler={clickTodoEditHandler} clickTodoDeleteHandler={clickTodoDeleteHandler} selectedInputIndex={selectedInputIndex} todoDelayNextDayEventHandler={todoDelayNextDayEventHandler} calendarOpen={calendarOpen} handleCalendarModalOpen={handleCalendarModalOpen} handleCalendarModalClose={handleCalendarModalClose} todoChangeDateEventHandler={todoChangeDateEventHandler} />
+        <TodoModal modalOpen={modalOpen} handleTodoModalClose={handleTodoModalClose} selectedTodoData={selectedTodoData} clickTodoEditHandler={clickTodoEditHandler} clickTodoDeleteHandler={clickTodoDeleteHandler} selectedInputIndex={selectedInputIndex} todoDelayNextDayEventHandler={todoDelayNextDayEventHandler} calendarOpen={calendarOpen} handleCalendarModalOpen={handleCalendarModalOpen} handleCalendarModalClose={handleCalendarModalClose} todoChangeDateEventHandler={todoChangeDateEventHandler} />
         </>
     );
 }
@@ -245,11 +293,11 @@ export function CreateInput(props) {
 
     /* atom 시작 */
     const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
-    let [todo, setTodo] = useRecoilState(todoData);
+    let [todoDataArray, setTodo] = useRecoilState(todoData);
     let [createTodoState, setCreactTodoState] = useState({
         "todo_id": "",
         "goal_id": "", //묶여있는 goal id
-        "next_todo_id": "", //다음 todo id (순서지정용)
+        "next_todo_id": "", //다음 todoDataArray id (순서지정용)
         "title": "",
         "date": "",
         "end_repeat_date": "", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
@@ -281,9 +329,9 @@ export function CreateInput(props) {
         // console.log(createTodoState)
     }
     
-    //todo 추가 함수
+    //todoDataArray 추가 함수
     const addTodo = (data, id) => {
-        const copy_todo_state = [...todo];
+        const copy_todo_state = [...todoDataArray];
         //추가되는 state 'todo_id', 'goal_id', 'next_todo_id', 'date', 'end_repeat_date'
         // 'repeat_days'와 'check_yn'은 default 값 "N" , 
         data.todo_id = copy_todo_state.length;
@@ -330,7 +378,7 @@ export function TodoModal (props) {
 
     const modalOpen = props.modalOpen;
     const handleTodoModalClose = props.handleTodoModalClose;
-    const selectedTodo = props.selectedTodo;
+    const selectedTodoData = props.selectedTodoData;
     const clickTodoEditHandler = props.clickTodoEditHandler;
     const selectedInputIndex = props.selectedInputIndex;
     const clickTodoDeleteHandler = props.clickTodoDeleteHandler;
@@ -352,7 +400,7 @@ export function TodoModal (props) {
         className="feed-todo-modal-box"
          >
             <Box className="feed-todo-modal-wrap" >
-                <p className="feed-todo-modal-head">{selectedTodo.title}</p>
+                <p className="feed-todo-modal-head">{selectedTodoData.title}</p>
                 <Box className="feed-todo-modal-icon-wrap">
                     <button className="feed-todo-edit-icon" data-index={selectedInputIndex} onClick={clickTodoEditHandler} ><EditIcon className="feed-modal-icon" /><span>수정</span></button>
                     <button className="feed-todo-delay-icon" data-index={selectedInputIndex} onClick={todoDelayNextDayEventHandler} ><SkipNextIcon className="feed-modal-icon" /><span>내일 하기</span></button>
