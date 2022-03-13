@@ -17,7 +17,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 import '../../stylesheets/Routines.css';
-import { goalsData, todoData, datesData, dateCalendarOpen, selectedNewDate } from "../../atoms/todoData";
+import { goalsData, todoData, datesData, dateCalendarOpen } from "../../atoms/todoData";
 
 import EditRoutinesForm from './EditRoutinesForm';
 import CreateRoutinesForm from "./CreateRoutinesForm";
@@ -35,9 +35,8 @@ let dateData = useRecoilValue(datesData);
 let goal = useRecoilValue(goalsData);
 let [originTodo, setOriginTodo] = useRecoilState(todoData);
 let [routinesCalendarOpen, setRoutinesCalendarOpen] = useRecoilState(dateCalendarOpen);
-let [newDate, setNewDate] = useRecoilState(selectedNewDate);
 
-console.log("selectedNewDate 현재 선택된 날짜", newDate)
+// console.log("selectedNewDate 현재 선택된 날짜", dateData.selectedNewDate)
 let todo = [...originTodo];
 let [isGoalSelected, setIsGoalSelected] = useState(Array(goal.length).fill(false) );
 let [isTodoSelected, setIsTodoSelected] = useState(Array(todo.length).fill(true) );

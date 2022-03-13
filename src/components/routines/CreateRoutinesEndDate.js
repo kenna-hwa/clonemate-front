@@ -17,7 +17,7 @@ export default function CreateRoutinesEndDate(props) {
     const calendarOnChangeEndRepeatDate = props.calendarOnChangeEndRepeatDate;
 
     let dateData = useRecoilValue(datesData);
-    let [newDate, setNewDate] = useRecoilState(selectedNewDate);
+    let [newDate, setNewDate] = useState(dateData.selectedNewDate);
 
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;

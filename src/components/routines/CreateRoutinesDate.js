@@ -6,7 +6,7 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { ko } from "date-fns/locale";
 import { Box, Button, Modal } from "@mui/material";
 
-import { datesData, selectedNewDate } from "../../atoms/todoData";
+import { datesData } from "../../atoms/todoData";
 
 
 export default function CreateRoutinesDate(props) {
@@ -17,7 +17,7 @@ export default function CreateRoutinesDate(props) {
     const calendarOnChangeDate = props.calendarOnChangeDate;
 
     let dateData = useRecoilValue(datesData);
-    let [newDate, setNewDate] = useRecoilState(selectedNewDate);
+    let [newDate, setNewDate] = useState(dateData.selectedNewDate);
 
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;

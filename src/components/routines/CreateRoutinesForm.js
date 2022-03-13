@@ -8,7 +8,7 @@ import CreateRoutinesDay from "./CreateRoutinesDay";
 
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, selectedNewDate, selectedNewEndDate, repeatDayCalendarOpen, createRepeatDay } from "../../atoms/todoData";
+import { goalsData, todoData, datesData, dateCalendarOpen, endRepeatDateCalendarOpen, repeatDayCalendarOpen, createRepeatDay } from "../../atoms/todoData";
 
 // input 생성
 export default function CreateRoutinesForm(props) {
@@ -32,8 +32,8 @@ export default function CreateRoutinesForm(props) {
     let [endDateCalenderBoolean, setEndDateCalendarBoolean] = useRecoilState(endRepeatDateCalendarOpen);
     let [repeatDayCalenderBoolean, setRepeatDayCalendarBoolean] = useRecoilState(repeatDayCalendarOpen);
 
-    let [newDate, setNewDate] = useRecoilState(selectedNewDate);
-    let [newEndDate, setNewEndDate] = useRecoilState(selectedNewEndDate);
+    let [newDate, setNewDate] = useState(dateData.selectedNewDate);
+    let [newEndDate, setNewEndDate] = useState(dateData.selectedNewEndDate);
 
 
     /* 변수 선언 시작 */

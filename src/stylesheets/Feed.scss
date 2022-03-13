@@ -2,149 +2,206 @@
 @import './abstracts/font';
 @import './abstracts/mixin';
 
-.feed-box{
+.feed-wrap{
     position: relative;
-    width: 75vw;
-    height: auto;
-    top: 0;
-    right: 0;
-    padding: 0.75em;
+    width: 100vw;
+    padding: 1em;
     box-sizing: border-box;
-
-    h2{
+    overflow-x: auto;
+    ;
+    .feed-title{
         font-family: 'Hahmlet';
         font-size: 2.25em;
         font-weight: 700;
-        letter-spacing: -0.2px;
+        margin: 0;
     }
-    .feed-goals-list-box{
+    .goals-list-wrap{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
 
-        .goals-list-wrap{
+        .goals-list-box{
+            width: fit-content;
+            margin: 15px 0 0 0;
 
-            .goals-listItem{
+            .list-goal-button{
+                background-color: $goal-btn-gray;
+                border-radius: 5px;
+                width: fit-content;
+                padding: 0 10px;
                 display: flex;
-                flex-flow: column nowrap;
-                justify-content: start;
-                align-items: flex-start;
-                margin-bottom: 1em;
-                border-radius: 8px;
+                align-items: center;
+                justify-content: flex-start;
+                line-height: 0;
+                min-width:fit-content;
+                max-width:fit-content;
+                margin-bottom: 12px;
 
-                .goals-listItem-text-wrap{
-                    display: flex;
-                    flex-flow: row nowrap;
-                    align-items: center;
-                    width: auto;
-                    padding: .3em .6em;
-                    background-color: $goal-btn-gray;
-                    border: 1px solid $goal-btn-border-gray;
-                    border-radius: 4px;
-                    box-sizing: border-box;
 
-                    .goals-listItem-icon{
-                        font-size: 15px;
-                        color: #000;
-                        margin-right: .5em;
-                    }
-
-                    .goals-listItem-text{
-                        width: auto;
-                        flex: none;
-
-                        .MuiListItemText-primary{
-                            width: auto;
-                            margin-right: .5em;
-                            letter-spacing: -0.25px;
-                            font-size: 13px;
-                            font-family: 'Pretendard';
-                            font-weight: 900;
-                        }
-                    }
-
-                    .goals-listItem-add-icon {
-                        display: flex;
-                        min-width: 0;
-                        width: 16px;
-                        height: 16px;
-                        background: white;
-                        align-items: center;
-                        justify-content: center;
-                        border-radius: 50%;
-                        
-                        span{
-                            color: #000;
-                        }
-                    } 
-
+                .goals-list-icon{
+                    font-size: 1em;
+                    color: $text-black;
                 }
-                .goals-todo-input-title{
+
+                .goals-list-text{
                     display: block;
+                    font-size: 13px;
+                    font-family: 'Pretendard';
+                    font-weight: 900;
+                    max-width: 200px; 
+                    margin: 0 10px; 
+                    overflow: hidden;
+                   
+                    p{
+                        max-width: 200px; 
+                        display:block; 
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-weight: 900;
+                    }
                 }
+                .goals-list-plus-icon-wrap{
+                    background-color: $text-black;
+                    width: 10px;
+                    height: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .goals-list-plus-icon{
+                        font-size: 1.4em;
+                        color: $bg-white;
+                    }
+                }
+                
             }
+
+        }
+    
+    }
+    .feed-move-to-routines{
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        bottom: 10%;
+        left: 90%;
+        box-shadow: 2px 3px 5px 0 #00000025;
+        border-radius: 50%;
+        border: none;
+        font-family: 'Pretendard';
+        cursor: pointer;
+    
+        @media (max-width: 750px){
+            display: none;
         }
     }
 }
 
-.goals-todo-input-list-Box{
-    width: 100%;
-    min-width: 320px;
+.todos-list-wrap{
+    width: 100vw;
+    .todos-list-box{
+        width: 100vw;
+        .goals-listItem-text-wrap{
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            width: fit-content;
+            .todos-list-check-icon{
+                color: $text-gray;
+                cursor: pointer;
+            }
+            .todos-list-input{
+                width: fit-content;
+                position: relative;
+                border: 0;
+                border-bottom: 1px solid #00000000;
+                box-sizing: border-box;
+                outline: none;
+                font-size: 14px;
+                font-family: 'Pretendard';
+                font-weight: 600;
+                transform: rotate(0.04deg);
+                cursor: pointer;
+                padding: 6px 0;
+                margin: 5px 5px 5px 15px;
+
+                &::-ms-value{
+                    font-size: 14px;
+                    font-family: 'Pretendard';
+                    font-weight: 600;
+                    transform: rotate(0.04deg);
+                }
+
+                &:focus-visible{
+                    position: relative;
+                    border-bottom: 2px solid #000;
+                    box-sizing: border-box;
+                    outline: none;
+                    font-family: 'Pretendard';
+                    font-size: 14px;
+                    cursor: pointer;
+                    padding: 6px 0;
+                    margin: 5px 5px 5px 15px;
+                }
+            }
+        }
+       
+    }
+}
+
+.create-todo-form{
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
     align-items: center;
-    padding: 0.1em;
-    box-sizing: border-box;
-    cursor: pointer;
 
-    .goals-todo-input-list-check-wrap{
-        display: flex;
-        align-items: center;
-        flex-flow: row nowrap;
-        width: 100%;
+    .create-todo-check-icon{
+        color: $text-gray;
+        cursor: pointer;
+    }
 
-        .goals-todo-list-input-check-icon{
-            margin-right: 0.5em;
-            color: $text-gray;
-            cursor: pointer;
-        }
-        .goals-todo-list-input{
-            width: 100%;
+    .create-todo-field{
+        position: relative;
+        width: 250px;
+        border: 0;
+        border-bottom: 1px solid #00000000;
+        box-sizing: border-box;
+        outline: none;
+        font-size: 14px;
+        font-family: 'Pretendard';
+        font-weight: 600;
+        transform: rotate(0.04deg);
+        cursor: pointer;
+        padding: 6px 0;
+        margin: 5px 5px 5px 15px;
+
+        &::-ms-value{
+            font-size: 14px;
             font-family: 'Pretendard';
-            font-size: 0.95em;
-            cursor: pointer;
-            outline: 0;
-            border: 0;
-
-            &::placeholder {
-                color: $text-black;
-            }
-
-            &:focus-visible{
-                position: relative;
-                border-bottom: 1px solid #000;
-                outline: none;
-                font-family: 'Pretendard';
-                font-size: 0.95em;
-                cursor: pointer;
-                padding: 0 0 10px 2px;
-                top: 5px;
-            }
+            font-weight: 600;
+            transform: rotate(0.04deg);
         }
-    }
 
-    .goals-todo-list-input-btn{
-        
-
-        .goals-todo-list-input-btn-icon{
+        &:focus-visible{
             position: relative;
-            color: $text-gray;
-            top: -1px;
+            border-bottom: 2px solid #000;
+            box-sizing: border-box;
+            outline: none;
+            font-family: 'Pretendard';
+            font-size: 14px;
             cursor: pointer;
+            padding: 6px 0;
+            margin: 5px 5px 5px 15px;
         }
     }
-    
+    .create-todo-btn{
+        display: none;
+    }
 }
 
-@include todo-list;
+//모달
 
 .feed-todo-modal-box{
     display: flex;
@@ -219,147 +276,97 @@
 
 }
 
-.todo-modal-datePicker-wrap{
+.calendar-wrap{
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
     align-items: center;
-    color: $text-black;
+    justify-content: center;
 
-    .todo-modal-datePicker-box{
-        background: #fff;
-        border-radius: 12px;
-        padding: 10px;
-        box-sizing: border-box;
-
-        .todo-modal-datePicker-box-title-wrap{
-            text-align: center;
-            p{
-                font-size: 14px;
-            }
-            span{
-                font-size: 20px;
-                font-weight: 600;
-            }
-        }
-        .todo-modal-datePicker{
-            display: flex;
-            justify-content: center;
-            padding: 0 10px;
-
-            .css-1dozdou{ // 연, 월, 날짜변경 버튼
-                display: flex;
-                justify-content: space-between;
-                padding: 5px 5px 0 18px;
-                // background-color: red;
-
-                .css-l0iinn{ //연 월 버튼
-
-                    div{
-                        font-family: 'Pretendard';
-                        font-size: 18px;
-                    
-                            &:nth-child(1){
-                                order:2;
-                            }
-                            &:nth-child(2){
-                                order:1;
-                                :after{
-                                    display: inline-block;
-                                    content: "년";
-                                }
-                            }
-                        }
-                    button{
-                        order: 3;
-                    }
-                }
-
-            }
-            .MuiCalendarPicker-viewTransitionContainer{ // 캘린더 전체
-                overflow-y: hidden;
-
-                div{
-                    .css-1n2mv2k{ //캘린더 요일
-                        
-                        span{ //개별 요일
-                            font-size: 13px;
-                            font-family: 'Pretendard';
-                            font-weight: 500;
-                        }
-                    }
-                    .css-dhopo2{ //캘린더 날짜
-                        min-height: 260px;
-                        
-                        .css-i6bazn{//개별 날짜
-                            display: flex;
-                            flex-flow: column;
-                            justify-content: space-between;
-                        
-                            .css-mvmu1r{
-                                margin: 1px 0;
-                                div{
-                                    div{
-                                        margin: 0;
-                                    }
-                                    button{
-                                        font-family: 'Pretendard';
-                                        font-weight: 300; 
-                                    
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-    .todo-modal-datePicker-btn-wrap{
+    .calendar-box{
+        background-color: $bg-white;
+        width: fit-content;
         display: flex;
+        flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
-
-        .todo-modal-datePicker-btn{
-            position: relative;
-            width: 110px;
-            height: 40px;
+        border-radius: 15px;
+        padding: 12px;
+        box-sizing: border-box;
+        .calendar-title-wrap{
+            text-align: center;
             font-family: 'Pretendard';
-            font-weight: 400; 
-            background: $goal-btn-gray;
-            border: $goal-btn-border-gray;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            color: $text-black
-            
+            p{font-weight: 800;}
+            span{font-size: 14px;font-weight: 600;}
         }
-        button:nth-child(1){
-            margin-right: 25px;
+    
+        .calendar-picker{
+            font-family: 'Pretendard';
+
+            .Mui-selected {
+                font-family: 'Pretendard';
+                text-decoration: underline;
+                font-weight: 600;
+                color: black;
+                background-color: #f5f5f580;
+                border-radius: 50%;
+                border: 1px solid $text-black;
+            }
+            .MuiPickersDay-today{
+                color: $text-black;
+                font-weight: 600;
+                border-radius: 50%;
+                border: 1px solid $text-black;
+                background-color: $text-point;
+            }
+            .css-l0iinn{
+                margin-left: 12px;
+                div{
+                    font-family: 'Pretendard';
+                    font-size: 14px;
+                        &:nth-child(1){
+                            order:2;
+                        }
+                        &:nth-child(2){
+                            order:1;
+                            :after{
+                                display: inline-block;
+                                content: "년";
+                            }
+                        }
+                    }
+                button{
+                    order: 3;
+                    display: none;
+                }
+            }
+            .css-i6bazn{
+
+                .css-mvmu1r{
+                    &:nth-child(5){
+                        margin-left: 6px;
+                    }
+                    &:nth-child(6){
+                        margin-left: 23px;
+                    }
+                }
+            }
+        }
+        
+        .calendar-btn-box{
+            font-family: 'Pretendard';
+            margin: 15px auto;
+            .calendar-ok-btn, .calendar-cancel-btn {
+                background-color: $goal-btn-gray;
+                border: 1px solid $goal-btn-border-gray;
+                border-radius: 8px;
+                padding: 10px 45px;
+                font-family: 'Pretendard';
+                cursor: pointer;
+            }
+            .calendar-ok-btn{
+                margin-right: 15px;
+            }
         }
     }
-}
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){
-    border: 1px soild $goal-btn-border-gray;
-    border-radius: 50%;
-}
 
-.feed-move-to-routines{
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    bottom: 10%;
-    left: 90%;
-    box-shadow: 2px 3px 5px 0 #00000025;
-    border-radius: 50%;
-    border: none;
-    font-family: 'Pretendard';
-    cursor: pointer;
-
-    @media (max-width: 750px){
-        display: none;
-    }
 }

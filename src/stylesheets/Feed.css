@@ -62,25 +62,23 @@
   font-weight: 800;
 }
 
-.feed-box {
+.feed-wrap {
   position: relative;
-  width: 75vw;
-  height: auto;
-  top: 0;
-  right: 0;
-  padding: 0.75em;
+  width: 100vw;
+  padding: 1em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  overflow-x: auto;
 }
 
-.feed-box h2 {
+.feed-wrap .feed-title {
   font-family: 'Hahmlet';
   font-size: 2.25em;
   font-weight: 700;
-  letter-spacing: -0.2px;
+  margin: 0;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem {
+.feed-wrap .goals-list-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,244 +88,241 @@
           flex-flow: column nowrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  margin-bottom: 1em;
-  border-radius: 8px;
+          justify-content: flex-start;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap {
+.feed-wrap .goals-list-wrap .goals-list-box {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 15px 0 0 0;
+}
+
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: auto;
-  padding: .3em .6em;
-  background-color: #f5f5f5;
-  border: 1px solid #f3f3f3;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  line-height: 0;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin-bottom: 12px;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-icon {
-  font-size: 15px;
-  color: #000;
-  margin-right: .5em;
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button .goals-list-icon {
+  font-size: 1em;
+  color: #1c1c1c;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text {
-  width: auto;
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-}
-
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text .MuiListItemText-primary {
-  width: auto;
-  margin-right: .5em;
-  letter-spacing: -0.25px;
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button .goals-list-text {
+  display: block;
   font-size: 13px;
   font-family: 'Pretendard';
   font-weight: 900;
+  max-width: 200px;
+  margin: 0 10px;
+  overflow: hidden;
 }
 
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon {
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button .goals-list-text p {
+  max-width: 200px;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 900;
+}
+
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button .goals-list-plus-icon-wrap {
+  background-color: #1c1c1c;
+  width: 10px;
+  height: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-width: 0;
-  width: 16px;
-  height: 16px;
-  background: white;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.feed-wrap .goals-list-wrap .goals-list-box .list-goal-button .goals-list-plus-icon-wrap .goals-list-plus-icon {
+  font-size: 1.4em;
+  color: #ffffff;
+}
+
+.feed-wrap .feed-move-to-routines {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60px;
+  height: 60px;
+  bottom: 10%;
+  left: 90%;
+  -webkit-box-shadow: 2px 3px 5px 0 #00000025;
+          box-shadow: 2px 3px 5px 0 #00000025;
   border-radius: 50%;
-}
-
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon span {
-  color: #000;
-}
-
-.feed-box .feed-goals-list-box .goals-list-wrap .goals-listItem .goals-todo-input-title {
-  display: block;
-}
-
-.goals-todo-input-list-Box {
-  width: 100%;
-  min-width: 320px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  cursor: pointer;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
-  margin-right: 0.5em;
-  color: #afafaf;
-  cursor: pointer;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input {
-  width: 100%;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
-  cursor: pointer;
-  outline: 0;
-  border: 0;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::-webkit-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input:-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input::placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input:focus-visible {
-  position: relative;
-  border-bottom: 1px solid #000;
-  outline: none;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
-  cursor: pointer;
-  padding: 0 0 10px 2px;
-  top: 5px;
-}
-
-.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
-  position: relative;
-  color: #afafaf;
-  top: -1px;
-  cursor: pointer;
-}
-
-.goals-todo-input-list-Box {
-  width: 100%;
-  min-width: 320px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0.1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-  margin: 10px 0;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
-  margin-right: 0.5em;
-  color: #afafaf;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list {
-  width: 100%;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
-  outline: 0;
-  border: 0;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-webkit-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:focus-visible {
-  position: relative;
   border: none;
+  font-family: 'Pretendard';
+  cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .feed-wrap .feed-move-to-routines {
+    display: none;
+  }
+}
+
+.todos-list-wrap {
+  width: 100vw;
+}
+
+.todos-list-wrap .todos-list-box {
+  width: 100vw;
+}
+
+.todos-list-wrap .todos-list-box .goals-listItem-text-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
+  color: #afafaf;
+  cursor: pointer;
+}
+
+.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  border: 0;
+  border-bottom: 1px solid #00000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  -webkit-transform: rotate(0.04deg);
+          transform: rotate(0.04deg);
+  cursor: pointer;
+  padding: 6px 0;
+  margin: 5px 5px 5px 15px;
+}
+
+.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input::-ms-value {
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  transform: rotate(0.04deg);
+}
+
+.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input:focus-visible {
+  position: relative;
+  border-bottom: 2px solid #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   outline: none;
   font-family: 'Pretendard';
-  font-size: 0.95em;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 0;
+  margin: 5px 5px 5px 15px;
 }
 
-.goals-todo-input-list-Box .goals-todo-list-input-btn {
-  display: none;
+.create-todo-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
-  position: relative;
+.create-todo-form .create-todo-check-icon {
   color: #afafaf;
-  top: -1px;
+  cursor: pointer;
+}
+
+.create-todo-form .create-todo-field {
+  position: relative;
+  width: 250px;
+  border: 0;
+  border-bottom: 1px solid #00000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  -webkit-transform: rotate(0.04deg);
+          transform: rotate(0.04deg);
+  cursor: pointer;
+  padding: 6px 0;
+  margin: 5px 5px 5px 15px;
+}
+
+.create-todo-form .create-todo-field::-ms-value {
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  transform: rotate(0.04deg);
+}
+
+.create-todo-form .create-todo-field:focus-visible {
+  position: relative;
+  border-bottom: 2px solid #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 0;
+  margin: 5px 5px 5px 15px;
+}
+
+.create-todo-form .create-todo-btn {
+  display: none;
 }
 
 .feed-todo-modal-box {
@@ -428,7 +423,27 @@
   top: 50px;
 }
 
-.todo-modal-datePicker-wrap {
+.calendar-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.calendar-wrap .calendar-box {
+  background-color: #ffffff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -442,178 +457,104 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #1c1c1c;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box {
-  background: #fff;
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 15px;
+  padding: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker-box-title-wrap {
+.calendar-wrap .calendar-box .calendar-title-wrap {
   text-align: center;
+  font-family: 'Pretendard';
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker-box-title-wrap p {
+.calendar-wrap .calendar-box .calendar-title-wrap p {
+  font-weight: 800;
+}
+
+.calendar-wrap .calendar-box .calendar-title-wrap span {
   font-size: 14px;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker-box-title-wrap span {
-  font-size: 20px;
   font-weight: 600;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0 10px;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 5px 5px 0 18px;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou .css-l0iinn div {
+.calendar-wrap .calendar-box .calendar-picker {
   font-family: 'Pretendard';
-  font-size: 18px;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou .css-l0iinn div:nth-child(1) {
+.calendar-wrap .calendar-box .calendar-picker .Mui-selected {
+  font-family: 'Pretendard';
+  text-decoration: underline;
+  font-weight: 600;
+  color: black;
+  background-color: #f5f5f580;
+  border-radius: 50%;
+  border: 1px solid #1c1c1c;
+}
+
+.calendar-wrap .calendar-box .calendar-picker .MuiPickersDay-today {
+  color: #1c1c1c;
+  font-weight: 600;
+  border-radius: 50%;
+  border: 1px solid #1c1c1c;
+  background-color: #21bdbd;
+}
+
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn {
+  margin-left: 12px;
+}
+
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn div {
+  font-family: 'Pretendard';
+  font-size: 14px;
+}
+
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn div:nth-child(1) {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou .css-l0iinn div:nth-child(2) {
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn div:nth-child(2) {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou .css-l0iinn div:nth-child(2) :after {
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn div:nth-child(2) :after {
   display: inline-block;
   content: "년";
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .css-1dozdou .css-l0iinn button {
+.calendar-wrap .calendar-box .calendar-picker .css-l0iinn button {
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
+  display: none;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer {
-  overflow-y: hidden;
+.calendar-wrap .calendar-box .calendar-picker .css-i6bazn .css-mvmu1r:nth-child(5) {
+  margin-left: 6px;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-1n2mv2k span {
-  font-size: 13px;
+.calendar-wrap .calendar-box .calendar-picker .css-i6bazn .css-mvmu1r:nth-child(6) {
+  margin-left: 23px;
+}
+
+.calendar-wrap .calendar-box .calendar-btn-box {
   font-family: 'Pretendard';
-  font-weight: 500;
+  margin: 15px auto;
 }
 
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-dhopo2 {
-  min-height: 260px;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-dhopo2 .css-i6bazn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-dhopo2 .css-i6bazn .css-mvmu1r {
-  margin: 1px 0;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-dhopo2 .css-i6bazn .css-mvmu1r div div {
-  margin: 0;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-box .todo-modal-datePicker .MuiCalendarPicker-viewTransitionContainer div .css-dhopo2 .css-i6bazn .css-mvmu1r div button {
-  font-family: 'Pretendard';
-  font-weight: 300;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-btn-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-btn-wrap .todo-modal-datePicker-btn {
-  position: relative;
-  width: 110px;
-  height: 40px;
-  font-family: 'Pretendard';
-  font-weight: 400;
-  background: #f5f5f5;
-  border: #f3f3f3;
+.calendar-wrap .calendar-box .calendar-btn-box .calendar-ok-btn, .calendar-wrap .calendar-box .calendar-btn-box .calendar-cancel-btn {
+  background-color: #f5f5f5;
+  border: 1px solid #f3f3f3;
   border-radius: 8px;
-  margin-bottom: 10px;
-  color: #1c1c1c;
-}
-
-.todo-modal-datePicker-wrap .todo-modal-datePicker-btn-wrap button:nth-child(1) {
-  margin-right: 25px;
-}
-
-.css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
-  border: 1px soild #f3f3f3;
-  border-radius: 50%;
-}
-
-.feed-move-to-routines {
-  position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 60px;
-  height: 60px;
-  bottom: 10%;
-  left: 90%;
-  -webkit-box-shadow: 2px 3px 5px 0 #00000025;
-          box-shadow: 2px 3px 5px 0 #00000025;
-  border-radius: 50%;
-  border: none;
+  padding: 10px 45px;
   font-family: 'Pretendard';
   cursor: pointer;
 }
 
-@media (max-width: 750px) {
-  .feed-move-to-routines {
-    display: none;
-  }
+.calendar-wrap .calendar-box .calendar-btn-box .calendar-ok-btn {
+  margin-right: 15px;
 }
 /*# sourceMappingURL=Feed.css.map */
