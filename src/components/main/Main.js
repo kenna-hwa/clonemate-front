@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import Box from '@mui/material/Box';
-
 import MainNavBar from '../nav/MainNavBar';
 import Content from './Content';
 
-export default function Main(props) {
 
 
-      /* props 선언 시작 */
+export default function Main() {
 
-     let goalItems = props.goal;
-     let calendarData = props.calendarData;
-
+    /* props 선언 시작 */
 
     /* props 선언 끝 */
 
   
     return (
-        <Box className='main-wrap' sx={{ position: 'relative',     overflow: 'hidden'
-    }}>
+        <Box className='main-wrap' sx={{ position: 'relative'}}>
         <MainNavBar />
-        <Content goal={goalItems} calendarData={calendarData} />
+        <Content />
         </Box>
     );
 }

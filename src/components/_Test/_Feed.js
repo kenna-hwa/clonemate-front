@@ -23,7 +23,7 @@ import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 import '../../stylesheets/Feed.css'
 
-import { objTodosDataResult, goalsData, todoData, datesData, selectedNewDate } from "../../atoms/todoData";
+import { objTodosDataResult, goalsData, todoData, objDatesData, selectedNewDate } from "../../atoms/todoData";
 
 
 export default function Feed() {
@@ -33,7 +33,7 @@ export default function Feed() {
 
 /* atom 시작 */
 
-    let dateData = useRecoilValue(datesData);
+    let dateData = useRecoilValue(objDatesData);
     let goal = useRecoilValue(goalsData);
     
     let [originTodo, setOriginTodo] = useRecoilState(todoData);

@@ -40,7 +40,7 @@ export default function Goals() {
 
 
   //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
-  function editToGoalForm(id){
+  function moveEditGoalForm(id){
     window.location.replace(`/goals/goalEditForm/`+id)
   }
 
@@ -50,7 +50,7 @@ export default function Goals() {
     const { id } = e.target;
     await readOnlyChange(readOnly='edit');
     console.log("readOnly", readOnly, id )
-    await editToGoalForm(id)
+    await moveEditGoalForm(id)
   }
 
 

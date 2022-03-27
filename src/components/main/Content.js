@@ -8,7 +8,7 @@ export default function Content() {
 
 
     return (
-        <Box className='content-wrap' sx={{ position: 'relative', display: 'flex', width: '100vw', height: '100vh' }}>
+        <Box className='content-wrap' sx={{ position: 'relative', display: 'flex', height: '100vh'}}>
         
         <Explore />
         <Feed />

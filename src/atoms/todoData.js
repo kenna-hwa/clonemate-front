@@ -6,27 +6,25 @@ export const textState = atom({
   default: '', // default value (aka initial value)
 });
 
+// Goal, Todo 캘린더 모달용 날짜 state
+
+
 const today = new Date();
 const tomorrow = new Date(today);
 const nextDay = new Date(tomorrow.setDate(today.getDate()+1))
 
-// Goal, Todo 캘린더 모달용 날짜 state
-export const datesData = atom({
-  key: 'datesData',
+
+//오늘 날짜, 내일 날짜
+export const objDatesData = atom({
+  key: 'objDatesData',
   default : {
     "dtToday" : today.toJSON().substring(0, 10),
-    "dtTomorrow" : nextDay.toJSON().substring(0, 10)
+    "dtTomorrow" : nextDay.toJSON().substring(0, 10),
+    "dtFeedCalendarDate" : today,
+    "selectedNewDate" : new Date(),
+    "selectedNewEndDate" : new Date(),
   }
 
-})
-export const selectedNewDate = atom({
-  key: "selectedNewDate",
-  default: new Date()
-})
-
-export const selectedNewEndDate = atom({
-  key: "selectedNewEndDate",
-  default: new Date()
 })
 
 // Feed 좌측 캘린더 state -> CalendarBox 컴포넌트에서 dtFeedCalendarOverview 로 사용
@@ -61,14 +59,15 @@ export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이
 
 // todo 더미데이터 수정 220304
 
-// 
+// todo api
 export const objTodosDataResult = atom({
   key: 'objTodosDataResult',
   default: [
   {
   goalTitle : "첫 번째 목표",
+  goalId: 1,
   goalOrderNo : 1,
-  goalTitleColor : "#cccccc",
+  goalTitleColor : "#ff0000",
   todos : [
        {goalId: 1,
         todoId: 1,
@@ -88,7 +87,7 @@ export const objTodosDataResult = atom({
         checkYn: "N"
         },
         {goalId: 1,
-          todoId: 1,
+          todoId: 2,
           orderNo: 2,
           title: "첫 번째 목표의 두 번째 할 일",
           date: "2022-02-13",
@@ -105,8 +104,8 @@ export const objTodosDataResult = atom({
           checkYn: "N"
       },
       {goalId: 1,
-        todoId: 1,
-        orderNo: 2,
+        todoId: 3,
+        orderNo: 3,
         title: "첫 번째 목표의 세 번째 할 일",
         date: "2022-02-13",
         endRepeatDate: "2022-02-17",
@@ -121,7 +120,113 @@ export const objTodosDataResult = atom({
         },
         checkYn: "N"
       },
-  ]}
+  ]},
+  {
+    goalTitle : "두 번째 목표",
+    goalId: 2,
+    goalOrderNo : 2,
+    goalTitleColor : "#ff873d",
+    todos : [
+         {goalId: 2,
+          todoId: 1,
+          orderNo: 1,
+          title: "두 번째 목표의 첫 번째 할 일",
+          date: "2022-02-13",
+          endRepeatDate: "2022-02-13",
+          repeatDays: {
+            THU: "N",
+            WEN: "N",
+            TUE: "N",
+            SAT: "N",
+            FRI: "N",
+            MON: "N",
+            SUN: "N"
+          },
+          checkYn: "N"
+          },
+          {goalId: 2,
+            todoId: 2,
+            orderNo: 2,
+            title: "두 번째 목표의 두 번째 할 일",
+            date: "2022-02-11",
+            endRepeatDate: "2022-02-15",
+            repeatDays: {
+              THU: "N",
+              WEN: "N",
+              TUE: "N",
+              SAT: "N",
+              FRI: "N",
+              MON: "N",
+              SUN: "N"
+            },
+            checkYn: "N"
+        },
+    ]},
+    {
+      goalTitle : "세 번째 목표",
+      goalId: 3,
+      goalOrderNo : 3,
+      goalTitleColor : "#0119cb",
+      todos : [
+           {goalId: 3,
+            todoId: 1,
+            orderNo: 1,
+            title: "세 번째 목표의 첫 번째 할 일",
+            date: "2022-02-16",
+            endRepeatDate: "2022-02-16",
+            repeatDays: {
+              THU: "N",
+              WEN: "N",
+              TUE: "N",
+              SAT: "N",
+              FRI: "N",
+              MON: "N",
+              SUN: "N"
+            },
+            checkYn: "N"
+            },
+            {goalId: 3,
+              todoId: 2,
+              orderNo: 2,
+              title: "세 번째 목표의 두 번째 할 일",
+              date: "2022-02-13",
+              endRepeatDate: "2022-02-19",
+              repeatDays: {
+                THU: "N",
+                WEN: "N",
+                TUE: "N",
+                SAT: "N",
+                FRI: "N",
+                MON: "N",
+                SUN: "N"
+              },
+              checkYn: "N"
+          },
+      ]},
+      {
+        goalTitle : "네 번째 목표",
+        goalId: 4,
+        goalOrderNo : 4,
+        goalTitleColor : "#77ab59",
+        todos : [
+             {goalId: 4,
+              todoId: 1,
+              orderNo: 1,
+              title: "네 번째 목표의 첫 번째 할 일",
+              date: "2022-02-16",
+              endRepeatDate: "2022-02-16",
+              repeatDays: {
+                THU: "N",
+                WEN: "N",
+                TUE: "N",
+                SAT: "N",
+                FRI: "N",
+                MON: "N",
+                SUN: "N"
+              },
+              checkYn: "N"
+              },
+        ]},
 ]
 })
 
@@ -169,13 +274,13 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
 export const createRepeatDay = atom({
   key: "createRepeatDay",
   default: {
-  "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-  "mon": "N",
-  "tue": "N",
-  "wed": "N",
-  "thu": "N",
-  "fri": "N",
-  "sat": "N",
+  "SUN": "N", //y 면 일요일 반복, n 이면 반복 x
+  "MON": "N",
+  "TUE": "N",
+  "WED": "N",
+  "THU": "N",
+  "FRI": "N",
+  "SAT": "N",
 }
 });
 

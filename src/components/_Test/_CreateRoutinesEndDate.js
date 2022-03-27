@@ -6,18 +6,18 @@ import CalendarPicker from '@mui/lab/CalendarPicker';
 import { ko } from "date-fns/locale";
 import { Box, Button, Modal } from "@mui/material";
 
-import { datesData, selectedNewDate } from "../../atoms/todoData";
+import { objDatesData, selectedNewDate } from "../../atoms/todoData";
 
 
-export default function CreateRoutinesDate(props) {
+export default function CreateRoutinesEndDate(props) {
 
-    const dateCalenderBoolean = props.dateCalenderBoolean;
-    const setDateCalendarBoolean = props.setDateCalendarBoolean;
-    const handleDateCalendarClose = props.handleDateCalendarClose;
-    const calendarOnChangeDate = props.calendarOnChangeDate;
+    const endDateCalenderBoolean = props.endDateCalenderBoolean;
+    const setEndDateCalendarBoolean = props.setEndDateCalendarBoolean;
+    const handleEndDateCalendarClose = props.handleEndDateCalendarClose;
+    const calendarOnChangeEndRepeatDate = props.calendarOnChangeEndRepeatDate;
 
-    let dateData = useRecoilValue(datesData);
-    let [newDate, setNewDate] = useRecoilState(selectedNewDate);
+    let dateData = useRecoilValue(objDatesData);
+    let [newDate, setNewDate] = useState(dateData.selectedNewDate);
 
     let dtToday = dateData.dtToday;
     let dtTomorrow = dateData.dtTomorrow;
@@ -41,8 +41,8 @@ export default function CreateRoutinesDate(props) {
 
     
     return (
-        <Modal open={dateCalenderBoolean}
-        onClose={handleDateCalendarClose} 
+        <Modal open={endDateCalenderBoolean}
+        onClose={handleEndDateCalendarClose} 
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         className="todo-modal-datePicker-wrap"
@@ -55,7 +55,7 @@ export default function CreateRoutinesDate(props) {
                 </div>
                 <CalendarPicker className="todo-modal-datePicker" date={newDate} onChange={(date) => setNewDate(date)} />
                 <div className="todo-modal-datePicker-btn-wrap">
-                <Button className="todo-modal-datePicker-btn" data-index={todoId} data-day={selectedDate} onClick={calendarOnChangeDate}>확인</Button> <Button className="todo-modal-datePicker-btn" onClick={handleDateCalendarClose}>취소</Button>
+                <Button className="todo-modal-datePicker-btn" data-index={todoId} data-day={selectedDate} onClick={calendarOnChangeEndRepeatDate}>확인</Button> <Button className="todo-modal-datePicker-btn" onClick={handleEndDateCalendarClose}>취소</Button>
                 </div>
             </LocalizationProvider>
         </Box>

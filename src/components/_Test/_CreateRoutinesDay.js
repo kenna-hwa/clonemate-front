@@ -9,18 +9,32 @@ import '../../stylesheets/CalendarBox.css';
 
 export default function CreateRoutinesDay(props) {
 
+    console.log("props.", props)
+
     const repeatDayCalenderBoolean = props.repeatDayCalenderBoolean;
     const handleDayCalendarClose = props.handleDayCalendarClose;
     const calendarOnChangeRepeatDays = props.calendarOnChangeRepeatDays;
     const dayENGKOR = props.dayENGKOR;
+    const dayNameArr = {
+        
+            "SUN": "일", //y 면 일요일 반복, n 이면 반복 x
+            "MON": "월",
+            "TUE": "화",
+            "WED": "수",
+            "THU": "목",
+            "FRI": "금",
+            "SAT": "토",
+    
+    }
+
     // console.log("dayENGKOR", dayENGKOR)
 
     let [dayChecked, setDayChecked] = useRecoilState(createRepeatDay);
-    let dayCheckedArr = Object.entries(dayChecked);
-    let dayNameArr = Object.entries(dayENGKOR);
+
 
 
     const clickEventHandler = (e) => {
+        console.log("e", e.target)
         
         let key = e.target.value;
         let id = e.target.id;
@@ -54,10 +68,10 @@ export default function CreateRoutinesDay(props) {
                     id="dayPicker-checkbox-btn-wrap"
                     >
                     {dayNameArr.map((data, index)=>{
-                        const keys = data[0];
-                        
+                        const key = data[0];
+                        console.log("dayChecked[key]", dayChecked)
                         return (
-                            <FormControlLabel control={<Checkbox value={index} id={data[0]} checked={dayChecked[keys] === 'N'? false : true} onClick={clickEventHandler} />} label={data[1]} />
+                            <FormControlLabel control={<Checkbox value={index} id={data[0]} checked={dayChecked[key] == 'N'? false : true} onClick={clickEventHandler} />} label={data[1]} />
                         )
                     }
                     )}
