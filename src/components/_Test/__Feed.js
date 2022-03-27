@@ -22,7 +22,7 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 import '../../stylesheets/Feed.css'
-import { objTodosDataResult, datesData  } from "../../atoms/todoData";
+import { objTodosDataResult, objDatesData  } from "../../atoms/todoData";
 import { blue } from "@mui/material/colors";
 
 
@@ -33,7 +33,7 @@ export default function Feed() {
 
 /* atom 시작 */
 
-    let dateData = useRecoilValue(datesData);
+    let dateData = useRecoilValue(objDatesData);
 
     // atom에서 goal+todo 데이터 가져오기
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
@@ -213,7 +213,7 @@ const todoModalChangeDateEventHandler = (e) => {
 //투두 순서 변경 페이지 이동 핸들러
 const moveOrderItem = (e) => {
     console.log(e.currentTarget)
-    history.push('/orderitem');
+    window.location.replace("/orderitem");
 }
 
 //투두 삭제 이벤트 핸들러 

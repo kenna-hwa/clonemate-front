@@ -2,7 +2,7 @@
 @import './abstracts/font';
 @import './abstracts/mixin';
 
-.routines-box{
+.routines-wrap{
     position: relative;
     width: 75vw;
     height: auto; 
@@ -12,94 +12,357 @@
     padding: 0.75em;
     box-sizing: border-box;
 
-    .routines-goals-list-box{
+    .goals-list-box{
+        width: fit-content;
+        margin: 15px 0 0 0;
+        padding: 0;
 
-        .routines-goals-list-wrap{
+        .goals-list-button{
+            background-color: $goal-btn-gray;
+            border: 1px solid $goal-btn-border-gray;
+            border-radius: 5px;
+            width: fit-content;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            min-width:fit-content;
+            max-width:fit-content;
+            margin-bottom: 12px;
 
-            .goals-listItem{
+            .goals-list-icon{
+                font-size: 1em;
+                color: $text-black;
+            }
+
+            .goals-list-text{
+                display: block;
+                font-size: 13px;
+                font-family: 'Pretendard';
+                font-weight: 900;
+                max-width: 200px; 
+                margin: 0 10px; 
+                overflow: hidden;
+               
+                p{
+                    max-width: 200px; 
+                    display:block; 
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-weight: 900;
+                }
+            }
+
+            .goals-list-plus-icon-wrap{
+                background-color: $text-black;
+                width: 10px;
+                height: 10px;
                 display: flex;
-                flex-flow: column nowrap;
-                justify-content: start;
-                align-items: flex-start;
-                margin-bottom: 1em;
-                border-radius: 8px;
+                justify-content: center;
+                align-items: center;
 
-                .goals-listItem-text-wrap{
-                    display: flex;
-                    flex-flow: row nowrap;
-                    align-items: center;
-                    width: auto;
-                    padding: .3em .6em;
-                    background-color: $goal-btn-gray;
-                    border: 1px solid $goal-btn-border-gray;
-                    border-radius: 4px;
-                    box-sizing: border-box;
-
-                    .goals-listItem-icon{
-                        font-size: 15px;
-                        color: #000;
-                        margin-right: .5em;
-                    }
-
-                    .goals-listItem-text{
-                        width: auto;
-                        flex: none;
-
-                        .MuiListItemText-primary{
-                            width: auto;
-                            margin-right: .5em;
-                            letter-spacing: -0.25px;
-                            font-size: 13px;
-                            font-family: 'Pretendard';
-                            font-weight: 900;
-                        }
-                    }
-
-                    .goals-listItem-add-icon {
-                        display: flex;
-                        min-width: 0;
-                        width: 16px;
-                        height: 16px;
-                        background: white;
-                        align-items: center;
-                        justify-content: center;
-                        border-radius: 50%;
-                        
-                        span{
-                            color: #000;
-                        }
-                    } 
-
+                .goals-list-plus-icon{
+                    font-size: 1.4em;
+                    color: $bg-white;
                 }
-                .goals-todo-input-title{
-                    display: block;
-                }
+            }
+
+        }
+        .goals-todo-input-title{
+            display: block;
+        }
+    }
+
+}
+
+    //새로운 todo 만드는 form
+    .create-routines-input-Box{
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        
+    .routines-input-btn{
+        font-size: 12px;
+        color: $text-black;
+        font-family: 'Pretendard';
+        background-color: $goal-btn-gray;
+    }
+    
+    //routines의 create input 부분
+    .routines-input-title-field{
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        .routines-input-check-icon{
+        position: relative;
+        margin: 0.5em 0.5em 0 .1em;
+        color: $text-gray;
+        cursor: pointer;
+        }
+        .routines-input-field{
+        position: relative;
+        width: 100%;
+        height: auto;
+        border:none;
+        border-bottom: 2px solid #000;
+        outline: none;
+        font-family: 'Pretendard';
+        font-size: 0.95em;
+        padding: 10px 0;
+        top: 5px;
+            &:focus-visible{
+                outline: 0;
             }
         }
     }
-}
-.create-routines-input-Box{
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
+    .routines-input-startdate-field{
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 35px;
+        padding: 0 .5em;
+        margin: .5em 0 0 0;
     
-  .routines-input-btn{
-    font-size: 12px;
-    color: $text-black;
-    font-family: 'Pretendard';
-    background-color: $goal-btn-gray;
-  }
+        span{
+        width: 70px;
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: -0.12px;
+        margin: 0 .5em 0 3em;
+        padding: 9px 0 0 0;
+        color: $text-black;
+        font-weight: 300;
+        border-bottom: 1px solid $goal-btn-border-gray;
+        }
+        .routines-startdate-input{
+        border:none;
+        font-family: 'Pretendard';
+        font-size: 13px;
+        border-bottom: 1px solid $goal-btn-border-gray;
+        cursor: pointer;    
+            &:focus-visible{
+                outline: 0;
+            }
+        }
+    }
+    .routines-input-enddate-field{
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 35px;
+        padding: 0 .5em;
+        margin: .5em 0 0 0;
+
+
+        span{
+        width: 70px;
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: -0.12px;
+        margin: 0 .5em 0 3em;
+        padding: 9px 0 0 0;
+        color: $text-black;
+        font-weight: 300;
+        border-bottom: 1px solid $goal-btn-border-gray;
+        }
+        .routines-enddate-input{
+        border:none;
+        font-family: 'Pretendard';
+        font-size: 13px;
+        border-bottom: 1px solid $goal-btn-border-gray;
+        cursor: pointer;    
+            &:focus-visible{
+                outline: 0;
+            }
+        }
+    }
+        .routines-input-day-field{
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 35px;
+        padding: 0 .5em;
+        margin: .5em 0 0 0;
+        cursor: pointer;
+
+        .routines-input-day-field-title{
+        width: 70px;
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: -0.12px;
+        margin: 0 .5em 0 3em;
+        padding: 8px 0 0 0;
+        color: $text-black;
+        font-weight: 300;
+        border-bottom: 1px solid $goal-btn-border-gray;
+        }
+    
+        }
+        .routines-day-text-wrap{
+        position: relative;
+        display: flex;
+        justify-content: flex-start ;
+        cursor: pointer;
+        align-items: center;
+        margin-top: -5px;
+        margin-left: 2px;
+    
+
+        .routines-day-text{
+            position: relative;
+            font-size: 13px;
+            font-style: normal;
+            margin-right: 10px;
+        }
+        }
 }
+
+//todo 클릭 시 양식
 .edit-routines-input-Box{
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
+
     .routines-input-btn{
         font-size: 12px;
         color: $text-black;
         font-family: 'Pretendard';
         background-color: $goal-btn-gray;
       }
+
+      
+    //routines의 create input 부분
+        .routines-input-title-field{
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            .routines-input-check-icon{
+            position: relative;
+            margin: 0.5em 0.5em 0 .1em;
+            color: $text-gray;
+            cursor: pointer;
+            }
+            .routines-input-field{
+            position: relative;
+            width: 100%;
+            height: auto;
+            border:none;
+            border-bottom: 2px solid #000;
+            outline: none;
+            font-family: 'Pretendard';
+            font-size: 0.95em;
+            padding: 10px 0;
+            top: 5px;
+                &:focus-visible{
+                    outline: 0;
+                }
+            }
+        }
+        .routines-input-startdate-field{
+            display: flex;
+            flex-flow: row nowrap;
+            width: 100%;
+            height: 35px;
+            padding: 0 .5em;
+            margin: .5em 0 0 0;
+        
+            span{
+            width: 70px;
+            display: inline-block;
+            font-size: 13px;
+            letter-spacing: -0.12px;
+            margin: 0 .5em 0 3em;
+            padding: 9px 0 0 0;
+            color: $text-black;
+            font-weight: 300;
+            border-bottom: 1px solid $goal-btn-border-gray;
+            }
+            .routines-startdate-input{
+            border:none;
+            font-family: 'Pretendard';
+            font-size: 13px;
+            border-bottom: 1px solid $goal-btn-border-gray;
+            cursor: pointer;    
+                &:focus-visible{
+                    outline: 0;
+                }
+            }
+        }
+        .routines-input-enddate-field{
+            display: flex;
+            flex-flow: row nowrap;
+            width: 100%;
+            height: 35px;
+            padding: 0 .5em;
+            margin: .5em 0 0 0;
+        
+        
+            span{
+            width: 70px;
+            display: inline-block;
+            font-size: 13px;
+            letter-spacing: -0.12px;
+            margin: 0 .5em 0 3em;
+            padding: 9px 0 0 0;
+            color: $text-black;
+            font-weight: 300;
+            border-bottom: 1px solid $goal-btn-border-gray;
+            }
+            .routines-enddate-input{
+            border:none;
+            font-family: 'Pretendard';
+            font-size: 13px;
+            border-bottom: 1px solid $goal-btn-border-gray;
+            cursor: pointer;    
+                &:focus-visible{
+                    outline: 0;
+                }
+            }
+        }
+            .routines-input-day-field{
+            position: relative;
+            display: flex;
+            flex-flow: row nowrap;
+            width: 100%;
+            height: 35px;
+            padding: 0 .5em;
+            margin: .5em 0 0 0;
+            cursor: pointer;
+        
+            .routines-input-day-field-title{
+            width: 70px;
+            display: inline-block;
+            font-size: 13px;
+            letter-spacing: -0.12px;
+            margin: 0 .5em 0 3em;
+            padding: 8px 0 0 0;
+            color: $text-black;
+            font-weight: 300;
+            border-bottom: 1px solid $goal-btn-border-gray;
+            }
+        
+            }
+            .routines-day-text-wrap{
+            position: relative;
+            display: flex;
+            justify-content: flex-start ;
+            cursor: pointer;
+            align-items: center;
+            margin-top: -5px;
+            margin-left: 2px;
+        
+        
+            .routines-day-text{
+                position: relative;
+                font-size: 13px;
+                font-style: normal;
+                margin-right: 10px;
+            }
+            }
+        
+  
 }
 
 
@@ -182,7 +445,66 @@
 }
 
 
+//요일 선택 모달 css
 
-@include todo-list;
+.todo-modal-dayPicker-box{
+    width: 250px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-sizing: border-box;
 
-@include routines-input;
+    
+
+    .dayPicker-title{
+        font-size: 15px;
+        font-weight: 700;
+        color: $text-black;
+        font-family: 'Pretendard';
+        margin-bottom: 25px;
+        cursor: default;
+    }
+
+    #dayPicker-checkbox-btn-wrap{
+              display: flex;
+              flex-flow: column nowrap;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 25px;
+
+              label{
+                input[type="checkbox"]{
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 8px;
+                    cursor: pointer;
+                }
+                  display: flex;
+                  flex-flow: row nowrap;
+                  align-items: center;
+                  font-size: 15px;
+                  font-weight: 500;
+                  margin-bottom: 6px;
+                  cursor: pointer;
+                }
+    }
+    .dayPicker-btn-wrap{
+        display: flex;
+        justify-content: space-evenly;
+        width: 200px;
+        .dayPicker-btn{
+            font-size: 14px;
+            color: $text-black;
+            font-family: 'Pretendard';
+            background: $goal-btn-gray;
+            border: $goal-btn-border-gray;
+            
+        }
+    }
+}
+
+

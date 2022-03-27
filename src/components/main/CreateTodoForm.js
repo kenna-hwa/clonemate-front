@@ -25,22 +25,23 @@ export default function CreateTodoForm (props) {
 
     /* atom 시작 */
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
     /* atom 종료 */
 
     /* state 선언 시작 */
 
     const dtDate = props.dtDate;
-    const new_goal_id = props.goalId;
+    const goal_id = props.goalId;
     const new_todo_id = props.todoLength+1;
     const new_order_no = props.todoLength+1;
+    const createTodoFieldReset = props.createTodoFieldReset;
     const copy_dtTodos = [...dtTodos];
-
 
     let id = props.id;
 
     let createTodoState = {
-        goalId: new_goal_id,
+        goalId: goal_id,
         todoId: new_todo_id,
         orderNo: new_order_no,
         title: "",
@@ -62,35 +63,46 @@ export default function CreateTodoForm (props) {
 
     /* 함수 선언 시작 */
 
-    //dtTodo에 반영
-    const createTodo =  (e) => { 
-        console.log("copy_dtTodos", copy_dtTodos)
-   
-
+    //createTodoForm에 값 없을 때 사라지게
+    const inputValueCheckHandler =  (e) => { 
+        if(e.currentTarget.value === "") {
+            createTodoFieldReset()
+        } else {
+            createTodoStateSubmit(e)
+        }
     }
-    //엔터 클릭 시 createTodo 실행
+    //엔터 클릭 시 inputValueCheckHandler 실행
     const onKeyPressHandler = (e) => {
-        if(e.key === 'Enter' || e.code === 'NumpadEnter') createTodo(e)
+        if(e.key === 'Enter' || e.code === 'NumpadEnter') inputValueCheckHandler(e)
     }
 
+    //field에 글자 입력 시 createTodoState 객체 title 값 변경
     const onChangeCreateTodofield = (e) => {
         createTodoState.title = e.currentTarget.value;
+    }
+
+    //새로운 todo 넣기 / goal객체 찾아서 todos에 push
+    const createTodoStateSubmit = (e) => {
+        todoDataArray.map(data=>{
+                if(data.goalId === goal_id){
+                    data.todos.push(createTodoState)
+                }
+            }
+        )
+        setDtTodos(todoDataArray)
+        createTodoFieldReset()
     }
 
     /* 함수 선언 종료 */
 
     return (
         <div className="create-todo-form">
-                <CheckBoxOutlineBlankIcon className="create-todo-check-icon"/>
-                <input  ref={createInput} id="todo-input" className="create-todo-field"  placeholder="할 일을 입력해주세요." type="text" maxLength="50" 
-                size={createInput.value.length}
-                onChange={onChangeCreateTodofield}
-                onBlur={createTodo}
-                onKeyPress={onKeyPressHandler} 
-                /> 
-
-                <input id="create-todo-id" className="create-todo-id" type="hidden" value={id} /> 
-                <button type="submit" className="create-todo-btn"></button>
+            <CheckBoxOutlineBlankIcon className="create-todo-check-icon"/>
+            <input ref={createInput} id="todo-input" className="create-todo-field"  placeholder="할 일을 입력해주세요." type="text" maxLength="50" 
+            onChange={onChangeCreateTodofield}
+            onBlur={inputValueCheckHandler}
+            onKeyPress={onKeyPressHandler} 
+            /> 
         </div>
     )
 }

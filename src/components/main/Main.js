@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import Box from '@mui/material/Box';
-
 import MainNavBar from '../nav/MainNavBar';
 import Content from './Content';
 
+
+
 export default function Main() {
 
-
-      /* props 선언 시작 */
+    /* props 선언 시작 */
 
     /* props 선언 끝 */
 

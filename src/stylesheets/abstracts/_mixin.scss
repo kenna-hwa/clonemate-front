@@ -79,217 +79,68 @@
     unicode-range: U+0041-005A, U+0061-007A;
     font-weight: 800;
   }
-  
+  @font-face {
+    font-family: 'Egyptian Slate Pro';
+    src: url("http://fonts.cdnfonts.com/css/egyptian-slate-pro");
+    unicode-range: U+0041-005A, U+0061-007A;
+    font-weight: 800;
+  }
 }
 
 
-@mixin routines-input {
-
-  .routines-input-title-field{
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    .routines-input-check-icon{
-      position: relative;
-      margin: 0.5em 0.5em 0 .1em;
-      color: $text-gray;
-      cursor: pointer;
-    }
-    .routines-input-field{
-      position: relative;
-      width: 100%;
-      height: auto;
-      border:none;
-      border-bottom: 2px solid #000;
-      outline: none;
-      font-family: 'Pretendard';
-      font-size: 0.95em;
-      cursor: pointer;
-      padding: 10px 0;
-      top: 5px;
-        &:focus-visible{
-            outline: 0;
-        }
-    }
-  }
-  .routines-input-startdate-field{
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    height: 35px;
-    padding: 0 .5em;
-    margin: .5em 0 0 0;
-  
-    span{
-      width: 70px;
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: -0.12px;
-      margin: 0 .5em 0 3em;
-      padding: 9px 0 0 0;
-      color: $text-black;
-      font-weight: 300;
-      border-bottom: 1px solid $goal-btn-border-gray;
-    }
-    .routines-startdate-input{
-      width: 100%;
-      height: auto;
-      border:none;
-      font-family: 'Pretendard';
-      font-size: 14px;
-      border-bottom: 1px solid $goal-btn-border-gray;
-      cursor: pointer;    
-        &:focus-visible{
-            outline: 0;
-        }
-    }
-  }
-  .routines-input-enddate-field{
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    height: 35px;
-    padding: 0 .5em;
-    margin: .5em 0 0 0;
-
-
-    span{
-      width: 70px;
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: -0.12px;
-      margin: 0 .5em 0 3em;
-      padding: 9px 0 0 0;
-      color: $text-black;
-      font-weight: 300;
-      border-bottom: 1px solid $goal-btn-border-gray;
-    }
-    .routines-enddate-input{
-      width: 100%;
-      height: auto;
-      border:none;
-      font-family: 'Pretendard';
-      font-size: 14px;
-      border-bottom: 1px solid $goal-btn-border-gray;
-      cursor: pointer;    
-        &:focus-visible{
-            outline: 0;
-        }
-    }
-  }
-    .routines-input-day-field{
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    height: 35px;
-    padding: 0 .5em;
-    margin: .5em 0 0 0;
-
-    span{
-      width: 70px;
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: -0.12px;
-      margin: 0 .5em 0 3em;
-      padding: 8px 0 0 0;
-      color: $text-black;
-      font-weight: 300;
-      border-bottom: 1px solid $goal-btn-border-gray;
-    }
-    // .routines-day-input{
-    //   width: 100%;
-    //   height: auto;
-    //   border:none;
-    //   font-family: 'Pretendard';
-    //   font-size: 0.95em;
-    //   padding: 0 0 10px 0;
-    //   top: 5px;
-    //   border-bottom: 1px solid $goal-btn-border-gray;
-    //   cursor: pointer;    
-    //     &:focus-visible{
-    //         outline: 0;
-    //     }
-    // }
-    }
-    .routines-day-text-wrap{
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content:flex-start ;
-      cursor: pointer;
-
-      .routines-day-text{
-        position: relative;
-        height: auto;
-        display: inline;
-        padding-left: 2px;
-        font-size: 14px;
-        font-style: normal;
-        margin-right: 10px;
-        transform: translateY(20%);
-      }
-    }
-
-}
 
 @mixin todo-list {
   
 //todo 개별
-.goals-todo-input-list-Box{
-  width: 100%;
-  min-width: 320px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  padding: 0.1em;
-  box-sizing: border-box;
-
-  .goals-todo-input-list-check-wrap{
-      display: flex;
-      align-items: center;
-      flex-flow: row nowrap;
-      width: 100%;
-      margin: 10px 0;
-      
-      .goals-todo-list-input-check-icon{
-          margin-right: 0.5em;
-          // color: $text-gray;
-      }
-      .goals-todo-list{
-          width: 100%;
-          font-family: 'Pretendard';
-          font-size: 0.95em;
-          outline: 0;
-          border: 0;
-
-          &::placeholder {
-              color: $text-black;
+.todos-list-wrap{
+  width: 100vw;
+  .todos-list-box{
+      width: 100vw;
+      .goals-listItem-text-wrap{
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          width: fit-content;
+          .todos-list-check-icon{
+              color: $text-gray;
+              cursor: pointer;
           }
-
-          &:focus-visible{
+          .todos-list-input{
+              width: fit-content;
               position: relative;
-              // border-bottom: 1px solid #000;
-              border: none;
+              border: 0;
+              border-bottom: 1px solid #00000000;
+              box-sizing: border-box;
               outline: none;
+              font-size: 14px;
               font-family: 'Pretendard';
-              font-size: 0.95em;
-              // padding: 0 0 10px 2px;
-              // top: 5px;
+              font-weight: 600;
+              transform: rotate(0.04deg);
+              cursor: pointer;
+              padding: 6px 0;
+              margin: 5px 5px 5px 15px;
+
+              &::-ms-value{
+                  font-size: 14px;
+                  font-family: 'Pretendard';
+                  font-weight: 600;
+                  transform: rotate(0.04deg);
+              }
+
+              &:focus-visible{
+                  position: relative;
+                  border-bottom: 2px solid #000;
+                  box-sizing: border-box;
+                  outline: none;
+                  font-family: 'Pretendard';
+                  font-size: 14px;
+                  cursor: pointer;
+                  padding: 6px 0;
+                  margin: 5px 5px 5px 15px;
+              }
           }
       }
+     
   }
-
-  .goals-todo-list-input-btn{
-      
-      display: none;
-
-      .goals-todo-list-input-btn-icon{
-          position: relative;
-          color: $text-gray;
-          top: -1px;
-      }
-  }
-  
 }
 }

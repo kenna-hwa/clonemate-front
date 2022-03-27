@@ -15,7 +15,7 @@ import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import WrapTextIcon from '@material-ui/icons/WrapText';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
-import { objTodosDataResult, datesData } from "../../atoms/todoData";
+import { objTodosDataResult, objDatesData } from "../../atoms/todoData";
 
 
 export function TodoModal (props) {
@@ -30,7 +30,7 @@ export function TodoModal (props) {
 
     /* atom 선언 시작 */
 
-    let dtDate = useRecoilValue(datesData);
+    let dtDate = useRecoilValue(objDatesData);
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
@@ -111,19 +111,19 @@ export function TodoModal (props) {
             <div className="feed-todo-modal-wrap" >
                 <p className="feed-todo-modal-head">{todos.title}</p>
                 <div className="feed-todo-modal-icon-wrap">
-                    <button className="feed-todo-edit-icon" 
+                    <button className="feed-todo-modal-icon feed-todo-edit-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.todoId} 
                     onClick={todoModalEditHandler}
                      >
                         <EditIcon className="feed-modal-icon" /><span>수정</span>
                     </button>
-                    <button className="feed-todo-delay-icon" 
+                    <button className="feed-todo-modal-icon feed-todo-delay-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.todoId} 
                     onClick={todoModalDelayHandler}
                     >
                         <SkipNextIcon className="feed-modal-icon" /><span>내일 하기</span>
                     </button>
-                    <button className="feed-todo-date-change-icon" 
+                    <button className="feed-todo-modal-icon feed-todo-date-change-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.todoId} 
                     onClick={()=>{
                         setCalendarActiveIndex(todos.todoId)
@@ -132,12 +132,12 @@ export function TodoModal (props) {
                     >
                         <SyncAltIcon className="feed-modal-icon" /><span>날짜 바꾸기</span>
                     </button>
-                    <button className="feed-todo-order-change-icon" 
+                    <button className="feed-todo-modal-icon feed-todo-order-change-icon" 
                     onClick={todoModalOrderHandler}
                     >
                         <WrapTextIcon className="feed-modal-icon" /><span>순서 변경</span>
                     </button>
-                    <button className="feed-todo-delete-icon" 
+                    <button className="feed-todo-modal-icon feed-todo-delete-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.todoId} 
                     onClick={todoModalDeleteHandler}
                     >

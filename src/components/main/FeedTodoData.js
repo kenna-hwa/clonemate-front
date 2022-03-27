@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { objTodosDataResult, datesData  } from "../../atoms/todoData";
+import { objTodosDataResult, objDatesData  } from "../../atoms/todoData";
 
 import { TodoModal } from "./TodoModal";
 import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
@@ -22,19 +22,18 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
     //   },[]);
     /* hook 선언 종료 */
     
-    /* state 선언 시작 */
 
     /* atom 선언 시작 */
 
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
     /* atom 선언 종료 */
 
-    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
-    let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+    /* state 선언 시작 */
+  
     const todos = props.todos; 
     const index = props.todos.todoId;
-    const onClickTodoCheckYn = props.onClickTodoCheckYn;
-    
 
     const [readOnly, setReadOnly] = useState(true);
     const [modalActiveIndex, setModalActiveIndex] = useState(0);
@@ -59,6 +58,23 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
           setModalActiveIndex(index);
         }
       }
+
+      //Todo checkbox 핸들러
+    const onClickTodoCheckYn = (e) => {
+      e.stopPropagation(); 
+      const goal_id = parseInt(e.currentTarget.dataset.goalid);
+      const todo_id = parseInt(e.currentTarget.dataset.todoid);
+
+      todoDataArray.map(data=>
+          data.todos.map(todo=>{
+              if(todo.goalId === goal_id && todo.todoId === todo_id){
+                  todo.checkYn === 'Y' ? todo.checkYn = 'N' : todo.checkYn = 'Y'
+                  console.log("todo.checkYn " , todo.checkYn)
+              }
+          })
+      )
+      setDtTodos(todoDataArray) ;//setDtTodos 이용해 state 변경
+    }
 
     //모달 수정 클릭 핸들러들
 
@@ -114,9 +130,9 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
             id={todos.todoId}
             data-index={todos.orderNo}>
                     {todos.checkYn === 'Y' ?  
-                    <CheckBoxIcon className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
+                    <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                     /> : 
-                    <CheckBoxOutlineBlankIcon className="todos-list-check-icon"
+                    <CheckBoxOutlineBlankIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon"
                     data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                     /> }
             <TodoList todos={todos} 
@@ -132,13 +148,9 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
 } 
 
 const TodoList = React.forwardRef((props, ref) => {
+  
     const inputRef = useRef(null);
 
-    console.log("ref", inputRef)
-    console.log("length", inputRef.current?.value.length)
-
-
-    // const ref = props.ref;
     const todos = props.todos;
     const readOnly = props.readOnly;
     const activeHandler = props.activeHandler;

@@ -7,7 +7,9 @@ import { ko } from "date-fns/locale";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import '../../stylesheets/CalendarBox.css';
-import { objFeedCalendarOverview } from "../../atoms/todoData";
+import { objFeedCalendarOverview , objDatesData} from "../../atoms/todoData";
+import { getTodosData } from "../../api/apiCommunicate";
+console.log(getTodosData())
 
 
 export const styles = makeStyles(() => ({ //define CSS for different date types
@@ -106,30 +108,48 @@ export const styles = makeStyles(() => ({ //define CSS for different date types
 
 export default function CalendarBox(props) {
 
-//컴포넌트 실행 시 서버에서 처음 값 받아오기 여기서 ajax
+/* state 선언 시작 */
 
-// useEffect(() => {
-//     dtFeedCalendarOverview();
-// }, []);
+const [objDate, setObjDate] = useRecoilState(objDatesData);
+const copy_objDate = {...objDate};
+let dtFeedCalendarOverview = useRecoilValue(objFeedCalendarOverview);
+
+const today = new Date(); // 오늘 날짜 객체
+const classes = styles(); // import those CSS
+const [selectedDate, setselectedDate] = useState(new Date(objDate.dtFeedCalendarDate)); //현재 선택된 날짜 state -> Feed 불러낼 때 사용
+let todoObj = {};
+
+/* state 선언 종료 */
+
+/* hook 선언 시작 */
 
 
+
+useEffect(()=>{
+
+    //selectedDate 변경시 Tododata의 dtFeedCalendarDate
+    copy_objDate.dtFeedCalendarDate = selectedDate;
+    setObjDate(copy_objDate);
+    //컴포넌트 실행 시 서버에서 처음 값 받아오기 여기서 ajax
+
+},[selectedDate])
     
-    //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
-    let dtFeedCalendarOverview = useRecoilValue(objFeedCalendarOverview);
+    
+/* hook 선언 종료 */
 
- 
+/* 함수 선언 시작 */
 
-    const today = new Date(); // 오늘 날짜 객체
-    const classes = styles(); // import those CSS
-    const [selectedDate, setselectedDate] = useState(new Date()); //현재 선택된 날짜 state -> Feed 불러낼 때 사용
-    let todoObj = {};
 
-    // 데이터가 있는 날
-    const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo[0].numTodoDay);
-    // console.log('theDayhasTodoArr',theDayhasTodoArr)
-    // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
+
+
+
+// 데이터가 있는 날
+// 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
+
+const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo[0].numTodoDay);
+    
+//ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
     dtFeedCalendarOverview.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
-    // console.log('todoObj',todoObj)
 
     //날짜 타일 변경 함수
     function getDayElement(day, selectedDate, isInCurrentMonth, dayComponent) {
@@ -138,13 +158,10 @@ export default function CalendarBox(props) {
         //boolean 으로 바꿔주는 작업
         //데이터가 있을 때 (todoData = todo 데이터가 있는 날짜) -> true
         const isHasTodoData = theDayhasTodoArr.includes(day.getDate()); 
-
-
         //클릭된 날짜 
         const isSelected = day.getDate() === selectedDate.getDate();
         //오늘 날짜
         const isToday = day.getDate() === today.getDate() && day.getMonth() === today.getMonth();
-
 
         //dateTile 생성
         let dateTile
@@ -182,7 +199,7 @@ export default function CalendarBox(props) {
         return dateTile;
     }
 
-  
+    /* 함수 선언 종료 */
 
     return(
           <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils} >

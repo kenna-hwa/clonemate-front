@@ -15,8 +15,8 @@ const nextDay = new Date(tomorrow.setDate(today.getDate()+1))
 
 
 //오늘 날짜, 내일 날짜
-export const datesData = atom({
-  key: 'datesData',
+export const objDatesData = atom({
+  key: 'objDatesData',
   default : {
     "dtToday" : today.toJSON().substring(0, 10),
     "dtTomorrow" : nextDay.toJSON().substring(0, 10),
@@ -274,13 +274,13 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
 export const createRepeatDay = atom({
   key: "createRepeatDay",
   default: {
-  "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-  "mon": "N",
-  "tue": "N",
-  "wed": "N",
-  "thu": "N",
-  "fri": "N",
-  "sat": "N",
+  "SUN": "N", //y 면 일요일 반복, n 이면 반복 x
+  "MON": "N",
+  "TUE": "N",
+  "WED": "N",
+  "THU": "N",
+  "FRI": "N",
+  "SAT": "N",
 }
 });
 

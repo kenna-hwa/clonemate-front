@@ -4,15 +4,13 @@
 
 .feed-wrap{
     position: relative;
-    width: 100vw;
     padding: 1em;
     box-sizing: border-box;
-    overflow-x: auto;
     ;
     .feed-title{
-        font-family: 'Hahmlet';
-        font-size: 2.25em;
-        font-weight: 700;
+        font-family: 'Egyptian Slate Pro';
+        font-size: 2.5em;
+        font-weight: 800;
         margin: 0;
     }
     .goals-list-wrap{
@@ -23,9 +21,11 @@
         .goals-list-box{
             width: fit-content;
             margin: 15px 0 0 0;
+            padding: 0;
 
-            .list-goal-button{
+            .goals-list-button{
                 background-color: $goal-btn-gray;
+                border: 1px solid $goal-btn-border-gray;
                 border-radius: 5px;
                 width: fit-content;
                 padding: 0 10px;
@@ -94,7 +94,26 @@
         font-family: 'Pretendard';
         cursor: pointer;
     
-        @media (max-width: 750px){
+        @media (max-width: 850px){
+            display: none;
+        }
+    }
+    .feed-day-all-todo-edit{
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        bottom: 21%;
+        left: 90%;
+        box-shadow: 2px 3px 5px 0 #00000025;
+        border-radius: 50%;
+        border: none;
+        font-family: 'Pretendard';
+        cursor: pointer;
+    
+        @media (max-width: 850px){
             display: none;
         }
     }
@@ -242,7 +261,7 @@
             align-items: center;
             flex-flow: row wrap;
 
-            button{
+            .feed-todo-modal-icon{
                 display: flex;
                 position: relative;
                 justify-content: center;
@@ -369,4 +388,226 @@
         }
     }
 
+}
+
+//... 모달
+
+.all-todo-modal-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .all-todo-modal-wrap{
+        display: flex;
+        width: 322px;
+        height: 275px;
+        border-radius: 8px;
+        padding: 1.5em;
+        box-sizing: border-box;
+        flex-flow: column nowrap;
+        font-family: 'Pretendard';
+
+        background-color: $bg-white;
+
+        .all-todo-modal-head{
+            width: 250px;
+            height: 2.2em;
+            font-family: 'Pretendard';
+            font-size: 1em;
+            margin: 0 auto -5px;
+            word-wrap: break-word;
+            word-break: keep-all;
+            text-align: center;
+            text-overflow: ellipsis;  /* 말줄임 적용 */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .all-todo-modal-icon-wrap {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-flow: row wrap;
+
+        .all-todo-modal-icon {
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items:center;
+                background-color: $goal-btn-gray;
+                width: 45px;
+                height: 45px;
+                margin: 22px 21px;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                
+                .feed-modal-icon{
+                    font-family: 'Pretendard';
+                    color: $text-black;
+                    font-size: 1.5em;
+                }
+
+                span{
+                    display: inline-block;
+                    position: absolute;
+                    width: 65px;
+                    font-size: 0.75em;
+                    letter-spacing: -0.2px;
+                    top: 50px;
+                }
+            }
+        }
+        
+    }
+
+}
+
+
+//캘린더 모달
+.todo-modal-datePicker-wrap{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: $text-black;
+
+    .todo-modal-datePicker-box{
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .todo-modal-datePicker-box-title-wrap{
+            text-align: center;
+            p{
+                font-size: 14px;
+            }
+            span{
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+        .todo-modal-datePicker{
+            display: flex;
+            justify-content: center;
+            padding: 0 10px;
+
+            .css-1dozdou{ // 연, 월, 날짜변경 버튼
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 5px 0 18px;
+                // background-color: red;
+
+                .css-l0iinn{ //연 월 버튼
+
+                    div{
+                        font-family: 'Pretendard';
+                        font-size: 18px;
+                    
+                            &:nth-child(1){
+                                order:2;
+                            }
+                            &:nth-child(2){
+                                order:1;
+                                :after{
+                                    display: inline-block;
+                                    content: "년";
+                                }
+                            }
+                        }
+                    button{
+                        order: 3;
+                    }
+                }
+
+            }
+            .MuiCalendarPicker-viewTransitionContainer{ // 캘린더 전체
+                overflow-y: hidden;
+
+                div{
+                    .css-1n2mv2k{ //캘린더 요일
+                        
+                        span{ //개별 요일
+                            font-size: 13px;
+                            font-family: 'Pretendard';
+                            font-weight: 500;
+                        }
+                    }
+                    .css-dhopo2{ //캘린더 날짜
+                        min-height: 260px;
+                        
+                        .css-i6bazn{//개별 날짜
+                            display: flex;
+                            flex-flow: column;
+                            justify-content: space-between;
+                        
+                            .css-mvmu1r{
+                                margin: 1px 0;
+                                div{
+                                    div{
+                                        margin: 0;
+                                    }
+                                    button{
+                                        font-family: 'Pretendard';
+                                        font-weight: 300; 
+                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .todo-modal-datePicker-btn-wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .todo-modal-datePicker-btn{
+            position: relative;
+            width: 110px;
+            height: 40px;
+            font-family: 'Pretendard';
+            font-weight: 400; 
+            background: $goal-btn-gray;
+            border: $goal-btn-border-gray;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: $text-black;
+            cursor: pointer;
+            
+        }
+        button:nth-child(1){
+            margin-right: 25px;
+        }
+    }
+}
+.css-195y93z-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){
+    border: 1px soild $goal-btn-border-gray;
+    border-radius: 50%;
+}
+
+.feed-move-to-routines{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    bottom: 10%;
+    left: 90%;
+    box-shadow: 2px 3px 5px 0 #00000025;
+    border-radius: 50%;
+    border: none;
+    font-family: 'Pretendard';
+    cursor: pointer;
+
+    @media (max-width: 750px){
+
+    }
 }

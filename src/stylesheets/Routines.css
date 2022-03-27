@@ -62,7 +62,7 @@
   font-weight: 800;
 }
 
-.routines-box {
+.routines-wrap {
   position: relative;
   width: 75vw;
   height: auto;
@@ -74,88 +74,85 @@
           box-sizing: border-box;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  margin-bottom: 1em;
-  border-radius: 8px;
+.routines-wrap .goals-list-box {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 15px 0 0 0;
+  padding: 0;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap {
+.routines-wrap .goals-list-box .goals-list-button {
+  background-color: #f5f5f5;
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: auto;
-  padding: .3em .6em;
-  background-color: #f5f5f5;
-  border: 1px solid #f3f3f3;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  line-height: 0;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin-bottom: 12px;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-icon {
-  font-size: 15px;
-  color: #000;
-  margin-right: .5em;
+.routines-wrap .goals-list-box .goals-list-button .goals-list-icon {
+  font-size: 1em;
+  color: #1c1c1c;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text {
-  width: auto;
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-}
-
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-text .MuiListItemText-primary {
-  width: auto;
-  margin-right: .5em;
-  letter-spacing: -0.25px;
+.routines-wrap .goals-list-box .goals-list-button .goals-list-text {
+  display: block;
   font-size: 13px;
   font-family: 'Pretendard';
   font-weight: 900;
+  max-width: 200px;
+  margin: 0 10px;
+  overflow: hidden;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon {
+.routines-wrap .goals-list-box .goals-list-button .goals-list-text p {
+  max-width: 200px;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 900;
+}
+
+.routines-wrap .goals-list-box .goals-list-button .goals-list-plus-icon-wrap {
+  background-color: #1c1c1c;
+  width: 10px;
+  height: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-width: 0;
-  width: 16px;
-  height: 16px;
-  background: white;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-radius: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-listItem-text-wrap .goals-listItem-add-icon span {
-  color: #000;
+.routines-wrap .goals-list-box .goals-list-button .goals-list-plus-icon-wrap .goals-list-plus-icon {
+  font-size: 1.4em;
+  color: #ffffff;
 }
 
-.routines-box .routines-goals-list-box .routines-goals-list-wrap .goals-listItem .goals-todo-input-title {
+.routines-wrap .goals-list-box .goals-todo-input-title {
   display: block;
 }
 
@@ -177,6 +174,168 @@
   background-color: #f5f5f5;
 }
 
+.create-routines-input-Box .routines-input-title-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+}
+
+.create-routines-input-Box .routines-input-title-field .routines-input-check-icon {
+  position: relative;
+  margin: 0.5em 0.5em 0 .1em;
+  color: #afafaf;
+  cursor: pointer;
+}
+
+.create-routines-input-Box .routines-input-title-field .routines-input-field {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-bottom: 2px solid #000;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  padding: 10px 0;
+  top: 5px;
+}
+
+.create-routines-input-Box .routines-input-title-field .routines-input-field:focus-visible {
+  outline: 0;
+}
+
+.create-routines-input-Box .routines-input-startdate-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+}
+
+.create-routines-input-Box .routines-input-startdate-field span {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 9px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.create-routines-input-Box .routines-input-startdate-field .routines-startdate-input {
+  border: none;
+  font-family: 'Pretendard';
+  font-size: 13px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+}
+
+.create-routines-input-Box .routines-input-startdate-field .routines-startdate-input:focus-visible {
+  outline: 0;
+}
+
+.create-routines-input-Box .routines-input-enddate-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+}
+
+.create-routines-input-Box .routines-input-enddate-field span {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 9px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.create-routines-input-Box .routines-input-enddate-field .routines-enddate-input {
+  border: none;
+  font-family: 'Pretendard';
+  font-size: 13px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+}
+
+.create-routines-input-Box .routines-input-enddate-field .routines-enddate-input:focus-visible {
+  outline: 0;
+}
+
+.create-routines-input-Box .routines-input-day-field {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+  cursor: pointer;
+}
+
+.create-routines-input-Box .routines-input-day-field .routines-input-day-field-title {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 8px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.create-routines-input-Box .routines-day-text-wrap {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -5px;
+  margin-left: 2px;
+}
+
+.create-routines-input-Box .routines-day-text-wrap .routines-day-text {
+  position: relative;
+  font-size: 13px;
+  font-style: normal;
+  margin-right: 10px;
+}
+
 .edit-routines-input-Box {
   width: 100%;
   display: -webkit-box;
@@ -193,6 +352,168 @@
   color: #1c1c1c;
   font-family: 'Pretendard';
   background-color: #f5f5f5;
+}
+
+.edit-routines-input-Box .routines-input-title-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  width: 100%;
+}
+
+.edit-routines-input-Box .routines-input-title-field .routines-input-check-icon {
+  position: relative;
+  margin: 0.5em 0.5em 0 .1em;
+  color: #afafaf;
+  cursor: pointer;
+}
+
+.edit-routines-input-Box .routines-input-title-field .routines-input-field {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-bottom: 2px solid #000;
+  outline: none;
+  font-family: 'Pretendard';
+  font-size: 0.95em;
+  padding: 10px 0;
+  top: 5px;
+}
+
+.edit-routines-input-Box .routines-input-title-field .routines-input-field:focus-visible {
+  outline: 0;
+}
+
+.edit-routines-input-Box .routines-input-startdate-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+}
+
+.edit-routines-input-Box .routines-input-startdate-field span {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 9px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.edit-routines-input-Box .routines-input-startdate-field .routines-startdate-input {
+  border: none;
+  font-family: 'Pretendard';
+  font-size: 13px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+}
+
+.edit-routines-input-Box .routines-input-startdate-field .routines-startdate-input:focus-visible {
+  outline: 0;
+}
+
+.edit-routines-input-Box .routines-input-enddate-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+}
+
+.edit-routines-input-Box .routines-input-enddate-field span {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 9px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.edit-routines-input-Box .routines-input-enddate-field .routines-enddate-input {
+  border: none;
+  font-family: 'Pretendard';
+  font-size: 13px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+}
+
+.edit-routines-input-Box .routines-input-enddate-field .routines-enddate-input:focus-visible {
+  outline: 0;
+}
+
+.edit-routines-input-Box .routines-input-day-field {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+  height: 35px;
+  padding: 0 .5em;
+  margin: .5em 0 0 0;
+  cursor: pointer;
+}
+
+.edit-routines-input-Box .routines-input-day-field .routines-input-day-field-title {
+  width: 70px;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  margin: 0 .5em 0 3em;
+  padding: 8px 0 0 0;
+  color: #1c1c1c;
+  font-weight: 300;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.edit-routines-input-Box .routines-day-text-wrap {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -5px;
+  margin-left: 2px;
+}
+
+.edit-routines-input-Box .routines-day-text-wrap .routines-day-text {
+  position: relative;
+  font-size: 13px;
+  font-style: normal;
+  margin-right: 10px;
 }
 
 .routines-todo-modal-box {
@@ -295,9 +616,8 @@
   margin-left: 10px;
 }
 
-.goals-todo-input-list-Box {
-  width: 100%;
-  min-width: 320px;
+.todo-modal-dayPicker-box {
+  width: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -305,76 +625,46 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0.1em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap {
+.todo-modal-dayPicker-box .dayPicker-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c1c1c;
+  font-family: 'Pretendard';
+  margin-bottom: 25px;
+  cursor: default;
+}
+
+.todo-modal-dayPicker-box #dayPicker-checkbox-btn-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-  margin: 10px 0;
+  margin-bottom: 25px;
 }
 
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list-input-check-icon {
-  margin-right: 0.5em;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list {
-  width: 100%;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
-  outline: 0;
-  border: 0;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-webkit-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::-ms-input-placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list::placeholder {
-  color: #1c1c1c;
-}
-
-.goals-todo-input-list-Box .goals-todo-input-list-check-wrap .goals-todo-list:focus-visible {
-  position: relative;
-  border: none;
-  outline: none;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
-}
-
-.goals-todo-input-list-Box .goals-todo-list-input-btn {
-  display: none;
-}
-
-.goals-todo-input-list-Box .goals-todo-list-input-btn .goals-todo-list-input-btn-icon {
-  position: relative;
-  color: #afafaf;
-  top: -1px;
-}
-
-.routines-input-title-field {
+.todo-modal-dayPicker-box #dayPicker-checkbox-btn-wrap label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -382,162 +672,37 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
-  width: 100%;
-}
-
-.routines-input-title-field .routines-input-check-icon {
-  position: relative;
-  margin: 0.5em 0.5em 0 .1em;
-  color: #afafaf;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
   cursor: pointer;
 }
 
-.routines-input-title-field .routines-input-field {
-  position: relative;
-  width: 100%;
-  height: auto;
-  border: none;
-  border-bottom: 2px solid #000;
-  outline: none;
-  font-family: 'Pretendard';
-  font-size: 0.95em;
+.todo-modal-dayPicker-box #dayPicker-checkbox-btn-wrap label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
   cursor: pointer;
-  padding: 10px 0;
-  top: 5px;
 }
 
-.routines-input-title-field .routines-input-field:focus-visible {
-  outline: 0;
-}
-
-.routines-input-startdate-field {
+.todo-modal-dayPicker-box .dayPicker-btn-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-  height: 35px;
-  padding: 0 .5em;
-  margin: .5em 0 0 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 200px;
 }
 
-.routines-input-startdate-field span {
-  width: 70px;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: -0.12px;
-  margin: 0 .5em 0 3em;
-  padding: 9px 0 0 0;
-  color: #1c1c1c;
-  font-weight: 300;
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.routines-input-startdate-field .routines-startdate-input {
-  width: 100%;
-  height: auto;
-  border: none;
-  font-family: 'Pretendard';
+.todo-modal-dayPicker-box .dayPicker-btn-wrap .dayPicker-btn {
   font-size: 14px;
-  border-bottom: 1px solid #f3f3f3;
-  cursor: pointer;
-}
-
-.routines-input-startdate-field .routines-startdate-input:focus-visible {
-  outline: 0;
-}
-
-.routines-input-enddate-field {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-  height: 35px;
-  padding: 0 .5em;
-  margin: .5em 0 0 0;
-}
-
-.routines-input-enddate-field span {
-  width: 70px;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: -0.12px;
-  margin: 0 .5em 0 3em;
-  padding: 9px 0 0 0;
   color: #1c1c1c;
-  font-weight: 300;
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.routines-input-enddate-field .routines-enddate-input {
-  width: 100%;
-  height: auto;
-  border: none;
   font-family: 'Pretendard';
-  font-size: 14px;
-  border-bottom: 1px solid #f3f3f3;
-  cursor: pointer;
-}
-
-.routines-input-enddate-field .routines-enddate-input:focus-visible {
-  outline: 0;
-}
-
-.routines-input-day-field {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 100%;
-  height: 35px;
-  padding: 0 .5em;
-  margin: .5em 0 0 0;
-}
-
-.routines-input-day-field span {
-  width: 70px;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: -0.12px;
-  margin: 0 .5em 0 3em;
-  padding: 8px 0 0 0;
-  color: #1c1c1c;
-  font-weight: 300;
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.routines-day-text-wrap {
-  position: relative;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  cursor: pointer;
-}
-
-.routines-day-text-wrap .routines-day-text {
-  position: relative;
-  height: auto;
-  display: inline;
-  padding-left: 2px;
-  font-size: 14px;
-  font-style: normal;
-  margin-right: 10px;
-  -webkit-transform: translateY(20%);
-          transform: translateY(20%);
+  background: #f5f5f5;
+  border: #f3f3f3;
 }
 /*# sourceMappingURL=Routines.css.map */
