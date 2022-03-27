@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {  Button, List, ListItem  } from "@mui/material";
-import { Box } from "@mui/system";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import {  Button, List  } from "@mui/material";
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';import '../../stylesheets/Goal.css';
 
-import '../../stylesheets/Goal.css';
-
-import { goalsData } from "../../atoms/todoData";
+import { objTodosDataResult } from "../../atoms/todoData";
 
 
 export default function Goals() {
@@ -17,10 +15,10 @@ export default function Goals() {
 
    /* atom 시작 */
   
-  let goal = useRecoilValue(goalsData);// 목표goals 아이템
-  let [readOnly, readOnlyChange] = useState('read'); //목표 수정표시
+  let dtTodos = useRecoilValue(objTodosDataResult);// 목표goals 아이템
+  let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
-
+  console.log("todoDataArray", todoDataArray)
 
   /* Dummy State 끝 */
   
@@ -40,36 +38,40 @@ export default function Goals() {
 
 
   //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
-  function moveEditGoalForm(id){
-    window.location.replace(`/goals/goalEditForm/`+id)
+  const moveEditGoalForm = (e) => {
+    window.location.replace(`/goals/goalEditForm/`+e.target.id)
   }
 
   
-  //목표 수정 이벤트핸들러 함수
-  async function clickGoaltoEdit(e){
-    const { id } = e.target;
-    await readOnlyChange(readOnly='edit');
-    console.log("readOnly", readOnly, id )
-    await moveEditGoalForm(id)
-  }
+  // //목표 수정 이벤트핸들러 함수
+  // async function clickGoaltoEdit(e){
+  //   const { id } = e.target;
+  //   await moveEditGoalForm(id)
+  // }
 
 
 /* 함수 끝 */
 
 
   return (
-    <Box className="goals-list-box">
-    <List className="goals-list-wrap" >
-        {
-        goal.map((item, idx) => {
-        return ( <ListItem className="goals-list" id={item.goal_id} key={item.goal_id} > 
-                    <Button className="goals-listItem-btn" id={item.goal_id} name={item.goal_id} sx={{ color:item.title_color }} onClick={clickGoaltoEdit} >{item.title}</Button >
-                    <ArrowForwardIosIcon className="goals-clickToEdit-btn"/>
-                </ListItem>
-                );
+      <div className="goal-goals-list-wrap" >
+            {
+            todoDataArray.map((data, idx) => {
+              return (
+                <React.Fragment key={data.goalId}>
+                  <div className="goals-list-box" key={data.goalOrderNo}>
+                    <Button className="goals-list-button" id={data.goalId} name={data.goalId} data={data} onClick={moveEditGoalForm} >
+                        <ReceiptIcon className="goals-list-icon" />
+                        <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
+                        </div>
+                    </Button>
+                    <NavigateNextIcon className="goal-list-arrow" />
+                  </div>
+
+                </React.Fragment>
+              )
             })
-        }
-    </List>
-    </Box>
+          }
+      </div>
   );
 }
