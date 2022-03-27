@@ -21,22 +21,21 @@ export default function GoalForm(){
     
     let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
 
-    let [createGoalState, setCreactGoalState] = useState(
-        {
-            "id": goal.length+1,
-            "orderNo" : goal.length+1,
-            "title" : ``,
-            "privacy" : `PUBLIC`,
-            "titleColor" : `#000000`
-        }
+    const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
 
-    );
-    const copy_createGoalState = {...createGoalState};
 
-    let [privacyDialogActive, setPrivacyDialogActive] = useState(false);
-    let [colorDialogActive, setColorDialogActive] = useState(false);
+    let [createGoalState, setCreactGoalState] = useState({"goal_id": "",
+                                                    "preGoalId":"",
+                                                    "next_goal_id": "",
+                                                    "title": "",
+                                                    "privacy": "PUBLIC",
+                                                    "bg_color": "",
+                                                    "title_color": ""});
 
-    let colorList = [
+    let [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
+    let [colorDialogOpen, setColorDialogOpen] = useState(false);
+
+    let [colorList, setColorList] = useState([
         "#000000",
         "#272727",
         "#565656",
@@ -61,13 +60,13 @@ export default function GoalForm(){
         "#36802d",
         "#77ab59",
         "#c9df8a",//green
-        ];
+        ])
 
     const privacyObj = {
-        'HIDDEN' : '숨기기 🙄' ,
-        'PRIVACY' : '나만보기 😎' ,
-        'FOLLOWING' : '일부공개 🤫' ,
-        'PUBLIC' : '전체공개 🤗' ,
+        'HID' : '숨기기 🙄' ,
+        'PRI' : '나만보기 😎' ,
+        'FOL' : '일부공개 🤫' ,
+        'PUB' : '전체공개 🤗' ,
     }
 
 
@@ -75,40 +74,68 @@ export default function GoalForm(){
 
     /* 함수 선언 시작 */
 
-    //목표 타이틀 수정 함수
-    const changeGoalTitle = (e) => {
-        copy_createGoalState.title = e.target.value;
-        setCreactGoalState(copy_createGoalState)
+
+    const onInputChange = (e) => {
+
+        const new_goal_item = createGoalState;
+        new_goal_item.title = e.target.value;
+        setCreactGoalState(new_goal_item)
     }
+    
+    //목표 추가 함수
+    const addGoal = (data) => {
+        const copy_goal_state = [...goal]; // goal State 원본 카피        
+        // console.log("adddata1", copy_goal_state)
+        data.goal_id = copy_goal_state.length; //key를 위한 id 추가
+        data.next_goal_id = (copy_goal_state.length+1 ); //key를 위한 id 추가
+        copy_goal_state.push(data);
+        // console.log("adddata2", copy_goal_state)
+        setGoal(copy_goal_state, console.log(copy_goal_state)) ;//setGoal를 이용해 state 변경
+    }
+
+    // submit 실행 함수
+    const onSubmit = (data) => { //react-form-hook submit 함수
+        setCreactGoalState(JSON.stringify(createGoalState));
+        addGoal(createGoalState);
+        window.location.replace("/goals")
+    }
+
+    const onError = (error) => {
+    console.log(error);
+    };
+
+
+
+
+    const handlePrivacyDialogOpen = () => {
+        setPrivacyDialogOpen(true);
+    };
 
     const handlePrivacyDialogClose = (event, reason) => {
         if (reason !== 'backdropClick') {
-            setPrivacyDialogActive(false);
+            setPrivacyDialogOpen(false);
         }
+    };
+
+    const handleColorDialogOpen = () => {
+        setColorDialogOpen(true);
     };
 
     const handleColorDialogClose = (event, reason) => {
         if (reason !== 'backdropClick') {
-            setColorDialogActive(false);
+            setColorDialogOpen(false);
         }
     };
-
-
-    //privacy dialog onChange 이벤트
     const handlePrivacyChange = (e) => {
-        copy_createGoalState.privacy = e.target.value;
-        setCreactGoalState(copy_createGoalState);
+        const new_goal_item = createGoalState;
+        new_goal_item.privacy = e.target.value;
+        setCreactGoalState(new_goal_item);
     };
     const handleColorChange = (e) => {
-        copy_createGoalState.titleColor = e.target.value;
-        setCreactGoalState(copy_createGoalState);
+        const new_goal_item = createGoalState;
+        new_goal_item.title_color = e.target.value;
+        setCreactGoalState(new_goal_item);
     };
-
-    // 확인 클릭 함수 실행 함수
-    const clickOkbtn = (data) => { //react-form-hook submit 함수
-        setGoal(createGoalState);
-        window.location.replace("/goals")
-    }
 
 
     /* 함수 선언 끝 */
@@ -116,30 +143,29 @@ export default function GoalForm(){
 
     return(
         <Box className="goals-form-dialog-box">
-            <div className="goals-form">
+            <form onSubmit={handleSubmit(onSubmit,onError)} className="goals-form">
                 <Grid container spacing={1} className="goals-form-grid-wrap">
                 <Grid item xs={12} className="goals-form-text-wrap">
-                    <TextField id="goalform_textfield" variant="standard" placeholder={'목표 입력'} onChange={changeGoalTitle} /> 
+                    <TextField id="goalform_textfield" variant="standard" placeholder={'목표 입력'} onChange={onInputChange} /> 
                 </Grid>
                 <Grid item xs={12} className="goals-form-privacy-wrap" > 
-                   <Button className="goals-form-privacy" onClick={()=>{setPrivacyDialogActive(true)}}><p>공개 설정 </p><span> 
+                   <Button className="goals-form-privacy" onClick={handlePrivacyDialogOpen}><p>공개 설정 </p><span> 
                        { privacyObj[createGoalState.privacy] } ▾ </span></Button>
                 </Grid>
                 <Grid item xs={12} className="goals-form-color-wrap" > 
-                   <Button className="goals-form-color" onClick={()=>{setColorDialogActive(true)}}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.titleColor}`}}></i>▾ </span></Button>
+                   <Button className="goals-form-color" onClick={handleColorDialogOpen}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.title_color}`}}></i>▾ </span></Button>
                 </Grid>
                 {/* 확인은 임시 css */}
                 <Grid item xs={12} className="goals-form-submit">
-                    <Button color="secondary" className="goals-form-submit-btn" 
-                    onClick={clickOkbtn} >
+                    <Button color="secondary" className="goals-form-submit-btn" type="submit" >
                         확인
                     </Button>    
                 </Grid>
                 </Grid>
-            </div>
+            </form>
 
             {/* Dialog for privacy */}
-            <Dialog disableEscapeKeyDown open={privacyDialogActive} onClose={handlePrivacyDialogClose} className="group-dialog-wrap" >
+            <Dialog disableEscapeKeyDown open={privacyDialogOpen} onClose={handlePrivacyDialogClose} className="group-dialog-wrap" >
                 <DialogTitle className="group-dialog-title" >공개 설정</DialogTitle>
                 <DialogContent className="group-dialog">
                 <Box component="form" className="group-dialog-box">
@@ -148,13 +174,14 @@ export default function GoalForm(){
                         <RadioGroup
                             className="group-privacy-wrap"
                             aria-labelledby="radio-buttons-group-privacy-label"
+                            defaultValue={"PUBLIC"}
                             name="radio-buttons-group-privacy"
                             onChange={handlePrivacyChange}
                         >
-                            <FormControlLabel value="HIDDEN" control={<Radio  />} label={privacyObj['HIDDEN']} />
-                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj['PRIVACY']}  />
-                            <FormControlLabel value="FOLLOWING" control={<Radio />}  label={privacyObj['FOLLOWING']}  />
-                            <FormControlLabel value="PUBLIC" control={<Radio />}  label={privacyObj['PUBLIC']}  />
+                            <FormControlLabel value="HID" control={<Radio  />} label={privacyObj["HID"]} />
+                            <FormControlLabel value="PRI" control={<Radio />} label={privacyObj["PRI"]} />
+                            <FormControlLabel value="FOL" control={<Radio />} label={privacyObj["FOL"]}/>
+                            <FormControlLabel value="PUBLIC" control={<Radio />} label={privacyObj["PUBLICc"]} />
                         </RadioGroup>
                     </FormControl>
                 </Box>
@@ -165,8 +192,8 @@ export default function GoalForm(){
                 </DialogActions>
             </Dialog>
 
-            {/* Dialog for color */}
-               <Dialog disableEscapeKeyDown open={colorDialogActive} onClose={handleColorDialogClose} className="group-dialog-wrap" >
+            {/* Dialog for privacy */}
+               <Dialog disableEscapeKeyDown open={colorDialogOpen} onClose={handleColorDialogClose} className="group-dialog-wrap" >
                 <DialogTitle className="group-dialog-title" >색상</DialogTitle>
                 <DialogContent className="group-dialog">
                 <Box component="form" className="group-dialog-box">

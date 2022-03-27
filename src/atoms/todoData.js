@@ -236,36 +236,32 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
   key: "goalsData",
   default: [
     {
-      "goal_id": 0,
-      "next_goal_id": 1,
-      "title": "첫 번째 목표",
-      "privacy": "PUB",
-      "box_color": "",
-      "title_color": "#3CB371"
+      "id" : 1,
+      "orderNo" : 1,
+      "title" : "첫 번째 목표",
+      "privacy" : "PUBLIC",
+      "titleColor" : "#cccccc"
     },
     {
-      "goal_id": 1,
-      "next_goal_id": 2,
-      "title": "두 번째 목표",
-      "privacy": "PRI",
-      "box_color": "",
-      "title_color": "#234d22"
+      "id" : 2,
+      "orderNo" : 2,
+      "title" : "두 번째 목표",
+      "privacy" : "PRIVACY",
+      "titleColor" : "#cccccc"
     },
     {
-      "goal_id": 2,
-      "next_goal_id": 3,
-      "title": "세 번째 목표",
-      "privacy": "PRI",
-      "box_color": "",
-      "title_color": "#C71585"
+      "id" : 3,
+      "orderNo" : 3,
+      "title" : "세 번째 목표",
+      "privacy" : "FOLLOWING",
+      "titleColor" : "#cccccc"
     },
     {
-      "goal_id": 3,
-      "next_goal_id": 4,
-      "title": "네 번째 목표",
-      "privacy": "PRI",
-      "box_color": "",
-      "title_color": "#21bdbd"
+      "id" : 4,
+      "orderNo" : 4,
+      "title" : "네 번째 목표",
+      "privacy" : "HIDDEN",
+      "titleColor" : "#cccccc"
     }
   ]
 })
