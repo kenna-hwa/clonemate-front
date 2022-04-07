@@ -1,156 +1,254 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Box, Button, List, ListItem, ListItemText } from "@mui/material";
-import { DragDropContext, Droppable, Draggable, resetServerContext, } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  resetServerContext,
+} from "react-beautiful-dnd";
 
-import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import ReceiptIcon from "@material-ui/icons/Receipt";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
-import { goalsData, todoData, objDatesData } from "../../atoms/todoData";
+import {
+  objTodosDataResult,
+  goalsData,
+  todoData,
+  objDatesData,
+} from "../../atoms/todoData";
 
 import "../../stylesheets/OrderItem.css";
 
 export default function OrderItem() {
   /* Hook 선언 시작 */
 
+  /* Hook 선언 종료 */
+
+  /* state 선언 시작 */
+
+  /* state 선언 종료 */
+
   /* atom 시작 */
   let dateData = useRecoilValue(objDatesData);
-  let [goal, setGoal] = useRecoilState(goalsData);
-  let [todo, setTodo] = useRecoilState(todoData);
+  // atom에서 goal+todo 데이터 가져오기
+  let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+  const todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+  console.log("dtTodos", dtTodos)
 
-  /* Hook 선언 끝 */
+  /* atom 종료 */
 
   /* 함수 선언 시작 */
 
-  function goalDragEndEventHandler(result) {
+  const onDragEnd = (res) => {
+    if (!res.destination) return;
+    //드래그 하는 sourced의 index
+    const sourceGoalOrderNo = res.source.index;
+    //드래그 해서 내려놓은 destination의 index
+    const destinationGoalOrderNo = res.destination.index;
+  console.log("sourceGoalOrderNo", sourceGoalOrderNo)
+  todoDataArray.map((goal)=>{
+      if(goal.goalOrderNo === sourceGoalOrderNo){
+        goal.goalOrderNo = destinationGoalOrderNo;
+      }
+    })
+    setDtTodos(todoDataArray)
+}
+
+  const onDragEndGoal = (result) => {
     if (!result.destination) return;
-    console.log("origin goal", goal);
 
-    /* 220213 생성 */
+    
+    const draggingItemIndex = result.source.index-1;
+    const afterDragItemIndex = result.destination.index-1;
+    const removeTag = todoDataArray.splice(draggingItemIndex, 1);
 
-    const currentOrder = JSON.parse(JSON.stringify(goal));
-    const draggingItemIndex = result.source.index;
-    const afterDragItemIndex = result.destination.index;
-    const removeGoal = currentOrder.splice(draggingItemIndex, 1);
+    todoDataArray.splice(afterDragItemIndex, 0, removeTag[0]);
 
-    currentOrder.splice(afterDragItemIndex, 0, removeGoal[0]);
-    setGoal(currentOrder);
+    setDtTodos(todoDataArray);
   }
 
-function todoDragEndEventHandler(result) {
-    if (!result.destination) return;
-    console.log("result", result);
-
-    // const currentOrder = JSON.parse(JSON.stringify(todo));
-    // const draggingItemIndex = result.source.index;
-    // const afterDragItemIndex = result.destination.index;
-    // const removeTodo = currentOrder.splice(draggingItemIndex, 1);
-
-    // currentOrder.splice(afterDragItemIndex, 0, removeTodo[0]);
-    // setTodo(currentOrder);
-
-  }
-  resetServerContext();
-
-  /* 함수 선언 끝 */
- 
+  /* 함수 선언 종료 */
 
   return (
-    <DragDropContext onDragEnd={goalDragEndEventHandler}>
-    <Droppable  droppableId="GOALS" type="GOALS">
-    {(provided, snapshot) => (
-    <Box className="order-box" {...provided.droppableProps}
-    ref={provided.innerRef}>
-
-
-            {goal.map((goal, index) => { //goal.map
+    <DragDropContext onDragEnd={onDragEndGoal}>
+      <Droppable droppableId="Goal">
+      {provided =>  (
+        <div className="goals-list-wrap" {...provided.droppableProps} ref={provided.innerRef}>
+          {todoDataArray.map((data, index) => {
             return (
-                <Draggable key={`goal` + goal.goal_id} draggableId={goal.goal_id.toString()} index={index} >
-                    {(provided) => {return (
-                        <ListItem className="goals-listItem" id={goal.goal_id} key={goal.goal_id} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}> {/* 드래그 해야할 요소 goal */}
-
-                        <div className="goals-listItem-text-wrap"  data-index={index} >
-                        <LibraryBooksIcon className="goals-listItem-icon" />
-                                <ListItemText className="goals-listItem-text" name={goal.goal_id} sx={{ color:goal.title_color }}  >{goal.title}</ListItemText>
-                            <ListItemText className="goals-listItem-add-icon" ><span>+</span></ListItemText>
-                        </div>
-
-                    
-                            <TodoList goal={goal} todo={todo} />
-
-                        </ListItem>
-                    )}}
-                </Draggable>
+              <Draggable draggableId={String(data.goalOrderNo)} index={data.goalOrderNo} key={index}>
+               {provided => (
+                  <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <OrderTodoGoal data={data} index={index}  id={data.goalId} todoDataArray={todoDataArray} setDtTodos={setDtTodos} />
+                  </div>
+                )}  
+              </Draggable>
             )
-                              
-            })}  {/* goal.map */}
-    </Box> /* order-box */
-    )}
-    </Droppable>
+          })}
+          {provided.placeholder}
+        </div>
+      )}
+      </Droppable>
     </DragDropContext>
+  )
 
-
-  ) //최상단 return 
-    
+  // return (
+  //   <div className="feed-wrap">
+  //     <div className="goals-list-wrap">
+  //       {todoDataArray.map((data, idx) => {
+  //           return <OrderTodoGoal data={data} idx={idx} key={data.goalId} />
+  //         })}
+          
+  //     </div>
+  //   </div>
+  // )
 }
 
-export function TodoList (props) {
+export const OrderTodoGoal = (props) => {
 
-    const goal = props.goal;
-    const todo = props.todo;
+  const data = props.data;
+  const index = props.index;
+  const goal_id = props.id;
+  const todoDataArray = props.todoDataArray;
+  const setDtTodos = props.setDtTodos;
+  /* 함수 선언 시작 */
 
+  const onDragEnd = (res) => {
+    if (!res.destination) return;
+     //드래그 하는 sourced의 index
+     const sourceTodoOrderNo = res.source.index;
+  console.log("sourceTodoOrderNo", sourceTodoOrderNo)
+  //드래그 해서 내려놓은 destination의 index
+     const destinationTodoOrderNo = res.destination.index;
 
-    
-function todoDragEndEventHandler(result) {
-    if (!result.destination) return;
-    console.log("result", result);
+     todoDataArray.map((goal)=>{
+        if(goal.goalId === goal_id){
+          goal.todos.map((todo)=>{
+            console.log("todo.orderNo", todo.orderNo)
+            console.log("sourceTodoOrderNo", sourceTodoOrderNo)
 
-    // const currentOrder = JSON.parse(JSON.stringify(todo));
-    // const draggingItemIndex = result.source.index;
-    // const afterDragItemIndex = result.destination.index;
-    // const removeTodo = currentOrder.splice(draggingItemIndex, 1);
-
-    // currentOrder.splice(afterDragItemIndex, 0, removeTodo[0]);
-    // setTodo(currentOrder);
-
+            if(todo.orderNo === sourceTodoOrderNo){todo.orderNo = destinationTodoOrderNo}
+            // !!! 변경은 되나 ... 여러개일때 순서가 바뀌지 않는다...?
+            // !!! 1->3 으로 가면 1번이 3번이 되면서 나머지 2번이 1번이 되고 3번이 2번이 되어야 하는데
+            // !!! 이 방식은 ...큐..?
+          })
+        }
+     })
+     setDtTodos(todoDataArray);
   }
 
-    return(
-        
-    <DragDropContext onDragEnd={todoDragEndEventHandler} >
-        {/* 드래그 놓을 수 있는 영역 (드롭 영역) Droppable */}
-        <Droppable droppableId="TODOS"  type="TODOS">
-        {/* 드래그 Div 생성 */}
-        {(provided, snapshot) => (
-        <div className="todo-box" {...provided.droppableProps} ref={provided.innerRef}>
-        <List className="todo-list-wrap">
-        {todo.map((todo,index)=>{ //todo.map
-            return ( //todo.map return
-               // 드래그 영역 DragDrapContext
-                <Draggable key={`todo-${todo.goal_id}-goal-${todo.todo_id}`} draggableId={todo.todo_id.toString()} index={index}>
-                    {(provided) => {return ( 
-                    <div className="goals-todo-input-list-Box" key={`todo`+index} data-index={index} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                        {goal.goal_id === parseInt(todo.goal_id) ? (
-                                <div className="goals-todo-input-list-check-wrap">
-                                {todo.check_yn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" data-index={index} /> }
-                                    <p key={`todo${index}`} id="todo-input" className="goals-todo-list" 
-                                    name={todo.title} data-index={index} >{todo.title} </p>
-                                </div>
-                        ) : null} 
-                    </div>
-                    )}}
-                </Draggable>
-            ) //todo.map return
-        }) /* todo.map */}
-        </List>
-            </div>          
-            )}
-            </Droppable>
-            </DragDropContext>
-        
-        
-    )
 
-}
+  // const onDragEndTodo = (result) => {
+  //   if (!result.destination) return;
+
+    
+  //   const draggingItemIndex = result.source.index-1;
+  //   const afterDragItemIndex = result.destination.index-1;
+  //   const removeTag = todoDataArray.splice(draggingItemIndex, 1);
+
+  //   todoDataArray.todos.splice(afterDragItemIndex, 0, removeTag[0]);
+
+  //   setDtTodos(todoDataArray);
+  // }
+
+  /* 함수 선언 종료 */
+
+  return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="Todo">
+      {provided =>  (
+        <div className="goals-list-box" key={data.goalOrderNo} ref={provided.innerRef} {...provided.droppableProps}>
+          {/* Goal 컴포넌트 시작 */}
+          <Button className="goals-list-button" data-index={index} data={data}>
+            <ReceiptIcon className="goals-list-icon" />
+            <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color: data.goalTitleColor }}>
+              <p>{data.goalTitle}</p>
+            </div>
+            <p className="goals-list-plus-icon-wrap">
+              <AddCircleIcon className="goals-list-plus-icon" />
+            </p>
+          </Button>
+          {/* Goal 컴포넌트 종료 */}
+          {/* Todo 컴포넌트 map 시작 */}
+          <div className="todos-list-wrap">
+            {data.todos.map((data, index) => {
+              return (
+                <Draggable draggableId={"todo" + index} index={data.orderNo} key={data.todoId}>
+                  {provided => (
+                    <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
+                      <FeedTodoData todos={data} index={index}/> 
+                    </div>
+                 )}
+                </Draggable>
+              );
+            })}
+          </div>
+          {/* Todo 컴포넌트 map 종료 */}
+          {provided.placeholder} 
+        </div>
+      )}
+      </Droppable>
+    </DragDropContext>
+  );
+};
+
+
+
+export const FeedTodoData = (props) => {
+  const todos = props.todos;
+  const index = props.todos.todoId;
+
+  return (
+    <div className="todos-list-box" data-todos={todos}>
+      <div
+        className="goals-listItem-text-wrap"
+        id={todos.todoId}
+        data-index={todos.orderNo}
+      >
+        {todos.checkYn === "Y" ? (
+          <CheckBoxIcon
+            data-goalid={todos.goalId}
+            data-todoid={todos.todoId}
+            className="todos-list-check-icon"
+            data-check={todos.checkYn}
+          />
+        ) : (
+          <CheckBoxOutlineBlankIcon
+            data-goalid={todos.goalId}
+            data-todoid={todos.todoId}
+            className="todos-list-check-icon"
+            data-check={todos.checkYn}
+          />
+        )}
+        <TodoList todos={todos} />
+      </div>
+    </div>
+  );
+};
+
+const TodoList = React.forwardRef((props, ref) => {
+  const inputRef = useRef(null);
+
+  const todos = props.todos;
+
+  return (
+    <input
+      className="todos-list-input"
+      key={todos.todoId}
+      id="todo-input"
+      type="text"
+      maxLength="50"
+      size={inputRef.current?.value.length}
+      ref={inputRef}
+      name={todos.title}
+      data-orderno={todos.orderNo}
+      data-goalid={todos.goalId}
+      data-todoid={todos.todoId}
+      value={todos.title}
+      readOnly
+    />
+  );
+});

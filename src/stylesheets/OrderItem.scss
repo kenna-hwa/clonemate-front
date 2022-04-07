@@ -3,82 +3,122 @@
 @import './abstracts/mixin';
 
 //목표
-.order-box{
-    position: relative;
-    width: 75vw;
-    height: auto;
-    margin: 0 auto;
-    top: 0;
-    right: 0;
-    padding: 0.75em;
-    box-sizing: border-box;
 
+.goals-list-wrap{
     display: flex;
     flex-flow: column nowrap;
-    justify-content: start;
-    align-items: flex-start;
-    border-radius: 8px;
+    justify-content: flex-start;
 
-        .goals-listItem{
+    .goals-list-box{
+        width: fit-content;
+        margin: 15px 0 0 0;
+        padding: 0;
+
+        .goals-list-button{
+            background-color: $goal-btn-gray;
+            border: 1px solid $goal-btn-border-gray;
+            border-radius: 5px;
+            width: fit-content;
+            padding: 0 10px;
             display: flex;
-            flex-flow: column nowrap;
-            justify-content: start;
-            align-items: flex-start;
-            margin-bottom: 1em;
-            border-radius: 8px;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            min-width:fit-content;
+            max-width:fit-content;
+            margin-bottom: 12px;
 
-            .goals-listItem-text-wrap{
-                    display: flex;
-                    flex-flow: row nowrap;
-                    align-items: center;
-                    width: auto;
-                    padding: .3em .6em;
-                    background-color: $goal-btn-gray;
-                    border: 1px solid $goal-btn-border-gray;
-                    border-radius: 4px;
-                    box-sizing: border-box;
 
-                .goals-listItem-icon{
-                    font-size: 15px;
-                    color: #000;
-                    margin-right: .5em;
-                }
-
-                .goals-listItem-text{
-                    width: auto;
-                    flex: none;
-                       .MuiListItemText-primary{
-                        width: auto;
-                        margin-right: .5em;
-                        letter-spacing: -0.25px;
-                        font-size: 13px;
-                        font-family: 'Pretendard';
-                        font-weight: 900;
-                    }
-                    
-                }
-
-                .goals-listItem-add-icon {
-                    display: flex;
-                    min-width: 0;
-                    width: 16px;
-                    height: 16px;
-                    background: white;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 50%;
-                    
-                    span{
-                        color: #000;
-                    }
-                } 
-
+            .goals-list-icon{
+                font-size: 1em;
+                color: $text-black;
             }
-        }
-            .goals-todo-input-title{
+
+            .goals-list-text{
                 display: block;
+                font-size: 13px;
+                font-family: 'Pretendard';
+                font-weight: 900;
+                max-width: 200px; 
+                margin: 0 10px; 
+                overflow: hidden;
+               
+                p{
+                    max-width: 200px; 
+                    display:block; 
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-weight: 900;
+                }
             }
-        
+            .goals-list-plus-icon-wrap{
+                background-color: $text-black;
+                width: 10px;
+                height: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .goals-list-plus-icon{
+                    font-size: 1.4em;
+                    color: $bg-white;
+                }
+            }
+            
+        }
+
+    }
 }
 
-@include todo;
+
+.todos-list-wrap{
+    width: 100vw;
+    .todos-list-box{
+        width: 100vw;
+        .goals-listItem-text-wrap{
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            width: fit-content;
+            .todos-list-check-icon{
+                color: $text-gray;
+                cursor: pointer;
+            }
+            .todos-list-input{
+                width: fit-content;
+                position: relative;
+                border: 0;
+                border-bottom: 0px solid #00000000;
+                box-sizing: border-box;
+                outline: none;
+                font-size: 14px;
+                font-family: 'Pretendard';
+                font-weight: 600;
+                transform: rotate(0.04deg);
+                cursor: pointer;
+                padding: 6px 0;
+                margin: 5px 5px 5px 15px;
+
+                &::-ms-value{
+                    font-size: 14px;
+                    font-family: 'Pretendard';
+                    font-weight: 600;
+                    transform: rotate(0.04deg);
+                }
+
+                &:focus-visible{
+                    position: relative;
+                    border-bottom: 0px solid #00000000;
+                    box-sizing: border-box;
+                    outline: none;
+                    font-family: 'Pretendard';
+                    font-size: 14px;
+                    cursor: pointer;
+                    padding: 6px 0;
+                    margin: 5px 5px 5px 15px;
+                }
+            }
+        }
+       
+    }
+}
