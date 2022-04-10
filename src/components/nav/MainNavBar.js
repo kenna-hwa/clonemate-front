@@ -31,23 +31,46 @@ export default function MainNavBar() {
   //list 표시 나중에 별도로 빼야할듯!
   const SNB = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 228 }} //가로 길이
+    className='snb_wrap'
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 235}} //가로 길이
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Box sx={{padding: "10px"}}>
-        <h3>Me</h3>
-        <p>todo mate</p>
+      <section className='snb_user_info_wrap' style={{'background': 'red'}}>
+        {/* 유저 정보 저장 */}
+        {/* 로그인 하면 유저 정보 표시 */}
+        {/* 로그인 안되어 있으면 Me 표시 */}
+
+        {/* if 로그인 안된 경우 */}
+        <img src="" alt='유저 아이콘' />
+        <h1 className='snb_user_info_title'>me</h1>
+        <p></p>
         <button>가입하기</button>
-      </Box>
-      <List>
-        <ListItem>
-          <ListItemIcon></ListItemIcon>
-          <ListItemText />
-        </ListItem>
-      </List>
+
+
+        {/* if 로그인 된 경우 */}
+        <img src="" alt='유저 아이콘'/>
+        <h1 className='snb_user_info_title'>유저 닉네임</h1>
+        <p>유저 이메일</p>
+      </section>
+      <section className='snb_user_follow_info_wrap'
+      style={{'background': 'gray'}}
+      >
+        <p className='snb_user_follower'>{`숫자`}팔로워</p>
+        <p className='snb_user_following'>{`숫자`}팔로잉</p>
+      </section>
       <Divider />
+      <section className='snb_goal_wrap'
+      style={{'background': 'blue'}}
+      >
+        <h2 className='snb_goal_title'>목표</h2>
+      </section>
+      <Divider />
+      <section className='snb_routine_wrap'
+      style={{'background': 'green'}}>
+        <h2 className='snb_routine_title'>기한이 있는 할  일</h2>
+      </section>
     </Box>
   );
 
