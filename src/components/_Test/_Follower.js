@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
-
+import Box from '@mui/material/Box';
 import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -178,7 +180,8 @@ const handleFollowingChange = (e) => {
                                                 return e.ynComplete === "Y" ? 
                                                     <div className="follows-list-box" id={e.goal_id}>
                                                         <div  className="follow-list-button" id={e.goal_id}>
-                                                            
+                                                            <p className="follow-list-plus-icon-wrap">
+                                                                <CheckBoxIcon className="follow-list-plus-icon" /></p>
                                                             <p className="follow-list-text" >{e.todo_title}</p>
                                                                 
                                                         </div> 
