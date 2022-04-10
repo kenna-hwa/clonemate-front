@@ -1,0 +1,81 @@
+@import './abstracts/variables';
+@import './abstracts/font';
+
+
+.search-search-list-wrap{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    //padding: 10px;
+
+    .search-list-box{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 0 0;
+        padding: 0;
+
+        .search-list-button{
+            //background-color: $goal-btn-gray;
+            //border: 1px solid $goal-btn-border-gray;
+            //border-radius: 5px;
+            width: fit-content;
+            //padding: 5px 10px;
+            display: flex;
+            //align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            min-width:fit-content;
+            max-width:fit-content;
+            margin-bottom: 12px;
+            flex-flow: column nowrap;
+            align-items: flex-start;
+
+
+            .search-list-name{
+                display: block;
+                font-size: 14px;
+                font-family: 'Pretendard';
+                font-weight: 600;
+                max-width: 200px; 
+                margin: 0 10px; 
+                overflow: hidden;
+                color: $text-black;
+               
+                p{
+                    max-width: 200px; 
+                    display:block; 
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-weight: 600;
+                    //color: $text-black;
+                }
+            }
+            .search-list-text{
+                display: block;
+                font-size: 16px;
+                font-family: 'Pretendard';
+                font-weight: 300;
+                max-width: 200px; 
+                margin: 0 10px; 
+                overflow: hidden;
+                color: $text-black;
+               
+                p{
+                    max-width: 200px; 
+                    display:block; 
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-weight: 300;
+                    //color: $text-black;
+                }
+            }
+            
+            
+        }
+      
+
+    }
+
+}

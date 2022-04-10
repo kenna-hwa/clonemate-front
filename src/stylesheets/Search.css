@@ -62,7 +62,7 @@
   font-weight: 800;
 }
 
-.follow-follow-list-wrap {
+.search-search-list-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,15 +70,19 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.follow-follow-list-wrap .follow-list-box {
+.search-search-list-wrap .search-list-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -89,102 +93,68 @@
   padding: 0;
 }
 
-.follow-follow-list-wrap .follow-list-box .follow-list-name {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  line-height: 0;
-  font-size: 14px;
-  font-family: 'Pretendard';
-  font-weight: 600;
-  color: #1c1c1c;
-}
-
-.follow-follow-list-wrap .follow-list-box .follow-list-name .follow-list-name-name {
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.follow-follow-list-wrap .follow-list-box .follow-list-name .follow-list-name-icon-wrap {
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: 300;
-  margin-bottom: 6px;
-}
-
-.follow-follow-list-wrap .follow-list-box .follow-list-name .follow-list-name-icon-wrap .follow-list-name-icon {
-  font-size: 1.5em;
-  color: lightgray;
-}
-
-.follow-follow-list-wrap .follow-list-box .follows-list-box {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 1200px;
-}
-
-.follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button {
+.search-search-list-wrap .search-list-box .search-list-button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   line-height: 0;
-  margin-bottom: 0px;
-  -webkit-box-orient: horizontal;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin-bottom: 12px;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.search-search-list-wrap .search-list-box .search-list-button .search-list-name {
+  display: block;
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  max-width: 200px;
+  margin: 0 10px;
+  overflow: hidden;
   color: #1c1c1c;
 }
 
-.follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button .follow-list-plus-icon-wrap {
-  width: 10px;
-  height: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.search-search-list-wrap .search-list-box .search-list-button .search-list-name p {
+  max-width: 200px;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
 }
 
-.follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button .follow-list-plus-icon-wrap .follow-list-plus-icon {
-  font-size: 1.55em;
-  color: #FF873D;
-}
-
-.follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button .follow-list-text {
+.search-search-list-wrap .search-list-box .search-list-button .search-list-text {
   display: block;
   font-size: 16px;
   font-family: 'Pretendard';
   font-weight: 300;
-  margin-left: 14px;
+  max-width: 200px;
+  margin: 0 10px;
+  overflow: hidden;
   color: #1c1c1c;
 }
-/*# sourceMappingURL=Follow.css.map */
+
+.search-search-list-wrap .search-list-box .search-list-button .search-list-text p {
+  max-width: 200px;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 300;
+}
+/*# sourceMappingURL=Search.css.map */
