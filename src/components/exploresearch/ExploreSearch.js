@@ -7,6 +7,8 @@ import Search from "./Search";
 import Follower from "./Follower";
 import Following from "./Following";
 
+import '../../stylesheets/Search.css';
+
 export default function ExploreSearch() {
 
     function TabPanel(props) {
@@ -48,18 +50,21 @@ export default function ExploreSearch() {
       setValue(newValue);
     };
 
+
     return (
         //BasicNavBar 위치 조정
+        
         <Box 
-        sx={{ width: '95%', bgcolor: 'background.paper' }} 
-        textAlign='center' 
-        style={{ margin : 16, padding: 16, position:'relative'}}>
+        sx={{ width: '100%', bgcolor: 'background.paper'}}  
+        style={{ position:'relative'}}>
            
-            {/* Tabs style 변경 */}
-            <Tabs variant="fullWidth" value={value} onChange={handleChange} >
-                <Tab  label="검색" {...a11yProps(0)} />
-                <Tab  label="팔로워" {...a11yProps(1)} />
-                <Tab  label="팔로잉" {...a11yProps(2)} />
+            {/* Tabs fontweight 변경, 팔로워 length 추가 */}
+            <Tabs 
+            sx= {{'& .MuiTab-root': { borderBottomColor: 'red' } }}
+            variant="fullWidth" TabIndicatorProps={{ style: { background: "#080808"} }} value={value} onChange={handleChange}>
+                <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="검색" {...a11yProps(0)} />
+                <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="팔로워" {...a11yProps(1)} />
+                <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="팔로잉" {...a11yProps(2)} />
             </Tabs>
            
            {/* 각각 TabPanel에 users 정보 불러오기 */}
@@ -73,5 +78,6 @@ export default function ExploreSearch() {
                 <Following/>
             </TabPanel>
         </Box>
+        
     );
 }

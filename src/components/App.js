@@ -17,7 +17,6 @@ import GoalEditForm from "./goal/GoalEditForm";
 import More from "./policy/More";
 import MorePolicy from "./policy/MorePolicy";
 import MoreAnnounce from "./policy/MoreAnnounce";
-import Explore from "./main/Explore";
 import ExploreSearch from "./exploresearch/ExploreSearch";
 import Routines from "./routines/Routines";
 
@@ -154,10 +153,6 @@ function App() {
         <Route exact path="/routines">
         <BasicNavBar/> 
          <Routines />  
-        </Route>
-        <Route exact path="/explore">
-        <BasicNavBar/>
-          <Explore />
         </Route>
         <Route exact path="/exploreSearch">
         <BasicNavBar/>

@@ -1,0 +1,105 @@
+@import './abstracts/variables';
+@import './abstracts/font';
+@import './abstracts/mixin';
+
+
+.follow-follow-list-wrap{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  //padding: 10px;
+
+    .follow-list-box {
+      display: flex;
+      //flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 0 0;
+      padding: 0;
+  
+      .follow-list-name{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        line-height: 0;
+        font-size: 14px;
+        font-family: 'Pretendard';
+        font-weight: 600;
+        color: $text-black;
+      
+     
+        .follow-list-name-name {
+          display:block; 
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-weight: 600;
+          margin-bottom: 6px;
+          
+        }
+        
+        .follow-list-name-icon-wrap {
+          display:block; 
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-weight: 300;
+          margin-bottom: 6px;
+
+          .follow-list-name-icon{
+            font-size: 1.5em;
+            color:lightgray;
+          }
+        }
+      }
+
+      .follows-list-box{
+        //display: flex;
+        flex-flow: row nowrap;
+        //justify-content: space-between;
+        align-items: center;
+        //margin: 0 0 0 0;
+        //padding: 0;
+        
+        // ***** 폭 넓이에 따라 변하게 수정 
+        width: 1200px;
+
+          .follow-list-button{
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            margin-bottom: 0px;
+            flex-flow: row nowrap;
+            color: $text-black;
+
+              .follow-list-plus-icon-wrap{
+                width: 10px;
+                height: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                  .follow-list-plus-icon{
+                    font-size: 1.55em;
+                    color: #FF873D;
+                    
+                  }
+              }
+
+              .follow-list-text{
+                  display: block;
+                  font-size: 16px;
+                  font-family: 'Pretendard';
+                  font-weight: 300;
+                  //max-width: 200px; 
+                  margin-left: 14px; 
+                  //overflow: hidden;
+                  color: $text-black;
+                  //padding: 100 100 100 100;
+              }
+          
+          }
+  
+    }
+  }
+}
