@@ -41,33 +41,45 @@ export default function OrderItem() {
   /* atom 종료 */
 
   /* 함수 선언 시작 */
+    // a little function to help us with reordering the result
+    const Reorder = (list, startIndex, endIndex) => {
+      const result = Array.from(list);
+      const [removed] = result.splice(startIndex, 1);
+      result.splice(endIndex, 0, removed);
 
-  const onDragEnd = (res) => {
-    if (!res.destination) return;
-    //드래그 하는 sourced의 index
-    const sourceGoalOrderNo = res.source.index;
-    //드래그 해서 내려놓은 destination의 index
-    const destinationGoalOrderNo = res.destination.index;
-  console.log("sourceGoalOrderNo", sourceGoalOrderNo)
-  todoDataArray.map((goal)=>{
-      if(goal.goalOrderNo === sourceGoalOrderNo){
-        goal.goalOrderNo = destinationGoalOrderNo;
-      }
-    })
-    setDtTodos(todoDataArray)
-}
+      return result;
+    };
+
+
+// 기존 방식
+  // const onDragEnd = (res) => {
+  //   if (!res.destination) return;
+  //   //드래그 하는 sourced의 index
+  //   const sourceGoalOrderNo = res.source.index;
+  //   //드래그 해서 내려놓은 destination의 index
+  //   const destinationGoalOrderNo = res.destination.index;
+  //   console.log("sourceGoalOrderNo", sourceGoalOrderNo)
+  //   todoDataArray.map((goal)=>{
+  //       if(goal.goalOrderNo === sourceGoalOrderNo){
+  //         goal.goalOrderNo = destinationGoalOrderNo;
+  //       }
+  //     })
+  //     setDtTodos(todoDataArray)
+
+  // };
+
+
 
   const onDragEndGoal = (result) => {
     if (!result.destination) return;
+    //드래그 하는 sourced의 index
+    const sourceGoalOrderNo = result.source.index;
+    //드래그 해서 내려놓은 destination의 index
+    const destinationGoalOrderNo = result.destination.index;
+    //미리 만들어둔 Reorder 함수 사용
+    const reorderArray = Reorder(dtTodos, sourceGoalOrderNo, destinationGoalOrderNo)
+    setDtTodos(reorderArray);
 
-    
-    const draggingItemIndex = result.source.index-1;
-    const afterDragItemIndex = result.destination.index-1;
-    const removeTag = todoDataArray.splice(draggingItemIndex, 1);
-
-    todoDataArray.splice(afterDragItemIndex, 0, removeTag[0]);
-
-    setDtTodos(todoDataArray);
   }
 
   /* 함수 선언 종료 */
@@ -79,10 +91,10 @@ export default function OrderItem() {
         <div className="goals-list-wrap" {...provided.droppableProps} ref={provided.innerRef}>
           {todoDataArray.map((data, index) => {
             return (
-              <Draggable draggableId={String(data.goalOrderNo)} index={data.goalOrderNo} key={index}>
+              <Draggable draggableId={String(data.goalOrderNo)} index={index} key={index}>
                {provided => (
                   <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <OrderTodoGoal data={data} index={index}  id={data.goalId} todoDataArray={todoDataArray} setDtTodos={setDtTodos} />
+                    <OrderTodoGoal data={data} index={index}  id={data.goalId} todoDataArray={todoDataArray} setDtTodos={setDtTodos} Reorder={Reorder} />
                   </div>
                 )}  
               </Draggable>
@@ -95,16 +107,6 @@ export default function OrderItem() {
     </DragDropContext>
   )
 
-  // return (
-  //   <div className="feed-wrap">
-  //     <div className="goals-list-wrap">
-  //       {todoDataArray.map((data, idx) => {
-  //           return <OrderTodoGoal data={data} idx={idx} key={data.goalId} />
-  //         })}
-          
-  //     </div>
-  //   </div>
-  // )
 }
 
 export const OrderTodoGoal = (props) => {
@@ -114,42 +116,38 @@ export const OrderTodoGoal = (props) => {
   const goal_id = props.id;
   const todoDataArray = props.todoDataArray;
   const setDtTodos = props.setDtTodos;
+  const Reorder = props.Reorder;
+
   /* 함수 선언 시작 */
 
-  const onDragEnd = (res) => {
+  const onDragEndTodo = (res) => {
     if (!res.destination) return;
-     //드래그 하는 sourced의 index
-     const sourceTodoOrderNo = res.source.index;
-  console.log("sourceTodoOrderNo", sourceTodoOrderNo)
-  //드래그 해서 내려놓은 destination의 index
-     const destinationTodoOrderNo = res.destination.index;
+    //드래그 하는 sourced의 index
+    const sourceTodoOrderNo = res.source.index;
+    //드래그 해서 내려놓은 destination의 index
+    const destinationTodoOrderNo = res.destination.index;
 
-     todoDataArray.map((goal)=>{
+    todoDataArray.map(goal => {
         if(goal.goalId === goal_id){
-          goal.todos.map((todo)=>{
-            console.log("todo.orderNo", todo.orderNo)
-            console.log("sourceTodoOrderNo", sourceTodoOrderNo)
-
-            if(todo.orderNo === sourceTodoOrderNo){todo.orderNo = destinationTodoOrderNo}
-            // !!! 변경은 되나 ... 여러개일때 순서가 바뀌지 않는다...?
-            // !!! 1->3 으로 가면 1번이 3번이 되면서 나머지 2번이 1번이 되고 3번이 2번이 되어야 하는데
-            // !!! 이 방식은 ...큐..?
-          })
+          const reorderArray = Reorder(goal.todos, sourceTodoOrderNo, destinationTodoOrderNo)
+          console.log(reorderArray)
+          goal.todos = reorderArray;         
         }
-     })
-     setDtTodos(todoDataArray);
+    })
+    setDtTodos(todoDataArray);
+
   }
 
-
-  // const onDragEndTodo = (result) => {
+//테스트
+  // const onDragEnd = (result) => {
   //   if (!result.destination) return;
 
     
   //   const draggingItemIndex = result.source.index-1;
   //   const afterDragItemIndex = result.destination.index-1;
   //   const removeTag = todoDataArray.splice(draggingItemIndex, 1);
-
-  //   todoDataArray.todos.splice(afterDragItemIndex, 0, removeTag[0]);
+  //   console.log("removeTag", removeTag)
+  //   // todoDataArray.todos.splice(afterDragItemIndex, 0, removeTag[0]);
 
   //   setDtTodos(todoDataArray);
   // }
@@ -157,7 +155,7 @@ export const OrderTodoGoal = (props) => {
   /* 함수 선언 종료 */
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEndTodo}>
       <Droppable droppableId="Todo">
       {provided =>  (
         <div className="goals-list-box" key={data.goalOrderNo} ref={provided.innerRef} {...provided.droppableProps}>
@@ -176,7 +174,7 @@ export const OrderTodoGoal = (props) => {
           <div className="todos-list-wrap">
             {data.todos.map((data, index) => {
               return (
-                <Draggable draggableId={"todo" + index} index={data.orderNo} key={data.todoId}>
+                <Draggable draggableId={"todo" + index} index={index} key={data.todoId}>
                   {provided => (
                     <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} >
                       <FeedTodoData todos={data} index={index}/> 
