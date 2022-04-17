@@ -23,6 +23,7 @@ export default function EditRoutinesForm(props) {
 
         let [dayActiveBoolean, setDayActiveBoolean] = useState(false);
         let [dateActiveBoolean, setDateActiveBoolean] = useState(false);
+        //날짜 선택 캘린더 모달 등장 시 입력할 날짜 정보가 어디인지 (date, endRepeatDate)
         let [location, setLocation] = useState(null)
 
         let [createRoutinesState, setCreactRoutinesState] = useState(todos);

@@ -36,8 +36,6 @@ export default function OrderItem() {
   // atom에서 goal+todo 데이터 가져오기
   let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
   const todoDataArray = JSON.parse(JSON.stringify(dtTodos));
-  console.log("dtTodos", dtTodos)
-
   /* atom 종료 */
 
   /* 함수 선언 시작 */
@@ -130,7 +128,6 @@ export const OrderTodoGoal = (props) => {
     todoDataArray.map(goal => {
         if(goal.goalId === goal_id){
           const reorderArray = Reorder(goal.todos, sourceTodoOrderNo, destinationTodoOrderNo)
-          console.log(reorderArray)
           goal.todos = reorderArray;         
         }
     })
