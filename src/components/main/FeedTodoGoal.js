@@ -18,8 +18,8 @@ import FeedTodoData  from "./FeedTodoData";
         <div className="goals-list-box" key={data.goalOrderNo}>
             <Button className="goals-list-button" id={idx} data-index={idx} data={data} onClick={onClickGoalHandler}>
                 <ReceiptIcon className="goals-list-icon" />
-                <p className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
-                </p>
+                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
+                </div>
                 <p className="goals-list-plus-icon-wrap">
                 <AddCircleIcon className="goals-list-plus-icon"/>
                 </p>

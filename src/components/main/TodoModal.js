@@ -158,12 +158,14 @@ export function DatePickerCalender(props) {
     const todos = props.todos;
     const new_date = new Date(todos.date);
     let [newDate, setNewDate] = useState(new_date);
+
     const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
-    const setModalActiveIndex = props.setModalActiveIndex;
     const calendarActive = props.calendarActive;
     const setCalendarActiveIndex = props.setCalendarActiveIndex;
 
+
+    //모달 내 선택한 날짜 상단 표시
     const selectedDate = newDate.toJSON().substring(0,10);
 
     let selectedYear = newDate.getFullYear();
@@ -177,8 +179,8 @@ export function DatePickerCalender(props) {
         const todoModalDateChangeHandler = (e) => {
             const goal_id = parseInt(e.currentTarget.dataset.goalid);
             const todo_id = parseInt(e.currentTarget.dataset.todoid);
-            todoDataArray.map(data=>
-                data.todos.map(todo=>{
+            todoDataArray.map((data)=>
+                data.todos.map((todo)=> {
                     if(todo.goalId === goal_id && todo.todoId === todo_id && todo.date === todo.endRepeatDate){
                     todo.date = selectedDate;
                     todo.endRepeatDate = selectedDate;

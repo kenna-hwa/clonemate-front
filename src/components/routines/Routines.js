@@ -59,7 +59,7 @@ return (
                         onClick={goalSelectedHandler}
                         >
                             <ReceiptIcon className="goals-list-icon" />
-                                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
+                                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}><p>{data.goalTitle}</p>
                                 </div>
                                 <p className="goals-list-plus-icon-wrap">
                                 <AddCircleIcon className="goals-list-plus-icon"/>
