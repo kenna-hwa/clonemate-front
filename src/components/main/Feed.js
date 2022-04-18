@@ -87,8 +87,15 @@ const checkNdoitToday = () => {
 
 
 //할 일 다른 날 하기 캘린더 on
-const checkNdoitCalendarOn = (e) => {
-    setAllTodoCalendarActive(true);
+const checkNdoitCalendarOn = () => {
+    todoDataArray.map(data=>
+        //N이 없으면 나타나지 않아야 한다!!!
+        data.todos.map((todo)=>{
+            if(todo.checkYn !== 'N') return false
+            else setAllTodoCalendarActive(true);
+        })
+    )
+    
 }
 
 //미완료 할 일 다른 날 하기 확인 클릭
