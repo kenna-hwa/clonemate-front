@@ -56,13 +56,13 @@ export default function ExploreSearch() {
         
         <Box 
         sx={{ width: '100%', bgcolor: 'background.paper'}}  
-        style={{ position:'relative'}}>
+        position="static">
            
             {/* Tabs fontweight 변경, 팔로워 length 추가 */}
             <Tabs 
-            sx= {{'& .MuiTab-root': { borderBottomColor: 'red' } }}
+            sx= {{borderBottom: "1px solid #CCCDCD", '& .MuiTab-root': { borderBottomColor: 'red' } }}
             variant="fullWidth" TabIndicatorProps={{ style: { background: "#080808"} }} value={value} onChange={handleChange}>
-                <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="검색" {...a11yProps(0)} />
+                <Tab sx={{paddingRight:"2px", "&.Mui-selected": { color: "black", fontWeight: 800} }} label="검색" {...a11yProps(0)} />
                 <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="팔로워" {...a11yProps(1)} />
                 <Tab sx={{ "&.Mui-selected": { color: "black", fontWeight: 800} }} label="팔로잉" {...a11yProps(2)} />
             </Tabs>

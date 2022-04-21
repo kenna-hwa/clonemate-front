@@ -151,66 +151,65 @@ const handleFollowingChange = (e) => {
 
 
     return (
-        <Box 
-            sx={{ width: '100%', bgcolor: 'background.paper' }} 
-            textAlign='center' 
-            style={{ position:'relative'}}>
+      <div className="follow-follow-list-wrap" >
+       
+      {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
+      {following.map((data => data.strUserId.length > 0 ? (
+           
+              <List // 넓이 조정 
+                  sx={{ width: '100%'}}
+                  style={{position:'relative'}} 
+                  key={data.strUserName}  disablePadding>
+                      
+                          {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
+                  
+                      
+                              <div className="follow-list-box" key={data.strUserId}> 
+                               
+                                  <Stack>
+                                  <div className="follow-list-name" id={data.strUserName} name={data.strUserName}>
+                                      <p className="follow-list-name-name"><p>{data.strUserName}</p></p>
+                                      <p className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
+                                          <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></p>
+                                  </div>
+                                      
+                                      {data.dtTodo.map(e => {
+                                          return e.ynComplete === "Y" ? 
+                                              <div className="follows-list-box" id={e.goal_id}>
+                                                  <div  className="follow-list-button" id={e.goal_id}>
+                                                      
+                                                      <p className="follow-list-text" >{e.todo_title}</p>
+                                                          
+                                                  </div> 
+                                              </div>: null}
+                                
+                                      )}
+                                  </Stack>
+                                
+                              
 
-        {following.map((data => data.strUserId.length > 0 ? (
-             
-                <List
-        
-                sx={{ width: '100%'}}
-                style={{position:'relative'}} 
-        
-                component="div" disablePadding>
-        
+                              {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
+                              <Dialog
+                                  sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
+                                  maxWidth="sm"
+                                  open={open}
+                                  >
+                                  <Stack spacing={1} >
+                                      <Button autoFocus data-index={data.strUserId} onClick={handleFollowingChange}  color="error">언팔로우</Button>
+                                      <Button onClick={handleClose}>취소</Button>
+                                  </Stack>
+                                 
+                              </Dialog>
+                              </div> 
+                           
+                          
+                      
+                   
+                      
+              </List> ) : <p>"목록 없음"</p> )
+      )}
 
-                {/* Button click 효과 및 css 수정 */}
-                 <div className="container" key={data.strUserId} > 
-                    {/* 왜 div 하나 차이로 레이아웃이 달라지는지 모르겠음 */}
-                    <ListItemButton>
-                        <Stack>
-                            <ListItemText
-                                className="button">   
-                                {data.strUserName}
-                            </ListItemText> 
-                
-                             {/*{data.dtTodo.map(e => {
-                                    return e.ynComplete === "Y" ? 
-                                     <React.Fragment>
-                                            <ListItemText
-                                              secondary={e.todo_title}>  
-                                         </ListItemText> 
-                                        </React.Fragment> : null}
-                             )} */}
+  </div>
 
-                        </Stack>
-                    </ListItemButton> 
-
-                     <Button  className="button1" onClick={handleClickOpen}>
-                         <MoreHorizIcon color="disabled"/> 
-                     </Button>
-                    </div>
-
-                    {/* Dialog 위치 조정, height 등 style 변경 */}
-                    <Dialog
-                     sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
-                     maxWidth="sm"
-                        open={open}
-                        >
-                     <Stack spacing={1} >
-                         <Button autoFocus data-index={data.strUserId} onClick={handleFollowingChange} color="error">언팔로우</Button>
-                         <Button onClick={handleClose}>취소</Button>
-                     </Stack>
-               
-                    </Dialog>
-
-                 
-                </List> ) : <p>"목록 없음"</p> )
-             
-           )}
-     
-        </Box>
     
     )} 
