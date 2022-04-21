@@ -75,6 +75,10 @@
           justify-content: flex-start;
 }
 
+.search-search-list-wrap .search-blank {
+  margin-top: 0px;
+}
+
 .search-search-list-wrap .search-list-box {
   display: -webkit-box;
   display: -ms-flexbox;

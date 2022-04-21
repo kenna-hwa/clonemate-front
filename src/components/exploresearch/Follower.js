@@ -139,10 +139,10 @@ const handleFollowingChange = (e) => {
     console.log('current user', userId);
 
     const thisData = [...follower];
-    let newFollowing = thisData.filter(item => item.strUserId !== userId)
+    let newFollower = thisData.filter(item => item.strUserId !== userId)
 
-    setFollower(newFollowing);
-    console.log(newFollowing)
+    setFollower(newFollower);
+    console.log(newFollower)
 
     setOpen(false);
     //window.location.replace(`/exploreSearch/`);
@@ -163,7 +163,7 @@ const handleFollowingChange = (e) => {
                             
                                 {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
                         
-                                 <React.Fragment>
+                         
             
                                     <div className="follow-list-box" key={data.strUserId}> 
                                      
@@ -187,7 +187,7 @@ const handleFollowingChange = (e) => {
                                             )}
                                         </Stack>
                                       
-                                    </div> 
+                                    
 
                                     {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
                                     <Dialog
@@ -201,7 +201,8 @@ const handleFollowingChange = (e) => {
                                         </Stack>
                                        
                                     </Dialog>
-                                 </React.Fragment>
+                                    </div> 
+                              
                                 
                             
                          

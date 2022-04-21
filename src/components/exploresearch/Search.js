@@ -35,6 +35,7 @@ export default function Search() {
       <div className="search-search-list-wrap" >
             {/* textfield underline 색상 변경 */}
             <TextField 
+                className="search-blank"
                 fullWidth  
                 hiddenLabel
                 id="filled-basic"
