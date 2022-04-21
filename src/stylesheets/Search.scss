@@ -6,7 +6,10 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    //padding: 10px;
+    
+    .search-blank{
+      margin-top: 0px; 
+    }
 
     .search-list-box{
         display: flex;
