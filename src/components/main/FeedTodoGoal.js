@@ -18,13 +18,13 @@ import FeedTodoData  from "./FeedTodoData";
         <div className="goals-list-box" key={data.goalOrderNo}>
             <Button className="goals-list-button" id={idx} data-index={idx} data={data} onClick={onClickGoalHandler}>
                 <ReceiptIcon className="goals-list-icon" />
-                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
+                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.titleColor }}  ><p>{data.title}</p>
                 </div>
                 <p className="goals-list-plus-icon-wrap">
                 <AddCircleIcon className="goals-list-plus-icon"/>
                 </p>
             </Button>
-            <div className="todos-list-wrap">
+            <div className="todos-list-cont">
                 {data.todos.map((data, idx)=>{
                     return (
                     <React.Fragment key={data.todoId}>

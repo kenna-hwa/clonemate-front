@@ -64,167 +64,169 @@ export const objTodosDataResult = atom({
   key: 'objTodosDataResult',
   default: [
   {
-  goalTitle : "첫 번째 목표",
-  goalId: 1,
-  goalOrderNo : 1,
-  goalTitleColor : "#ff0000",
-  todos : [
-       {goalId: 1,
-        todoId: 1,
-        orderNo: 1,
-        title: "첫 번째 목표의 첫 번째 할 일",
-        date: "2022-02-13",
-        endRepeatDate: "2022-02-13",
-        repeatDays: {
-          THU: "N",
-          WEN: "N",
-          TUE: "N",
-          SAT: "N",
-          FRI: "N",
-          MON: "N",
-          SUN: "N"
+  "id": 1,
+  "orderNo" : 1,
+  "title" : "첫 번째 목표",
+  "privacy": "PUB",
+  "titleColor" : "#ff0000",
+  "todos" : [
+       {
+        "id": 1,
+        "goalId": 1,
+        "orderNo": 1,
+        "title": "첫 번째 목표의 첫 번째 할 일",
+        "date": "2022-02-13",
+        "endRepeatDate": "2022-02-13",
+        "repeatDays": {
+          "THU": "N",
+          "WEN": "N",
+          "TUE": "N",
+          "SAT": "N",
+          "FRI": "N",
+          "MON": "N",
+          "SUN": "N"
         },
-        checkYn: "N"
+        "checkYn": "N"
         },
-        {goalId: 1,
-          todoId: 2,
-          orderNo: 2,
-          title: "첫 번째 목표의 두 번째 할 일",
-          date: "2022-02-13",
-          endRepeatDate: "2022-02-14",
-          repeatDays: {
-            THU: "N",
-            WEN: "N",
-            TUE: "N",
-            SAT: "N",
-            FRI: "N",
-            MON: "N",
-            SUN: "N"
+        {"goalId": 1,
+          "todoId": 2,
+          "orderNo": 2,
+          "title": "첫 번째 목표의 두 번째 할 일",
+          "date": "2022-02-13",
+          "endRepeatDate": "2022-02-14",
+          "repeatDays": {
+            "THU": "N",
+            "WEN": "N",
+            "TUE": "N",
+            "SAT": "N",
+            "FRI": "N",
+            "MON": "N",
+            "SUN": "N"
           },
-          checkYn: "N"
+          "checkYn": "N"
       },
-      {goalId: 1,
-        todoId: 3,
-        orderNo: 3,
-        title: "첫 번째 목표의 세 번째 할 일",
-        date: "2022-02-13",
-        endRepeatDate: "2022-02-17",
-        repeatDays: {
-          THU: "N",
-          WEN: "Y",
-          TUE: "N",
-          SAT: "N",
-          FRI: "Y",
-          MON: "N",
-          SUN: "N"
+      {"goalId": 1,
+        "todoId": 3,
+        "orderNo": 3,
+        "title": "첫 번째 목표의 세 번째 할 일",
+        "date": "2022-02-13",
+        "endRepeatDate": "2022-02-17",
+        "repeatDays": {
+          "THU": "N",
+          "WEN": "Y",
+          "TUE": "N",
+          "SAT": "N",
+          "FRI": "Y",
+          "MON": "N",
+          "SUN": "N"
         },
-        checkYn: "N"
+        "checkYn": "N"
       },
   ]},
   {
-    goalTitle : "두 번째 목표",
-    goalId: 2,
-    goalOrderNo : 2,
-    goalTitleColor : "#ff873d",
-    todos : [
-         {goalId: 2,
-          todoId: 1,
-          orderNo: 1,
-          title: "두 번째 목표의 첫 번째 할 일",
-          date: "2022-02-13",
-          endRepeatDate: "2022-02-13",
-          repeatDays: {
-            THU: "N",
-            WEN: "N",
-            TUE: "N",
-            SAT: "N",
-            FRI: "N",
-            MON: "N",
-            SUN: "N"
+    "title" : "두 번째 목표",
+    "id": 2,
+    "orderNo" : 2,
+    "titleColor" : "#ff873d",
+    "todos" : [
+         {"goalId": 2,
+          "todoId": 1,
+          "orderNo": 1,
+          "title": "두 번째 목표의 첫 번째 할 일",
+          "date": "2022-02-13",
+          "endRepeatDate": "2022-02-13",
+          "repeatDays": {
+            "THU": "N",
+            "WEN": "N",
+            "TUE": "N",
+            "SAT": "N",
+            "FRI": "N",
+            "MON": "N",
+            "SUN": "N"
           },
-          checkYn: "N"
+          "checkYn": "N"
           },
-          {goalId: 2,
-            todoId: 2,
-            orderNo: 2,
-            title: "두 번째 목표의 두 번째 할 일",
-            date: "2022-02-11",
-            endRepeatDate: "2022-02-15",
-            repeatDays: {
-              THU: "N",
-              WEN: "N",
-              TUE: "N",
-              SAT: "N",
-              FRI: "N",
-              MON: "N",
-              SUN: "N"
+          {"goalId": 2,
+            "todoId": 2,
+            "orderNo": 2,
+            "title": "두 번째 목표의 두 번째 할 일",
+            "date": "2022-02-11",
+            "endRepeatDate": "2022-02-15",
+            "repeatDays": {
+              "THU": "N",
+              "WEN": "N",
+              "TUE": "N",
+              "SAT": "N",
+              "FRI": "N",
+              "MON": "N",
+              "SUN": "N"
             },
-            checkYn: "N"
+            "checkYn": "N"
         },
     ]},
     {
-      goalTitle : "세 번째 목표",
-      goalId: 3,
-      goalOrderNo : 3,
-      goalTitleColor : "#0119cb",
-      todos : [
-           {goalId: 3,
-            todoId: 1,
-            orderNo: 1,
-            title: "세 번째 목표의 첫 번째 할 일",
-            date: "2022-02-16",
-            endRepeatDate: "2022-02-16",
-            repeatDays: {
-              THU: "N",
-              WEN: "N",
-              TUE: "N",
-              SAT: "N",
-              FRI: "N",
-              MON: "N",
-              SUN: "N"
+      "title" : "세 번째 목표",
+      "id": 3,
+      "orderNo" : 3,
+      "titleColor" : "#0119cb",
+      "todos" : [
+           {"goalId": 3,
+            "todoId": 1,
+            "orderNo": 1,
+            "title": "세 번째 목표의 첫 번째 할 일",
+            "date": "2022-02-16",
+            "endRepeatDate": "2022-02-16",
+            "repeatDays": {
+              "THU": "N",
+              "WEN": "N",
+              "TUE": "N",
+              "SAT": "N",
+              "FRI": "N",
+              "MON": "N",
+              "SUN": "N"
             },
-            checkYn: "N"
+            "checkYn": "N"
             },
-            {goalId: 3,
-              todoId: 2,
-              orderNo: 2,
-              title: "세 번째 목표의 두 번째 할 일",
-              date: "2022-02-13",
-              endRepeatDate: "2022-02-19",
-              repeatDays: {
-                THU: "N",
-                WEN: "N",
-                TUE: "N",
-                SAT: "N",
-                FRI: "N",
-                MON: "N",
-                SUN: "N"
+            {"goalId": 3,
+              "todoId": 2,
+              "orderNo": 2,
+              "title": "세 번째 목표의 두 번째 할 일",
+              "date": "2022-02-13",
+              "endRepeatDate": "2022-02-19",
+              "repeatDays": {
+                "THU": "N",
+                "WEN": "N",
+                "TUE": "N",
+                "SAT": "N",
+                "FRI": "N",
+                "MON": "N",
+                "SUN": "N"
               },
-              checkYn: "N"
+              "checkYn": "N"
           },
       ]},
       {
-        goalTitle : "네 번째 목표",
-        goalId: 4,
-        goalOrderNo : 4,
-        goalTitleColor : "#77ab59",
-        todos : [
-             {goalId: 4,
-              todoId: 1,
-              orderNo: 1,
-              title: "네 번째 목표의 첫 번째 할 일",
-              date: "2022-02-16",
-              endRepeatDate: "2022-02-16",
-              repeatDays: {
-                THU: "N",
-                WEN: "N",
-                TUE: "N",
-                SAT: "N",
-                FRI: "N",
-                MON: "N",
-                SUN: "N"
+        "title" : "네 번째 목표",
+        "id": 4,
+        "orderNo" : 4,
+        "titleColor" : "#77ab59",
+        "todos" : [
+             {"goalId": 4,
+              "todoId": 1,
+              "orderNo": 1,
+              "title": "네 번째 목표의 첫 번째 할 일",
+              "date": "2022-02-16",
+              "endRepeatDate": "2022-02-16",
+              "repeatDays": {
+                "THU": "N",
+                "WEN": "N",
+                "TUE": "N",
+                "SAT": "N",
+                "FRI": "N",
+                "MON": "N",
+                "SUN": "N"
               },
-              checkYn: "N"
+              "checkYn": "N"
               },
         ]},
 ]
@@ -280,65 +282,65 @@ export const createRepeatDay = atom({
 }
 });
 
-export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린더에서 날짜 클릭하면 해당 날짜로 값 받아오기 // 더미 데이터는 2022-02-05
-  key: "todoData",
-  default: [
-    {
-    "todo_id": 0,
-    "goal_id": 0, //묶여있는 goal id
-    "next_todo_id": 1, //다음 todo id (순서지정용)
-    "title": "첫 번째 목표의 할 일 0",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  },
-  {
-    "todo_id": 1,
-    "goal_id": 0, //묶여있는 goal id
-    "next_todo_id": 2, //다음 todo id (순서지정용)
-    "title": "첫 번째 목표의 할 일 1",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  },
-  {
-    "todo_id": 0,
-    "goal_id": 1, //묶여있는 goal id
-    "next_todo_id": 1, //다음 todo id (순서지정용)
-    "title": "두 번째 목표의 할 일 1",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  }
-]
-})
+// export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린더에서 날짜 클릭하면 해당 날짜로 값 받아오기 // 더미 데이터는 2022-02-05
+//   key: "todoData",
+//   default: [
+//     {
+//     "todo_id": 0,
+//     "goal_id": 0, //묶여있는 goal id
+//     "next_todo_id": 1, //다음 todo id (순서지정용)
+//     "title": "첫 번째 목표의 할 일 0",
+//     "date": "2022-02-05",
+//     "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+//     "repeat_days": {
+//         "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+//         "mon": "N",
+//         "tue": "N",
+//         "wed": "N",
+//         "thu": "N",
+//         "fri": "N",
+//         "sat": "N",
+//     },
+//     "check_yn" : "N" //달성여부
+//   },
+//   {
+//     "todo_id": 1,
+//     "goal_id": 0, //묶여있는 goal id
+//     "next_todo_id": 2, //다음 todo id (순서지정용)
+//     "title": "첫 번째 목표의 할 일 1",
+//     "date": "2022-02-05",
+//     "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+//     "repeat_days": {
+//         "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+//         "mon": "N",
+//         "tue": "N",
+//         "wed": "N",
+//         "thu": "N",
+//         "fri": "N",
+//         "sat": "N",
+//     },
+//     "check_yn" : "N" //달성여부
+//   },
+//   {
+//     "todo_id": 0,
+//     "goal_id": 1, //묶여있는 goal id
+//     "next_todo_id": 1, //다음 todo id (순서지정용)
+//     "title": "두 번째 목표의 할 일 1",
+//     "date": "2022-02-05",
+//     "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+//     "repeat_days": {
+//         "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+//         "mon": "N",
+//         "tue": "N",
+//         "wed": "N",
+//         "thu": "N",
+//         "fri": "N",
+//         "sat": "N",
+//     },
+//     "check_yn" : "N" //달성여부
+//   }
+// ]
+// })
 
 export const todoReadOnly = atom({
   key: "todoReadOnly",

@@ -92,7 +92,7 @@ export default function OrderItem() {
               <Draggable draggableId={String(data.goalOrderNo)} index={index} key={index}>
                {provided => (
                   <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <OrderTodoGoal data={data} index={index}  id={data.goalId} todoDataArray={todoDataArray} setDtTodos={setDtTodos} Reorder={Reorder} />
+                    <OrderTodoGoal data={data} index={index}  id={data.id} todoDataArray={todoDataArray} setDtTodos={setDtTodos} Reorder={Reorder} />
                   </div>
                 )}  
               </Draggable>
@@ -126,7 +126,7 @@ export const OrderTodoGoal = (props) => {
     const destinationTodoOrderNo = res.destination.index;
 
     todoDataArray.map(goal => {
-        if(goal.goalId === goal_id){
+        if(goal.id === goal_id){
           const reorderArray = Reorder(goal.todos, sourceTodoOrderNo, destinationTodoOrderNo)
           goal.todos = reorderArray;         
         }
@@ -159,8 +159,8 @@ export const OrderTodoGoal = (props) => {
           {/* Goal 컴포넌트 시작 */}
           <Button className="goals-list-button" data-index={index} data={data}>
             <ReceiptIcon className="goals-list-icon" />
-            <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color: data.goalTitleColor }}>
-              <p>{data.goalTitle}</p>
+            <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color: data.titleColor }}>
+              <p>{data.title}</p>
             </div>
             <p className="goals-list-plus-icon-wrap">
               <AddCircleIcon className="goals-list-plus-icon" />
@@ -168,7 +168,7 @@ export const OrderTodoGoal = (props) => {
           </Button>
           {/* Goal 컴포넌트 종료 */}
           {/* Todo 컴포넌트 map 시작 */}
-          <div className="todos-list-wrap">
+          <div className="todos-list-cont">
             {data.todos.map((data, index) => {
               return (
                 <Draggable draggableId={"todo" + index} index={index} key={data.todoId}>

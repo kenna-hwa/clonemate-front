@@ -41,7 +41,7 @@ export default function CreateTodoForm (props) {
     let id = props.id;
 
     let createTodoState = {
-        goalId: goal_id,
+        id: goal_id,
         todoId: new_todo_id,
         orderNo: new_order_no,
         title: "",
@@ -84,7 +84,7 @@ export default function CreateTodoForm (props) {
     //새로운 todo 넣기 / goal객체 찾아서 todos에 push
     const createTodoStateSubmit = (e) => {
         todoDataArray.map(data=>{
-                if(data.goalId === goal_id){
+                if(data.id === goal_id){
                     data.todos.push(createTodoState)
                 }
             }

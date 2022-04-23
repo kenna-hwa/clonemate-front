@@ -225,15 +225,7 @@
   }
 }
 
-.todos-list-wrap {
-  width: 100vw;
-}
-
-.todos-list-wrap .todos-list-box {
-  width: 100vw;
-}
-
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -249,12 +241,24 @@
   width: fit-content;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
   color: #afafaf;
   cursor: pointer;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-input {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -274,14 +278,14 @@
   margin: 5px 5px 5px 15px;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input::-ms-value {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-input::-ms-value {
   font-size: 14px;
   font-family: 'Pretendard';
   font-weight: 600;
   transform: rotate(0.04deg);
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input:focus-visible {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-input:focus-visible {
   position: relative;
   border-bottom: 2px solid #000;
   -webkit-box-sizing: border-box;
@@ -292,6 +296,19 @@
   cursor: pointer;
   padding: 6px 0;
   margin: 5px 5px 5px 15px;
+}
+
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like {
+  width: 14px;
+  margin-left: 1em;
+  background: #ffffff;
+  border: none;
+  padding: 0;
+}
+
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like svg {
+  font-size: 1rem;
+  color: #1c1c1c;
 }
 
 .create-todo-form {

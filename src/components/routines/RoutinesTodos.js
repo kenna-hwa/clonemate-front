@@ -35,7 +35,7 @@ export default function RoutinesTodos (props) {
     return (
         <div className="todos-list-box" data-todos={todos} key={index}>
                     <div className="goals-listItem-text-wrap">
-                        {todos.check_yn === 'Y' ?  <CheckBoxIcon className="todos-list-check-icon" /> : <CheckBoxOutlineBlankIcon className="todos-list-check-icon" /> }
+                        {todos.check_yn === 'y' ?  <CheckBoxIcon className="todos-list-check-icon" /> : <CheckBoxOutlineBlankIcon className="todos-list-check-icon" /> }
                         <TodoList 
                         todos={todos} 
                         index={index}
@@ -46,7 +46,7 @@ export default function RoutinesTodos (props) {
                         
                     </div>
                     {!readOnly ? (<>
-                    <EditRoutinesForm todos={todos} goalId={todos.goalId} todoId={todos.todoId} set
+                    <EditRoutinesForm todos={todos} goalId={todos.goalId} todoId={todos.id} set
                     ReadOnly={setReadOnly} /> 
                     </>) :
                     null} 

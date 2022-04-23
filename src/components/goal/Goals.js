@@ -58,11 +58,11 @@ export default function Goals() {
             {
             todoDataArray.map((data, idx) => {
               return (
-                <React.Fragment key={data.goalId}>
+                <React.Fragment key={data.id}>
                   <div className="goals-list-box" key={data.goalOrderNo}>
-                    <Button className="goals-list-button" id={data.goalId} name={data.goalId} data={data} onClick={moveEditGoalForm} >
+                    <Button className="goals-list-button" id={data.id} name={data.id} data={data} onClick={moveEditGoalForm} >
                         <ReceiptIcon className="goals-list-icon" />
-                        <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.goalTitleColor }}  ><p>{data.goalTitle}</p>
+                        <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.titleColor }}  ><p>{data.title}</p>
                         </div>
                     </Button>
                     <NavigateNextIcon className="goal-list-arrow" />

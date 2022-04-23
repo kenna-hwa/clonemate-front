@@ -119,10 +119,10 @@
     }
 }
 
-.todos-list-wrap{
-    width: 100vw;
+.todos-list-cont{
+    
     .todos-list-box{
-        width: 100vw;
+
         .goals-listItem-text-wrap{
             display: flex;
             flex-flow: row nowrap;
@@ -132,38 +132,57 @@
                 color: $text-gray;
                 cursor: pointer;
             }
-            .todos-list-input{
-                width: fit-content;
-                position: relative;
-                border: 0;
-                border-bottom: 1px solid #00000000;
-                box-sizing: border-box;
-                outline: none;
-                font-size: 14px;
-                font-family: 'Pretendard';
-                font-weight: 600;
-                transform: rotate(0.04deg);
-                cursor: pointer;
-                padding: 6px 0;
-                margin: 5px 5px 5px 15px;
+            .todos-list-wrap{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
-                &::-ms-value{
+                .todos-list-input{
+                  
+                    width: fit-content;
+                    position: relative;
+                    border: 0;
+                    border-bottom: 1px solid #00000000;
+                    box-sizing: border-box;
+                    outline: none;
                     font-size: 14px;
                     font-family: 'Pretendard';
                     font-weight: 600;
                     transform: rotate(0.04deg);
-                }
-
-                &:focus-visible{
-                    position: relative;
-                    border-bottom: 2px solid #000;
-                    box-sizing: border-box;
-                    outline: none;
-                    font-family: 'Pretendard';
-                    font-size: 14px;
                     cursor: pointer;
                     padding: 6px 0;
                     margin: 5px 5px 5px 15px;
+
+                    &::-ms-value{
+                        font-size: 14px;
+                        font-family: 'Pretendard';
+                        font-weight: 600;
+                        transform: rotate(0.04deg);
+                    }
+
+                    &:focus-visible{
+                        position: relative;
+                        border-bottom: 2px solid #000;
+                        box-sizing: border-box;
+                        outline: none;
+                        font-family: 'Pretendard';
+                        font-size: 14px;
+                        cursor: pointer;
+                        padding: 6px 0;
+                        margin: 5px 5px 5px 15px;
+                    }
+                }
+                .todos-list-like{
+                    width: 14px;
+                    margin-left: 1em;
+                    background: $bg-white;
+                    border: none;
+                    padding: 0;
+                    
+                    svg{
+                        font-size: 1rem;
+                        color: $text-black;
+                    }
                 }
             }
         }

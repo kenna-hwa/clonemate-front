@@ -153,15 +153,15 @@
   color: #ffffff;
 }
 
-.todos-list-wrap {
+.todos-list-cont {
   width: 100vw;
 }
 
-.todos-list-wrap .todos-list-box {
+.todos-list-cont .todos-list-box {
   width: 100vw;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,12 +177,12 @@
   width: fit-content;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
   color: #afafaf;
   cursor: pointer;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -202,14 +202,14 @@
   margin: 5px 5px 5px 15px;
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input::-ms-value {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input::-ms-value {
   font-size: 14px;
   font-family: 'Pretendard';
   font-weight: 600;
   transform: rotate(0.04deg);
 }
 
-.todos-list-wrap .todos-list-box .goals-listItem-text-wrap .todos-list-input:focus-visible {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input:focus-visible {
   position: relative;
   border-bottom: 0px solid #00000000;
   -webkit-box-sizing: border-box;
