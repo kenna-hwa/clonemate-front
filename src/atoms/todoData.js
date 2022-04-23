@@ -70,30 +70,14 @@ export const objTodosDataResult = atom({
   "privacy": "PUB",
   "titleColor" : "#ff0000",
   "todos" : [
-       {
-        "id": 1,
-        "goalId": 1,
-        "orderNo": 1,
-        "title": "첫 번째 목표의 첫 번째 할 일",
-        "date": "2022-02-13",
-        "endRepeatDate": "2022-02-13",
-        "repeatDays": {
-          "THU": "N",
-          "WEN": "N",
-          "TUE": "N",
-          "SAT": "N",
-          "FRI": "N",
-          "MON": "N",
-          "SUN": "N"
-        },
-        "checkYn": "N"
-        },
-        {"goalId": 1,
-          "todoId": 2,
-          "orderNo": 2,
-          "title": "첫 번째 목표의 두 번째 할 일",
+        {
+          "id": 1,
           "date": "2022-02-13",
-          "endRepeatDate": "2022-02-14",
+          "endRepeatDate": "2022-02-13",
+          "checkYn": "N",
+          "orderNo": 1,
+          "title": "첫 번째 목표의 첫 번째 할 일",
+          "goalId": 1,
           "repeatDays": {
             "THU": "N",
             "WEN": "N",
@@ -103,14 +87,77 @@ export const objTodosDataResult = atom({
             "MON": "N",
             "SUN": "N"
           },
-          "checkYn": "N"
+          "likes": [
+            {
+              "id": 3,
+              "user": {
+                "email": "test2@test.com",
+                "account": "test2",
+                "introText": "클론짱2의 투두메이트",
+                "name": "클론짱2",
+                "id": 2
+              }
+            },
+            {
+              "id": 4,
+              "user": {
+                "email": "test3@test.com",
+                "account": "test3",
+                "introText": "클론짱3의 투두메이트",
+                "name": "클론짱3",
+                "id": 3
+              }
+            }
+          ],
+        },
+        {
+          "todoId": 2,
+          "date": "2022-02-13",
+          "endRepeatDate": "2022-02-14",
+          "checkYn": "N",
+          "orderNo": 2,
+          "title": "첫 번째 목표의 두 번째 할 일",
+          "goalId": 1,
+          "repeatDays": {
+            "THU": "N",
+            "WEN": "N",
+            "TUE": "N",
+            "SAT": "N",
+            "FRI": "N",
+            "MON": "N",
+            "SUN": "N"
+          },
+          "likes": [
+						{
+							"id": 3,
+							"user": {
+								"email": "test2@test.com",
+								"account": "test2",
+								"introText": "클론짱2의 투두메이트",
+								"name": "클론짱2",
+								"id": 2
+							}
+						},
+						{
+							"id": 4,
+							"user": {
+								"email": "test3@test.com",
+								"account": "test3",
+								"introText": "클론짱3의 투두메이트",
+								"name": "클론짱3",
+								"id": 3
+							}
+						}
+					],
       },
-      {"goalId": 1,
+      {
         "todoId": 3,
-        "orderNo": 3,
-        "title": "첫 번째 목표의 세 번째 할 일",
         "date": "2022-02-13",
         "endRepeatDate": "2022-02-17",
+        "checkYn": "N",
+        "orderNo": 3,
+        "title": "첫 번째 목표의 세 번째 할 일",
+        "goalId": 1,
         "repeatDays": {
           "THU": "N",
           "WEN": "Y",
@@ -120,7 +167,28 @@ export const objTodosDataResult = atom({
           "MON": "N",
           "SUN": "N"
         },
-        "checkYn": "N"
+        "likes": [
+          {
+            "id": 3,
+            "user": {
+              "email": "test2@test.com",
+              "account": "test2",
+              "introText": "클론짱2의 투두메이트",
+              "name": "클론짱2",
+              "id": 2
+            }
+          },
+          {
+            "id": 4,
+            "user": {
+              "email": "test3@test.com",
+              "account": "test3",
+              "introText": "클론짱3의 투두메이트",
+              "name": "클론짱3",
+              "id": 3
+            }
+          }
+        ],
       },
   ]},
   {
@@ -129,29 +197,14 @@ export const objTodosDataResult = atom({
     "orderNo" : 2,
     "titleColor" : "#ff873d",
     "todos" : [
-         {"goalId": 2,
-          "todoId": 1,
-          "orderNo": 1,
-          "title": "두 번째 목표의 첫 번째 할 일",
-          "date": "2022-02-13",
-          "endRepeatDate": "2022-02-13",
-          "repeatDays": {
-            "THU": "N",
-            "WEN": "N",
-            "TUE": "N",
-            "SAT": "N",
-            "FRI": "N",
-            "MON": "N",
-            "SUN": "N"
-          },
-          "checkYn": "N"
-          },
-          {"goalId": 2,
-            "todoId": 2,
-            "orderNo": 2,
-            "title": "두 번째 목표의 두 번째 할 일",
-            "date": "2022-02-11",
-            "endRepeatDate": "2022-02-15",
+          {
+            "todoId": 1,
+            "date": "2022-02-13",
+            "endRepeatDate": "2022-02-13",
+            "checkYn": "N",
+            "orderNo": 1,
+            "title": "두 번째 목표의 첫 번째 할 일",
+            "goalId": 2,
             "repeatDays": {
               "THU": "N",
               "WEN": "N",
@@ -161,7 +214,68 @@ export const objTodosDataResult = atom({
               "MON": "N",
               "SUN": "N"
             },
-            "checkYn": "N"
+            "likes": [
+              {
+                "id": 3,
+                "user": {
+                  "email": "test2@test.com",
+                  "account": "test2",
+                  "introText": "클론짱2의 투두메이트",
+                  "name": "클론짱2",
+                  "id": 2
+                }
+              },
+              {
+                "id": 4,
+                "user": {
+                  "email": "test3@test.com",
+                  "account": "test3",
+                  "introText": "클론짱3의 투두메이트",
+                  "name": "클론짱3",
+                  "id": 3
+                }
+              }
+            ],
+          },
+          {
+            "todoId": 2,
+            "date": "2022-02-11",
+            "endRepeatDate": "2022-02-15",
+            "checkYn": "N",
+            "orderNo": 2,
+            "title": "두 번째 목표의 두 번째 할 일",
+            "goalId": 2,
+            "repeatDays": {
+              "THU": "N",
+              "WEN": "N",
+              "TUE": "N",
+              "SAT": "N",
+              "FRI": "N",
+              "MON": "N",
+              "SUN": "N"
+            },
+            "likes": [
+              {
+                "id": 3,
+                "user": {
+                  "email": "test2@test.com",
+                  "account": "test2",
+                  "introText": "클론짱2의 투두메이트",
+                  "name": "클론짱2",
+                  "id": 2
+                }
+              },
+              {
+                "id": 4,
+                "user": {
+                  "email": "test3@test.com",
+                  "account": "test3",
+                  "introText": "클론짱3의 투두메이트",
+                  "name": "클론짱3",
+                  "id": 3
+                }
+              }
+            ],
         },
     ]},
     {
@@ -170,29 +284,14 @@ export const objTodosDataResult = atom({
       "orderNo" : 3,
       "titleColor" : "#0119cb",
       "todos" : [
-           {"goalId": 3,
-            "todoId": 1,
-            "orderNo": 1,
-            "title": "세 번째 목표의 첫 번째 할 일",
-            "date": "2022-02-16",
-            "endRepeatDate": "2022-02-16",
-            "repeatDays": {
-              "THU": "N",
-              "WEN": "N",
-              "TUE": "N",
-              "SAT": "N",
-              "FRI": "N",
-              "MON": "N",
-              "SUN": "N"
-            },
-            "checkYn": "N"
-            },
-            {"goalId": 3,
-              "todoId": 2,
-              "orderNo": 2,
-              "title": "세 번째 목표의 두 번째 할 일",
-              "date": "2022-02-13",
-              "endRepeatDate": "2022-02-19",
+           {
+              "todoId": 1,
+              "date": "2022-02-16",
+              "endRepeatDate": "2022-02-16",
+              "checkYn": "N",
+              "orderNo": 1,
+              "title": "세 번째 목표의 첫 번째 할 일",
+              "goalId": 3,
               "repeatDays": {
                 "THU": "N",
                 "WEN": "N",
@@ -202,7 +301,78 @@ export const objTodosDataResult = atom({
                 "MON": "N",
                 "SUN": "N"
               },
-              "checkYn": "N"
+              "likes": [
+                {
+                  "id": 3,
+                  "user": {
+                    "email": "test2@test.com",
+                    "account": "test2",
+                    "introText": "클론짱2의 투두메이트",
+                    "name": "클론짱2",
+                    "id": 2
+                  }
+                },
+                {
+                  "id": 4,
+                  "user": {
+                    "email": "test3@test.com",
+                    "account": "test3",
+                    "introText": "클론짱3의 투두메이트",
+                    "name": "클론짱3",
+                    "id": 3
+                  }
+                }
+              ],
+            },
+            {
+              "todoId": 2,
+              "date": "2022-02-13",
+              "endRepeatDate": "2022-02-19",
+              "checkYn": "N",
+              "orderNo": 2,
+              "title": "세 번째 목표의 두 번째 할 일",
+              "goalId": 3,
+              "repeatDays": {
+                "THU": "N",
+                "WEN": "N",
+                "TUE": "N",
+                "SAT": "N",
+                "FRI": "N",
+                "MON": "N",
+                "SUN": "N"
+              },
+              "likes": [
+                {
+                  "id": 3,
+                  "user": {
+                    "email": "test2@test.com",
+                    "account": "test2",
+                    "introText": "클론짱2의 투두메이트",
+                    "name": "클론짱2",
+                    "id": 2
+                  }
+                },
+                {
+                  "id": 4,
+                  "user": {
+                    "email": "test3@test.com",
+                    "account": "test3",
+                    "introText": "클론짱3의 투두메이트",
+                    "name": "클론짱3",
+                    "id": 3
+                  }
+                },
+                {
+                  "id": 5,
+                  "user": {
+                    "email": "test2@test.com",
+                    "account": "test2",
+                    "introText": "클론짱4의 투두메이트",
+                    "name": "클론짱4",
+                    "id": 2
+                  }
+                },
+              ],
           },
       ]},
       {
@@ -211,22 +381,35 @@ export const objTodosDataResult = atom({
         "orderNo" : 4,
         "titleColor" : "#77ab59",
         "todos" : [
-             {"goalId": 4,
-              "todoId": 1,
-              "orderNo": 1,
-              "title": "네 번째 목표의 첫 번째 할 일",
-              "date": "2022-02-16",
-              "endRepeatDate": "2022-02-16",
-              "repeatDays": {
-                "THU": "N",
-                "WEN": "N",
-                "TUE": "N",
-                "SAT": "N",
-                "FRI": "N",
-                "MON": "N",
-                "SUN": "N"
-              },
-              "checkYn": "N"
+             {
+                "todoId": 1,
+                "date": "2022-02-16",
+                "endRepeatDate": "2022-02-16",
+                "checkYn": "N",
+                "orderNo": 1,
+                "title": "네 번째 목표의 첫 번째 할 일",
+                "goalId": 4,
+                "repeatDays": {
+                  "THU": "N",
+                  "WEN": "N",
+                  "TUE": "N",
+                  "SAT": "N",
+                  "FRI": "N",
+                  "MON": "N",
+                  "SUN": "N"
+                },
+                "likes": [
+                  {
+                    "id": 3,
+                    "user": {
+                      "email": "test2@test.com",
+                      "account": "test2",
+                      "introText": "클론짱2의 투두메이트",
+                      "name": "클론짱2",
+                      "id": 2
+                    }
+                  },
+                ],
               },
         ]},
 ]

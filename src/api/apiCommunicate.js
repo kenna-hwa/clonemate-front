@@ -290,6 +290,34 @@ export async function axiosDeleteTodoData (id) {
 
 /* 투두 API 통신 끝 */
 
+/* 투두 좋아요 API 통신 시작 */
+
+
+//POST 투두 좋아요 클릭 +1 추가하기
+export async function axiosPostTodoLikeData (todoId) {
+
+  //axios
+  await axios.post(`http://{{host}}/like/${todoId}`,{
+    body: {
+      
+    }
+  })
+  .then((Response)=>{console.log(Response.data)})
+  .catch((Error)=>{console.log(Error)})
+} 
+
+//DELETE 투두 좋아요 클릭 -1 삭제하기
+export async function axiosDeleteTodoLikeData (likeId) {
+
+  //axios
+  await axios.delete(`http://{{host}}/like/${likeId}`)
+  .then((Response)=>{console.log(Response.data)})
+  .catch((Error)=>{console.log(Error)})
+} 
+
+
+/* 투두 좋아요 API 통신 끝 */
+
 /* 팔로우 API 통신 시작 */
 
 //GET followers 가져오기
