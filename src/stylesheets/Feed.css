@@ -298,17 +298,27 @@
   margin: 5px 5px 5px 15px;
 }
 
-.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like {
-  width: 14px;
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like-btn {
+  min-width: 2.5em;
   margin-left: 1em;
   background: #ffffff;
   border: none;
   padding: 0;
 }
 
-.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like svg {
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like-btn svg {
   font-size: 1rem;
   color: #1c1c1c;
+}
+
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-like-btn .todos-list-like-num {
+  margin-left: 0.25rem;
+  font-size: 12px;
+  color: #1c1c1c;
+}
+
+.todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .MuiButton-textPrimary {
+  width: 14px;
 }
 
 .create-todo-form {
