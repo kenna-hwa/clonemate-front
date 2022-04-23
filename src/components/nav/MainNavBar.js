@@ -97,8 +97,8 @@ export default function MainNavBar() {
                     return (
                       <div id={idx} className="snb-list-button" data-index={idx} data={data}>
                           <div className="snb-goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} 
-                              style={{ color:data.goalTitleColor }} >
-                            <p>{data.goalTitle}</p>
+                              style={{ color:data.titleColor }} >
+                            <p>{data.title}</p>
                           </div>
                       </div>
                     )
@@ -131,11 +131,11 @@ export default function MainNavBar() {
                                   id={todos.todoId}
                                   data-index={todos.orderNo}>
                             {/*}  {todos.checkYn === 'Y' ?  
-                            <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
+                            <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.id} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                               /> : </> */}
                                
                                 <CheckBoxOutlineBlankIcon 
-                                  data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon"/> 
+                                  data-goalid={todos.goalId} data-todoid={todos.id} className="todos-list-check-icon"/> 
                                 <p key={todos.todoId}>{todos.title}</p>
                               </div>
                             </div>)

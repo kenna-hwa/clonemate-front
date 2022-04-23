@@ -89,7 +89,10 @@ export const fetchPostDataWithParam = async () => {
 export async function axiosGetTodoDataForCalendar (date) {
   //axios
   await axios.get(`/todos/overview/${date}`)
-  .then((Response)=>{console.log(Response.data)})
+  .then((Response)=>{
+    //Response의 success가 true 일 때 data를
+    return Response.success ? Response.data : console.log(Response.errorMessage);
+  })
   .catch((Error)=>{console.log(Error)})
 } 
 
@@ -164,8 +167,10 @@ export async function axiosGetTodoDataWithId (id) {
 export async function axiosGetTodoDataforCalendar (date) {
 
   //axios
-  await axios.get(`/todos/${date}`)
-  .then((Response)=>{console.log(Response.data)})
+  await axios.get(`http://{{host}}/today/todolist?date=/${date}`)
+  .then((Response)=>{
+    return Response.success ? Response.data : Response.errorMessage;
+  })
   .catch((Error)=>{console.log(Error)})
 } 
 
@@ -174,22 +179,22 @@ export async function axiosGetTodoDataforCalendar (date) {
 export async function axiosPostTodoData () {
 
   //axios
-  await axios.post(`/todos`,{
+  await axios.post(`http://{{host}}/todos`,{
     body: {
-      goalId: 1,
-      orderNo: 1,
-      title: "투두",
-      date: "2022-02-13",
-      endRepeatDate: "2022-02-14",
-      repeatDays: {
-        THU: "N",
-        WEN: "N",
-        TUE: "N",
-        SAT: "N",
-        FRI: "N",
-        MON: "N",
-        SUN: "N"
-      },
+      "goalId": 1,
+      "orderNo": 1,
+      "title": "투두",
+      "date":"2022-03-29",
+      "startRepeatDate":"2022-03-29",
+      "endRepeatDate":"2022-03-29",
+      "repeatMonYn":"n",
+      "repeatTueYn":"n",
+      "repeatWenYn":"n",
+      "repeatThuYn":"n",
+      "repeatFriYn":"n",
+      "repeatSatYn":"n",
+      "repeatSunYn":"n",
+      "checkYn": "n"
     }
   })
   .then((Response)=>{console.log(Response.data)})
@@ -200,22 +205,21 @@ export async function axiosPostTodoData () {
 export async function axiosPatchTodoDataWithId (id) {
 
   //axios
-  await axios.patch(`/todos/${id}`,{
+  await axios.patch(`http://{{host}}/todos/${id}`,{
     body: {
-      goalId: 1,
-      orderNo: 1,
-      title: "투두",
-      date: "2022-02-13",
-      endRepeatDate: "2022-02-14",
-      repeatDays: {
-        THU: "N",
-        WEN: "N",
-        TUE: "N",
-        SAT: "N",
-        FRI: "N",
-        MON: "N",
-        SUN: "N"
-      },
+      "goalId": 1,                   //옵션
+      "orderNo": 1,                  //옵션
+      "title": "투두수정",            //옵션
+      "startRepeatDate":"2022-03-29", //옵션
+      "endRepeatDate":"2022-03-31",   //옵션
+      "repeatMonYn":"n",              //옵션
+      "repeatTueYn":"n",              //옵션
+      "repeatWenYn":"y",              //옵션
+      "repeatThuYn":"n",              //옵션
+      "repeatFriYn":"n",              //옵션
+      "repeatSatYn":"y",              //옵션
+      "repeatSunYn":"n",              //옵션
+      "checkYn": "n"                  //옵션
     }
   })
   .then((Response)=>{console.log(Response.data)})
@@ -230,20 +234,20 @@ export async function axiosPatchTodoDataWithDate (date,checkYn) {
   //axios
   await axios.patch(`/todos/${date}/${checkYn}`,{
     body: {
-      goalId: 1,
-      orderNo: 1,
-      title: "투두",
-      date: "2022-02-13",
-      endRepeatDate: "2022-02-14",
-      repeatDays: {
-        THU: "N",
-        WEN: "N",
-        TUE: "N",
-        SAT: "N",
-        FRI: "N",
-        MON: "N",
-        SUN: "N"
-      },
+      "goalId": 1,                   //옵션
+      "orderNo": 1,                  //옵션
+      "title": "투두수정",            //옵션
+      "date": date,           //옵션
+      "startRepeatDate":"2022-03-29", //옵션
+      "endRepeatDate":"2022-03-31",   //옵션
+      "repeatMonYn":"n",              //옵션
+      "repeatTueYn":"n",              //옵션
+      "repeatWenYn":"y",              //옵션
+      "repeatThuYn":"n",              //옵션
+      "repeatFriYn":"n",              //옵션
+      "repeatSatYn":"y",              //옵션
+      "repeatSunYn":"n",              //옵션
+      "checkYn": checkYn              //옵션
     }
   })
   .then((Response)=>{console.log(Response.data)})
@@ -327,7 +331,6 @@ export async function axiosDeleteFollower (user_id) {
 
 /* 팔로우 API 통신 끝 */
 
-/* 투두 API 통신 끝 */
 
 /* 좋아요 API 통신 시작 */
 

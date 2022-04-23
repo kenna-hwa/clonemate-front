@@ -31,30 +31,28 @@ export default function CreateRoutinesForm (props) {
 
     let [createRoutinesState, setCreactRoutinesState] = useState({
         "goalId": goal_Id, //묶여있는 goal id
-        "todoId": todo_Id,
+        "id": todo_Id,
         "orderNo": orderNo,
         "title": "",
         "date": dtDate.dtToday,
         "endRepeatDate": dtDate.dtToday, //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-        "repeatDays":{
-            THU: "N",
-            WEN: "N",
-            TUE: "N",
-            SAT: "N",
-            FRI: "N",
-            MON: "N",
-            SUN: "N"
-          },
-        "checkYn" : "N" //달성여부
+        "repeatMonYn":"n",
+        "repeatTueYn":"n",
+        "repeatWenYn":"n",
+        "repeatThuYn":"n",
+        "repeatFriYn":"n",
+        "repeatSatYn":"n",
+        "repeatSunYn":"n",
+        "checkYn": "n"
       });
       const dayArr = [
-        { dayEng : 'SUN', dayKor : '일', checkYn: createRoutinesState.repeatDays['SUN']},
-        { dayEng : 'MON', dayKor : '월', checkYn: createRoutinesState.repeatDays['MON']},
-        { dayEng : 'TUE', dayKor : '화', checkYn: createRoutinesState.repeatDays['TUE']},
-        { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.repeatDays['WEN']},
-        { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.repeatDays['THU']},
-        { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.repeatDays['FRI']},
-        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatDays['SAT']},
+        { dayEng : 'SUN', dayKor : '일', checkYn: createRoutinesState.repeatSunYn},
+        { dayEng : 'MON', dayKor : '월', checkYn: createRoutinesState.repeatMonYn},
+        { dayEng : 'TUE', dayKor : '화', checkYn: createRoutinesState.repeatTueYn},
+        { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.repeatWenYn},
+        { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.repeatThuYn},
+        { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.repeatFriYn},
+        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatSunYn},
       ];
 
     /* state 선언 종료 */
@@ -62,7 +60,7 @@ export default function CreateRoutinesForm (props) {
     /* 함수 선언 시작 */
 
     const checkDate = dayArr.filter(data=>{
-        if(data['checkYn'] === "Y") return data
+        if(data['checkYn'] === "y") return data
     })
     
 
@@ -70,7 +68,7 @@ export default function CreateRoutinesForm (props) {
     const calendarRoutinesSubmit = (e) => {
         const copy_todo_state = JSON.parse(JSON.stringify(dtTodos)); // dtTodos State 원본 카피        
         copy_todo_state.map((data)=>{
-            if(data.goalId === goal_Id){
+            if(data.id === goal_Id){
                 console.log(data.todos)
                 data.todos.push(createRoutinesState)
             }

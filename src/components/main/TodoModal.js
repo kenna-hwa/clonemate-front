@@ -112,21 +112,21 @@ export function TodoModal (props) {
                 <p className="feed-todo-modal-head">{todos.title}</p>
                 <div className="feed-todo-modal-icon-wrap">
                     <button className="feed-todo-modal-icon feed-todo-edit-icon" 
-                    data-goalid={todos.goalId} data-todoid={todos.todoId} 
+                    data-goalid={todos.goalId} data-todoid={todos.id} 
                     onClick={todoModalEditHandler}
                      >
                         <EditIcon className="feed-modal-icon" /><span>수정</span>
                     </button>
                     <button className="feed-todo-modal-icon feed-todo-delay-icon" 
-                    data-goalid={todos.goalId} data-todoid={todos.todoId} 
+                    data-goalid={todos.goalId} data-todoid={todos.id} 
                     onClick={todoModalDelayHandler}
                     >
                         <SkipNextIcon className="feed-modal-icon" /><span>내일 하기</span>
                     </button>
                     <button className="feed-todo-modal-icon feed-todo-date-change-icon" 
-                    data-goalid={todos.goalId} data-todoid={todos.todoId} 
+                    data-goalid={todos.goalId} data-todoid={todos.id} 
                     onClick={()=>{
-                        setCalendarActiveIndex(todos.todoId)
+                        setCalendarActiveIndex(todos.id)
                         //  console.log(todos.todoId, calendarActiveIndex)
                         }}
                     >
@@ -138,7 +138,7 @@ export function TodoModal (props) {
                         <WrapTextIcon className="feed-modal-icon" /><span>순서 변경</span>
                     </button>
                     <button className="feed-todo-modal-icon feed-todo-delete-icon" 
-                    data-goalid={todos.goalId} data-todoid={todos.todoId} 
+                    data-goalid={todos.goalId} data-todoid={todos.id} 
                     onClick={todoModalDeleteHandler}
                     >
                         <DeleteOutlineIcon className="feed-modal-icon" /><span>삭제</span>
@@ -181,7 +181,7 @@ export function DatePickerCalender(props) {
             const todo_id = parseInt(e.currentTarget.dataset.todoid);
             todoDataArray.map((data)=>
                 data.todos.map((todo)=> {
-                    if(todo.goalId === goal_id && todo.todoId === todo_id && todo.date === todo.endRepeatDate){
+                    if(todo.goalId === goal_id && todo.id === todo_id && todo.date === todo.endRepeatDate){
                     todo.date = selectedDate;
                     todo.endRepeatDate = selectedDate;
                     }
@@ -208,7 +208,7 @@ export function DatePickerCalender(props) {
                 <div className="calendar-btn-box">
                     <button className="calendar-ok-btn" 
                     data-goalid={todos.goalId}
-                    data-todoid={todos.todoId}
+                    data-todoid={todos.id}
                     data-selecteddate={selectedDate} 
                     onClick={todoModalDateChangeHandler}>
                         확인

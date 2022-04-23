@@ -164,13 +164,13 @@ const allTodoDelete = () => {
                 {
                     todoDataArray.map((data, idx) => {
 
-                        return (<React.Fragment key={data.goalId}>
+                        return (<React.Fragment key={data.id}>
                         <FeedTodoGoal 
                         data={data} idx={idx}
                         onClickGoalHandler={onClickGoalHandler}
                         />
                         {isGoalSelected[idx] ? <CreateTodoForm 
-                        dtDate={dtDate} goalId={data.goalId} 
+                        dtDate={dtDate} goalId={data.id} 
                         todoLength={data.todos.length}
                         createTodoFieldReset={createTodoFieldReset}
                         /> :null}

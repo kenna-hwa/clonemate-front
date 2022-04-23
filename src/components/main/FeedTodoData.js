@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import {  Button, List, ListItem, ListItemText, Modal, } from "@mui/material";
-import { Box } from "@mui/system";
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 import { objTodosDataResult, objDatesData  } from "../../atoms/todoData";
 
 import { TodoModal } from "./TodoModal";
-import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
+import { Button } from "@mui/material";
 
  export default function FeedTodoData(props) {
 
@@ -67,7 +66,7 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
 
       todoDataArray.map(data=>
           data.todos.map(todo=>{
-              if(todo.goalId === goal_id && todo.todoId === todo_id){
+              if(todo.goalId === goal_id && todo.id === todo_id){
                   todo.checkYn === 'Y' ? todo.checkYn = 'N' : todo.checkYn = 'Y'
                   console.log("todo.checkYn " , todo.checkYn)
               }
@@ -109,7 +108,7 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
     
         todoDataArray.map(data=>
             data.todos.map(todo=>{
-                if(todo.goalId === goal_id && todo.todoId === todo_id){
+                if(todo.goalId === goal_id && todo.id === todo_id){
                     todo.title = current_value;
                     console.log("todo, " , todo.title)
                 }
@@ -141,7 +140,6 @@ import hoursToSeconds from "date-fns/hoursToSeconds/index.js";
             activeHandler={activeHandler}
             todoInputChangeHandler={todoInputChangeHandler} inputLostFocusEventHandler={inputLostFocusEventHandler} enterKeyEventHandler={enterKeyEventHandler} />
             </div>
-
         </div>
     )
 
@@ -158,20 +156,25 @@ const TodoList = React.forwardRef((props, ref) => {
     const inputLostFocusEventHandler = props.inputLostFocusEventHandler;
     const enterKeyEventHandler = props.enterKeyEventHandler;
 
-    return (<input
-        className="todos-list-input" key={todos.todoId} id="todo-input" type="text" 
-        maxLength="50"
-        size={inputRef.current?.value.length}
-        ref={inputRef}
-        name={todos.title} 
-        data-orderno={todos.orderNo}
-        data-goalid={todos.goalId} 
-        data-todoid={todos.todoId} 
-        value={todos.title} 
-        readOnly={readOnly}
-        onClick={()=>activeHandler(todos.todoId)}
-        onChange={todoInputChangeHandler}
-        onBlur={inputLostFocusEventHandler}
-        onKeyDown={enterKeyEventHandler}
-        />)
+    return (
+        <div className="todos-list-wrap">
+            <input
+            className="todos-list-input" key={todos.todoId} id="todo-input" type="text" 
+            maxLength="50"
+            size={inputRef.current?.value.length}
+            ref={inputRef}
+            name={todos.title} 
+            data-orderno={todos.orderNo}
+            data-goalid={todos.goalId} 
+            data-todoid={todos.todoId} 
+            value={todos.title} 
+            readOnly={readOnly}
+            onClick={()=>activeHandler(todos.todoId)}
+            onChange={todoInputChangeHandler}
+            onBlur={inputLostFocusEventHandler}
+            onKeyDown={enterKeyEventHandler}
+            />
+            <Button className="todos-list-like" onClick={(e)=>{console.log(e)}}><ThumbUpAltIcon  /></Button>
+        </div>
+        )
 })
