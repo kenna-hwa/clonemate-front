@@ -3,7 +3,7 @@ import React from 'react';
 import '../../stylesheets/More.css';
 import BasicNavBar from '../nav/BasicNavBar';
 
-function MorePolicy(){
+function Policy(){
 
     // 1) className='textOfUSe' 와 className='textOfPolicy' 의 -> 같은 링크, 다른 페이지 해결 하기 
     // 2) 스크롤바 모양 변경 하기 
@@ -107,4 +107,4 @@ function MorePolicy(){
 
 }
 
-export default MorePolicy;
+export default Policy;

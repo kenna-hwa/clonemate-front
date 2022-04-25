@@ -124,8 +124,8 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .snb_wrap .snb-goals-list-box .snb-list-button {
@@ -135,7 +135,7 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 2px 2px;
+  padding: 4px 2px;
   padding-right: 2px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -161,9 +161,8 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   display: block;
   font-size: 13px;
   font-family: 'Pretendard';
-  font-weight: 900;
-  max-width: 200px;
-  margin: 0 10px;
+  font-weight: 600;
+  margin: 0 5px;
   overflow: hidden;
 }
 
@@ -172,12 +171,9 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-weight: 900;
 }
 
 .snb_wrap .snb-todo-list-box {
-  width: 100vw;
-  font-size: 13px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -191,6 +187,8 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
@@ -198,6 +196,8 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0px 0px;
+  height: 40px;
 }
 
 .snb_wrap .snb-todo-list-box .goals-listItem-text-wrap .todos-list-check-icon {
@@ -207,5 +207,7 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
 .snb_wrap .snb-todo-list-box .goals-listItem-text-wrap p {
   padding: 0px 5px;
   color: #1c1c1c;
+  font-size: 16px;
+  font-weight: 300;
 }
 /*# sourceMappingURL=Nav.css.map */

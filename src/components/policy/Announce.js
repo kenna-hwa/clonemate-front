@@ -4,7 +4,7 @@ import { Container } from '@mui/material';
 import '../../stylesheets/More.css';
 import BasicNavBar from '../nav/BasicNavBar';
 
-function MoreAnnounce(){
+function Announce(){
     const HorizonLine = ({ text }) => {
         return (
           <div
@@ -66,4 +66,4 @@ function MoreAnnounce(){
 
 }
 
-export default MoreAnnounce;
+export default Announce;
