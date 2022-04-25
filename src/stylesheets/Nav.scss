@@ -36,29 +36,33 @@ body{
     padding: 10px 15px 10px 15px;
     //width: 235;
 
+   
+       
+
         .snb-goal-title{
-        font-family: 'Pretendard';
-        font-weight: 600;
-        font-size: 16px;
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-size: 16px;
         }
             .snb-title-nav-icon{
                 font-weight: 50;
                 font-size: 20px;
                 color: lightgray;
             }
-    .snb-goals-list-box {
+
+        .snb-goals-list-box {
         width: fit-content;
         margin: 0px 0 0 0;
         padding: 0;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: row wrap;
         
             .snb-list-button{
                 background-color: $goal-btn-gray;
                 border: 1px solid $goal-btn-border-gray;
                 border-radius: 5px;
                 width: fit-content;
-                padding: 2px 2px;
+                padding: 4px 2px;
                 padding-right: 2px;
                 display: flex;
                 align-items: center;
@@ -68,14 +72,15 @@ body{
                 max-width:fit-content;
                 margin-bottom: 12px;
                 margin-right: 5px;
+               
             
                 .snb-goals-list-text{
                     display: block;
                     font-size: 13px;
                     font-family: 'Pretendard';
-                    font-weight: 900;
-                    max-width: 200px; 
-                    margin: 0 10px; 
+                    font-weight: 600;
+                    //max-width: 200px; 
+                    margin: 0 5px; 
                     overflow: hidden;
                    
                     p{
@@ -83,7 +88,6 @@ body{
                         display:block; 
                         white-space: nowrap;
                         text-overflow: ellipsis;
-                        font-weight: 900;
                     }
                 }
             
@@ -92,15 +96,19 @@ body{
     
 
     .snb-todo-list-box{
-        width: 100vw;
-        font-size: 13px;
+        //width: 100vw;
         display: flex;
         flex-flow: column nowrap;
         
+        
         .goals-listItem-text-wrap{
             display: flex;
+            flex-wrap: wrap;
             flex-flow: row nowrap;
             align-items: center;
+            padding: 0px 0px;
+            height: 40px;
+           
 
             .todos-list-check-icon{
                 color: $text-gray;
@@ -108,6 +116,8 @@ body{
             p{
                 padding: 0px 5px;
                 color: $text-black;
+                font-size: 16px;
+                font-weight: 300;
             }
         }
     }

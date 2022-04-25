@@ -32,6 +32,15 @@ export default function MainNavBar() {
 /* atom 종료 */
 
 
+ /* 함수 시작 */
+
+  //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
+  const moveSetting = (e) => {
+    window.location.replace(`/setting/`)
+  }
+
+ /* 함수 종료 */
+
   //하위
   const [state, setState] = useState({ right: false });
 
@@ -69,8 +78,8 @@ export default function MainNavBar() {
         <section className='snb_user_info_wrap' style={{'background': ''}}>
         {/* if 로그인 된 경우 */}
         <Box display="flex" justifyContent="flex-end" >
-          <IconButton size="small" edge="end" aria-label="back" style={{ marginRight: "4px" }}>
-            <SettingsIcon fontSize="small" color="red" sx={{ color:"white", stroke: "black", strokeWidth:1.5 }} />
+          <IconButton onClick={moveSetting} size="small" edge="end" aria-label="back" style={{ marginRight: "0px" }}>
+            <SettingsIcon fontSize="small" sx={{ color:"white", stroke: "black", strokeWidth:1.5 }} />
           </IconButton>
         </Box>
           {/*<button className='snb_user_setting_btn'><SettingsIcon fontSize="small" /></button>*/}
@@ -82,14 +91,14 @@ export default function MainNavBar() {
           <p className='snb_user_follower'>{`숫자`}팔로워</p>
           <p className='snb_user_following'>{`숫자`}팔로잉</p>
         </section>
-        {/* 할일 : divider 스타일 변경  */}
+        {/* 할일 : divider 스타일 opacity 변경  */}
         <Divider  sx={{ }} />
       
         <section className='snb-goal-wrap'style={{'background': ''}}>
           <Box display="flex" justifyContent="space-between">
             <p className='snb-goal-title'>목표</p>
-            <IconButton size="small" edge="end" color="inherit" aria-label="back" sx={{ mr: 50 }} >
-              <NavigateNextIcon className='snb-title-nav-icon'/>
+            <IconButton size="small" edge="end" color="inherit" aria-label="back">
+              <NavigateNextIcon className='snb-title-nav-icon' />
             </IconButton>
           </Box>
           <div className="snb-goals-list-box">
@@ -109,14 +118,14 @@ export default function MainNavBar() {
         <Divider />
 
         <section className='snb_routine_wrap' style={{'background': ''}}>
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" style={{ height: "42px" }}>
             <p className='snb-goal-title'>기한이 있는 할 일 </p>
-            <IconButton size="small" edge="end" color="inherit" aria-label="back" sx={{ mr: 50 }} >
+            <IconButton size="small" edge="end" color="inherit" aria-label="back" >
               <NavigateNextIcon className='snb-title-nav-icon' />
             </IconButton>
           </Box>
           {/* 기한있는 할일-> 오늘날짜보다 뒤의 날짜설정? y */}
-          <div>
+          <React.Fragment>
             {todoDataArray.map((data, idx)=>{
                     return (
                      
@@ -126,7 +135,7 @@ export default function MainNavBar() {
                            {/* enddate? , feed의 check icon 각 할일에 추가 */}
                           return (
 
-                            <div className="todos-list-box" data-todos={todos}>
+                            
                               <div className="goals-listItem-text-wrap" 
                                   id={todos.todoId}
                                   data-index={todos.orderNo}>
@@ -138,14 +147,14 @@ export default function MainNavBar() {
                                   data-goalid={todos.goalId} data-todoid={todos.id} className="todos-list-check-icon"/> 
                                 <p key={todos.todoId}>{todos.title}</p>
                               </div>
-                            </div>)
+                            )
                           }) 
                         } 
                       </div>
                     )
                   }) 
                 }
-          </div>     
+          </React.Fragment>     
         </section>
     </Box>
   );
