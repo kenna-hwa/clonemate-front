@@ -14,11 +14,12 @@ import Main from "./main/Main";
 import OrderItem from "./order/OrderItem";
 import GoalForm from "./goal/GoalForm";
 import GoalEditForm from "./goal/GoalEditForm";
-import More from "./policy/More";
-import MorePolicy from "./policy/MorePolicy";
-import MoreAnnounce from "./policy/MoreAnnounce";
+import TermUse from "./policy/TermUse";
+import Policy from "./policy/Policy";
+import Announce from "./policy/Announce";
 import ExploreSearch from "./exploresearch/ExploreSearch";
 import Routines from "./routines/Routines";
+import Setting from "./nav/Setting";
 
 import "../stylesheets/App.css";
 
@@ -158,9 +159,13 @@ function App() {
         <BasicNavBar/>
           <ExploreSearch />
         </Route>
-        <Route exact path="/text/use" component={More}/>
-        <Route exact path="/text/policy" component={MorePolicy}/>
-        <Route exact path="/announcements" component={MoreAnnounce}/>
+        <Route exact path="/setting">
+        <BasicNavBar/>
+          <Setting />
+        </Route>
+        <Route exact path="/termUse" component={TermUse}/>
+        <Route exact path="/policy" component={Policy}/>
+        <Route exact path="/announcements" component={Announce}/>
         </Switch>
     </ThemeProvider>
   );
