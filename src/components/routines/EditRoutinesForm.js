@@ -25,17 +25,20 @@ export default function EditRoutinesForm(props) {
         let [dateActiveBoolean, setDateActiveBoolean] = useState(false);
         //날짜 선택 캘린더 모달 등장 시 입력할 날짜 정보가 어디인지 (date, endRepeatDate)
         let [location, setLocation] = useState(null)
+        //위의 location 처럼 edit에서 작업한다는 신호
+        let position = 'edit'
 
-        let [createRoutinesState, setCreactRoutinesState] = useState(todos);
+        let [editRoutinesState, setEditRoutinesState] = useState(todos);
+        console.log("editRoutinesState",editRoutinesState)
 
         const dayArr = [
-        { dayEng : 'SUN', dayKor : '일', checkYn: createRoutinesState.repeatDays['SUN']},
-        { dayEng : 'MON', dayKor : '월', checkYn: createRoutinesState.repeatDays['MON']},
-        { dayEng : 'TUE', dayKor : '화', checkYn: createRoutinesState.repeatDays['TUE']},
-        { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.repeatDays['WEN']},
-        { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.repeatDays['THU']},
-        { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.repeatDays['FRI']},
-        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatDays['SAT']},
+        { dayEng : 'SUN', dayKor : '일', checkYn: editRoutinesState.repeatDays['SUN']},
+        { dayEng : 'MON', dayKor : '월', checkYn: editRoutinesState.repeatDays['MON']},
+        { dayEng : 'TUE', dayKor : '화', checkYn: editRoutinesState.repeatDays['TUE']},
+        { dayEng : 'WEN', dayKor : '수', checkYn: editRoutinesState.repeatDays['WEN']},
+        { dayEng : 'THU', dayKor : '목', checkYn: editRoutinesState.repeatDays['THU']},
+        { dayEng : 'FRI', dayKor : '금', checkYn: editRoutinesState.repeatDays['FRI']},
+        { dayEng : 'SAT', dayKor : '토', checkYn: editRoutinesState.repeatDays['SAT']},
         ];
 
         /* state 선언 종료 */
@@ -54,14 +57,15 @@ export default function EditRoutinesForm(props) {
         dayActiveBoolean={dayActiveBoolean} 
         setDayActiveBoolean={setDayActiveBoolean} 
         dayArr={dayArr}
-        createRoutinesState={createRoutinesState}
-        setCreactRoutinesState={setCreactRoutinesState}
+        editRoutinesState={editRoutinesState}
+        setEditRoutinesState={setEditRoutinesState}
+        position={position}
         />
         <RoutineDateModal 
         dateActiveBoolean={dateActiveBoolean}
         setDateActiveBoolean={setDateActiveBoolean}
-        createRoutinesState={createRoutinesState}
-        setCreactRoutinesState={setCreactRoutinesState}
+        editRoutinesState={editRoutinesState}
+        setEditRoutinesState={setEditRoutinesState}
         location={location}
         />
         <div className="routines-input-title-field">
@@ -70,7 +74,7 @@ export default function EditRoutinesForm(props) {
                 setLocation(`date`)
                 }}>
                 <span>시작 날짜</span>
-                <input id="start-date-input" className="routines-startdate-input"  type="text" value={createRoutinesState.date} readOnly /> 
+                <input id="start-date-input" className="routines-startdate-input"  type="text" value={editRoutinesState.date} readOnly /> 
             </div>
             <div className="routines-input-enddate-field"
             onClick={()=>{
@@ -78,7 +82,7 @@ export default function EditRoutinesForm(props) {
                 setLocation(`endRepeatDate`)
                 }} >
                 <span>종료 날짜</span>
-                <input id="end-date-input" className="routines-enddate-input" type="text" value={createRoutinesState.endRepeatDate} readOnly /> 
+                <input id="end-date-input" className="routines-enddate-input" type="text" value={editRoutinesState.endRepeatDate} readOnly /> 
             </div>
             <div className="routines-input-day-field" onClick={()=>{setDayActiveBoolean(true)}} >
                 <span className="routines-input-day-field-title">반복 요일</span>

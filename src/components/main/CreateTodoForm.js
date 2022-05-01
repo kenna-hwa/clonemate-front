@@ -26,6 +26,7 @@ export default function CreateTodoForm (props) {
     /* atom 시작 */
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+    console.log("todoDataArray", todoDataArray)
 
     /* atom 종료 */
 
@@ -36,27 +37,24 @@ export default function CreateTodoForm (props) {
     const new_todo_id = props.todoLength+1;
     const new_order_no = props.todoLength+1;
     const createTodoFieldReset = props.createTodoFieldReset;
-    const copy_dtTodos = [...dtTodos];
-
-    let id = props.id;
 
     let createTodoState = {
-        id: goal_id,
-        todoId: new_todo_id,
-        orderNo: new_order_no,
-        title: "",
-        date: dtDate.dtToday,
-        endRepeatDate: dtDate.dtToday,
-        repeatDays: {
-          THU: "N",
-          WEN: "N",
-          TUE: "N",
-          SAT: "N",
-          FRI: "N",
-          MON: "N",
-          SUN: "N"
-        },
-        checkYn: "N"
+        "id": goal_id,
+        "todoId": new_todo_id,
+        "orderNo": new_order_no,
+        "title": "",
+        "date": dtDate.dtToday,
+        "startRepeatDate": dtDate.dtToday,
+        "endRepeatDate": dtDate.dtToday,
+        "repeatMonYn":"n",
+        "repeatTueYn":"n",
+        "repeatWenYn":"n",
+        "repeatThuYn":"n",
+        "repeatFriYn":"n",
+        "repeatSatYn":"n",
+        "repeatSunYn":"n",
+        "checkYn": "N",
+        "likes":[],
     };
 
     /* state 선언 종료 */

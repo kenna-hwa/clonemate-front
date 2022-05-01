@@ -73,6 +73,7 @@ export const objTodosDataResult = atom({
         {
           "id": 1,
           "date": "2022-02-13",
+          "startRepeatDate":"2022-02-13", 
           "endRepeatDate": "2022-02-13",
           "checkYn": "N",
           "orderNo": 1,
@@ -111,8 +112,9 @@ export const objTodosDataResult = atom({
           ],
         },
         {
-          "todoId": 2,
+          "id": 2,
           "date": "2022-02-13",
+          "startRepeatDate":"2022-02-13",
           "endRepeatDate": "2022-02-14",
           "checkYn": "N",
           "orderNo": 2,
@@ -151,8 +153,9 @@ export const objTodosDataResult = atom({
 					],
       },
       {
-        "todoId": 3,
+        "id": 3,
         "date": "2022-02-13",
+        "startRepeatDate":"2022-02-13",
         "endRepeatDate": "2022-02-17",
         "checkYn": "N",
         "orderNo": 3,
@@ -198,8 +201,9 @@ export const objTodosDataResult = atom({
     "titleColor" : "#ff873d",
     "todos" : [
           {
-            "todoId": 1,
+            "id": 1,
             "date": "2022-02-13",
+            "startRepeatDate":"2022-02-13",
             "endRepeatDate": "2022-02-13",
             "checkYn": "N",
             "orderNo": 1,
@@ -238,8 +242,9 @@ export const objTodosDataResult = atom({
             ],
           },
           {
-            "todoId": 2,
+            "id": 2,
             "date": "2022-02-11",
+            "startRepeatDate":"2022-02-11", 
             "endRepeatDate": "2022-02-15",
             "checkYn": "N",
             "orderNo": 2,
@@ -285,8 +290,9 @@ export const objTodosDataResult = atom({
       "titleColor" : "#0119cb",
       "todos" : [
            {
-              "todoId": 1,
+              "id": 1,
               "date": "2022-02-16",
+              "startRepeatDate":"2022-02-16", 
               "endRepeatDate": "2022-02-16",
               "checkYn": "N",
               "orderNo": 1,
@@ -325,8 +331,9 @@ export const objTodosDataResult = atom({
               ],
             },
             {
-              "todoId": 2,
+              "id": 2,
               "date": "2022-02-13",
+              "startRepeatDate":"2022-02-13",
               "endRepeatDate": "2022-02-19",
               "checkYn": "N",
               "orderNo": 2,
@@ -382,8 +389,9 @@ export const objTodosDataResult = atom({
         "titleColor" : "#77ab59",
         "todos" : [
              {
-                "todoId": 1,
+                "id": 1,
                 "date": "2022-02-16",
+                "startRepeatDate":"2022-02-16",
                 "endRepeatDate": "2022-02-16",
                 "checkYn": "N",
                 "orderNo": 1,

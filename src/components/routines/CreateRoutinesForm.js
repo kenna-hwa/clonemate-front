@@ -24,17 +24,21 @@ export default function CreateRoutinesForm (props) {
     const setIsGoalSelected = props.setIsGoalSelected;
     const todoDataArray = props.todoDataArray;
 
+    console.log("create goal_Id", goal_Id, "todo_Id", todo_Id, "orderNo", orderNo)
+
     let [dayActiveBoolean, setDayActiveBoolean] = useState(false);
     let [dateActiveBoolean, setDateActiveBoolean] = useState(false);
     let [location, setLocation] = useState(null)
+    //위의 location 처럼 create에서 작업한다는 신호
+    let position = 'create'
 
-
-    let [createRoutinesState, setCreactRoutinesState] = useState({
+    let [createRoutinesState, setCreatRoutinesState] = useState({
         "goalId": goal_Id, //묶여있는 goal id
         "id": todo_Id,
         "orderNo": orderNo,
         "title": "",
         "date": dtDate.dtToday,
+        "startRepeatDate": dtDate.dtToday,
         "endRepeatDate": dtDate.dtToday, //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
         "repeatMonYn":"n",
         "repeatTueYn":"n",
@@ -52,7 +56,7 @@ export default function CreateRoutinesForm (props) {
         { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.repeatWenYn},
         { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.repeatThuYn},
         { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.repeatFriYn},
-        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatSunYn},
+        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatSatYn},
       ];
 
     /* state 선언 종료 */
@@ -65,7 +69,7 @@ export default function CreateRoutinesForm (props) {
     
 
 
-    const calendarRoutinesSubmit = (e) => {
+    const routinesSubmit = (e) => {
         const copy_todo_state = JSON.parse(JSON.stringify(dtTodos)); // dtTodos State 원본 카피        
         copy_todo_state.map((data)=>{
             if(data.id === goal_Id){
@@ -87,20 +91,22 @@ export default function CreateRoutinesForm (props) {
         setDayActiveBoolean={setDayActiveBoolean} 
         dayArr={dayArr}
         createRoutinesState={createRoutinesState}
-        setCreactRoutinesState={setCreactRoutinesState}
+        setCreatRoutinesState={setCreatRoutinesState}
+        position={position}
+
         />
         <RoutineDateModal 
         dateActiveBoolean={dateActiveBoolean}
         setDateActiveBoolean={setDateActiveBoolean}
         createRoutinesState={createRoutinesState}
-        setCreactRoutinesState={setCreactRoutinesState}
+        setCreatRoutinesState={setCreatRoutinesState}
         location={location}
         />
         <div className="routines-input-title-field">
                     <CheckBoxOutlineBlankIcon className="routines-input-check-icon"/>
                     <input id="todo-input" className="routines-input-field"  placeholder="할 일을 입력해주세요." type="text" maxLength={"50"} 
                     onChange={(e)=>{
-                        setCreactRoutinesState({
+                        setCreatRoutinesState({
                             ...createRoutinesState, title: e.target.value
                         })
                     }}
@@ -129,7 +135,7 @@ export default function CreateRoutinesForm (props) {
                         })}
                     </div>
                 </div>
-                <Button type="submit" className="routines-input-btn" onClick={calendarRoutinesSubmit}>등록</Button>
+                <Button type="submit" className="routines-input-btn" onClick={routinesSubmit}>등록</Button>
         </div>
     )
 

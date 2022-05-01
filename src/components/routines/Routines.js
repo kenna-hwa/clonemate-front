@@ -53,13 +53,14 @@ return (
     <div className="routines-wrap">
         {
             todoDataArray.map((data, index) => {
+                console.log("routines data",data)
                 return ( 
-                    <div className="goals-list-box" key={data.goalOrderNo}> 
-                        <Button className="goals-list-button" id={data.goalOrderNo} data-id={index} 
+                    <div className="goals-list-box" key={data.orderNo}> 
+                        <Button className="goals-list-button" id={data.orderNo} data-id={index} 
                         onClick={goalSelectedHandler}
                         >
                             <ReceiptIcon className="goals-list-icon" />
-                                <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.titleColor }}><p>{data.title}</p>
+                                <div className="goals-list-text" id={data.orderNo} name={data.orderNo} style={{ color:data.titleColor }}><p>{data.title}</p>
                                 </div>
                                 <p className="goals-list-plus-icon-wrap">
                                 <AddCircleIcon className="goals-list-plus-icon"/>
@@ -69,7 +70,7 @@ return (
                     <div className="todos-list-cont">
                     {data.todos.map((data,index)=>{
                         return(
-                            <React.Fragment key={data.todoId}>
+                            <React.Fragment key={data.id}>
                                 <RoutinesTodos todos={data} 
                                 isTodoSelected={isTodoSelected}
                                 />
@@ -78,7 +79,7 @@ return (
                         )
                     })}
                     {isGoalSelected[index]? <CreateRoutinesForm 
-                    goalId={data.goalId} 
+                    goalId={data.id} 
                     todoId={data.todos.length+1} 
                     orderNo={data.todos.length+1} 
                     setIsGoalSelected={setIsGoalSelected} 
