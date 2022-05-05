@@ -16,7 +16,7 @@ export default function RoutineDateModal(props) {
     const dateActiveBoolean = props.dateActiveBoolean;
     const setDateActiveBoolean = props.setDateActiveBoolean;
     const createRoutinesState = props.createRoutinesState;
-    const setCreactRoutinesState = props.setCreactRoutinesState;
+    const setCreatRoutinesState = props.setCreatRoutinesState;
     const location = props.location;
     
     const dtSelectedDate = dtDate.selectedNewDate;
@@ -43,7 +43,7 @@ export default function RoutineDateModal(props) {
         const copy_createRoutinesState = {...createRoutinesState}
         copy_createRoutinesState[destination] = dtSelectedDate.toJSON().substring(0, 10);
         console.log(dtSelectedDate.toJSON().substring(0, 10))
-        setCreactRoutinesState(copy_createRoutinesState)
+        setCreatRoutinesState(copy_createRoutinesState)
         setDateActiveBoolean(false)
     }
     

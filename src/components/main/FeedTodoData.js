@@ -175,7 +175,9 @@ const TodoList = React.forwardRef((props, ref) => {
             onKeyDown={enterKeyEventHandler}
             />
                 {/* 만약 계정 주인이면 좋아요 누른 사람 보여주고, 다른 계정 유저면 좋아요 클릭되기 */}
-            <Button className="todos-list-like-btn" onClick={(e)=>{console.log(e)}}><ThumbUpAltIcon  /><span className="todos-list-like-num">{todos.likes.length}</span></Button>
+            <Button className="todos-list-like-btn" onClick={(e)=>{console.log(e)}}><ThumbUpAltIcon  />
+            <span className="todos-list-like-num">{todos.likes.length}</span>
+            </Button>
         </div>
         )
 })
