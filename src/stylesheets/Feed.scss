@@ -248,7 +248,7 @@
     }
 }
 
-//모달
+// 할일 클릭 모달
 
 .feed-todo-modal-box{
     display: flex;
@@ -637,5 +637,40 @@
 
     @media (max-width: 750px){
 
+    }
+}
+
+
+// 좋아요 클릭 모달
+.like-todo-modal-wrap{
+    display: flex;
+    width: 320px;
+    height: auto;
+    border-radius: 8px;
+    padding: 1.5em;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    font-family: 'Pretendard';
+    background-color: $bg-white;
+
+    h1{
+        font-size: 1.1em;
+        text-align: center;
+    }
+
+    .like-todo-modal-data{
+        font-size: 0.9em;
+        margin-left: 25px;
+        list-style-type: circle;
+
+        p{
+            margin-bottom: -5px;
+            color: $text-black;
+
+            &:last-child{
+                font-size: 0.9em;
+                margin-bottom: 5px;
+            }
+        }
     }
 }
