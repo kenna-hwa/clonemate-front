@@ -8,13 +8,17 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import { objTodosDataResult, objDatesData  } from "../../atoms/todoData";
 
 import { TodoModal } from "./TodoModal";
+import { LikeListModal } from "./LikeListModal";
 import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom";
+
 
  export default function FeedTodoData(props) {
 
 
     /* hook 선언 시작 */
     // let todo_input = useRef([]);
+    let history = useHistory();
 
     // useEffect(() => {
     // const inputElement = todo_input.current;
@@ -35,20 +39,25 @@ import { Button } from "@mui/material";
     const index = props.todos.todoId;
 
     const [readOnly, setReadOnly] = useState(true);
-    const [modalActiveIndex, setModalActiveIndex] = useState(0);
-
+    const [modalActiveIndex, setModalActiveIndex] = useState(false);
+    const [likeModalActiveIndex, setLikeModalActiveIndex] = useState(false)
 
     /* state 선언 종료 */
 
     /* 함수 선언 시작 */
 
     const activeHandler = (index) => {
-      if (index === modalActiveIndex) {
-        setModalActiveIndex(null);
-      } else {
-        setModalActiveIndex(index);
-      }
+        setModalActiveIndex(true)
     }
+
+    const likeActiveHandler = (index) => {
+        setLikeModalActiveIndex(true)
+        // if (index === likeModalActiveIndex) {
+        //     setLikeModalActiveIndex(null);
+        // } else {
+        //     setLikeModalActiveIndex(index);
+        // }
+      }
 
     const readOnlyHandler = (index) => {
         if (index === modalActiveIndex) {
@@ -110,7 +119,6 @@ import { Button } from "@mui/material";
             data.todos.map(todo=>{
                 if(todo.goalId === goal_id && todo.id === todo_id){
                     todo.title = current_value;
-                    console.log("todo, " , todo.title)
                 }
             })
         )
@@ -122,9 +130,12 @@ import { Button } from "@mui/material";
 
     return (
         <div className="todos-list-box" data-todos={todos}>
-            <TodoModal index={index} modalActive={index === modalActiveIndex? true : false} todos={todos} setModalActiveIndex={setModalActiveIndex} 
+            <TodoModal index={index} modalActive={modalActiveIndex} todos={todos} setModalActiveIndex={setModalActiveIndex} 
             readOnlyHandler={readOnlyHandler} todoModalEditHandler={todoModalEditHandler}
             /> 
+            <LikeListModal index={index} likeModalActive={likeModalActiveIndex}
+            likeModalActiveIndex={likeModalActiveIndex} setLikeModalActiveIndex={setLikeModalActiveIndex} likesUser={todos.likes} />
+
             <div className="goals-listItem-text-wrap" 
             id={todos.todoId}
             data-index={todos.orderNo}>
@@ -134,10 +145,12 @@ import { Button } from "@mui/material";
                     <CheckBoxOutlineBlankIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon"
                     data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                     /> }
+                        
             <TodoList todos={todos} 
             readOnly={readOnly}
             // ref={inputElement}
             activeHandler={activeHandler}
+            likeActiveHandler={likeActiveHandler}
             todoInputChangeHandler={todoInputChangeHandler} inputLostFocusEventHandler={inputLostFocusEventHandler} enterKeyEventHandler={enterKeyEventHandler} />
             </div>
         </div>
@@ -152,9 +165,11 @@ const TodoList = React.forwardRef((props, ref) => {
     const todos = props.todos;
     const readOnly = props.readOnly;
     const activeHandler = props.activeHandler;
+    const likeActiveHandler = props.likeActiveHandler;
     const todoInputChangeHandler = props.todoInputChangeHandler;
     const inputLostFocusEventHandler = props.inputLostFocusEventHandler;
     const enterKeyEventHandler = props.enterKeyEventHandler;
+
 
     return (
         <div className="todos-list-wrap">
@@ -166,16 +181,16 @@ const TodoList = React.forwardRef((props, ref) => {
             name={todos.title} 
             data-orderno={todos.orderNo}
             data-goalid={todos.goalId} 
-            data-todoid={todos.todoId} 
+            data-todoid={todos.id} 
             value={todos.title} 
             readOnly={readOnly}
-            onClick={()=>activeHandler(todos.todoId)}
+            onClick={()=>activeHandler(todos.id)}
             onChange={todoInputChangeHandler}
             onBlur={inputLostFocusEventHandler}
             onKeyDown={enterKeyEventHandler}
             />
                 {/* 만약 계정 주인이면 좋아요 누른 사람 보여주고, 다른 계정 유저면 좋아요 클릭되기 */}
-            <Button className="todos-list-like-btn" onClick={(e)=>{console.log(e)}}><ThumbUpAltIcon  />
+            <Button className="todos-list-like-btn" onClick={()=>{likeActiveHandler(todos.id)}}><ThumbUpAltIcon  />
             <span className="todos-list-like-num">{todos.likes.length}</span>
             </Button>
         </div>
