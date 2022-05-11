@@ -78,6 +78,18 @@ export const fetchPostDataWithParam = async () => {
 }
 
 
+/* ------------------------------------예시 종료---------------------------------------- */
+
+/* 공통 변수 선언 */
+
+const headers = {
+  "Content-Type": "application/json",
+  "Connection": "keep-alive",
+  "X-Requested-With": "XMLHttpRequest",
+}
+
+const host = '';
+
 //POST 메서드로 전송할 데이터
 // let formData = new FormData(); 
 // formData.append('key', value); // key-value (키-값)의 형태로 데이터 추가함
@@ -97,8 +109,37 @@ export async function axiosGetTodoDataForCalendar (date) {
 } 
 
 
-/* 캘린더 API 통신 시작 */
+/* 캘린더 API 통신 종료 */
 
+/* 유저 관련 통신 시작 */
+
+//회원가입
+export async function axiosRegisterUser (param) {
+  //axios
+  console.log(param)
+  // await axios.post(`http://${host}/users`,{
+  //   body: param
+  // }, {headers})
+  // .then((Response)=>{
+  //   Response.success ? console.log("회원가입 성공") : console.log("회원가입 실패")
+  // })
+  // .catch((Error)=>{console.log(Error)})
+} 
+//로그인
+export async function axiosLoginAccount (host, param, headers) {
+  //axios
+  await axios.post(`http://${host}/login`,{
+    body: param
+  }, {headers})
+  .then((Response)=>{
+    Response.success ? console.log("로그인 성공") 
+    //로그인 성공 시 세션에 로그인 정보 저장
+     : console.log("회원가입 실패")
+  })
+  .catch((Error)=>{console.log(Error)})
+} 
+
+/* 유저 관련 통신 종료 */
 
 
 /* 목표 API 통신 시작 */

@@ -1,28 +1,43 @@
-import React ,  { useState } from 'react';
+import React , { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 
+import axiosRegisterUser from '../../api/apiCommunicate'
 import '../../stylesheets/Signin.css';
 
 export default function Join(){
 
     const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
     const [result, setResult] = useState("");
+    console.log("watch",watch())
+
+
     const onSubmit = (data) => {
       setResult(JSON.stringify(data));
       console.log(result)
+      // axiosRegisterUser(result)
     }
     const onError = (error) => {
       console.log(error);
     };
-    console.log(watch())
 
     return (
 
     <form onSubmit={handleSubmit(onSubmit,onError)}>
-    <TextField
+      <TextField
       {...register("userId", {required: true,})} //값을 불러오기 위한 이름
+        id="standard-email-input"
+        label="아이디"
+        type="text"
+        autoComplete="current-id"
+        variant="standard"
+        helperText="Please enter Id"
+        margin="dense"
+        fullWidth 
+      />
+    <TextField
+      {...register("email", {required: true,})} //값을 불러오기 위한 이름
         id="standard-email-input"
         label="이메일"
         type="email"
@@ -33,7 +48,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userPwd", {required: true, minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
+       {...register("password", {required: true, minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
         id="standard-password-input"
         label="비밀번호"
         type="password"
@@ -44,7 +59,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userName", {required: true, minLength:{ value: 2, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
+       {...register("name", {required: true, minLength:{ value: 2, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
         id="standard-name-input"
         label="이름"
         type="name"
@@ -55,7 +70,7 @@ export default function Join(){
         fullWidth 
       />
       <TextField
-       {...register("userIntro", {required: true, message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
+       {...register("introText", {required: true, message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
         id="standard-intro-input"
         label="자기소개"
         type="text"
@@ -65,14 +80,7 @@ export default function Join(){
         margin="dense"
         fullWidth 
       />
-      <TextField
-       {...register("hiddenUserId")}  //값을 불러오기 위한 이름
-        id="standard-id-input"
-        type="hidden"
-        autoComplete="current-id"
-        variant="standard"
-      />
-      <Button id="submit_btn">확인</Button>
+      <Button type="submit" id="submit_btn">확인</Button>
       
       <div className='join_txt'>
           <p>
