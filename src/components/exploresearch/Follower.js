@@ -166,12 +166,29 @@ const handleFollowingChange = (e) => {
                          
             
                                     <div className="follow-list-box" key={data.strUserId}> 
-                                     
+                                    
+                                        <div className='setting-settings-list-wrap' id={data.strUserName} name={data.strUserName}>
+                                            <div className="setting-list-box" >
+                
+                                        
+
+                                            <Button className="settings-list-text"><p>{data.strUserName}</p></Button>
+                                            <Button className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
+                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></Button>
+                                        
+
+                                        
+                                        
+            
+                                            </div>
+
+                                        </div>
+
                                         <Stack>
                                         <div className="follow-list-name" id={data.strUserName} name={data.strUserName}>
                                             <p className="follow-list-name-name"><p>{data.strUserName}</p></p>
-                                            <p className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
-                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></p>
+                                            <Button className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
+                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></Button>
                                         </div>
                                             
                                             {data.dtTodo.map(e => {
