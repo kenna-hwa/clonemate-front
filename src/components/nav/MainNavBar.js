@@ -16,7 +16,7 @@ import ListItemText from "@mui/material/ListItemText";
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { objTodosDataResult } from "../../atoms/todoData";
+import { objTodosDataResult, userIdInfo } from "../../atoms/todoData";
 
 import '../../stylesheets/Nav.css';
 
@@ -29,14 +29,22 @@ export default function MainNavBar() {
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
+    let [dtUser, setDtUser] = useRecoilState(userIdInfo);
+    let userData = JSON.parse(JSON.stringify(dtUser));
+    //console.log(userData)
+
+
 /* atom 종료 */
 
 
  /* 함수 시작 */
 
-  //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
+  //컴포넌트로 이동 함수 (파라미터 추가)
   const moveSetting = (e) => {
-    window.location.replace(`/setting/`)
+    window.location.replace(`/setting`)
+  }
+  const moveFollowing = (e) => {
+    window.location.replace(`/exploreSearch`)
   }
 
  /* 함수 종료 */
@@ -59,7 +67,7 @@ export default function MainNavBar() {
   const SNB = (anchor) => (
     <Box
     className='snb_wrap'
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 235}} //가로 길이
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250}} //가로 길이
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -83,18 +91,42 @@ export default function MainNavBar() {
           </IconButton>
         </Box>
           {/*<button className='snb_user_setting_btn'><SettingsIcon fontSize="small" /></button>*/}
-          <h2 className='snb_user_info_title'>유저 닉네임</h2>
-          <p>유저 이메일</p>
+          <div className="snb-user-info-box">
+            {userData.map((data, idx)=>{
+                    return (
+                    
+                      <Button className="snb-user-info-button"  data={data}>
+                          <div className="snb-user-info-text" id={idx}>
+                            <h3 className='snb-user-info-name'>{data.name}</h3>
+                          </div>
+                          <div className="snb-user-info-text" id={idx}>
+
+                            <p className='snb-user-info-mail'>{data.email}</p>
+                          </div>
+                      </Button>
+                    )
+                }) 
+                }
+          </div>
+          {/* <h2 className='snb_user_info_title'>유저 닉네임</h2>
+          <p>유저 이메일</p> */}
         </section>
-      
-        <section className='snb_user_follow_info_wrap' style={{'background': 'lightgray'}}>
-          <p className='snb_user_follower'>{`숫자`}팔로워</p>
-          <p className='snb_user_following'>{`숫자`}팔로잉</p>
+       
+        <section className='snb_user_follow_info_wrap'>
+          {/* Box -> hover 옵션 추가 or Button-> CSS 변경 */}
+          <Button display="flex" justifyContent="flex-start" onClick={moveFollowing} fontSize="small" 
+          sx={{ color:"black"}}>
+            <p className='snb-goal-title' style={{paddingRight: "20px" }}>{`숫자`}팔로워</p>
+            <p className='snb-goal-title'>{`숫자`}팔로잉</p>
+            
+          </Button>
         </section>
+       
+
         {/* 할일 : divider 스타일 opacity 변경  */}
-        <Divider  sx={{ }} />
+        <Divider  />
       
-        <section className='snb-goal-wrap'style={{'background': ''}}>
+        <section className='snb-goal-wrap'>
           <Box display="flex" justifyContent="space-between">
             <p className='snb-goal-title'>목표</p>
             <IconButton size="small" edge="end" color="inherit" aria-label="back">
@@ -117,7 +149,7 @@ export default function MainNavBar() {
         </section>
         <Divider />
 
-        <section className='snb_routine_wrap' style={{'background': ''}}>
+        <section className='snb_routine_wrap'>
           <Box display="flex" justifyContent="space-between" style={{ height: "42px" }}>
             <p className='snb-goal-title'>기한이 있는 할 일 </p>
             <IconButton size="small" edge="end" color="inherit" aria-label="back" >
