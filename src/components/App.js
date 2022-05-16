@@ -14,12 +14,13 @@ import Main from "./main/Main";
 import OrderItem from "./order/OrderItem";
 import GoalForm from "./goal/GoalForm";
 import GoalEditForm from "./goal/GoalEditForm";
-import TermUse from "./policy/TermUse";
-import Policy from "./policy/Policy";
-import Announce from "./policy/Announce";
 import ExploreSearch from "./exploresearch/ExploreSearch";
 import Routines from "./routines/Routines";
 import Setting from "./nav/Setting";
+import Text from "./tabmenu/Text";
+import TermUse from "./tabmenu/TermUse";
+import Policy from "./tabmenu/Policy";
+import Announce from "./tabmenu/Announce";
 
 import "../stylesheets/App.css";
 
@@ -162,6 +163,10 @@ function App() {
         <Route exact path="/setting">
         <BasicNavBar/>
           <Setting />
+        </Route>
+        <Route exact path="/text">
+        <BasicNavBar/>
+          <Text />
         </Route>
         <Route exact path="/termUse" component={TermUse}/>
         <Route exact path="/policy" component={Policy}/>

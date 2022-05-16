@@ -7,17 +7,21 @@
     //justify-content: space-between;
     padding: 10px 10px 10px 10px ;
     margin: 0 auto;
-    width: 80%;
+    width: 65%;
 
     .setting-list-box{
         display: flex;
         flex-flow: row nowrap;
-        //justify-content: space-between;
+        justify-content: space-between;
         align-items: center;
         margin: 10px 0 0 0;
         padding: 0px 0px;
+        width: 100%;
 
         .setting-list-button{
+            // hover style 변경, hover 영역 전체로 확대 
+            // icon opacity 조정 
+
             padding: 5px 2px;
             display: flex;
             align-items: center;
@@ -27,42 +31,57 @@
             //min-width:fit-content;
             //max-width:fit-content;
             margin-bottom: 10px;
-            
+            width: 100%;
 
-
-            .settings-list-icon{
-                font-size: 1.5em;
+            .setting-list-button-wrap{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                justify-content: space-between;
                 color: $text-black;
-               
-            }
 
-            .settings-list-text{
-                display: block;
-                font-size: 16px;
-                font-family: 'Pretendard';
-                //font-weight: 200;
-                max-width: 200px; 
-                margin: 0 10px; 
-                overflow: hidden;
-                color: $text-black;
-               
-                p{
-                    max-width: 200px; 
-                    display:block; 
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    font-weight: 300;
+
+                .settings-list-icon{
+                    font-size: 1.5em;
+                    color: $text-black;
+                   
                 }
+    
+                .settings-list-text{
+                    display: block;
+                    font-size: 16px;
+                    font-family: 'Pretendard';
+                    //font-weight: 200;
+                    max-width: 200px; 
+                    margin: 0 10px; 
+                    overflow: hidden;
+                    color: $text-black;
+                   
+                    p{
+                        max-width: 200px; 
+                        display:block; 
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-weight: 300;
+                        color: $text-black;
+                    }
+                }
+                
+            
+            .setting-list-arrow{
+                color: lightgrey;
+                font-size: 17px;
+                // opacity -> 
+                font-weight: 100;
+                justify-content: flex-end
             }
+
+            }
+
+           
             
         }
-        .setting-list-arrow{
-            color: lightgrey;
-            font-size: 17px;
-            // opacity -> 
-            font-weight: 100;
-            justify-content: flex-end
-        }
+       
     }
     
 }

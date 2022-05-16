@@ -72,7 +72,7 @@
           flex-flow: column nowrap;
   padding: 10px 10px 10px 10px;
   margin: 0 auto;
-  width: 80%;
+  width: 65%;
 }
 
 .setting-settings-list-wrap .setting-list-box {
@@ -83,11 +83,15 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin: 10px 0 0 0;
   padding: 0px 0px;
+  width: 100%;
 }
 
 .setting-settings-list-wrap .setting-list-box .setting-list-button {
@@ -106,14 +110,31 @@
           justify-content: space-between;
   line-height: 0;
   margin-bottom: 10px;
+  width: 100%;
 }
 
-.setting-settings-list-wrap .setting-list-box .setting-list-button .settings-list-icon {
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #1c1c1c;
+}
+
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-icon {
   font-size: 1.5em;
   color: #1c1c1c;
 }
 
-.setting-settings-list-wrap .setting-list-box .setting-list-button .settings-list-text {
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-text {
   display: block;
   font-size: 16px;
   font-family: 'Pretendard';
@@ -123,15 +144,16 @@
   color: #1c1c1c;
 }
 
-.setting-settings-list-wrap .setting-list-box .setting-list-button .settings-list-text p {
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-text p {
   max-width: 200px;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 300;
+  color: #1c1c1c;
 }
 
-.setting-settings-list-wrap .setting-list-box .setting-list-arrow {
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .setting-list-arrow {
   color: lightgrey;
   font-size: 17px;
   font-weight: 100;

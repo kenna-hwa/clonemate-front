@@ -552,3 +552,17 @@ export const repeatDayCalendarOpen = atom({
   key: "repeatDayCalendarOpen",
   default: false
 })
+
+// User API 테스트 더미 
+export const userIdInfo = atom({
+  key: 'userIdInfo',
+  default : [
+    {
+    "id": 2,
+    "account": "test2",
+    "email": "test2@test.com",
+    "name": "클론짱2",
+    "introText": "클론짱2의 투두메이트",
+    }
+  ]
+})

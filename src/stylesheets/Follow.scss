@@ -18,6 +18,29 @@
       margin: 0 0 0 0;
       padding: 0;
   
+
+
+      .setting-settings-list-wrap{
+        display: flex;
+        flex-flow: column nowrap;
+        //justify-content: space-between;
+        padding: 10px 10px 10px 10px ;
+        margin: 0 auto;
+        width: 90%;
+      }
+        .setting-list-box{
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          margin: 10px 0 0 0;
+          padding: 0px 0px;
+          width: 100%;
+        }
+
+
+
+
       .follow-list-name{
         display: flex;
         align-items: center;
