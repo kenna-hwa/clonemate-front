@@ -14,7 +14,7 @@ function Announce(){
 
     <form className='formOfAnnounce'>
       <BasicNavBar/>
-      <Container maxWidth="md" className='textOfAnnounce'>
+      <Container maxWidth="lg" className='textOfAnnounce'>
 
         <Typography  color="text.primary" variant="body2">
         Premium 구독 기능이 추가되었습니다. Premium 구독을 이용하시면 광고가 제거되고 추가
@@ -30,7 +30,7 @@ function Announce(){
             
         </Typography>
         <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
+        <Divider sx={{ margin:"20px 0 20px 0" }}/>
         
         <Typography  color="text.primary" variant="body2">
         국내 통신사 문제로 이미지 파일 접근이 불가했던 문제가 해결되어 잘 동작하는 것을 확인했습니다. 
@@ -40,7 +40,7 @@ function Announce(){
             
         </Typography>
         <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
+        <Divider sx={{ margin:"20px 0 20px 0" }} />
 
         <Typography  color="text.primary" variant="body2">
         현재 국내 통신사 문제로 인해 스티커 및 사진 첨부에 대한 기능에 제한이 있습니다.
@@ -50,7 +50,7 @@ function Announce(){
             
         </Typography>
         <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
+        <Divider sx={{ margin:"20px 0 20px 0" }} />
       
 
       </Container>

@@ -365,16 +365,17 @@ export async function axiosDeleteTodoLikeData (likeId) {
 
 export async function axiosGetFollowers () {
   //axios
-  await axios.get(`/follow/followers`)
+  await axios.get(`http://{{host}}/follows/followers`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
+
 
 //GET following 가져오기
 
 export async function axiosGetFollowing () {
   //axios
-  await axios.get(`/follow/followings`)
+  await axios.get(`http://{{host}}/follows/followings`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
