@@ -36,7 +36,43 @@ body{
     padding: 10px 15px 10px 15px;
     //width: 235;
 
-   
+
+    .snb_user_info_wrap{
+
+
+
+        .snb-user-info-box{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            .snb-user-info-text{
+                justify-content: flex-start;
+                p {
+                    justify-content: flex-start;
+                    font-family: 'Pretendard';
+                    font-weight: 600;
+                    font-size: 16px;
+                    color:$text-black;
+                    
+                }
+            }
+        }
+    }
+
+// hover css 추가 
+    .snb_user_follow_info_wrap{
+        .snb-follow-box{
+            display: flex;
+            flex-flow: row nowrap;
+
+            p {
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-size: 16px;
+            color:$text-black;
+            }
+        }
+    }
        
 
         .snb-goal-title{
