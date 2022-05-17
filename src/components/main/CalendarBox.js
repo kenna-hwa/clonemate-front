@@ -8,19 +8,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 import '../../stylesheets/CalendarBox.css';
 import { objFeedCalendarOverview , objDatesData} from "../../atoms/todoData";
-import { getTodosData } from "../../api/apiCommunicate";
-import API from '../../api/API';
 
 
-export const refresh = async () => {
-    try {
-        const { data } = await API.get('https://jsonplaceholder.typicode.com/todos/1');
-    	return data;
-    } catch {
-    	// Error Handling
-    }
-};
-// console.log(data)
 
 export const styles = makeStyles(() => ({ //define CSS for different date types
     notInThisMonthDayPaper: {

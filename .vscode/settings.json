@@ -1,4 +1,5 @@
 {
   "workbench.colorTheme": "Community Material Theme",
-  "workbench.commandPalette.history": 80
+  "workbench.commandPalette.history": 80,
+  "editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace"
 }
