@@ -151,7 +151,6 @@ export const userLogin = (data) => {
 
 //GET followers 가져오기
 
-<<<<<<< Updated upstream
 export async function axiosGetFollowers () {
   //axios
   await axios.get(`http://{{host}}/follows/followers`)
@@ -169,10 +168,6 @@ export async function axiosGetFollowing () {
   .catch((Error)=>{console.log(Error)})
 } 
 
-=======
-//GET following 가져오기
-
->>>>>>> Stashed changes
 //POST 팔로워 수정하기
 
 //DELETE 팔로워 삭제하기
