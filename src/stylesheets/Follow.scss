@@ -17,49 +17,25 @@
       align-items: center;
       margin: 0 0 0 0;
       padding: 0;
-      font-size: 14px;
-      font-family: 'Pretendard';
-      font-weight: 300;
+  
+
 
       .setting-settings-list-wrap{
         display: flex;
         flex-flow: column nowrap;
         //justify-content: space-between;
-        padding: 0px 0px 0px 0px ;
+        padding: 10px 10px 10px 10px ;
         margin: 0 auto;
-        width: 100%;
-        font-size: 14px;
-            font-family: 'Pretendard';
-            font-weight: 300;
+        width: 90%;
       }
         .setting-list-box{
           display: flex;
           flex-flow: row nowrap;
           justify-content: space-between;
           align-items: center;
-          margin: 0px 0 0 0;
+          margin: 10px 0 0 0;
           padding: 0px 0px;
           width: 100%;
-          font-size: 14px;
-            font-family: 'Pretendard';
-            font-weight: 600;
-          
-
-          .setting-list-text {
-            font-size: 16px;
-            font-family: 'Pretendard';
-            font-weight: 600;
-
-            p {
-                //display: block;
-                font-size: 14px;
-                font-family: 'Pretendard';
-                font-weight: 600;
-                margin-left: 14px; 
-                  //overflow: hidden;
-                color: $text-black;
-            }
-          }
         }
 
 

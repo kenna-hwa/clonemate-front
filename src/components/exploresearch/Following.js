@@ -166,30 +166,28 @@ const handleFollowingChange = (e) => {
                       
                               <div className="follow-list-box" key={data.strUserId}> 
                                
-                              <div className='setting-settings-list-wrap' id={data.strUserName} name={data.strUserName}>
-                                            <div className="setting-list-box" >
-                
-                                        
-                                            <div className="settings-list-text" ><p>{data.strUserName}</p></div>
-                                            <div className="follow-list-name-icon-wrap"  onClick={handleClickOpen} sx={{ color:"black"}}>
-                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></div>
-            
-                                            </div>
-                                            {data.dtTodo.map(e => {
-                                                return e.ynComplete === "Y" ? 
-                                                    <div className="follows-list-box" id={e.goal_id}>
-                                                        <div  className="follow-list-button" id={e.goal_id}>
-                                                            
-                                                            <p className="follow-list-text" >{e.todo_title}</p>
-                                                                
-                                                        </div> 
-                                                    </div>: null}
+                                  <Stack>
+                                  <div className="follow-list-name" id={data.strUserName} name={data.strUserName}>
+                                      <p className="follow-list-name-name"><p>{data.strUserName}</p></p>
+                                      <p className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
+                                          <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></p>
+                                  </div>
                                       
-                                            )}
+                                      {data.dtTodo.map(e => {
+                                          return e.ynComplete === "Y" ? 
+                                              <div className="follows-list-box" id={e.goal_id}>
+                                                  <div  className="follow-list-button" id={e.goal_id}>
+                                                      
+                                                      <p className="follow-list-text" >{e.todo_title}</p>
+                                                          
+                                                  </div> 
+                                              </div>: null}
+                                
+                                      )}
+                                  </Stack>
+                                
+                              
 
-                                        </div>
-
-                
                               {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
                               <Dialog
                                   sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
