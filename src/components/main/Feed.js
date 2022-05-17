@@ -164,7 +164,7 @@ const allTodoDelete = () => {
                 {
                     todoDataArray.map((data, idx) => {
 
-                        return (<React.Fragment key={data.id}>
+                        return (<React.Fragment key={'feed'+idx}>
                         <FeedTodoGoal 
                         data={data} idx={idx}
                         onClickGoalHandler={onClickGoalHandler}

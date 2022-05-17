@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 
-import axiosRegisterUser from '../../api/apiCommunicate'
+import { userRegister } from '../../api/apiCommunicate'
 import '../../stylesheets/Signin.css';
 
 export default function Join(){
@@ -16,7 +16,7 @@ export default function Join(){
     const onSubmit = (data) => {
       setResult(JSON.stringify(data));
       console.log(result)
-      // axiosRegisterUser(result)
+      // userRegister(data)
     }
     const onError = (error) => {
       console.log(error);
