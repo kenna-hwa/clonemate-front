@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import API from '../../api/API';
+import axios from 'axios';
 
 import '../../stylesheets/Follow.css';
 
@@ -17,6 +19,33 @@ import '../../stylesheets/Follow.css';
 // 팔로워 관련 함수  ex) 차단, 혹은 삭제 등 
 
 // style : 화면의 넓이, font, fontsize 조정 
+
+//https://jsonplaceholder.typicode.com/todos/1
+//https://clonetodo.herokuapp.com/users?page=2
+
+/* const login = () => {
+  
+    const data = {
+        account: "test",
+        "password":"1234"
+    }
+    axios.defaults.withCredentials = true;
+
+    axios.post("https://clonetodo.herokuapp.com/login", data).then(
+        (response) => {
+            console.log(response);
+        }
+    );
+}; */
+
+const getAPI = () => {
+  
+    axios.get("https://clonetodo.herokuapp.com/api/v1/goals/1").then(
+        (response) => {
+            console.log(response);
+        }
+    );
+};
 
 
 const FollowerData = [
@@ -142,7 +171,7 @@ const handleFollowingChange = (e) => {
     let newFollower = thisData.filter(item => item.strUserId !== userId)
 
     setFollower(newFollower);
-    console.log(newFollower)
+    console.log('newFollwer', newFollower);
 
     setOpen(false);
     //window.location.replace(`/exploreSearch/`);
@@ -151,10 +180,15 @@ const handleFollowingChange = (e) => {
 
 
     return (
+
+
         <div className="follow-follow-list-wrap" >
+            {/* <div><button onClick={login}>login</button></div> 
+            <div><button onClick={getAPI}>getAPI</button></div>*/}
        
             {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
-            {follower.map((data => data.strUserId.length > 0 ? (
+            {follower.map((data =>
+             data.strUserId.length > 0 ? (
                  
                     <List // 넓이 조정 
                         sx={{ width: '100%'}}
@@ -171,26 +205,11 @@ const handleFollowingChange = (e) => {
                                             <div className="setting-list-box" >
                 
                                         
-
-                                            <Button className="settings-list-text"><p>{data.strUserName}</p></Button>
-                                            <Button className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
-                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></Button>
-                                        
-
-                                        
-                                        
+                                            <div className="settings-list-text" sx={{ color:"black"}}><p>{data.strUserName}</p></div>
+                                            <div className="follow-list-name-icon-wrap"  onClick={handleClickOpen} sx={{ color:"black"}}>
+                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></div>
             
                                             </div>
-
-                                        </div>
-
-                                        <Stack>
-                                        <div className="follow-list-name" id={data.strUserName} name={data.strUserName}>
-                                            <p className="follow-list-name-name"><p>{data.strUserName}</p></p>
-                                            <Button className="follow-list-name-icon-wrap"  onClick={handleClickOpen} >
-                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></Button>
-                                        </div>
-                                            
                                             {data.dtTodo.map(e => {
                                                 return e.ynComplete === "Y" ? 
                                                     <div className="follows-list-box" id={e.goal_id}>
@@ -202,8 +221,10 @@ const handleFollowingChange = (e) => {
                                                     </div>: null}
                                       
                                             )}
-                                        </Stack>
-                                      
+
+                                        </div>
+
+                                        
                                     
 
                                     {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
