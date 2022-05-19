@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 
+
+
 export const getTodosData = async () => {
 
   //axios
@@ -42,59 +44,41 @@ const todoHost = 'https://clonetodo.herokuapp.com/api/v1';
 /* 유저 관련 통신 시작 */
 
 //회원가입
+export const postUserJoin = async (data) => {
 
-export const userRegister = (data) => {
-  fetch(`${userHost}/login`, {
-          method: "POST",
-          headers: {
-            headers
-          }
-        },{
-          body: JSON.stringify(data)
-        })
-        .then(response => console.log("response"))
-        // .then(response => response.json())
-        // .then(response => {
-      
-        //   if (response.token) {
-        //     localStorage.setItem("wtw-token", response.token);
-        //     this.props.history.push("/main_gh");
-        //   } else if (!response.token) {
-        //     alert("올바른 회원이 아닙니다");
-        //     this.props.history.push("/signup_gh");
-        //   }
-         //    }
-        //   .error{
-        //     alert("아이디/비밀번호를 확인해주세요.");
-        //     this.props.history.push("/signup_gh");
-        //   }
-        // });
-}
+  //axios
+  await axios({
+    method: `get`,
+    url: `${userHost}/join`,
+    params: {
+      data
+    }
+  })
+  .then(res => res.data)
+  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : 
+   window.location.reload(`/signin`))
+} 
+
+
 
 //로그인
 
-export const userLogin = (data) => {
-  fetch(`${userHost}/login`, {
-          method: "POST",
-          headers: {
-            headers
-          }
-        },{
-          body: JSON.stringify(data)
-        })
-        .then(response => console.log("response"))
-          // .then(response => response.json())
-          // .then(response => {
-        
-          //   if (response.token) {
-          //     localStorage.setItem("wtw-token", response.token);
-          //     this.props.history.push("/main_gh");
-          //   } else if (!response.token) {
-          //     alert("올바른 회원이 아닙니다");
-          //     this.props.history.push("/signup_gh");
-          //   }
-          // });
-}
+export const postUserLogin = async (data) => {
+
+  //axios
+  await axios({
+    method: `get`,
+    url: `${userHost}/login`,
+    params: {
+      data
+    }
+  })
+  .then(res => res.data)
+  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : 
+   window.location.reload(`/main`))
+} 
+
+
 /* 유저 관련 통신 종료 */
 
 

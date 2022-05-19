@@ -1,43 +1,45 @@
 import React , { useState } from 'react';
-import { useForm } from "react-hook-form";
+import { appendErrors, useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 
-import { userRegister } from '../../api/apiCommunicate'
+import { postUserJoin } from '../../api/apiCommunicate'
 import '../../stylesheets/Signin.css';
 
 export default function Join(){
 
-    const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({ mode: "onChange" });
     const [result, setResult] = useState("");
     console.log("watch",watch())
-
+    const [err, setErr] = useState("");
 
     const onSubmit = (data) => {
       setResult(JSON.stringify(data));
-      console.log(result)
-      // userRegister(data)
+      console.log(result, errors)
+      postUserJoin(JSON.stringify(data))
     }
     const onError = (error) => {
-      console.log(error);
+      setErr(error);
+      console.log(err)
     };
 
     return (
 
     <form onSubmit={handleSubmit(onSubmit,onError)}>
       <TextField
-      {...register("userId", {required: true,})} //값을 불러오기 위한 이름
-        id="standard-email-input"
+      {...register("userId", {required: true, message: "아이디를 입력해주세요."})} //값을 불러오기 위한 이름
+        id="standard-user-id-input"
         label="아이디"
         type="text"
         autoComplete="current-id"
         variant="standard"
-        helperText="Please enter Id"
+        helperText="Please enter Account"
         margin="dense"
         fullWidth 
       />
-    <TextField
-      {...register("email", {required: true,})} //값을 불러오기 위한 이름
+      {errors.userId?.type === "required" &&  <span className='error_message'>아이디를 입력해주세요.</span>}
+      <TextField
+      {...register("email", {required: true, message: "인증용 이메일을 입력해주세요."})} //값을 불러오기 위한 이름
         id="standard-email-input"
         label="이메일"
         type="email"
@@ -47,8 +49,9 @@ export default function Join(){
         margin="dense"
         fullWidth 
       />
+      {errors.email?.type === "required" &&  <span className='error_message'>인증용 이메일을 입력해주세요.</span>}
       <TextField
-       {...register("password", {required: true, minLength:{ value: 5, message: "비밀번호는 5자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
+       {...register("password", {required: true, minLength:{ value: 3, message: "비밀번호는 4자 이상으로 입력해주세요."}})}  //값을 불러오기 위한 이름
         id="standard-password-input"
         label="비밀번호"
         type="password"
@@ -58,8 +61,10 @@ export default function Join(){
         margin="dense"
         fullWidth 
       />
+      {errors.password?.type === "required" &&  <span className='error_message'>비밀번호는 4자 이상으로 입력해주세요.</span>}
+      {errors.password?.type === "maxLength" && errors.password.message}
       <TextField
-       {...register("name", {required: true, minLength:{ value: 2, message: "이름은 중복될 수 없습니다."}})}  //값을 불러오기 위한 이름
+       {...register("name", {required: true, minLength:{ value: 2, message: "이름을 입력해주세요"}})}  //값을 불러오기 위한 이름
         id="standard-name-input"
         label="이름"
         type="name"
@@ -69,6 +74,7 @@ export default function Join(){
         margin="dense"
         fullWidth 
       />
+      {errors.name?.type === "required" &&  <span className='error_message'>이름을 입력해주세요</span>}
       <TextField
        {...register("introText", {required: true, message: "자기소개를 입력해주세요."})}  //값을 불러오기 위한 이름
         id="standard-intro-input"
@@ -80,6 +86,7 @@ export default function Join(){
         margin="dense"
         fullWidth 
       />
+       {errors.introText?.type === "required" &&  <span className='error_message'>자기소개를 입력해주세요.</span>}
       <Button type="submit" id="submit_btn">확인</Button>
       
       <div className='join_txt'>

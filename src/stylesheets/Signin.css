@@ -101,4 +101,11 @@ a {
   font-weight: 600;
   text-decoration: none;
 }
+
+.error_message {
+  color: #afafaf;
+  font-weight: 300;
+  font-size: 13px;
+  margin: 0;
+}
 /*# sourceMappingURL=Signin.css.map */

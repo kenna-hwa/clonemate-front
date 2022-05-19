@@ -3,18 +3,23 @@ import { useForm } from "react-hook-form";
 import { Button, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import { userLogin } from '../../api/apiCommunicate';
+import { postUserLogin } from '../../api/apiCommunicate';
 import '../../stylesheets/Signin.css';
 
 
 function Signin(){
 
-    const { register, handleSubmit, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [result, setResult] = useState("");
-    const onSubmit = (data) => {
-      userLogin(data)
-    };
     console.log("watch",watch())
+
+    const onSubmit = (data) => {
+      postUserLogin(data)
+    };
+
+    const onError = (error) => {
+      console.log(error)
+    };
 
     return (
 
@@ -22,7 +27,7 @@ function Signin(){
       handleSubmit(onSubmit)
       }>
     <TextField
-    {...register("account")} 
+    {...register("account", {required: true})} 
         id="standard-user-id-input"
         className='user-control-input'
         label="로그인 아이디"
@@ -33,8 +38,9 @@ function Signin(){
         margin="dense"
         fullWidth 
       />
+      {errors.account?.type === "required" &&  <span className='error_message'>아이디를 입력해주세요.</span>}
       <TextField
-       {...register("password")} 
+       {...register("password", {required: true})} 
         id="standard-password-input"
         label="비밀번호"
         type="password"
@@ -44,6 +50,7 @@ function Signin(){
         margin="dense"
         fullWidth 
       />
+      {errors.password?.type === "required" &&  <span className='error_message'>비밀번호를 입력해주세요.</span>}
       <Button type="submit" id="submit_btn">확인</Button>
 
       <Link to="/"><p className='forgotPwd'>비밀번호를 잊었다면?</p></Link>
