@@ -7,7 +7,8 @@ import { ko } from "date-fns/locale";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import '../../stylesheets/CalendarBox.css';
-import { objFeedCalendarOverview , objDatesData} from "../../atoms/todoData";
+import { objFeedCalendarOverview , objDatesData, objTodosDataResult} from "../../atoms/todoData";
+import { getTodosOverviewData, getTodosData } from "../../api/apiCommunicate";
 
 
 
@@ -109,13 +110,18 @@ export default function CalendarBox(props) {
 
 /* state 선언 시작 */
 
+//환경변수
+const USER_NUM_ID = process.env.REACT_APP_USER_NUM_ID;
+
 const [objDate, setObjDate] = useRecoilState(objDatesData);
 const copy_objDate = {...objDate};
-let dtFeedCalendarOverview = useRecoilValue(objFeedCalendarOverview);
+let [dtFeedCalendarOverview, setDtFeedCalendarOverview] = useRecoilState(objFeedCalendarOverview);
+let [dtObjTodosDataResult, setDtObjTodosDataResult] = useRecoilState(objTodosDataResult);
 
 const today = new Date(); // 오늘 날짜 객체
 const classes = styles(); // import those CSS
 const [selectedDate, setselectedDate] = useState(new Date(objDate.dtFeedCalendarDate)); //현재 선택된 날짜 state -> Feed 불러낼 때 사용
+
 let todoObj = {};
 
 /* state 선언 종료 */
@@ -129,7 +135,21 @@ useEffect(()=>{
     //selectedDate 변경시 Tododata의 dtFeedCalendarDate
     copy_objDate.dtFeedCalendarDate = selectedDate;
     setObjDate(copy_objDate);
-    //컴포넌트 실행 시 서버에서 처음 값 받아오기 여기서 ajax
+    const localeSelectedDate = selectedDate.toJSON().substring(0, 10);
+    const localeSelectedDateYm = selectedDate.toJSON().substring(0, 7);
+
+
+    //컴포넌트 실행 시 서버에서 값 받아서 Atom에 업데이트
+
+    //한 달 todo 조회 -> 아톰에 캘린더 표시 TODO 값 업데이트
+    //objDate.dtFeedCalendarDate로 feed 에서 쓰는 objTodosDataResult 받아와주기
+    const newTodoOverviewData = getTodosOverviewData(USER_NUM_ID, localeSelectedDateYm)
+    //setDtFeedCalendarOverview(newTodoOverviewData);
+    //만약 값이 바뀌면 업데이트 해야하나?
+
+    //당일 todo 조회하기 -> 아톰에 Feed 표시 TODO 값 업데이트
+    const newTodoData = getTodosData(USER_NUM_ID, localeSelectedDate)
+    //setDtObjTodosDataResult(newTodoData)
 
 },[selectedDate])
     
@@ -202,7 +222,6 @@ const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo
 
     return(
           <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils} >
-              <span className='yearMM'>{`${today.getFullYear()}년 ${today.getMonth()+1}월`}</span>
                 <DatePicker
                     value={selectedDate}
                     onChange={setselectedDate} //클릭하면 selectedDate (선택한 날짜로 보냄)

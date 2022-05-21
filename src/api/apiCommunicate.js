@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { useRecoilState, useRecoilValue } from "recoil";
+import { objFeedCalendarOverview , objDatesData} from "../atoms/todoData";
 
 
-
-
-export const getTodosData = async () => {
+export const getTodosDataSample = async () => {
 
   //axios
   await axios.get('https://jsonplaceholder.typicode.com/todos/1')
@@ -16,6 +16,9 @@ export const getTodosData = async () => {
 
 
 /* ------------------------------------예시 종료---------------------------------------- */
+
+/* state 관리 */
+
 
 /* 공통 변수 선언 */
 
@@ -36,6 +39,24 @@ const todoHost = 'https://clonetodo.herokuapp.com/api/v1';
 
 //GET 캘린더 데이터 가져오기
 //dateYm=yyyy-mm
+export const getTodosOverviewData = async (numUserId,localDate) => {
+
+  //axios
+  await axios({
+    method: `get`,
+    url: `${todoHost}/todos/overview`,
+    params: {
+      userId: numUserId,
+      dateYm: localDate
+    }
+  })
+  .then(Response => Response.data)
+  .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
+  .catch((Error)=>{console.log(Error)})
+  
+    //완료 되면 res.data가 success true 인지 확인하고 null 부분에 todoData에 objFeedCalendarOverview 값을 바꿔줘야 한다
+  return Response.data;
+} 
 
 /* 캘린더 API 통신 종료 */
 
@@ -103,6 +124,25 @@ export const postUserLogin = async (data) => {
 
 //GET objTodosDataResult 캘린더 날짜로 받아오기
 //date=yyyy-mm-dd
+export const getTodosData = async (numUserId,localDate) => {
+
+   //axios
+   await axios({
+    method: `get`,
+    url: `${todoHost}/todos/overview`,
+    params: {
+      userId: numUserId,
+      dateYm: localDate
+    }
+  })
+  .then(Response => Response.data)
+  .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
+  .catch((Error)=>{console.log(Error)})
+  
+    //완료 되면 res.data가 success true 인지 확인하고 null 부분에 todoData에 objFeedCalendarOverview 값을 바꿔줘야 한다
+  return Response.data
+
+} 
 
 //POST objTodosDataResult 추가하기
 

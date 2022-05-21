@@ -121,7 +121,7 @@ body {
 }
 
 .MuiPickersBasePicker-pickerView .MuiTypography-body1 {
-  display: none;
+  display: block;
 }
 
 .MuiPickersBasePicker-pickerView .MuiPickersCalendar-transitionContainer {
