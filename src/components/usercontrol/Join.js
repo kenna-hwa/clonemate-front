@@ -11,7 +11,6 @@ export default function Join(){
     const { register, handleSubmit, formState: { errors }, watch } = useForm({ mode: "onChange" });
     const [result, setResult] = useState("");
     console.log("watch",watch())
-    const [err, setErr] = useState("");
 
     const onSubmit = (data) => {
       setResult(JSON.stringify(data));
@@ -19,8 +18,7 @@ export default function Join(){
       postUserJoin(JSON.stringify(data))
     }
     const onError = (error) => {
-      setErr(error);
-      console.log(err)
+      console.log(error)
     };
 
     return (
