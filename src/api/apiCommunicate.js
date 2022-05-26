@@ -76,8 +76,9 @@ export const postUserJoin = async (data) => {
     }
   })
   .then(res => res.data)
-  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : 
-   window.location.reload(`/signin`))
+  .then(res => res.data.success ? sessionStorage.setItem("userId", res.data.userId) : console.log("로그인 실패"))
+  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : window.location.reload(`/signin`))
+  
 } 
 
 
@@ -131,7 +132,7 @@ export const getTodosData = async (numUserId,localDate) => {
     method: `get`,
     url: `${todoHost}/todos/overview`,
     params: {
-      userId: numUserId,
+      userId: sessionStorage.getItem("userId"),
       dateYm: localDate
     }
   })
