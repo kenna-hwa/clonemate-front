@@ -218,7 +218,7 @@ export const postTodoCreateData = async (data) => {
 
 export async function axiosGetFollowers () {
   //axios
-  await axios.get(`http://{{host}}/follows/followers`)
+  await axios.get(`https://{{host}}/follows/followers`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
@@ -228,7 +228,7 @@ export async function axiosGetFollowers () {
 
 export async function axiosGetFollowing () {
   //axios
-  await axios.get(`http://{{host}}/follows/followings`)
+  await axios.get(`https://{{host}}/follows/followings`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
