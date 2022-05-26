@@ -5,6 +5,7 @@ import {  Button, List  } from "@mui/material";
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';import '../../stylesheets/Goal.css';
 
+import { getGoalsData } from "../../api/apiCommunicate";
 import { objTodosDataResult } from "../../atoms/todoData";
 
 
@@ -15,7 +16,7 @@ export default function Goals() {
 
    /* atom 시작 */
   
-  let dtTodos = useRecoilValue(objTodosDataResult);// 목표goals 아이템
+  let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);// 목표goals 아이템
   let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
   console.log("todoDataArray", todoDataArray)
@@ -24,8 +25,10 @@ export default function Goals() {
   
   useEffect(()=>{
     // recoil 에서 정보 갱신이 되었으면 하는데..?
+    const goalItems = getGoalsData();
+    setDtTodos(goalItems)
     // goalItems = useRecoilState(goalsData)
-  })
+  },[dtTodos])
 
 
 
