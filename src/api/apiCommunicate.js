@@ -218,17 +218,18 @@ export const postTodoCreateData = async (data) => {
 
 export async function axiosGetFollowers () {
   //axios
-  await axios.get(`https://{{host}}/follows/followers`)
+
+  await axios.get(`/follow/followers`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
-
 
 //GET following 가져오기
 
 export async function axiosGetFollowing () {
   //axios
-  await axios.get(`https://{{host}}/follows/followings`)
+
+  await axios.get(`/follow/followings`)
   .then((Response)=>{console.log(Response.data)})
   .catch((Error)=>{console.log(Error)})
 } 
