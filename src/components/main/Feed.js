@@ -44,7 +44,7 @@ let history = useHistory();
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
     let dtDate = useRecoilValue(objDatesData);
-
+    console.log("todoData", dtTodos)
 /* atom 종료 */
 
 //날짜 정보값 dtToday 오늘 dtTomorrow 내일 dtFeedCalendarDate 캘린더에서 선택한 날짜

@@ -43,7 +43,7 @@ export const getTodosOverviewData = async (numUserId,localDate) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `GET`,
     url: `${todoHost}/todos/overview`,
     params: {
       userId: numUserId,
@@ -69,7 +69,7 @@ export const postUserJoin = async (data) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `POST`,
     url: `${userHost}/join`,
     params: {
       data
@@ -89,7 +89,7 @@ export const postUserLogin = async (data) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `POST`,
     url: `${userHost}/login`,
     params: {
       data
@@ -121,6 +121,9 @@ export const postUserLogin = async (data) => {
 
 /* 투두 API 통신 시작 */
 
+
+
+
 //GET objTodosDataResult id 값으로 받아오기
 
 //GET objTodosDataResult 캘린더 날짜로 받아오기
@@ -129,7 +132,7 @@ export const getTodosData = async (numUserId,localDate) => {
 
    //axios
    await axios({
-    method: `get`,
+    method: `GET`,
     url: `${todoHost}/todos/overview`,
     params: {
       userId: sessionStorage.getItem("userId"),
@@ -146,6 +149,20 @@ export const getTodosData = async (numUserId,localDate) => {
 } 
 
 //POST objTodosDataResult 추가하기
+
+export const postTodoCreateData = async (data) => {
+  console.log("data", data)
+  //axios
+  await axios({
+    method: `POST`,
+    url: `${todoHost}/todos`,
+    params: {
+      data
+    }
+  })
+  .then(Response => Response.data)
+
+}
 
 //PATCH objTodosDataResult id값으로 수정하기
 

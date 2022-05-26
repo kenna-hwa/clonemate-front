@@ -65,6 +65,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "gh-pages": "^4.0.0",
     "react-error-overlay": "^6.0.9"
   }
 }
