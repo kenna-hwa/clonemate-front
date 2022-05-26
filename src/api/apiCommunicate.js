@@ -82,8 +82,9 @@ export const postUserJoin = async (data) => {
     }
   })
   .then(res => res.data)
-  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : 
-   window.location.reload(`/signin`))
+  .then(res => res.data.success ? sessionStorage.setItem("userId", res.data.userId) : console.log("로그인 실패"))
+  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : window.location.reload(`/signin`))
+  
 } 
 
 
@@ -143,6 +144,9 @@ export const getGoalsData = async () => {
 
 /* 투두 API 통신 시작 */
 
+
+
+
 //GET objTodosDataResult id 값으로 받아오기
 
 //GET objTodosDataResult 캘린더 날짜로 받아오기
@@ -154,7 +158,7 @@ export const getTodosData = async (numUserId,localDate) => {
     method: `GET`,
     url: `${todoHost}/todos/overview`,
     params: {
-      userId: numUserId,
+      userId: sessionStorage.getItem("userId"),
       dateYm: localDate
     }
   })
@@ -168,6 +172,20 @@ export const getTodosData = async (numUserId,localDate) => {
 } 
 
 //POST objTodosDataResult 추가하기
+
+export const postTodoCreateData = async (data) => {
+  console.log("data", data)
+  //axios
+  await axios({
+    method: `POST`,
+    url: `${todoHost}/todos`,
+    params: {
+      data
+    }
+  })
+  .then(Response => Response.data)
+
+}
 
 //PATCH objTodosDataResult id값으로 수정하기
 

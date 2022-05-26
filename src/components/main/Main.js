@@ -9,6 +9,7 @@ export default function Main() {
 
     /* props 선언 시작 */
 
+
     /* props 선언 끝 */
     
   
