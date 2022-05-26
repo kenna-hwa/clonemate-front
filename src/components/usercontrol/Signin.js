@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { postUserLogin } from '../../api/apiCommunicate';
 import '../../stylesheets/Signin.css';
-import { SettingsSuggestOutlined } from '@mui/icons-material';
 
 
 function Signin(){

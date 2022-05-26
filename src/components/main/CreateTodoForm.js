@@ -7,6 +7,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 import { objTodosDataResult } from "../../atoms/todoData";
+import { postTodoCreateData } from "../../api/apiCommunicate";
 
 
 export default function CreateTodoForm (props) {
@@ -26,7 +27,6 @@ export default function CreateTodoForm (props) {
     /* atom 시작 */
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
-    console.log("todoDataArray", todoDataArray)
 
     /* atom 종료 */
 
@@ -39,23 +39,23 @@ export default function CreateTodoForm (props) {
     const createTodoFieldReset = props.createTodoFieldReset;
 
     let createTodoState = {
-        "id": goal_id,
+        "goalId": goal_id,
         "todoId": new_todo_id,
         "orderNo": new_order_no,
-        "title": "",
+        "contents": "",
         "date": dtDate.dtToday,
         "startRepeatDate": dtDate.dtToday,
         "endRepeatDate": dtDate.dtToday,
-        "repeatMonYn":"n",
-        "repeatTueYn":"n",
-        "repeatWenYn":"n",
-        "repeatThuYn":"n",
-        "repeatFriYn":"n",
-        "repeatSatYn":"n",
-        "repeatSunYn":"n",
-        "checkYn": "N",
-        "likes":[],
+        "isRepeatMon":false,
+        "isRepeatTue":false,
+        "isRepeatWen":false,
+        "isRepeatThu":false,
+        "isRepeatFri":false,
+        "isRepeatSat":false,
+        "isRepeatSun":false,
     };
+
+    console.log("createTodoState", createTodoState)
 
     /* state 선언 종료 */
 
@@ -74,20 +74,21 @@ export default function CreateTodoForm (props) {
         if(e.key === 'Enter' || e.code === 'NumpadEnter') inputValueCheckHandler(e)
     }
 
-    //field에 글자 입력 시 createTodoState 객체 title 값 변경
+    //field에 글자 입력 시 createTodoState 객체 contents 값 변경
     const onChangeCreateTodofield = (e) => {
-        createTodoState.title = e.currentTarget.value;
+        createTodoState.contents = e.currentTarget.value;
     }
 
     //새로운 todo 넣기 / goal객체 찾아서 todos에 push
     const createTodoStateSubmit = (e) => {
         todoDataArray.map(data=>{
-                if(data.id === goal_id){
+                if(data.goalId === goal_id){
                     data.todos.push(createTodoState)
                 }
             }
         )
         setDtTodos(todoDataArray)
+        postTodoCreateData(todoDataArray)
         createTodoFieldReset()
     }
 
