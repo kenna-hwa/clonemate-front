@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/clonemate-front/static/css/main.d34e91e9.chunk.css",
+    "main.js": "/clonemate-front/static/js/main.47fec1b0.chunk.js",
+    "main.js.map": "/clonemate-front/static/js/main.47fec1b0.chunk.js.map",
+    "runtime-main.js": "/clonemate-front/static/js/runtime-main.b03394cb.js",
+    "runtime-main.js.map": "/clonemate-front/static/js/runtime-main.b03394cb.js.map",
+    "static/js/2.37f205d3.chunk.js": "/clonemate-front/static/js/2.37f205d3.chunk.js",
+    "static/js/2.37f205d3.chunk.js.map": "/clonemate-front/static/js/2.37f205d3.chunk.js.map",
+    "index.html": "/clonemate-front/index.html",
+    "static/css/main.d34e91e9.chunk.css.map": "/clonemate-front/static/css/main.d34e91e9.chunk.css.map",
+    "static/js/2.37f205d3.chunk.js.LICENSE.txt": "/clonemate-front/static/js/2.37f205d3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b03394cb.js",
+    "static/js/2.37f205d3.chunk.js",
+    "static/css/main.d34e91e9.chunk.css",
+    "static/js/main.47fec1b0.chunk.js"
+  ]
+}
