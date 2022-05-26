@@ -43,11 +43,14 @@ export const getTodosOverviewData = async (numUserId,localDate) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `GET`,
     url: `${todoHost}/todos/overview`,
     params: {
       userId: numUserId,
       dateYm: localDate
+    },
+    header: {
+      headers
     }
   })
   .then(Response => Response.data)
@@ -69,10 +72,13 @@ export const postUserJoin = async (data) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `POST`,
     url: `${userHost}/join`,
     params: {
       data
+    },
+    headers:{
+      headers
     }
   })
   .then(res => res.data)
@@ -88,10 +94,13 @@ export const postUserLogin = async (data) => {
 
   //axios
   await axios({
-    method: `get`,
+    method: `POST`,
     url: `${userHost}/login`,
     params: {
       data
+    },
+    headers:{
+      headers
     }
   })
   .then(res => res.data)
@@ -107,6 +116,20 @@ export const postUserLogin = async (data) => {
 /* 목표 API 통신 시작 */
 
 //GET 목표 배열 가져오기
+
+export const getGoalsData = async () => {
+
+  //axios
+  await axios({
+   method: `GET`,
+   url: `${todoHost}/goals`
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
+
+ return Response.data
+}
 
 //POST 목표 등록하기
 
@@ -128,7 +151,7 @@ export const getTodosData = async (numUserId,localDate) => {
 
    //axios
    await axios({
-    method: `get`,
+    method: `GET`,
     url: `${todoHost}/todos/overview`,
     params: {
       userId: numUserId,
