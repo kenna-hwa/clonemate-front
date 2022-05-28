@@ -94,7 +94,7 @@ export default function Join(){
           • 다른 사용자들과 함께 할 수 있습니다.
           </p>
           <p>가입 시 다음 사항에 동의하는 것으로 간주합니다. &nbsp;
-          <Link to="/text/use" className='termOfUse'>이용약관</Link>과 <Link className='policy' to="/text/policy">개인정보 정책</Link>
+          <Link to="/termUse" className='termOfUse'>이용약관</Link>과 <Link className='policy' to="/policy">개인정보 정책</Link>
           </p>
       </div>
       </form>

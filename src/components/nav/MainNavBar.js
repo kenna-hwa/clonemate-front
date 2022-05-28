@@ -8,11 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
@@ -45,6 +41,9 @@ export default function MainNavBar() {
   }
   const moveFollowing = (e) => {
     window.location.replace(`/exploreSearch`)
+  }
+  const moveRoutines = (e) => {
+    window.location.replace(`/routines`)
   }
 
  /* 함수 종료 */
@@ -91,19 +90,19 @@ export default function MainNavBar() {
           </IconButton>
         </Box>
           {/*<button className='snb_user_setting_btn'><SettingsIcon fontSize="small" /></button>*/}
-          <div className="snb-user-info-box">
+          <div className="snb-user-info-box" display="flex" justifyContent="flex-start">
             {userData.map((data, idx)=>{
                     return (
-                    
-                      <Button className="snb-user-info-button"  data={data}>
+                        <React.Fragment >
                           <div className="snb-user-info-text" id={idx}>
-                            <h3 className='snb-user-info-name'>{data.name}</h3>
-                          </div>
-                          <div className="snb-user-info-text" id={idx}>
+                            <p className='snb-user-info-name'>{data.name}</p>
+                          
+                          
 
                             <p className='snb-user-info-mail'>{data.email}</p>
                           </div>
-                      </Button>
+                        </React.Fragment>
+                     
                     )
                 }) 
                 }
@@ -114,12 +113,11 @@ export default function MainNavBar() {
        
         <section className='snb_user_follow_info_wrap'>
           {/* Box -> hover 옵션 추가 or Button-> CSS 변경 */}
-          <Button display="flex" justifyContent="flex-start" onClick={moveFollowing} fontSize="small" 
-          sx={{ color:"black"}}>
-            <p className='snb-goal-title' style={{paddingRight: "20px" }}>{`숫자`}팔로워</p>
-            <p className='snb-goal-title'>{`숫자`}팔로잉</p>
-            
-          </Button>
+          <div className='snb-follow-box' display="flex" justifyContent="flex-start" onClick={moveFollowing} fontSize="small">
+            <p className='snb-follow-title' style={{paddingRight: "20px" }}>{`0`}팔로워</p>
+            <p className='snb-follow-title'>{`0`}팔로잉</p>
+          </div>  
+          
         </section>
        
 
@@ -152,7 +150,7 @@ export default function MainNavBar() {
         <section className='snb_routine_wrap'>
           <Box display="flex" justifyContent="space-between" style={{ height: "42px" }}>
             <p className='snb-goal-title'>기한이 있는 할 일 </p>
-            <IconButton size="small" edge="end" color="inherit" aria-label="back" >
+            <IconButton onClick={moveRoutines} size="small" edge="end" color="inherit" aria-label="back" >
               <NavigateNextIcon className='snb-title-nav-icon' />
             </IconButton>
           </Box>
