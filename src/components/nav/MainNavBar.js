@@ -42,6 +42,9 @@ export default function MainNavBar() {
   const moveFollowing = (e) => {
     window.location.replace(`/exploreSearch`)
   }
+  const moveGoals = (e) => {
+    window.location.replace(`/`)
+  }
   const moveRoutines = (e) => {
     window.location.replace(`/routines`)
   }
