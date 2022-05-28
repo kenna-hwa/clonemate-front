@@ -187,7 +187,7 @@ export default function Follower() {
 
 
         <div className="follow-follow-list-wrap" >
-            <div><button onClick={getAPI}>login</button></div>
+            {/* <div><button onClick={getAPI}>login</button></div> */}
 
             {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
             {follower.map((data =>
