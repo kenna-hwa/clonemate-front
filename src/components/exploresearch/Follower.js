@@ -43,7 +43,7 @@ import { getTodosDataSample } from '../../api/apiCommunicate'
 
 const getAPI = () => {
 
-    axios.get("clonetodo.herokuapp.com/api/v1/goals/1").then(
+    axios.get("https://jsonplaceholder.typicode.com/todos/1").then(
         (response) => {
             console.log(response);
         }
