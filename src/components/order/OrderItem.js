@@ -203,7 +203,7 @@ export const FeedTodoData = (props) => {
         id={todos.todoId}
         data-index={todos.orderNo}
       >
-        {todos.checkYn === "Y" ? (
+        {todos.checkYn === true ? (
           <CheckBoxIcon
             data-goalid={todos.goalId}
             data-todoid={todos.todoId}

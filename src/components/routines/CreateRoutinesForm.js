@@ -64,7 +64,7 @@ export default function CreateRoutinesForm (props) {
     /* 함수 선언 시작 */
 
     const checkDate = dayArr.filter(data=>{
-        if(data['checkYn'] === "y") return data
+        if(data['checkYn'] === true) return data
     })
     
 

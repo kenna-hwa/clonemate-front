@@ -52,7 +52,7 @@ export default function CreateTodoForm (props) {
         "isRepeatThu":false,
         "isRepeatFri":false,
         "isRepeatSat":false,
-        "isRepeatSun":false,
+        "isRepeatSun":false
     };
 
     console.log("createTodoState", createTodoState)

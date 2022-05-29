@@ -76,7 +76,7 @@ import { useHistory } from "react-router-dom";
       todoDataArray.map(data=>
           data.todos.map(todo=>{
               if(todo.goalId === goal_id && todo.id === todo_id){
-                  todo.checkYn === 'Y' ? todo.checkYn = 'N' : todo.checkYn = 'Y'
+                  todo.checkYn === true ? todo.checkYn = false : todo.checkYn = true
                   console.log("todo.checkYn " , todo.checkYn)
               }
           })
@@ -139,7 +139,7 @@ import { useHistory } from "react-router-dom";
             <div className="goals-listItem-text-wrap" 
             id={todos.todoId}
             data-index={todos.orderNo}>
-                    {todos.checkYn === 'Y' ?  
+                    {todos.checkYn === true ?  
                     <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                     /> : 
                     <CheckBoxOutlineBlankIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon"

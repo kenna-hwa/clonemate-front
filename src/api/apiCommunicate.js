@@ -144,9 +144,6 @@ export const getGoalsData = async () => {
 
 /* 투두 API 통신 시작 */
 
-
-
-
 //GET objTodosDataResult id 값으로 받아오기
 
 //GET objTodosDataResult 캘린더 날짜로 받아오기

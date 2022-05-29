@@ -136,10 +136,10 @@ const todoCheckBoxEventHandler = (e) => {
     console.log("check click" , e.target.dataset.index)
     const originTodo = JSON.parse(JSON.stringify(todo)); // todo State 원본 카피
     // console.log("originTodo", originTodo)
-    if(originTodo[index].check_yn === 'Y'){
-        originTodo[index].check_yn = 'N'
+    if(originTodo[index].check_yn === true){
+        originTodo[index].check_yn = false
     } else {
-        originTodo[index].check_yn = 'Y'
+        originTodo[index].check_yn = true
     };
     setOriginTodo(originTodo) ;//setOriginTodo를 이용해 state 변경
 }
@@ -202,7 +202,7 @@ const clickTodoDeleteHandler = (e) => {
                               
                                 {goal.goal_id === parseInt(todo.goal_id) ? (<>
                                 <div className="goals-todo-input-list-check-wrap">
-                                {todo.check_yn === 'Y' ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> }
+                                {todo.check_yn === true ?  <CheckBoxIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> : <CheckBoxOutlineBlankIcon className="goals-todo-list-input-check-icon" onClick={todoCheckBoxEventHandler} data-index={index} /> }
                                     <input key={`todo${index}`} id="todo-input" className="goals-todo-list-input" type="text" maxLength={"80"} 
                                     name={todo.title} data-index={index} readOnly={todoReadOnly[index]} value={todo.title} 
                                     onChange={todoEditEventHandler} onKeyDown={enterKeyEventHandler} 

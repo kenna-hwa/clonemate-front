@@ -46,7 +46,7 @@ export default function EditRoutinesForm(props) {
         /* 함수 선언 시작 */
 
         const checkDate = dayArr.filter(data=>{
-            if(data['checkYn'] === "Y") return data
+            if(data['checkYn'] === true) return data
         })
 
         /* 함수 선언 종료 */
