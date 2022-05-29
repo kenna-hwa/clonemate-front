@@ -165,10 +165,10 @@ useEffect(()=>{
 // 데이터가 있는 날
 // 데이터가 있는 날 : todo 갯수 / 데이터가 모두 완료된 날 
 
-const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.arrTodoInfo[0].numTodoDay);
+const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.numTodoDay);
     
 //ajax 통신을 통해 받아온 값 (numCountTodo, numTodoCount, completeYn)
-    dtFeedCalendarOverview.map((item, i) =>  todoObj[item.arrTodoInfo[0].numTodoDay] = item.arrTodoInfo[0].ynComplete!=='Y'? item.arrTodoInfo[0].numTodoCount : '✓');
+    dtFeedCalendarOverview.map((item, i) =>  todoObj[item.numTodoDay] = item.ynComplete!=='Y'? item.numTodoCount : '✓');
 
     //날짜 타일 변경 함수
     function getDayElement(day, selectedDate, isInCurrentMonth, dayComponent) {

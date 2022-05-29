@@ -78,7 +78,7 @@ const createTodoFieldReset = (e) => {
 const checkNdoitToday = () => {
     todoDataArray.map(data=>
         data.todos.map((todo)=>{
-            return todo.checkYn !== 'Y' ? todo.checkYn = 'Y' : null
+            return todo.checkYn !== true ? todo.checkYn = true : null
         })
     )
     setDtTodos(todoDataArray);
@@ -91,7 +91,7 @@ const checkNdoitCalendarOn = () => {
     todoDataArray.map(data=>
         //N이 없으면 나타나지 않아야 한다!!!
         data.todos.map((todo)=>{
-            if(todo.checkYn !== 'N') return false
+            if(todo.checkYn !== false) return false
             else setAllTodoCalendarActive(true);
         })
     )
@@ -106,7 +106,7 @@ const submitDoitOtherDay = (selectedDate) => {
 
     todoDataArray.map(data=>
         data.todos.map((todo)=>{
-            return todo.checkYn !== 'Y' ? todo.date = newDate : null;
+            return todo.checkYn !== true ? todo.date = newDate : null;
            //endRepeatDate 가 같은 날일 경우도 처리해야 하나?
            //todo.endRepeatDate = newDate
         })
@@ -120,7 +120,7 @@ const submitDoitOtherDay = (selectedDate) => {
 //checkYn이 N이 아닌 것들만 모아서 (filter) todos를 바꿔준다
 const checkNdelete = () => {
     todoDataArray.map(data=> {
-            const checkedArr = data.todos.filter(todo=> todo.checkYn !== 'N')
+            const checkedArr = data.todos.filter(todo=> todo.checkYn !== false)
             data.todos = checkedArr;
         }
     )
