@@ -11,7 +11,7 @@ import { useRecoilState } from "recoil";
 import '../../stylesheets/GoalForm.css';
 
 import { goalsData } from "../../atoms/todoData";
-
+import { postGoalRegister } from "../../api/apiCommunicate";
 
 export default function GoalForm(){
 
@@ -23,11 +23,10 @@ export default function GoalForm(){
 
     let [createGoalState, setCreactGoalState] = useState(
         {
-            "id": goal.length+1,
             "orderNo" : goal.length+1,
-            "title" : ``,
+            "contents" : ``,
             "privacy" : `PUBLIC`,
-            "titleColor" : `#000000`
+            "color" : `#000000`
         }
 
     );
@@ -77,7 +76,7 @@ export default function GoalForm(){
 
     //목표 타이틀 수정 함수
     const changeGoalTitle = (e) => {
-        copy_createGoalState.title = e.target.value;
+        copy_createGoalState.contents = e.target.value;
         setCreactGoalState(copy_createGoalState)
     }
 
@@ -100,7 +99,7 @@ export default function GoalForm(){
         setCreactGoalState(copy_createGoalState);
     };
     const handleColorChange = (e) => {
-        copy_createGoalState.titleColor = e.target.value;
+        copy_createGoalState.color = e.target.value;
         setCreactGoalState(copy_createGoalState);
     };
 
@@ -126,7 +125,7 @@ export default function GoalForm(){
                        { privacyObj[createGoalState.privacy] } ▾ </span></Button>
                 </Grid>
                 <Grid item xs={12} className="goals-form-color-wrap" > 
-                   <Button className="goals-form-color" onClick={()=>{setColorDialogActive(true)}}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.titleColor}`}}></i>▾ </span></Button>
+                   <Button className="goals-form-color" onClick={()=>{setColorDialogActive(true)}}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${createGoalState.color}`}}></i>▾ </span></Button>
                 </Grid>
                 {/* 확인은 임시 css */}
                 <Grid item xs={12} className="goals-form-submit">

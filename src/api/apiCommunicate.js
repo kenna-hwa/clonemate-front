@@ -129,14 +129,70 @@ export const getGoalsData = async () => {
  .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
  .catch((Error)=>{console.log(Error)})
 
- return Response.data
+ return Response.data;
 }
 
 //POST 목표 등록하기
 
+export const postGoalRegister = async (data) => {
+
+  //axios
+  await axios({
+   method: `POST`,
+   url: `${todoHost}/goals`,
+   params: {
+    data
+  },
+  headers:{
+    headers
+  }
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 등록하지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
+
+ return Response.data;
+}
+
 //PATCH 목표 수정하기
+export const patchGoalEdit = async (goalId, data) => {
+
+  //axios
+  await axios({
+   method: `PATCH`,
+   url: `${todoHost}/goals/${goalId}`,
+   params: {
+    data
+  },
+  headers:{
+    headers
+  }
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 수정하지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
+
+ return Response.data;
+}
 
 //DELETE 목표 삭제하기
+
+export const deleteGoalData = async (goalId) => {
+
+  //axios
+  await axios({
+   method: `DELETE`,
+   url: `${todoHost}/goals/${goalId}`,
+  headers:{
+    headers
+  }
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 삭제하지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
+
+ return Response.data;
+}
 
 /* 목표 API 통신 끝 */
 

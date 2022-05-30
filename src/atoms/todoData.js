@@ -46,6 +46,7 @@ export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이
 
 // todo 더미데이터 수정 220304
 
+
 // todo api
 export const objTodosDataResult = atom({
   key: 'objTodosDataResult',
@@ -55,8 +56,8 @@ export const objTodosDataResult = atom({
   "goalId": 1,
   "orderNo" : 1,
   "contents" : "첫 번째 목표",
-  "privacy": "PUB",
-  "titleColor" : "#ff0000",
+  "privacy": "PUBLIC",
+  "color" : "#ff0000",
   "todos" : [
         {
           "date": "2022-02-13",
@@ -64,7 +65,7 @@ export const objTodosDataResult = atom({
           "endRepeatDate": "2022-02-13",
           "checkYn": false,
           "orderNo": 1,
-          "title": "첫 번째 목표의 첫 번째 할 일",
+          "contents": "첫 번째 목표의 첫 번째 할 일",
           "goalId": 1,
           "repeatDays": {
             "THU": false,
@@ -105,7 +106,7 @@ export const objTodosDataResult = atom({
           "endRepeatDate": "2022-02-14",
           "checkYn": false,
           "orderNo": 2,
-          "title": "첫 번째 목표의 두 번째 할 일",
+          "contents": "첫 번째 목표의 두 번째 할 일",
           "goalId": 1,
           "repeatDays": {
             "THU": false,
@@ -146,7 +147,7 @@ export const objTodosDataResult = atom({
         "endRepeatDate": "2022-02-17",
         "checkYn": false,
         "orderNo": 3,
-        "title": "첫 번째 목표의 세 번째 할 일",
+        "contents": "첫 번째 목표의 세 번째 할 일",
         "goalId": 1,
         "repeatDays": {
           "THU": false,
@@ -183,10 +184,11 @@ export const objTodosDataResult = atom({
       },
   ]},
   {
-    "title" : "두 번째 목표",
+    "contents" : "두 번째 목표",
     "id": 2,
     "orderNo" : 2,
-    "titleColor" : "#ff873d",
+    "color" : "#ff873d",
+    "privacy": "PUBLIC",
     "todos" : [
           {
             "date": "2022-02-13",
@@ -194,7 +196,7 @@ export const objTodosDataResult = atom({
             "endRepeatDate": "2022-02-13",
             "checkYn": false,
             "orderNo": 1,
-            "title": "두 번째 목표의 첫 번째 할 일",
+            "contents": "두 번째 목표의 첫 번째 할 일",
             "goalId": 2,
             "repeatDays": {
               "THU": false,
@@ -235,7 +237,7 @@ export const objTodosDataResult = atom({
             "endRepeatDate": "2022-02-15",
             "checkYn": false,
             "orderNo": 2,
-            "title": "두 번째 목표의 두 번째 할 일",
+            "contents": "두 번째 목표의 두 번째 할 일",
             "goalId": 2,
             "repeatDays": {
               "THU": false,
@@ -272,10 +274,11 @@ export const objTodosDataResult = atom({
         },
     ]},
     {
-      "title" : "세 번째 목표",
+      "contents" : "세 번째 목표",
       "id": 3,
       "orderNo" : 3,
-      "titleColor" : "#0119cb",
+      "color" : "#0119cb",
+      "privacy": "PUBLIC",
       "todos" : [
            {
               "date": "2022-02-16",
@@ -283,7 +286,7 @@ export const objTodosDataResult = atom({
               "endRepeatDate": "2022-02-16",
               "checkYn": false,
               "orderNo": 1,
-              "title": "세 번째 목표의 첫 번째 할 일",
+              "contents": "세 번째 목표의 첫 번째 할 일",
               "goalId": 3,
               "repeatDays": {
                 "THU": false,
@@ -324,7 +327,7 @@ export const objTodosDataResult = atom({
               "endRepeatDate": "2022-02-19",
               "checkYn": false,
               "orderNo": 2,
-              "title": "세 번째 목표의 두 번째 할 일",
+              "contents": "세 번째 목표의 두 번째 할 일",
               "goalId": 3,
               "repeatDays": {
                 "THU": false,
@@ -371,10 +374,11 @@ export const objTodosDataResult = atom({
           },
       ]},
       {
-        "title" : "네 번째 목표",
+        "contents" : "네 번째 목표",
         "id": 4,
         "orderNo" : 4,
-        "titleColor" : "#77ab59",
+        "color" : "#77ab59",
+        "privacy": "PUBLIC",
         "todos" : [
              {
                 "date": "2022-02-16",
@@ -382,7 +386,7 @@ export const objTodosDataResult = atom({
                 "endRepeatDate": "2022-02-16",
                 "checkYn": false,
                 "orderNo": 1,
-                "title": "네 번째 목표의 첫 번째 할 일",
+                "contents": "네 번째 목표의 첫 번째 할 일",
                 "goalId": 4,
                 "repeatDays": {
                   "THU": false,
@@ -417,32 +421,32 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
   key: "goalsData",
   default: [
     {
-      "id" : 1,
-      "orderNo" : 1,
-      "title" : "첫 번째 목표",
-      "privacy" : "PUBLIC",
-      "titleColor" : "#cccccc"
+      "contents": "첫 번째 목표",
+      "orderNo": 1,
+      "privacy": "PUBLIC",
+      "color": "#ff0000",
+      "id": 1
     },
     {
-      "id" : 2,
-      "orderNo" : 2,
-      "title" : "두 번째 목표",
-      "privacy" : "PRIVACY",
-      "titleColor" : "#cccccc"
+      "contents": "두 번째 목표",
+      "orderNo": 2,
+      "privacy": "PUBLIC",
+      "color": "#ff873d",
+      "id": 2
     },
     {
-      "id" : 3,
-      "orderNo" : 3,
-      "title" : "세 번째 목표",
-      "privacy" : "FOLLOWING",
-      "titleColor" : "#cccccc"
+      "contents": "세 번째 목표",
+      "orderNo": 3,
+      "privacy": "FOLLOWING",
+      "color": "#0119cb",
+      "id": 3
     },
     {
-      "id" : 4,
-      "orderNo" : 4,
-      "title" : "네 번째 목표",
-      "privacy" : "HIDDEN",
-      "titleColor" : "#cccccc"
+      "contents": "네 번째 목표",
+      "orderNo": 4,
+      "privacy": "PRIVATE",
+      "color": "#77ab59",
+      "id": 4
     }
   ]
 })

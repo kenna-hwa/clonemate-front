@@ -15,6 +15,7 @@ import '../../stylesheets/GoalForm.css';
 
 import { goalsData } from "../../atoms/todoData";
 import { id } from "date-fns/locale";
+import { patchGoalEdit, deleteGoalData } from "../../api/apiCommunicate";
 
 export default function GoalEditForm(){
 
@@ -26,10 +27,19 @@ export default function GoalEditForm(){
     /* atom 선언 종료 */
 
      /* state 선언 시작 */
-     let { originID } = useParams();//url Params 따오기
-     const [editGoalState, setEditGoalState] = useState('');
-     const copy_editGoalState = {...editGoalState}
- 
+    let { originID } = useParams();//url Params 따오기
+    const [editGoalState, setEditGoalState] = useState('');
+    const copy_editGoalState = {...editGoalState}
+    let [editGoalData, setEditGoalData] = useState(
+        {
+            "contents" : ``,
+            "privacy" : `PUBLIC`,
+            "color" : `#000000`
+        }
+    );
+    const copy_editGoalData = {...editGoalData}
+
+
      useEffect(()=>{
          let originGoalArr = [...goal]; //원본 goal 가지고 옴
          originGoalArr.filter((data)=>{
@@ -68,10 +78,10 @@ export default function GoalEditForm(){
          ];
  
          const privacyObj = {
-             'HIDDEN' : '숨기기 🙄' ,
-             'PRIVACY' : '나만보기 😎' ,
-             'FOLLOWING' : '일부공개 🤫' ,
-             'PUBLIC' : '전체공개 🤗' ,
+             "HIDDEN" : "숨기기 🙄" ,
+             "PRIVACY" : "나만보기 😎" ,
+             "FOLLOWING" : "일부공개 🤫" ,
+             "PUBLIC" : "전체공개 🤗" ,
          }
      
     /* state 선언 종료 */
@@ -86,18 +96,14 @@ export default function GoalEditForm(){
 
     /* 함수 선언 시작 */
     
-    //목표 타이틀 수정 함수
-    const changeEditGoalTitle = (e) => {
-        copy_editGoalState.title = e.target.value;
-        setEditGoalState(copy_editGoalState)
-    }
+
     
     //목표 수정 함수
     function editGoal(item){
         const copy_goal = [...goal]
         copy_goal.splice(originID-1, 1, copy_editGoalState)
-        console.log("copy_goal", copy_goal)
         setGoal(copy_goal); //setGoal를 이용해 state 변경
+        patchGoalEdit(originID, editGoalData) //patchGoalEdit을 이용해 apu 변경
         window.location.replace(`/goals/`);//목표로 돌아가기
     }
 
@@ -106,7 +112,8 @@ export default function GoalEditForm(){
         const copy_goal = [...goal]
         let newGoalArr = copy_goal.filter(goal =>  goal.id != originID
         )
-        setGoal(newGoalArr) ;//setGoal를 이용해 state 변경
+        setGoal(newGoalArr); //setGoal를 이용해 state 변경
+        deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
         window.location.replace(`/goals/`);//목표로 돌아가기
     }
 
@@ -121,13 +128,26 @@ export default function GoalEditForm(){
             setColorDialogActive(false);
         }
     };
+    //목표 타이틀 수정 함수
+    const changeEditGoalContents = (e) => {
+        copy_editGoalState.contents = e.target.value;
+        copy_editGoalData.contents = e.target.value;
+        setEditGoalState(copy_editGoalState);
+        setEditGoalData(copy_editGoalData);
+    };
+    //목표 공개 범위 수정 함수
     const handlePrivacyChange = (e) => {
         copy_editGoalState.privacy = e.target.value;
+        copy_editGoalData.privacy = e.target.value;
         setEditGoalState(copy_editGoalState);
+        setEditGoalData(copy_editGoalData);
     };
+    //목표 색상 수정 함수
     const handleColorChange = (e) => {
-        copy_editGoalState.titleColor = e.target.value;
+        copy_editGoalState.color = e.target.value;
+        copy_editGoalData.color = e.target.value;
         setEditGoalState(copy_editGoalState);
+        setEditGoalData(copy_editGoalData);
     };
 
 
@@ -138,14 +158,14 @@ export default function GoalEditForm(){
             <div className="goals-form">
             <Grid container spacing={1} className="goals-form-grid-wrap">
             <Grid item xs={12} className="goals-form-text-wrap">
-                <TextField id="goalform_textfield" variant="standard" value={editGoalState.title || ''} onChange={changeEditGoalTitle} /> 
+                <TextField id="goalform_textfield" variant="standard" value={editGoalState.contents || ''} onChange={changeEditGoalContents} /> 
                 </Grid>
                 <Grid item xs={12} className="goals-form-privacy-wrap" > 
                    <Button className="goals-form-privacy" onClick={()=>{setPrivacyDialogActive(true)}}><p>공개 설정 </p><span> 
                        { privacyObj[editGoalState.privacy] } ▾ </span></Button>
                 </Grid>
                 <Grid item xs={12} className="goals-form-color-wrap" > 
-                   <Button className="goals-form-color" onClick={()=>{setColorDialogActive(true)}}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${editGoalState.titleColor}`}}></i>▾ </span></Button>
+                   <Button className="goals-form-color" onClick={()=>{setColorDialogActive(true)}}><p>색상 </p><span> <i style={{ position: 'absolute', display: 'inline-block', width: '20px', height: '20px', border: '1px solid #000', borderRadius: '50%', top: '20px', right: '30px', background: `${editGoalState.color}`}}></i>▾ </span></Button>
                 </Grid>
                 {/* 확인은 임시 css */}
                 <Grid item xs={12} className="goals-form-submit">
@@ -154,7 +174,7 @@ export default function GoalEditForm(){
                         확인
                     </Button>    
                 </Grid>
-                <Button className="goals-listItem-delete-btn" aria-label="Delete Todo" id={editGoalState.goal_id} onClick={deleteGoal} >
+                <Button className="goals-listItem-delete-btn" aria-label="Delete Todo" id={editGoalState.id} onClick={deleteGoal} >
                        삭제
                 </Button>
                 </Grid>
@@ -172,11 +192,12 @@ export default function GoalEditForm(){
                             aria-labelledby="radio-buttons-group-privacy-label"
                             name="radio-buttons-group-privacy"
                             onChange={handlePrivacyChange}
+                            defaultValue={editGoalState.privacy}
                         >
-                            <FormControlLabel value="HIDDEN" control={<Radio  />} label={privacyObj['HIDDEN']} />
-                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj['PRIVACY']}  />
-                            <FormControlLabel value="FOLLOWING" control={<Radio />}  label={privacyObj['FOLLOWING']}  />
-                            <FormControlLabel value="PUBLIC" control={<Radio />}  label={privacyObj['PUBLIC']}  />
+                            <FormControlLabel value="HIDDEN" control={<Radio  />} label={privacyObj["HIDDEN"]} />
+                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj["PRIVACY"]}  />
+                            <FormControlLabel value="FOLLOWING" control={<Radio />}  label={privacyObj["FOLLOWING"]}  />
+                            <FormControlLabel value="PUBLIC" control={<Radio />}  label={privacyObj["PUBLIC"]}  />
                         </RadioGroup>
                     </FormControl>
                 </Box>
