@@ -26,7 +26,7 @@ export default function Goals() {
   useEffect(()=>{
     // recoil 에서 정보 갱신이 되었으면 하는데..?
     const goalItems = getGoalsData();
-    setDtTodos(goalItems)
+    // setDtTodos(goalItems)
     // goalItems = useRecoilState(goalsData)
   },[dtTodos])
 
@@ -62,10 +62,10 @@ export default function Goals() {
             todoDataArray.map((data, idx) => {
               return (
                 <React.Fragment key={data.id}>
-                  <div className="goals-list-box" key={data.goalOrderNo}>
+                  <div className="goals-list-box" key={data.orderNo}>
                     <Button className="goals-list-button" id={data.id} name={data.id} data={data} onClick={moveEditGoalForm} >
                         <ReceiptIcon className="goals-list-icon" />
-                        <div className="goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color:data.titleColor }}  ><p>{data.title}</p>
+                        <div className="goals-list-text" id={data.orderNo} name={data.orderNo} style={{ color:data.color }}  ><p>{data.contents}</p>
                         </div>
                     </Button>
                     <NavigateNextIcon className="goal-list-arrow" />
