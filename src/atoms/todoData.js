@@ -51,367 +51,55 @@ export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이
 export const objTodosDataResult = atom({
   key: 'objTodosDataResult',
   default: [
-  {
-  "id": 1,
-  "goalId": 1,
-  "orderNo" : 1,
-  "contents" : "첫 번째 목표",
-  "privacy": "PUBLIC",
-  "color" : "#ff0000",
-  "todos" : [
-        {
-          "date": "2022-02-13",
-          "startRepeatDate":"2022-02-13", 
-          "endRepeatDate": "2022-02-13",
-          "checkYn": false,
-          "orderNo": 1,
-          "contents": "첫 번째 목표의 첫 번째 할 일",
-          "goalId": 1,
-          "repeatDays": {
-            "THU": false,
-            "WEN": false,
-            "TUE": false,
-            "SAT": false,
-            "FRI": false,
-            "MON": false,
-            "SUN": false
-          },
-          "likes": [
-            {
-              "user": {
-                "email": "test2@test.com",
-                "account": "test2",
-                "introText": "클론짱2의 투두메이트",
-                "name": "클론짱2",
-                "id": 2
-              },
-              "id": 3
-            },
-            {
-              "user": {
-                "email": "test3@test.com",
-                "account": "test3",
-                "introText": "클론짱3의 투두메이트",
-                "name": "클론짱3",
-                "id": 3
-              },
-              "id": 4
-            }
-          ],
-          "id": 1
-        },
-        {
-          "date": "2022-02-13",
-          "startRepeatDate":"2022-02-13",
-          "endRepeatDate": "2022-02-14",
-          "checkYn": false,
-          "orderNo": 2,
-          "contents": "첫 번째 목표의 두 번째 할 일",
-          "goalId": 1,
-          "repeatDays": {
-            "THU": false,
-            "WEN": false,
-            "TUE": false,
-            "SAT": false,
-            "FRI": false,
-            "MON": false,
-            "SUN": false
-          },
-          "likes": [
-						{
-							"user": {
-								"email": "test2@test.com",
-								"account": "test2",
-								"introText": "클론짱2의 투두메이트",
-								"name": "클론짱2",
-								"id": 2
-							},
-							"id": 3
-						},
-						{
-							"user": {
-								"email": "test3@test.com",
-								"account": "test3",
-								"introText": "클론짱3의 투두메이트",
-								"name": "클론짱3",
-								"id": 3
-							},
-							"id": 4
-						}
-					],
-          "id": 2
-      },
-      {
-        "date": "2022-02-13",
-        "startRepeatDate":"2022-02-13",
-        "endRepeatDate": "2022-02-17",
-        "checkYn": false,
-        "orderNo": 3,
-        "contents": "첫 번째 목표의 세 번째 할 일",
-        "goalId": 1,
-        "repeatDays": {
-          "THU": false,
-          "WEN": false,
-          "TUE": false,
-          "SAT": false,
-          "FRI": false,
-          "MON": false,
-          "SUN": false
-        },
-        "likes": [
-          {
-            "user": {
-              "email": "test2@test.com",
-              "account": "test2",
-              "introText": "클론짱2의 투두메이트",
-              "name": "클론짱2",
-              "id": 2
-            },
-            "id": 3
-          },
-          {
-            "user": {
-              "email": "test3@test.com",
-              "account": "test3",
-              "introText": "클론짱3의 투두메이트",
-              "name": "클론짱3",
-              "id": 3
-            },
-            "id": 4
-          }
-        ],
-        "id": 3
-      },
-  ]},
-  {
-    "contents" : "두 번째 목표",
-    "id": 2,
-    "orderNo" : 2,
-    "color" : "#ff873d",
-    "privacy": "PUBLIC",
-    "todos" : [
-          {
-            "date": "2022-02-13",
-            "startRepeatDate":"2022-02-13",
-            "endRepeatDate": "2022-02-13",
-            "checkYn": false,
-            "orderNo": 1,
-            "contents": "두 번째 목표의 첫 번째 할 일",
-            "goalId": 2,
-            "repeatDays": {
-              "THU": false,
-              "WEN": false,
-              "TUE": false,
-              "SAT": false,
-              "FRI": false,
-              "MON": false,
-              "SUN": false
-            },
-            "likes": [
-              {
-                "user": {
-                  "email": "test2@test.com",
-                  "account": "test2",
-                  "introText": "클론짱2의 투두메이트",
-                  "name": "클론짱2",
-                  "id": 2
-                },
-                "id": 3
-              },
-              {
-                "user": {
-                  "email": "test3@test.com",
-                  "account": "test3",
-                  "introText": "클론짱3의 투두메이트",
-                  "name": "클론짱3",
-                  "id": 3
-                },
-                "id": 4
-              }
-            ],
-            "id": 1
-          },
-          {
-            "date": "2022-02-11",
-            "startRepeatDate":"2022-02-11", 
-            "endRepeatDate": "2022-02-15",
-            "checkYn": false,
-            "orderNo": 2,
-            "contents": "두 번째 목표의 두 번째 할 일",
-            "goalId": 2,
-            "repeatDays": {
-              "THU": false,
-              "WEN": false,
-              "TUE": false,
-              "SAT": false,
-              "FRI": false,
-              "MON": false,
-              "SUN": false
-            },
-            "likes": [
-              {
-                "user": {
-                  "email": "test2@test.com",
-                  "account": "test2",
-                  "introText": "클론짱2의 투두메이트",
-                  "name": "클론짱2",
-                  "id": 2
-                },
-                "id": 3
-              },
-              {
-                "user": {
-                  "email": "test3@test.com",
-                  "account": "test3",
-                  "introText": "클론짱3의 투두메이트",
-                  "name": "클론짱3",
-                  "id": 3
-                },
-                "id": 4
-              }
-            ],
-            "id": 2
-        },
-    ]},
     {
-      "contents" : "세 번째 목표",
-      "id": 3,
-      "orderNo" : 3,
-      "color" : "#0119cb",
-      "privacy": "PUBLIC",
-      "todos" : [
-           {
-              "date": "2022-02-16",
-              "startRepeatDate":"2022-02-16", 
-              "endRepeatDate": "2022-02-16",
-              "checkYn": false,
-              "orderNo": 1,
-              "contents": "세 번째 목표의 첫 번째 할 일",
-              "goalId": 3,
-              "repeatDays": {
-                "THU": false,
-                "WEN": false,
-                "TUE": false,
-                "SAT": false,
-                "FRI": false,
-                "MON": false,
-                "SUN": false
-              },
-              "likes": [
-                {
-                  "user": {
-                    "email": "test2@test.com",
-                    "account": "test2",
-                    "introText": "클론짱2의 투두메이트",
-                    "name": "클론짱2",
-                    "id": 2
-                  },
-                  "id": 3
+        "id": 1,
+        "orderNo": 1,
+        "contents": "목표 1",
+        "privacy": "PUBLIC",
+        "color": "#cccccc",
+        "todos": [
+            {
+                "id": 1,
+                "goalId": 1,
+                "orderNo": 1,
+                "contents": "오늘의 투두1",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                  "user": {
-                    "email": "test3@test.com",
-                    "account": "test3",
-                    "introText": "클론짱3의 투두메이트",
-                    "name": "클론짱3",
-                    "id": 3
-                  },
-                  "id": 4
-                }
-              ],
-              "id": 1
+                "isChecked": false,
+                "likes": null
             },
             {
-              "date": "2022-02-13",
-              "startRepeatDate":"2022-02-13",
-              "endRepeatDate": "2022-02-19",
-              "checkYn": false,
-              "orderNo": 2,
-              "contents": "세 번째 목표의 두 번째 할 일",
-              "goalId": 3,
-              "repeatDays": {
-                "THU": false,
-                "WEN": false,
-                "TUE": false,
-                "SAT": false,
-                "FRI": false,
-                "MON": false,
-                "SUN": false
-              },
-              "likes": [
-                {
-                  "user": {
-                    "email": "test2@test.com",
-                    "account": "test2",
-                    "introText": "클론짱2의 투두메이트",
-                    "name": "클론짱2",
-                    "id": 2
-                  },
-                  "id": 3
-                },
-                {
-                  "user": {
-                    "email": "test3@test.com",
-                    "account": "test3",
-                    "introText": "클론짱3의 투두메이트",
-                    "name": "클론짱3",
-                    "id": 3
-                  },
-                  "id": 4
-                },
-                {
-                  "user": {
-                    "email": "test2@test.com",
-                    "account": "test2",
-                    "introText": "클론짱4의 투두메이트",
-                    "name": "클론짱4",
-                    "id": 2
-                  },
-                  "id": 5
-                },
-              ],
-              "id": 2
-          },
-      ]},
-      {
-        "contents" : "네 번째 목표",
-        "id": 4,
-        "orderNo" : 4,
-        "color" : "#77ab59",
-        "privacy": "PUBLIC",
-        "todos" : [
-             {
-                "date": "2022-02-16",
-                "startRepeatDate":"2022-02-16",
-                "endRepeatDate": "2022-02-16",
-                "checkYn": false,
-                "orderNo": 1,
-                "contents": "네 번째 목표의 첫 번째 할 일",
-                "goalId": 4,
+                "id": 2,
+                "goalId": 1,
+                "orderNo": 2,
+                "contents": "오늘의 투두2",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
                 "repeatDays": {
-                  "THU": false,
-                  "WEN": false,
-                  "TUE": false,
-                  "SAT": false,
-                  "FRI": false,
-                  "MON": false,
-                  "SUN": false
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
                 },
-                "likes": [
-                  {
-                    "user": {
-                      "email": "test2@test.com",
-                      "account": "test2",
-                      "introText": "클론짱2의 투두메이트",
-                      "name": "클론짱2",
-                      "id": 2
-                    },
-                    "id": 3
-                  },
-                ],
-                "id": 1
-              },
-        ]},
+                "isChecked": false,
+                "likes": null
+            }
+        ]
+    }
 ]
 })
 

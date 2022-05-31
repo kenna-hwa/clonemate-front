@@ -68,7 +68,7 @@ import { useHistory } from "react-router-dom";
       }
 
       //Todo checkbox 핸들러
-    const onClickTodoCheckYn = (e) => {
+    const onClickTodoisChecked = (e) => {
       e.stopPropagation(); 
       const goal_id = parseInt(e.currentTarget.dataset.goalid);
       const todo_id = parseInt(e.currentTarget.dataset.todoid);
@@ -76,8 +76,8 @@ import { useHistory } from "react-router-dom";
       todoDataArray.map(data=>
           data.todos.map(todo=>{
               if(todo.goalId === goal_id && todo.id === todo_id){
-                  todo.checkYn === true ? todo.checkYn = false : todo.checkYn = true
-                  console.log("todo.checkYn " , todo.checkYn)
+                  todo.isChecked === true ? todo.isChecked = false : todo.isChecked = true
+                  console.log("todo.isChecked " , todo.isChecked)
               }
           })
       )
@@ -118,7 +118,7 @@ import { useHistory } from "react-router-dom";
         todoDataArray.map(data=>
             data.todos.map(todo=>{
                 if(todo.goalId === goal_id && todo.id === todo_id){
-                    todo.title = current_value;
+                    todo.contents = current_value;
                 }
             })
         )
@@ -133,17 +133,18 @@ import { useHistory } from "react-router-dom";
             <TodoModal index={index} modalActive={modalActiveIndex} todos={todos} setModalActiveIndex={setModalActiveIndex} 
             readOnlyHandler={readOnlyHandler} todoModalEditHandler={todoModalEditHandler}
             /> 
-            <LikeListModal index={index} likeModalActive={likeModalActiveIndex}
-            likeModalActiveIndex={likeModalActiveIndex} setLikeModalActiveIndex={setLikeModalActiveIndex} likesUser={todos.likes} />
-
+            { todos.likes === null ? null : <LikeListModal index={index} likeModalActive={likeModalActiveIndex}
+            likeModalActiveIndex={likeModalActiveIndex} setLikeModalActiveIndex={setLikeModalActiveIndex} likesUser={todos.likes} /> }
+            {/* <LikeListModal index={index} likeModalActive={likeModalActiveIndex}
+            likeModalActiveIndex={likeModalActiveIndex} setLikeModalActiveIndex={setLikeModalActiveIndex} likesUser={todos.likes} /> */}
             <div className="goals-listItem-text-wrap" 
             id={todos.todoId}
             data-index={todos.orderNo}>
-                    {todos.checkYn === true ?  
-                    <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
+                    {todos.isChecked === true ?  
+                    <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon" data-check={todos.isChecked} onClick={onClickTodoisChecked}
                     /> : 
                     <CheckBoxOutlineBlankIcon data-goalid={todos.goalId} data-todoid={todos.todoId} className="todos-list-check-icon"
-                    data-check={todos.checkYn} onClick={onClickTodoCheckYn}
+                    data-check={todos.isChecked} onClick={onClickTodoisChecked}
                     /> }
                         
             <TodoList todos={todos} 
@@ -178,11 +179,11 @@ const TodoList = React.forwardRef((props, ref) => {
             maxLength="50"
             size={inputRef.current?.value.length}
             ref={inputRef}
-            name={todos.title} 
+            name={todos.contents} 
             data-orderno={todos.orderNo}
             data-goalid={todos.goalId} 
             data-todoid={todos.id} 
-            value={todos.title} 
+            value={todos.contents} 
             readOnly={readOnly}
             onClick={()=>activeHandler(todos.id)}
             onChange={todoInputChangeHandler}
@@ -190,8 +191,9 @@ const TodoList = React.forwardRef((props, ref) => {
             onKeyDown={enterKeyEventHandler}
             />
                 {/* 만약 계정 주인이면 좋아요 누른 사람 보여주고, 다른 계정 유저면 좋아요 클릭되기 */}
-            <Button className="todos-list-like-btn" onClick={()=>{likeActiveHandler(todos.id)}}><ThumbUpAltIcon  />
-            <span className="todos-list-like-num">{todos.likes.length}</span>
+            <Button className="todos-list-like-btn" onClick={()=>{likeActiveHandler(todos.id)}}><ThumbUpAltIcon  />            
+            { todos.likes === null ? null : <span className="todos-list-like-num">{todos.likes.length}</span>  }
+            {/* <span className="todos-list-like-num">{todos.likes.length}</span> */}
             </Button>
         </div>
         )
