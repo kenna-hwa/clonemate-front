@@ -71,16 +71,16 @@ const TodoList = React.forwardRef((props, ref) => {
     return (
         <>
         <input
-        className="todos-list-input" key={todos.todoId} id="todo-input" type="text" 
+        className="todos-list-input" key={todos.id} id="todo-input" type="text" 
         maxLength="50"
         size={inputRef.current?.value.length}
         ref={inputRef}
-        name={todos.title} 
+        name={todos.contents} 
         data-index={index}
         data-orderno={todos.orderNo}
         data-goalid={todos.goalId} 
-        data-todoid={todos.todoId} 
-        value={todos.title} 
+        data-todoid={todos.id} 
+        value={todos.contents} 
         readOnly={readOnly}
         onClick={todoSelectedHandler}
         />

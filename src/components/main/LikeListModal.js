@@ -25,7 +25,6 @@ export function LikeListModal (props) {
     const likesUser = props.likesUser;
     const likeModalActiveIndex = props.likeModalActiveIndex;
     const setLikeModalActiveIndex = props.setLikeModalActiveIndex;
-    // console.log(likesUser)
 
     /* 함수 선언 시작 */
 
@@ -34,8 +33,6 @@ export function LikeListModal (props) {
 
     //캘린더 onoff 핸들러
     const setModalActiveIndex = props.setModalActiveIndex;
-
-
 
     /* 함수 선언 종료 */
 
