@@ -23,7 +23,7 @@ export default function ExploreSearch() {
             {...other}
           >
             {value === index && (
-              <Box sx={{ p: 3 }}>
+              <Box sx={{ "&.MuiBox-root": { paddingTop: "8px"} , p: 3 }}>
                 <Typography>{children}</Typography>
               </Box>
             )}

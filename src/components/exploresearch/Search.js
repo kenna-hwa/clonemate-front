@@ -7,8 +7,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import '../../stylesheets/Search.css';
 
 //  ** 할일 **
-// ✔ filter 함수 : 입력받는 string에 매치되는 아이디 불러와 보여주기
 // *** 검색어 입력 -> 엔터 뒤에 한번에 검색하기 로 로직 변경하기 
+// -> enter 이벤트 - button화 -> 요청한 데이터 받기로 변경 
+
+// ✔ filter 함수 : 입력받는 string에 매치되는 아이디 불러와 보여주기
 
 // 유저 리스트-> 유저 클릭 -> 유저 feed 이동 -> 팔로우 버튼 -> event: isfollowing: true 생성 또는 변경 
 

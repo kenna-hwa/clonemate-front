@@ -191,7 +191,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 1300px;
 }
 
 .follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button {
@@ -237,10 +236,22 @@
 
 .follow-follow-list-wrap .follow-list-box .follows-list-box .follow-list-button .follow-list-text {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Pretendard';
   font-weight: 300;
-  margin-left: 14px;
-  color: #1c1c1c;
+  margin-left: 2px;
+  color: gray;
+  margin-top: -1px;
+}
+
+.test-box {
+  width: 500px;
+  height: 200px;
+}
+
+.test-box .test-text {
+  height: 20px;
+  color: blue;
+  font-size: 20px;
 }
 /*# sourceMappingURL=Follow.css.map */
