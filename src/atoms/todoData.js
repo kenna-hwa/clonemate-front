@@ -559,7 +559,6 @@ export const userIdInfo = atom({
   ]
 })
 
-<<<<<<< Updated upstream
 // API 테스트 더미 
 export const testDummyData = atom({
   key: 'testDummyData',
@@ -572,8 +571,6 @@ export const testDummyData = atom({
     }
   ]
 })
-=======
->>>>>>> Stashed changes
 
 // Followers 테스트 더미 
 export const testFollowerData = atom({
@@ -600,9 +597,5 @@ export const testFollowerData = atom({
       "name": "팔로우테스트3",
       "id": 4
     },
-<<<<<<< Updated upstream
   ]
-=======
-  ],
->>>>>>> Stashed changes
 })

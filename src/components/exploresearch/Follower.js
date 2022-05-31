@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import React, { useState,  useRef  } from "react";
 
 import List from '@mui/material/List';
@@ -8,20 +7,14 @@ import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import API from '../../api/API';
-=======
-import React from "react";
->>>>>>> Stashed changes
 import axios from 'axios';
 
 import '../../stylesheets/Follow.css';
 
-<<<<<<< Updated upstream
 import { getTodosOverviewData } from '../../api/apiCommunicate'
 import { getTodosDataSample } from '../../api/apiCommunicate'
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 
-=======
->>>>>>> Stashed changes
 import FollowerTest from './FollowerTest';
 
 
@@ -66,23 +59,14 @@ const getAPI = () => {
     //console.log("testDummy", testDummy)
     //console.log("testDummy", testDummyData)
 /* atom 종료 */
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
 
 
 
 
 
-<<<<<<< Updated upstream
 
 
 
-=======
->>>>>>> Stashed changes
 export default function Follower() {
 
 
@@ -106,7 +90,3 @@ export default function Follower() {
     )
 }
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
