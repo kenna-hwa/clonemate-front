@@ -554,3 +554,44 @@ export const userIdInfo = atom({
     }
   ]
 })
+
+// API 테스트 더미 
+export const testDummyData = atom({
+  key: 'testDummyData',
+  default : [
+    {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+    }
+  ]
+})
+
+// Followers 테스트 더미 
+export const testFollowerData = atom({
+  key: 'testFollowerData',
+  default : [
+    {
+      "introText": "팔로우테스트1 투두입니다~~",
+      "email": "77777@gmail.com",
+      "account": "test1",
+      "name": "팔로우테스트1",
+      "id": 2
+    },
+    {
+      "introText": "🥛팔로우테스트2 투두입니다~~",
+      "email": "5555@gmail.com",
+      "account": "test1",
+      "name": "팔로우테스트2",
+      "id": 3
+    },
+    {
+      "introText": "팔로우테스트3 투두입니다~~",
+      "email": "6666@gmail.com",
+      "account": "test1",
+      "name": "팔로우테스트3",
+      "id": 4
+    },
+  ]
+})

@@ -108,7 +108,7 @@
         //padding: 0;
         
         // ***** 폭 넓이에 따라 변하게 수정 
-        width: 1300px;
+        //width: 1300px;
 
           .follow-list-button{
             width: fit-content;
@@ -136,13 +136,14 @@
 
               .follow-list-text{
                   display: block;
-                  font-size: 16px;
+                  font-size: 14px;
                   font-family: 'Pretendard';
                   font-weight: 300;
                   //max-width: 200px; 
-                  margin-left: 14px; 
+                  margin-left: 2px; 
                   //overflow: hidden;
-                  color: $text-black;
+                  color: gray;
+                  margin-top: -1px;
                   //padding: 100 100 100 100;
               }
           
@@ -150,4 +151,16 @@
   
     }
   }
+}
+
+.test-box{
+  width: 500px;
+  //background-color: red;
+  height: 200px;
+
+    .test-text{
+      height: 20px;
+      color: blue;
+      font-size: 20px;
+    }
 }

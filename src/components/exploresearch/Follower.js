@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
-
+import React, { useState,  useRef  } from "react";
 
 import List from '@mui/material/List';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -16,6 +13,10 @@ import '../../stylesheets/Follow.css';
 
 import { getTodosOverviewData } from '../../api/apiCommunicate'
 import { getTodosDataSample } from '../../api/apiCommunicate'
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+
+import FollowerTest from './FollowerTest';
+
 
 //  ** 할일 **
 // 팔로워 의 설정 버튼 팝업 확인하기 
@@ -50,98 +51,18 @@ const getAPI = () => {
     );
 };
 
+/* atom 시작 */
 
-const FollowerData = [
-    {
-        "strUserName": "🍈메로나",
-        "strUserId": "merona",
-        "strUserEmail": "useremail@email.com",
-        "strUserInfo": "🍈메로나의 투두리스트입니다",
-        "dtTodo": [{
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일",
-            "ynComplete": "Y",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 1,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일2",
-            "ynComplete": "N",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일",
-            "ynComplete": "Y",
-        }],
-        "isFollower": true,
-        "isFollowing": true,
-    },
+    // atom에서 goal+todo 데이터 가져오기
+    //let [testDummy, setTestDummy] = useRecoilState(testDummyData);
+    //let testDummyArray = JSON.parse(JSON.stringify(testDummy));
+    //console.log("testDummy", testDummy)
+    //console.log("testDummy", testDummyData)
+/* atom 종료 */
 
-    {
-        "strUserName": "두두",
-        "strUserId": "dodo",
-        "strUserEmail": "useremail@email.com",
-        "strUserInfo": "dodo의 투두리스트입니다",
-        "dtTodo": [{
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일",
-            "ynComplete": "Y",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 1,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일2",
-            "ynComplete": "Y",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "sample의 할 일",
-            "ynComplete": "Y",
-        }],
-        "isFollower": true,
-        "isFollowing": true,
-    },
-    {
-        "strUserName": "주영",
-        "strUserId": "주영",
-        "strUserEmail": "useremail@email.com",
-        "strUserInfo": "주영의 투두리스트입니다",
-        "dtTodo": [{
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "🥛우유마시기",
-            "ynComplete": "Y",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 1,
-            "bg_color": "#2121fe",
-            "todo_title": "스터디카페가기",
-            "ynComplete": "N",
-        },
-        {
-            "goal_id": 1,
-            "todo_id": 0,
-            "bg_color": "#2121fe",
-            "todo_title": "햄버거 냠냠🍔",
-            "ynComplete": "Y",
-        }],
-        "isFollower": false,
-        "isFollowing": true,
-    }
 
-]
+
+
 
 
 
@@ -149,110 +70,24 @@ const FollowerData = [
 export default function Follower() {
 
 
-    /* atom 시작 */
-    //let [following, setFollowing] = useRecoilState(followData);// 팔로우data
-    let [follower, setFollower] = useState(FollowerData);
-
-    let [testdata, settestdata] = useState(getTodosOverviewData);
-
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-
-
-    const handleFollowingChange = (e) => {
-
-        let userId = e.target.dataset.index;
-        console.log('current user', userId);
-
-        const thisData = [...follower];
-        let newFollower = thisData.filter(item => item.strUserId !== userId)
-
-        setFollower(newFollower);
-        console.log('newFollwer', newFollower);
-
-        setOpen(false);
-        //window.location.replace(`/exploreSearch/`);
-
-    };
+   
 
 
     return (
-
+        
 
         <div className="follow-follow-list-wrap" >
+            <FollowerTest />
             {/* <div><button onClick={getAPI}>login</button></div> */}
 
+            
+            
+            
             {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
-            {follower.map((data =>
-                data.strUserId.length > 0 ? (
-
-                    <List // 넓이 조정 
-                        sx={{ width: '100%' }}
-                        style={{ position: 'relative' }}
-                        key={data.strUserName} disablePadding>
-
-                        {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
-
-
-
-
-                        <div className="follow-list-box" key={data.strUserId}>
-
-                            <div className='setting-settings-list-wrap' id={data.strUserName} name={data.strUserName}>
-                                <div className="setting-list-box" >
-
-
-                                    <div className="settings-list-text" sx={{ color: "black" }}><p>{data.strUserName}</p></div>
-                                    <div className="follow-list-name-icon-wrap" onClick={handleClickOpen} sx={{ color: "black" }}>
-                                        <MoreHorizIcon color="disabled" className="follow-list-name-icon" /></div>
-
-                                </div>
-                                {data.dtTodo.map(e => {
-                                    return e.ynComplete === "Y" ?
-                                        <div className="follows-list-box" id={e.goal_id}>
-                                            <div className="follow-list-button" id={e.goal_id}>
-
-                                                <p className="follow-list-text" >{e.todo_title}</p>
-
-                                            </div>
-                                        </div> : null
-                                }
-
-                                )}
-
-                            </div>
-
-
-
-
-                            {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
-                            <Dialog
-                                sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
-                                maxWidth="sm"
-                                open={open}
-                            >
-                                <Stack spacing={1} >
-                                    <Button autoFocus data-index={data.strUserId} onClick={handleFollowingChange} color="error">팔로워 삭제</Button>
-                                    <Button onClick={handleClose}>취소</Button>
-                                </Stack>
-
-                            </Dialog>
-                        </div>
-
-
-
-
-
-                    </List>) : <p>"목록 없음"</p>)
-            )}
-
+            
+        
         </div>
     )
 }
+
+
