@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< Updated upstream
 import { useParams } from "react-router-dom";
-=======
->>>>>>> Stashed changes
 
 
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -15,16 +12,11 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
-<<<<<<< Updated upstream
-=======
-import Box from '@mui/material/Box';
->>>>>>> Stashed changes
 
 
 export default function FollowerTest() {
 
     // state 테스트 더미 데이터 시작 
-<<<<<<< Updated upstream
     const [testDummy, setTestDummy] = useRecoilState(testDummyData);
     let testDataArray = JSON.parse(JSON.stringify(testDummy));
     //console.log("test", testDummy)
@@ -32,36 +24,12 @@ export default function FollowerTest() {
     let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
     let testFollowerArray = JSON.parse(JSON.stringify(testFollower));
 
-=======
-
-    let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
-    let testFollowerArray = JSON.parse(JSON.stringify(testFollower));
-    console.log('test follower', testFollowerArray);
-    console.log('test follower length', testFollowerArray.length);
-    let [isThereFollower, setIsThereFollower] = useState(Array(testFollowerArray.length).fill(false) );
-    const isFollowers = testFollowerArray.length;
-
-    const getAPI = () => {
-
-        axios.get("https://clonetodo.herokuapp.com/api/v1/todos/1").then(
-            (response) => {
-                console.log(response);
-            }
-        );
-    };
->>>>>>> Stashed changes
 
     // state 테스트 더미 데이터 끝
     
     //let [follower, setFollower] = useState(FollowerData);
     //let [testdata, settestdata] = useState(getTodosOverviewData);
 
-<<<<<<< Updated upstream
-=======
-    
-
-
->>>>>>> Stashed changes
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -73,25 +41,9 @@ export default function FollowerTest() {
 
 
 
-<<<<<<< Updated upstream
     const handleFollowingChange = (e) => {
 
         let userId = e.target.dataset.index;
-=======
-    const deleteFollower = (e) => {
-
-        //팔로워 삭제 함수
-        //const copy_follower = [...testFollower]
-        //let newFollowerArr = copy_follower.filter(follower =>  follower.id != originID
-        //)
-        //setTestFollower(newFollowerArr); //setTestFollower를 이용해 state 변경
-        //deleteFollowerData(originID); //deleteFollowerData를 이용해 api를 변경
-        //setOpen(false);
-    
-        let userId = e.target.dataset.index;
-        console.log('current target', e.target);
-        console.log('current dataset', e.target.dataset);
->>>>>>> Stashed changes
         console.log('current user', userId);
 
         const thisData = [...testFollowerArray];
@@ -105,7 +57,6 @@ export default function FollowerTest() {
 
     };
 
-<<<<<<< Updated upstream
     return (
         <>
         {/* <div><button onClick={getAPI}>getAPI</button></div> */}
@@ -113,21 +64,6 @@ export default function FollowerTest() {
                 data.account.length > 0 ? (
 
                     <List // 넓이 조정 
-=======
-   
-
-    return (
-        <>
-         {/* <div><button onClick={getAPI}>getAPI</button></div> */}
-         { isFollowers ? 
-        
-                    <React.Fragment>
-
-                    { testFollowerArray.map((data => (
-
-
-                        <List // 넓이 조정 
->>>>>>> Stashed changes
                         sx={{ width: '100%' }}
                         style={{ position: 'relative' }}
                         key={data.id} disablePadding>
@@ -167,11 +103,7 @@ export default function FollowerTest() {
                                 open={open}
                             >
                                 <Stack spacing={1} >
-<<<<<<< Updated upstream
                                     <Button autoFocus data-index={data.id} onClick={handleFollowingChange} color="error">팔로워 삭제</Button>
-=======
-                                    <Button autoFocus data-index={data.id} onClick={deleteFollower} color="error">팔로워 삭제</Button>
->>>>>>> Stashed changes
                                     <Button onClick={handleClose}>취소</Button>
                                 </Stack>
 
@@ -182,7 +114,6 @@ export default function FollowerTest() {
 
 
 
-<<<<<<< Updated upstream
                     </List>) : <p>"목록 없음"</p>)
             )}
 
@@ -201,16 +132,7 @@ export default function FollowerTest() {
                 }) 
                 }
     
-=======
-                    </List>)))}</React.Fragment> : <Box><p>목록 없음</p></Box> }
-                        
-            
->>>>>>> Stashed changes
            
         </>
     )
 }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
