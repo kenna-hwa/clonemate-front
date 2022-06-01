@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-
-import { useRecoilState, useRecoilValue } from "recoil";
-import { testDummyData, testFollowerData } from "../../atoms/todoData";
-import '../../stylesheets/Follow.css';
+import axios from 'axios';
 
 import List from '@mui/material/List';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
-import axios from 'axios';
+
+import '../../stylesheets/Follow.css';
 
 
-export default function FollowerTest() {
+
+export default function FollowerTest(data, index, deleteArr) {
 
     // state 테스트 더미 데이터 시작 
-    const [testDummy, setTestDummy] = useRecoilState(testDummyData);
-    let testDataArray = JSON.parse(JSON.stringify(testDummy));
-    //console.log("test", testDummy)
 
-    let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
-    let testFollowerArray = JSON.parse(JSON.stringify(testFollower));
+    console.log('test id', data.index);
+    //console.log('index', index);
+   
 
+    const getAPI = () => {
 
-    // state 테스트 더미 데이터 끝
-    
-    //let [follower, setFollower] = useState(FollowerData);
-    //let [testdata, settestdata] = useState(getTodosOverviewData);
+        axios.get("https://clonetodo.herokuapp.com/api/v1/todos/1").then(
+            (response) => {
+                console.log(response);
+            }
+        );
+    };
 
+  
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (e) => {
         setOpen(true);
     };
     const handleClose = () => {
@@ -41,52 +40,40 @@ export default function FollowerTest() {
 
 
 
-    const handleFollowingChange = (e) => {
-
-        let userId = e.target.dataset.index;
-        console.log('current user', userId);
-
-        const thisData = [...testFollowerArray];
-        let newFollower = thisData.filter(item => item.id !== userId)
-
-        setTestFollower(newFollower);
-        console.log('newFollwer', newFollower);
-
-        setOpen(false);
-        //window.location.replace(`/exploreSearch/`);
-
-    };
+    
+   
 
     return (
         <>
-        {/* <div><button onClick={getAPI}>getAPI</button></div> */}
-            {testFollowerArray.map((data =>
-                data.account.length > 0 ? (
+         {/* <div><button onClick={getAPI}>getAPI</button></div> */}
+         
+        
+                    <React.Fragment>
 
-                    <List // 넓이 조정 
+                        <List // 넓이 조정 
                         sx={{ width: '100%' }}
                         style={{ position: 'relative' }}
-                        key={data.id} disablePadding>
+                        key={data.data.id} disablePadding id={data.data.id} >
 
                         {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
 
 
-                        <div className="follow-list-box" key={data.id}>
+                        <div className="follow-list-box" key={data.data.account} id={data.data.id} >
 
-                            <div className='setting-settings-list-wrap' id={data.name} name={data.name}>
+                            <div className='setting-settings-list-wrap' id={data.data.id} name={data.data.name} >
                                 <div className="setting-list-box" >
 
 
-                                    <div className="settings-list-text" sx={{ color: "black" }}><p>{data.name}</p></div>
+                                    <div className="settings-list-text" sx={{ color: "black" }}><p>{data.data.name}</p></div>
                                     <div className="follow-list-name-icon-wrap" onClick={handleClickOpen} sx={{ color: "black" }}>
                                         <MoreHorizIcon color="disabled" className="follow-list-name-icon" /></div>
 
                                 </div>
                                 
-                                        <div className="follows-list-box" id={data.id}>
-                                            <div className="follow-list-button" id={data.id}>
+                                        <div className="follows-list-box" id={data.data.id}>
+                                            <div className="follow-list-button" id={data.data.id}>
 
-                                                <p className="follow-list-text" >{data.introText}</p>
+                                                <p className="follow-list-text" >{data.data.introText}</p>
 
                                             </div> 
                                         </div>
@@ -99,40 +86,20 @@ export default function FollowerTest() {
                             {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
                             <Dialog
                                 sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
-                                maxWidth="sm"
+                                maxWidth="sm" index={index}
                                 open={open}
                             >
-                                <Stack spacing={1} >
-                                    <Button autoFocus data-index={data.id} onClick={handleFollowingChange} color="error">팔로워 삭제</Button>
+                                <Stack spacing={1}>
+                                    <Button autoFocus index={index} id={data.data.id} 
+                                    onChange={()=>deleteArr(data.index) } color="error">팔로워 삭제</Button>
                                     <Button onClick={handleClose}>취소</Button>
                                 </Stack>
 
                             </Dialog>
                         </div>
 
-
-
-
-
-                    </List>) : <p>"목록 없음"</p>)
-            )}
-
-
-
-
-
-            {testDataArray.map((data, idx)=>{
-                    return (
-                      <div key={data.userId}  id={idx} className="test-box">
-                            <p key={data.userId}  className="test-text">
-                                {data.title}</p>
-                      </div>
-                      
-                    )
-                }) 
-                }
-    
-           
+                    </List></React.Fragment> 
+                                   
         </>
     )
 }

@@ -24,6 +24,8 @@ export default function MainNavBar() {
     // atom에서 goal+todo 데이터 가져오기
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+    const isThereGoal = todoDataArray.length;
+
 
     let [dtUser, setDtUser] = useRecoilState(userIdInfo);
     let userData = JSON.parse(JSON.stringify(dtUser));
@@ -99,9 +101,6 @@ export default function MainNavBar() {
                         <React.Fragment >
                           <div className="snb-user-info-text" id={idx}>
                             <p className='snb-user-info-name'>{data.name}</p>
-                          
-                          
-
                             <p className='snb-user-info-mail'>{data.email}</p>
                           </div>
                         </React.Fragment>
@@ -134,20 +133,26 @@ export default function MainNavBar() {
               <NavigateNextIcon className='snb-title-nav-icon' />
             </IconButton>
           </Box>
-          <div className="snb-goals-list-box">
+
+        
+        { isThereGoal ? 
+        
+        <div className="snb-goals-list-box">
             {todoDataArray.map((data, idx)=>{
                     return (
                       <div id={idx} className="snb-list-button" data-index={idx} data={data}>
-                          <div className="snb-goals-list-text" id={data.goalOrderNo} name={data.goalOrderNo} 
-                              style={{ color:data.titleColor }} >
-                            <p>{data.title}</p>
+                          <div className="snb-goals-list-text" id={data.orderNo} name={data.orderNo} 
+                              style={{ color:data.color }} >
+                            <p>{data.contents}</p>
                           </div>
                       </div>
                     )
                 }) 
                 }
-          </div>
-        </section>
+          
+          </div> : <div className="snb-goals-null-text">목표를 등록하세요</div> }
+
+          </section>
         <Divider />
 
         <section className='snb_routine_wrap'>
@@ -163,22 +168,22 @@ export default function MainNavBar() {
                     return (
                      
                       
-                      <div className="snb-todo-list-box" id={data.goalOrderNo} name={data.goalOrderNo} style={{ color: 'gray' }}>
+                      <div className="snb-todo-list-box" id={data.orderNo} name={data.orderNo} style={{ color: 'gray' }}>
                         {data.todos.map((todos)=>{
                            {/* enddate? , feed의 check icon 각 할일에 추가 */}
                           return (
 
                             
                               <div className="goals-listItem-text-wrap" 
-                                  id={todos.todoId}
-                                  data-index={todos.orderNo}>
+                                  id={todos.goalId}
+                                  data-index={todos.goalId}>
                             {/*}  {todos.checkYn === 'Y' ?  
                             <CheckBoxIcon data-goalid={todos.goalId} data-todoid={todos.id} className="todos-list-check-icon" data-check={todos.checkYn} onClick={onClickTodoCheckYn}
                               /> : </> */}
                                
                                 <CheckBoxOutlineBlankIcon 
                                   data-goalid={todos.goalId} data-todoid={todos.id} className="todos-list-check-icon"/> 
-                                <p key={todos.todoId}>{todos.title}</p>
+                                <p key={todos.orderNo}>{todos.contents}</p>
                               </div>
                             )
                           }) 

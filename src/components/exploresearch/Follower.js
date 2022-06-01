@@ -1,19 +1,9 @@
-import React, { useState,  useRef  } from "react";
-
-import List from '@mui/material/List';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import Stack from '@mui/material/Stack';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import API from '../../api/API';
+import React from "react";
 import axios from 'axios';
 
 import '../../stylesheets/Follow.css';
-
-import { getTodosOverviewData } from '../../api/apiCommunicate'
-import { getTodosDataSample } from '../../api/apiCommunicate'
-import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import { testFollowerData } from "../../atoms/todoData";
+import { useRecoilState } from "recoil";
 
 import FollowerTest from './FollowerTest';
 
@@ -51,42 +41,53 @@ const getAPI = () => {
     );
 };
 
-/* atom 시작 */
-
-    // atom에서 goal+todo 데이터 가져오기
-    //let [testDummy, setTestDummy] = useRecoilState(testDummyData);
-    //let testDummyArray = JSON.parse(JSON.stringify(testDummy));
-    //console.log("testDummy", testDummy)
-    //console.log("testDummy", testDummyData)
-/* atom 종료 */
-
-
-
-
-
-
-
 
 export default function Follower() {
 
+    let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
+    let testarray = JSON.parse(JSON.stringify(testFollower));
+    console.log('testarray2', testarray.index);
+    console.log('array length2', testarray.length);
+    const isThereFollower = testarray.length;
 
-   
+    const deleteArr = index => {
+        const removeArr = [...testarray].filter(data => data.index !== index);
+
+        //const copy_Arr= [...testarray]
+        //copy_goal.splice(originID-1, 1, copy_editGoalState)
+        //setGoal(copy_goal);
+        setTestFollower(removeArr); //setGoal를 이용해 state 변경
+        console.log('newarray', testFollower);
+        //deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
+        //window.location.replace(`/goals/`);//목표로 돌아가기
+    }
+
+    //const deleteArr(index) {
+        //let removeArr = testarray.map(data => {
+            //if (data.index === index) {
+                //data.splice(index, 1);
+            //}
+            //return data;
+    //});
+    //setTestFollower(removeArr);
+//};
 
 
     return (
         
-
         <div className="follow-follow-list-wrap" >
-            <FollowerTest />
-            {/* <div><button onClick={getAPI}>login</button></div> */}
 
-            
-            
-            
-            {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
-            
+        { isThereFollower ? 
         
+        <React.Fragment>
+
+        { testarray.map((data, index) => {
+
+            return (
+                <FollowerTest data={data} index={index} deleteArr={deleteArr} />
+            )})}</React.Fragment> : <div className="null-text">목록 없음</div> }
+
+
         </div>
     )
 }
-
