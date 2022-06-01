@@ -247,18 +247,6 @@ export const userIdInfo = atom({
   ]
 })
 
-// API 테스트 더미 
-export const testDummyData = atom({
-  key: 'testDummyData',
-  default : [
-    {
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
-    }
-  ]
-})
 
 // Followers 테스트 더미 
 export const testFollowerData = atom({
@@ -285,5 +273,6 @@ export const testFollowerData = atom({
       "name": "팔로우테스트3",
       "id": 4
     },
-  ]
+  ],
 })
+

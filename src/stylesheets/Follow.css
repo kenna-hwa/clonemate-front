@@ -244,14 +244,23 @@
   margin-top: -1px;
 }
 
-.test-box {
-  width: 500px;
-  height: 200px;
-}
-
-.test-box .test-text {
-  height: 20px;
-  color: blue;
-  font-size: 20px;
+.null-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  padding: 30% 0px 0px 0px;
+  margin: 0 auto;
+  width: 30%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 15px;
+  font-family: 'Pretendard';
+  font-weight: 200;
+  color: #858383;
 }
 /*# sourceMappingURL=Follow.css.map */

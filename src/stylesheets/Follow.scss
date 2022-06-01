@@ -153,14 +153,15 @@
   }
 }
 
-.test-box{
-  width: 500px;
-  //background-color: red;
-  height: 200px;
-
-    .test-text{
-      height: 20px;
-      color: blue;
-      font-size: 20px;
-    }
+.null-text{
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 30% 0px 0px 0px ;
+  margin: 0 auto;
+  width: 30%;
+  align-items: center;
+  font-size: 15px;
+  font-family: 'Pretendard';
+  font-weight: 200;
+  color: rgb(133, 131, 131);
 }

@@ -219,6 +219,17 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   text-overflow: ellipsis;
 }
 
+.snb_wrap .snb-goals-null-text {
+  font-family: 'Pretendard';
+  font-weight: 200;
+  font-size: 15px;
+  color: #8c8b8b;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px 25px 2px;
+}
+
 .snb_wrap .snb-todo-list-box {
   display: -webkit-box;
   display: -ms-flexbox;
