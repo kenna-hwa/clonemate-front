@@ -20,6 +20,21 @@ export default function EditRoutinesForm(props) {
         /* state 선언 시작 */
 
         const todos = props.todos;
+        let translateState = {
+            "goalId": todos.goal_Id, //묶여있는 goal id
+            "orderNo": todos.orderNo,
+            "contents": todos.contents,
+            "date": todos.date,
+            "startRepeatDate": todos.startRepeatDate,
+            "endRepeatDate": todos.endRepeatDate, //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+            "isRepeatMon":todos.repeatDays["MON"],
+            "isRepeatTue":todos.repeatDays["TUE"],
+            "isRepeatWen":todos.repeatDays["WED"],
+            "isRepeatThu":todos.repeatDays["THU"],
+            "isRepeatFri":todos.repeatDays["FRI"],
+            "isRepeatSat":todos.repeatDays["SAT"],
+            "isRepeatSun":todos.repeatDays["SUN"]
+        }
 
         let [dayActiveBoolean, setDayActiveBoolean] = useState(false);
         let [dateActiveBoolean, setDateActiveBoolean] = useState(false);
@@ -28,17 +43,17 @@ export default function EditRoutinesForm(props) {
         //위의 location 처럼 edit에서 작업한다는 신호
         let position = 'edit'
 
-        let [editRoutinesState, setEditRoutinesState] = useState(todos);
+        let [editRoutinesState, setEditRoutinesState] = useState(translateState);
         console.log("editRoutinesState",editRoutinesState)
 
         const dayArr = [
-        { dayEng : 'SUN', dayKor : '일', checkYn: editRoutinesState.repeatDays['SUN']},
-        { dayEng : 'MON', dayKor : '월', checkYn: editRoutinesState.repeatDays['MON']},
-        { dayEng : 'TUE', dayKor : '화', checkYn: editRoutinesState.repeatDays['TUE']},
-        { dayEng : 'WEN', dayKor : '수', checkYn: editRoutinesState.repeatDays['WEN']},
-        { dayEng : 'THU', dayKor : '목', checkYn: editRoutinesState.repeatDays['THU']},
-        { dayEng : 'FRI', dayKor : '금', checkYn: editRoutinesState.repeatDays['FRI']},
-        { dayEng : 'SAT', dayKor : '토', checkYn: editRoutinesState.repeatDays['SAT']},
+            { dayEng : 'SUN', dayKor : '일', checkYn: editRoutinesState.isRepeatSun},
+            { dayEng : 'MON', dayKor : '월', checkYn: editRoutinesState.isRepeatMon},
+            { dayEng : 'TUE', dayKor : '화', checkYn: editRoutinesState.isRepeatTue},
+            { dayEng : 'WEN', dayKor : '수', checkYn: editRoutinesState.isRepeatWen},
+            { dayEng : 'THU', dayKor : '목', checkYn: editRoutinesState.isRepeatThu},
+            { dayEng : 'FRI', dayKor : '금', checkYn: editRoutinesState.isRepeatFri},
+            { dayEng : 'SAT', dayKor : '토', checkYn: editRoutinesState.isRepeatSat},
         ];
 
         /* state 선언 종료 */
