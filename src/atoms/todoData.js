@@ -68,10 +68,10 @@ export const objTodosDataResult = atom({
                 "endRepeatDate": null,
                 "repeatDays": {
                     "THU": false,
-                    "TUE": false,
+                    "TUE": true,
                     "WED": false,
                     "SAT": false,
-                    "FRI": false,
+                    "FRI": true,
                     "MON": false,
                     "SUN": false
                 },
@@ -86,6 +86,46 @@ export const objTodosDataResult = atom({
                 "date": "2022-05-11",
                 "startRepeatDate": null,
                 "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 6,
+                "goalId": 1,
+                "orderNo": 3,
+                "contents": "오늘의 투두2",
+                "date": "2022-03-29",
+                "startRepeatDate": "2022-03-29",
+                "endRepeatDate": "2022-03-29",
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 7,
+                "goalId": 1,
+                "orderNo": 4,
+                "contents": "테스트",
+                "date": "2022-05-29",
+                "startRepeatDate": "2022-05-29",
+                "endRepeatDate": "2022-05-29",
                 "repeatDays": {
                     "THU": false,
                     "TUE": false,

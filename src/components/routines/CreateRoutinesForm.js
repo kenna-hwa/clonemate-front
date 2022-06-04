@@ -34,29 +34,27 @@ export default function CreateRoutinesForm (props) {
 
     let [createRoutinesState, setCreatRoutinesState] = useState({
         "goalId": goal_Id, //묶여있는 goal id
-        "id": todo_Id,
         "orderNo": orderNo,
-        "title": "",
+        "contents": "",
         "date": dtDate.dtToday,
         "startRepeatDate": dtDate.dtToday,
         "endRepeatDate": dtDate.dtToday, //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-        "repeatMonYn":"n",
-        "repeatTueYn":"n",
-        "repeatWenYn":"n",
-        "repeatThuYn":"n",
-        "repeatFriYn":"n",
-        "repeatSatYn":"n",
-        "repeatSunYn":"n",
-        "checkYn": "n"
+        "isRepeatMon":false,
+        "isRepeatTue":false,
+        "isRepeatWen":false,
+        "isRepeatThu":false,
+        "isRepeatFri":false,
+        "isRepeatSat":false,
+        "isRepeatSun":false
       });
       const dayArr = [
-        { dayEng : 'SUN', dayKor : '일', checkYn: createRoutinesState.repeatSunYn},
-        { dayEng : 'MON', dayKor : '월', checkYn: createRoutinesState.repeatMonYn},
-        { dayEng : 'TUE', dayKor : '화', checkYn: createRoutinesState.repeatTueYn},
-        { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.repeatWenYn},
-        { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.repeatThuYn},
-        { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.repeatFriYn},
-        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.repeatSatYn},
+        { dayEng : 'SUN', dayKor : '일', checkYn: createRoutinesState.isRepeatSun},
+        { dayEng : 'MON', dayKor : '월', checkYn: createRoutinesState.isRepeatMon},
+        { dayEng : 'TUE', dayKor : '화', checkYn: createRoutinesState.isRepeatTue},
+        { dayEng : 'WEN', dayKor : '수', checkYn: createRoutinesState.isRepeatWen},
+        { dayEng : 'THU', dayKor : '목', checkYn: createRoutinesState.isRepeatThu},
+        { dayEng : 'FRI', dayKor : '금', checkYn: createRoutinesState.isRepeatFri},
+        { dayEng : 'SAT', dayKor : '토', checkYn: createRoutinesState.isRepeatSat},
       ];
 
     /* state 선언 종료 */

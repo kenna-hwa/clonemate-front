@@ -46,7 +46,6 @@ const goalSelectedHandler = (e) => {
     newArr[idx] = true;
     setIsGoalSelected(newArr);
 }
-console.log("todoData", todoDataArray)
 /* 함수 선언 끝 */
 
 return (
@@ -54,7 +53,6 @@ return (
     <div className="routines-wrap">
         {  
             todoDataArray.map((data, index) => {
-                console.log("routines data",data)
                 return ( 
                     <div className="goals-list-box" key={data.id}> 
                         <Button className="goals-list-button" id={data.id} data-id={index} 
