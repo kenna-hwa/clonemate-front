@@ -1,19 +1,22 @@
 import React, {  useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 import EditRoutinesForm from './EditRoutinesForm';
+import { objTodosDataResult } from "../../atoms/todoData";
 
 
 export default function RoutinesTodos (props) {
+    
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
 
 
     const todos = props.todos; 
     const index = props.todos.todoId;
-    const isTodoSelected = props.isTodoSelected;
+    let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+    const setIsGoalSelected = props.setIsGoalSelected;
     const [readOnly, setReadOnly] = useState(true);
 
       
@@ -41,13 +44,12 @@ export default function RoutinesTodos (props) {
                         index={index}
                         readOnly={readOnly}
                         setReadOnly={setReadOnly}
-                        isTodoSelected={isTodoSelected}
                         enterKeyEventHandler={enterKeyEventHandler} />
                         
                     </div>
                     {!readOnly ? (<>
                     <EditRoutinesForm todos={todos} goalId={todos.goalId} todoId={todos.id} set
-                    ReadOnly={setReadOnly} /> 
+                    ReadOnly={setReadOnly} todoDataArray={todoDataArray} setIsGoalSelected={setIsGoalSelected} /> 
                     </>) :
                     null} 
                     
@@ -62,8 +64,7 @@ const TodoList = React.forwardRef((props, ref) => {
     const index = parseInt(props.index-1);
     const readOnly = props.readOnly;
     const setReadOnly = props.setReadOnly;
-    const isTodoSelected = props.isTodoSelected;
-    
+
     const todoSelectedHandler = () => {
       setReadOnly(false)
     }

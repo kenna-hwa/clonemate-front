@@ -16,11 +16,16 @@ export default function RoutineDateModal(props) {
     const dateActiveBoolean = props.dateActiveBoolean;
     const setDateActiveBoolean = props.setDateActiveBoolean;
     const createRoutinesState = props.createRoutinesState;
-    const setCreatRoutinesState = props.setCreatRoutinesState;
-    const location = props.location;
-    
+    const setCreateRoutinesState = props.setCreateRoutinesState;
+    const editRoutinesState = props.editRoutinesState;
+    const setEditRoutinesState = props.setEditRoutinesState;
+    const location = props.location;    
+    const position = props.position;    
     const dtSelectedDate = dtDate.selectedNewDate;
     const copy_dtDate = {...dtDate};
+    const copy_createRoutinesState = {...createRoutinesState};
+    const copy_editRoutinesState = {...editRoutinesState};
+
 
     const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
@@ -38,13 +43,25 @@ export default function RoutineDateModal(props) {
     }
 
     const calendarOnChangeDate = (e) => {
+        if(position === "edit"){
+            console.log("copy_editRoutinesState", copy_editRoutinesState)
 
-        const destination = e.currentTarget.dataset.destination;
-        const copy_createRoutinesState = {...createRoutinesState}
-        copy_createRoutinesState[destination] = dtSelectedDate.toJSON().substring(0, 10);
-        console.log(dtSelectedDate.toJSON().substring(0, 10))
-        setCreatRoutinesState(copy_createRoutinesState)
-        setDateActiveBoolean(false)
+            const destination = e.currentTarget.dataset.destination;
+            copy_editRoutinesState[destination] = dtSelectedDate.toJSON().substring(0, 10);
+            console.log(dtSelectedDate.toJSON().substring(0, 10))
+            setEditRoutinesState(copy_editRoutinesState)
+            setDateActiveBoolean(false)
+
+        } else if(position === "create"){
+            console.log("copy_createRoutinesState", copy_createRoutinesState)
+
+            const destination = e.currentTarget.dataset.destination;
+            copy_createRoutinesState[destination] = dtSelectedDate.toJSON().substring(0, 10);
+            console.log(dtSelectedDate.toJSON().substring(0, 10))
+            setCreateRoutinesState(copy_createRoutinesState)
+            setDateActiveBoolean(false)
+        }
+        
     }
     
     return (

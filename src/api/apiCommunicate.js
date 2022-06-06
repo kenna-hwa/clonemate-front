@@ -232,7 +232,7 @@ export const postTodoCreateData = async (data) => {
   await axios({
     method: `POST`,
     url: `${todoHost}/todos`,
-    params: {
+    body: {
       data
     }
   })
@@ -244,7 +244,24 @@ export const postTodoCreateData = async (data) => {
 
 //PATCH objTodosDataResult 날짜로 수정하기
 //date=yyyy-mm-dd
-//checkYn=y or n
+export const patchTodoEditData = async (todoId, data) => {
+  console.log("data", data)
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos`,
+    params:{
+      id : todoId 
+    },
+    body: {
+      data
+    }
+  })
+  .then(Response => Response.data)
+
+}
+
+
 
 //DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기
 
