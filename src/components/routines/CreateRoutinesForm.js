@@ -98,14 +98,12 @@ export default function CreateRoutinesForm(props) {
     console.log("copy_todo_state 내부", copy_todo_state)
 
     // createRoutine API로 보내기
-    // postTodoCreateData(translateSendData);
+    postTodoCreateData(translateSendData);
 
-  //   const newArr = Array(todoDataArray.length).fill(false);
-  //   setIsGoalSelected(newArr);
-  console.log("dtTodos 내부", dtTodos)
+    const newArr = Array(todoDataArray.length).fill(false);
+    setIsGoalSelected(newArr);
 
   };
-  console.log("createRoutinesState", createRoutinesState)
   /* 함수 선언 종료 */
 
   return (

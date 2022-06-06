@@ -21,10 +21,9 @@ export default function EditRoutinesForm(props) {
         /* state 선언 시작 */
 
         const todos = props.todos;
-        const todoDataArray = props.todoDataArray;
-        const setIsGoalSelected = props.setIsGoalSelected;
-        console.log("todoDataArray", dtTodos)
-        //날짜 선택 캘린더 모달 등장 시 입력할 날짜 정보가 어디인지 (date, endRepeatDate)
+        const setReadOnly = props.setReadOnly;
+        const editContents = props.editContents;
+        // location 변수로 날짜 선택 캘린더 모달 등장 시 입력할 날짜 정보가 어디인지 (date, endRepeatDate)
         let [location, setLocation] = useState(null);
         //위의 location 처럼 edit에서 작업한다는 신호
         let position = 'edit';
@@ -33,7 +32,7 @@ export default function EditRoutinesForm(props) {
             "id": todos.id,
             "goalId": todos.goalId,
             "orderNo": todos.orderNo,
-            "contents": todos.contents,
+            "contents": editContents,
             "date": todos.date,
             "startRepeatDate": todos.startRepeatDate,
             "endRepeatDate": todos.endRepeatDate,
@@ -46,7 +45,7 @@ export default function EditRoutinesForm(props) {
         let translateSendData = {
             "goalId": editRoutinesState.goalId, //묶여있는 goal id
             "orderNo": editRoutinesState.orderNo,
-            "contents": editRoutinesState.contents,
+            "contents": editContents,
             "date": editRoutinesState.date,
             "startRepeatDate": editRoutinesState.startRepeatDate,
             "endRepeatDate": editRoutinesState.endRepeatDate, //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
@@ -94,10 +93,9 @@ export default function EditRoutinesForm(props) {
 
             // createRoutine API로 보내기
             patchTodoEditData(todos.id, translateSendData);
-
-            // 수정 form 닫기
-            const newArr = Array(todoDataArray.length).fill(false);
-            setIsGoalSelected(newArr);
+            
+            // form 종료
+            setReadOnly(true)
         }
 
         /* 함수 선언 종료 */
