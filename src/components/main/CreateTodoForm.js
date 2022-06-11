@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React, { useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 import { objTodosDataResult } from "../../atoms/todoData";
 import { postTodoCreateData } from "../../api/apiCommunicate";
@@ -13,7 +12,7 @@ import { postTodoCreateData } from "../../api/apiCommunicate";
 export default function CreateTodoForm (props) {
 
     /* hook 선언 시작 */
-
+    let history = useHistory();
     let createInput = useRef();
 
     const { register, handleSubmit, errors, watch } = useForm({ mode: "onChange" });
@@ -54,9 +53,7 @@ export default function CreateTodoForm (props) {
         "isRepeatSat":false,
         "isRepeatSun":false
     };
-
-    console.log("createTodoState", createTodoState)
-
+    
     /* state 선언 종료 */
 
     /* 함수 선언 시작 */
@@ -80,16 +77,11 @@ export default function CreateTodoForm (props) {
     }
 
     //새로운 todo 넣기 / goal객체 찾아서 todos에 push
-    const createTodoStateSubmit = (e) => {
-        todoDataArray.map(data=>{
-                if(data.goalId === goal_id){
-                    data.todos.push(createTodoState)
-                }
-            }
-        )
-        setDtTodos(todoDataArray)
-        postTodoCreateData(todoDataArray)
-        createTodoFieldReset()
+    const createTodoStateSubmit = () => {
+        //atom state 변화 없이 api 던져서 새로 받아오기 (atom의 dataset과 create state의 dataset이 서로 다름)
+        console.log("투두 생성");
+        postTodoCreateData(createTodoState);
+        createTodoFieldReset();
     }
 
     /* 함수 선언 종료 */

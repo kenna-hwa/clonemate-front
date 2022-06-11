@@ -12,11 +12,12 @@ import '../../stylesheets/GoalForm.css';
 
 import { goalsData } from "../../atoms/todoData";
 import { postGoalRegister } from "../../api/apiCommunicate";
+import { useHistory } from "react-router-dom";
 
 export default function GoalForm(){
 
     /* Hook 선언 시작 */
-
+    let history = useHistory();
     /* atom 시작 */
     
     let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
@@ -24,9 +25,9 @@ export default function GoalForm(){
     let [createGoalState, setCreactGoalState] = useState(
         {
             "orderNo" : goal.length+1,
-            "contents" : ``,
-            "privacy" : `PUBLIC`,
-            "color" : `#000000`
+            "contents" : "",
+            "privacy" : "PUBLIC",
+            "color" : "#000000"
         }
 
     );
@@ -64,7 +65,7 @@ export default function GoalForm(){
 
     const privacyObj = {
         'HIDDEN' : '숨기기 🙄' ,
-        'PRIVACY' : '나만보기 😎' ,
+        'PRIVATE' : '나만보기 😎' ,
         'FOLLOWING' : '일부공개 🤫' ,
         'PUBLIC' : '전체공개 🤗' ,
     }
@@ -106,6 +107,7 @@ export default function GoalForm(){
     // 확인 클릭 함수 실행 함수
     const clickOkbtn = (data) => { //react-form-hook submit 함수
         setGoal(createGoalState);
+        postGoalRegister(createGoalState);
         window.location.replace("/goals")
     }
 
@@ -149,9 +151,12 @@ export default function GoalForm(){
                             aria-labelledby="radio-buttons-group-privacy-label"
                             name="radio-buttons-group-privacy"
                             onChange={handlePrivacyChange}
+                            defaultChecked={'PUBLIC'}
+                            defaultValue={'PUBLIC'}
+
                         >
                             <FormControlLabel value="HIDDEN" control={<Radio  />} label={privacyObj['HIDDEN']} />
-                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj['PRIVACY']}  />
+                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj['PRIVATE']}  />
                             <FormControlLabel value="FOLLOWING" control={<Radio />}  label={privacyObj['FOLLOWING']}  />
                             <FormControlLabel value="PUBLIC" control={<Radio />}  label={privacyObj['PUBLIC']}  />
                         </RadioGroup>

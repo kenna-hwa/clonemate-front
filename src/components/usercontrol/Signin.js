@@ -14,7 +14,8 @@ function Signin(){
     console.log("watch",watch())
 
     const onSubmit = (data) => {
-      postUserLogin(data)
+      const parseData = JSON.stringify(data);
+      postUserLogin(parseData);
     };
 
     const onError = (error) => {

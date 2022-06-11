@@ -6,52 +6,41 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';import '../../stylesheets/Goal.css';
 
 import { getGoalsData } from "../../api/apiCommunicate";
-import { objTodosDataResult } from "../../atoms/todoData";
+import { objTodosDataResult, goalsData } from "../../atoms/todoData";
 
 
 export default function Goals() {
 
   
   /* Hook 선언 시작 */
+  let history = useHistory();
 
    /* atom 시작 */
   
-  let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);// 목표goals 아이템
-  let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
+  let [dtGoals, setDtGoals] = useRecoilState(goalsData);// 목표goals 아이템
+  let goalDataArray = JSON.parse(JSON.stringify(dtGoals));
 
-  console.log("todoDataArray", todoDataArray)
+  console.log("goalDataArray", goalDataArray)
 
   /* Dummy State 끝 */
   
   useEffect(()=>{
     // recoil 에서 정보 갱신이 되었으면 하는데..?
     const goalItems = getGoalsData();
-    // setDtTodos(goalItems)
-    // goalItems = useRecoilState(goalsData)
-  },[dtTodos])
-
-
+    console.log("goal", goalItems.data)
+    typeof goalItems.data === 'object'? setDtGoals(goalItems.data) : console.log("goal 데이터가 업데이트 되지 못했어요.");
+    // console.log("dtGoals", dtGoals)
+  },[setDtGoals]);
 
   /* Hook 선언 끝 */
- 
-
-
 
   /* 함수 시작 */
 
 
   //목표수정 컴포넌트로 이동 함수 (파라미터 추가)
   const moveEditGoalForm = (e) => {
-    window.location.replace(`/goals/goalEditForm/`+e.target.id)
-  }
-
-  
-  // //목표 수정 이벤트핸들러 함수
-  // async function clickGoaltoEdit(e){
-  //   const { id } = e.target;
-  //   await moveEditGoalForm(id)
-  // }
-
+    history.push({pathname: "/goals/goalEditForm/"+e.currentTarget.id});
+  };
 
 /* 함수 끝 */
 
@@ -59,7 +48,7 @@ export default function Goals() {
   return (
       <div className="goal-goals-list-wrap" >
             {
-            todoDataArray.map((data, idx) => {
+            goalDataArray.map((data, idx) => {
               return (
                 <React.Fragment key={data.id}>
                   <div className="goals-list-box" key={data.orderNo}>

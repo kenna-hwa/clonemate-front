@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -14,13 +13,14 @@ import FormControl from '@mui/material/FormControl';
 import '../../stylesheets/GoalForm.css';
 
 import { goalsData } from "../../atoms/todoData";
-import { id } from "date-fns/locale";
 import { patchGoalEdit, deleteGoalData } from "../../api/apiCommunicate";
 
 export default function GoalEditForm(){
 
+    /* Hook 선언 시작 */
+    let history = useHistory();
 
-     /* atom 선언 시작 */
+    /* atom 선언 시작 */
     
      let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
 
@@ -45,7 +45,7 @@ export default function GoalEditForm(){
          originGoalArr.filter((data)=>{
              if (data.id === parseInt(originID)) return setEditGoalState(data) 
           })
-     },[])
+     },[goal, originID])
  
      let [privacyDialogActive, setPrivacyDialogActive] = useState(false);
      let [colorDialogActive, setColorDialogActive] = useState(false);
@@ -79,24 +79,17 @@ export default function GoalEditForm(){
  
          const privacyObj = {
              "HIDDEN" : "숨기기 🙄" ,
-             "PRIVACY" : "나만보기 😎" ,
+             "PRIVATE" : "나만보기 😎" ,
              "FOLLOWING" : "일부공개 🤫" ,
              "PUBLIC" : "전체공개 🤗" ,
          }
      
     /* state 선언 종료 */
 
-    /* Hook 선언 시작 */
-
-    let history = useHistory();
-
     /* Hook 선언 끝 */
 
-   
 
     /* 함수 선언 시작 */
-    
-
     
     //목표 수정 함수
     function editGoal(item){
@@ -114,7 +107,7 @@ export default function GoalEditForm(){
         )
         setGoal(newGoalArr); //setGoal를 이용해 state 변경
         deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
-        window.location.replace(`/goals/`);//목표로 돌아가기
+        history.push({pathname: "/goals/"});//목표로 돌아가기
     }
 
     const handlePrivacyDialogClose = (event, reason) => {
@@ -149,7 +142,6 @@ export default function GoalEditForm(){
         setEditGoalState(copy_editGoalState);
         setEditGoalData(copy_editGoalData);
     };
-
 
     /* 함수 선언 끝 */
 
@@ -195,7 +187,7 @@ export default function GoalEditForm(){
                             defaultValue={editGoalState.privacy}
                         >
                             <FormControlLabel value="HIDDEN" control={<Radio  />} label={privacyObj["HIDDEN"]} />
-                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj["PRIVACY"]}  />
+                            <FormControlLabel value="PRIVACY" control={<Radio />}  label={privacyObj["PRIVATE"]}  />
                             <FormControlLabel value="FOLLOWING" control={<Radio />}  label={privacyObj["FOLLOWING"]}  />
                             <FormControlLabel value="PUBLIC" control={<Radio />}  label={privacyObj["PUBLIC"]}  />
                         </RadioGroup>
