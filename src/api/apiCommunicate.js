@@ -82,8 +82,8 @@ export const postUserJoin = async (data) => {
     }
   })
   .then(res => res.data)
-  .then(res => res.data.success ? sessionStorage.setItem("userId", res.data.userId) : console.log("로그인 실패"))
-  .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : window.location.reload(`/signin`))
+  .then(res => res.data.success ? sessionStorage.setItem("userId", res.data.userId) : console.log("회원가입 실패"))
+  .then(res => !res.success ? alert("회원가입에 실패했습니다. 연결을 확인해주세요") : window.location.reload(`/signin`))
   
 } 
 
@@ -102,7 +102,8 @@ export const postUserLogin = async (data) => {
     },
     headers:{
       headers
-    }
+    },
+    withCredentials: true
   })
   .then(res => res.data)
   .then(res => !res.success ? alert("아이디와 비밀번호를 확인해주세요") : 
@@ -227,7 +228,6 @@ export const getTodosData = async (numUserId,localDate) => {
 //POST objTodosDataResult 추가하기
 
 export const postTodoCreateData = async (data) => {
-  console.log("data", data)
   //axios
   await axios({
     method: `POST`,
@@ -236,7 +236,8 @@ export const postTodoCreateData = async (data) => {
       data
     }
   })
-  .then(Response => Response.data)
+  .then(Response => console.log("res", Response.data))
+  .then(Error => console.log("error : ", Error))
 
 }
 

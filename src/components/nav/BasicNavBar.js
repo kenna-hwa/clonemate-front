@@ -64,7 +64,7 @@ export default function BasicNavBar () {
             sx={{ mr: 2 }}
           >
            {
-             urlPath ===`/goals`? <AddIcon onClick={moveGoalForm} /> : null
+             urlPath ===`/goals/`? <AddIcon onClick={moveGoalForm} /> : null
            }
         </IconButton>
         </Toolbar>
