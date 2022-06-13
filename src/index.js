@@ -7,7 +7,7 @@ import { RecoilRoot } from "recoil";
 
 ReactDOM.render(
   <RecoilRoot>
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <App />
   </BrowserRouter>
   </RecoilRoot>,

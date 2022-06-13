@@ -11,27 +11,31 @@ export default function RoutineDayModal(props) {
     const dayActiveBoolean = props.dayActiveBoolean;
     const setDayActiveBoolean = props.setDayActiveBoolean;
     const createRoutinesState = props.createRoutinesState;
-    const copy_createRoutinesState = {...createRoutinesState}
-    const setCreatRoutinesState = props.setCreatRoutinesState;
+
+    const setCreateRoutinesState = props.setCreateRoutinesState;
     const editRoutinesState = props.editRoutinesState;
-    const copy_editRoutinesState = {...editRoutinesState}
     const setEditRoutinesState = props.setEditRoutinesState;
     const position = props.position;
 
     console.log("position",position)
 
     const checkedHandler = (e) => {
+        
         const clickedDay = e.currentTarget.value;
 
-        if(position === 'edit'){
-            copy_editRoutinesState[clickedDay] === false ? copy_editRoutinesState[clickedDay] = true : copy_editRoutinesState[clickedDay] = false;
+        if(position === "edit"){
+            const copy_editRoutinesState = JSON.parse(JSON.stringify(editRoutinesState));
             console.log("copy_editRoutinesState", copy_editRoutinesState)
+
+            copy_editRoutinesState.repeatDays[clickedDay] === false ? copy_editRoutinesState.repeatDays[clickedDay] = true : copy_editRoutinesState.repeatDays[clickedDay] = false;
+
             setEditRoutinesState(copy_editRoutinesState)
 
-        } else if(position === 'create'){
-
-            copy_createRoutinesState[clickedDay] === false ? copy_createRoutinesState[clickedDay] = true : copy_createRoutinesState[clickedDay] = false;
-            setCreatRoutinesState(copy_createRoutinesState)
+        } else if(position === "create"){
+            const copy_createRoutinesState = JSON.parse(JSON.stringify(createRoutinesState));
+            
+            copy_createRoutinesState.repeatDays[clickedDay] === false ? copy_createRoutinesState.repeatDays[clickedDay] = true : copy_createRoutinesState.repeatDays[clickedDay] = false;
+            setCreateRoutinesState(copy_createRoutinesState)
         }
         
         
@@ -47,7 +51,7 @@ export default function RoutineDayModal(props) {
         //     "isRepeatSat":"n",
         //     "isRepeatSun":"n",
         // }
-        // setCreatRoutinesState(copy_createRoutinesState)
+        // setCreateRoutinesState(copy_createRoutinesState)
         setDayActiveBoolean(false)
     }
 
@@ -67,49 +71,49 @@ export default function RoutineDayModal(props) {
                     >
                         { 
                             position === 'edit' ? ( <React.Fragment>
-                                <label key={'isRepeatMon'}>
-                                <input type="checkbox" name={'MON'} value={'isRepeatMon'} id={'isRepeatMon'} checked={editRoutinesState['isRepeatMon'] === false ? false : true} onChange={checkedHandler}/>월
+                                <label key={"isRepeatMon"}>
+                                <input type="checkbox" name={'MON'} value={'MON'} id={"isRepeatMon"} checked={editRoutinesState.repeatDays['MON'] === false ? false : true} onChange={checkedHandler}/>월
                                 </label>
-                                <label key={'isRepeatTue'}>
-                                <input type="checkbox" name={'TUE'} value={'isRepeatTue'} id={'isRepeatTue'} checked={ editRoutinesState['isRepeatTue']  === false ? false : true} onChange={checkedHandler}/>화
+                                <label key={"isRepeatTue"}>
+                                <input type="checkbox" name={'TUE'} value={'TUE'} id={"isRepeatTue"} checked={ editRoutinesState.repeatDays['TUE'] === false ? false : true} onChange={checkedHandler}/>화
                                 </label>
-                                <label key={'isRepeatWen'}>
-                                <input type="checkbox" name={'WEN'} value={'isRepeatWen'} id={'isRepeatWen'} checked={editRoutinesState['isRepeatWen']  === false ? false : true} onChange={checkedHandler}/>수
+                                <label key={"isRepeatWen"}>
+                                <input type="checkbox" name={'WEN'} value={'WED'} id={"isRepeatWen"} checked={editRoutinesState.repeatDays['WED']  === false ? false : true} onChange={checkedHandler}/>수
                                 </label>
-                                <label key={'isRepeatThu'}>
-                                <input type="checkbox" name={'THU'} value={'isRepeatThu'} id={'isRepeatThu'} checked={editRoutinesState['isRepeatThu']  === false ? false : true} onChange={checkedHandler}/>목
+                                <label key={"isRepeatThu"}>
+                                <input type="checkbox" name={'THU'} value={'THU'} id={"isRepeatThu"} checked={editRoutinesState.repeatDays['THU'] === false ? false : true} onChange={checkedHandler}/>목
                                 </label>
-                                <label key={'isRepeatFri'}>
-                                <input type="checkbox" name={'FRI'} value={'isRepeatFri'} id={'isRepeatFri'} checked={editRoutinesState['isRepeatFri']  === false ? false : true} onChange={checkedHandler}/>금
+                                <label key={"isRepeatFri"}>
+                                <input type="checkbox" name={'FRI'} value={'FRI'} id={"isRepeatFri"} checked={editRoutinesState.repeatDays['FRI']  === false ? false : true} onChange={checkedHandler}/>금
                                 </label>
-                                <label key={'isRepeatSat'}>
-                                <input type="checkbox" name={'SAT'} value={'isRepeatSat'} id={'isRepeatSat'} checked={editRoutinesState['isRepeatSat']  === false ? false : true} onChange={checkedHandler}/>토
+                                <label key={"isRepeatSat"}>
+                                <input type="checkbox" name={'SAT'} value={'SAT'} id={"isRepeatSat"} checked={editRoutinesState.repeatDays['SAT']  === false ? false : true} onChange={checkedHandler}/>토
                                 </label>
-                                <label key={'isRepeatSun'}>
-                                <input type="checkbox" name={'SUN'} value={'isRepeatSun'} id={'isRepeatSun'} checked={editRoutinesState['isRepeatSun']  === false ? false : true} onChange={checkedHandler}/>일
+                                <label key={"isRepeatSun"}>
+                                <input type="checkbox" name={'SUN'} value={'SUN'} id={"isRepeatSun"} checked={editRoutinesState.repeatDays['SUN']  === false ? false : true} onChange={checkedHandler}/>일
                                 </label>
                             </React.Fragment>
                             ) : ( <React.Fragment>
-                                <label key={'isRepeatMon'}>
-                                <input type="checkbox" name={'MON'} value={'isRepeatMon'} id={'isRepeatMon'} checked={copy_createRoutinesState['isRepeatMon'] === false ? false : true} onChange={checkedHandler}/>월
+                                <label key={"isRepeatMon"}>
+                                <input type="checkbox" name={'MON'} value={'MON'} id={"isRepeatMon"} checked={createRoutinesState.repeatDays['MON'] === false ? false : true} onChange={checkedHandler}/>월
                                 </label>
-                                <label key={'isRepeatTue'}>
-                                <input type="checkbox" name={'TUE'} value={'isRepeatTue'} id={'isRepeatTue'} checked={copy_createRoutinesState['isRepeatTue'] === false ? false : true} onChange={checkedHandler}/>화
+                                <label key={"isRepeatTue"}>
+                                <input type="checkbox" name={'TUE'} value={'TUE'} id={"isRepeatTue"} checked={createRoutinesState.repeatDays['TUE'] === false ? false : true} onChange={checkedHandler}/>화
                                 </label>
-                                <label key={'isRepeatWen'}>
-                                <input type="checkbox" name={'WEN'} value={'isRepeatWen'} id={'isRepeatWen'} checked={copy_createRoutinesState['isRepeatWen'] === false ? false : true} onChange={checkedHandler}/>수
+                                <label key={"isRepeatWen"}>
+                                <input type="checkbox" name={'WEN'} value={'WED'} id={"isRepeatWen"} checked={createRoutinesState.repeatDays['WED'] === false ? false : true} onChange={checkedHandler}/>수
                                 </label>
-                                <label key={'isRepeatThu'}>
-                                <input type="checkbox" name={'THU'} value={'isRepeatThu'} id={'isRepeatThu'} checked={copy_createRoutinesState['isRepeatThu'] === false ? false : true} onChange={checkedHandler}/>목
+                                <label key={"isRepeatThu"}>
+                                <input type="checkbox" name={'THU'} value={'THU'} id={"isRepeatThu"} checked={createRoutinesState.repeatDays['THU'] === false ? false : true} onChange={checkedHandler}/>목
                                 </label>
-                                <label key={'isRepeatFri'}>
-                                <input type="checkbox" name={'FRI'} value={'isRepeatFri'} id={'isRepeatFri'} checked={copy_createRoutinesState['isRepeatFri'] === false ? false : true} onChange={checkedHandler}/>금
+                                <label key={"isRepeatFri"}>
+                                <input type="checkbox" name={'FRI'} value={'FRI'} id={"isRepeatFri"} checked={createRoutinesState.repeatDays['FRI'] === false ? false : true} onChange={checkedHandler}/>금
                                 </label>
-                                <label key={'isRepeatSat'}>
-                                <input type="checkbox" name={'SAT'} value={'isRepeatSat'} id={'isRepeatSat'} checked={copy_createRoutinesState['isRepeatSat'] === false ? false : true} onChange={checkedHandler}/>토
+                                <label key={"isRepeatSat"}>
+                                <input type="checkbox" name={'SAT'} value={'SAT'} id={"isRepeatSat"} checked={createRoutinesState.repeatDays['SAT'] === false ? false : true} onChange={checkedHandler}/>토
                                 </label>
-                                <label key={'isRepeatSun'}>
-                                <input type="checkbox" name={'SUN'} value={'isRepeatSun'} id={'isRepeatSun'} checked={copy_createRoutinesState['isRepeatSun'] === false ? false : true} onChange={checkedHandler}/>일
+                                <label key={"isRepeatSun"}>
+                                <input type="checkbox" name={'SUN'} value={'SUN'} id={"isRepeatSun"} checked={createRoutinesState.repeatDays['SUN'] === false ? false : true} onChange={checkedHandler}/>일
                                 </label>
                             </React.Fragment>
                         )

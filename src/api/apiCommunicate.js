@@ -281,6 +281,23 @@ export const DeleteAllTodos = async (date) => {
   .then(Response => console.log("res", Response.data))
 };
 
+export const patchTodoEditData = async (todoId, data) => {
+  console.log("data", data)
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos`,
+    params:{
+      id : todoId 
+    },
+    body: {
+      data
+    }
+  })
+  .then(Response => Response.data)
+
+}
+
 
 
 //DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기

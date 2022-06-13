@@ -10,8 +10,6 @@ import '../../stylesheets/Routines.css';
 
 import RoutinesTodos from "./RoutinesTodos";
 import CreateRoutinesForm from "./CreateRoutinesForm";
-import { ContentCopy } from "@mui/icons-material";
-
 
 export default function Routines () {
 
@@ -71,7 +69,8 @@ return (
                         return(
                             <React.Fragment key={data.id}>
                                 <RoutinesTodos todos={data} 
-                                isTodoSelected={isTodoSelected}
+                                setIsGoalSelected={setIsGoalSelected} 
+                                todoDataArray={todoDataArray}
                                 />
                             </React.Fragment>
                             

@@ -1,22 +1,24 @@
 import React, {  useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 import EditRoutinesForm from './EditRoutinesForm';
+import { objTodosDataResult } from "../../atoms/todoData";
 
 
 export default function RoutinesTodos (props) {
+    
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
 
 
     const todos = props.todos; 
     const index = props.todos.todoId;
-    const isTodoSelected = props.isTodoSelected;
     const [readOnly, setReadOnly] = useState(true);
+    // contents를 editRoutinesForm으로 보내 전체 수정 유도
+    const [editContents, setEditContents] = useState(todos.contents);
 
-      
     //엔터키 인식 readonly 변경
     const enterKeyEventHandler = (e) => {
         if(e.key === 'Enter' || e.code === 'NumpadEnter'){ 
@@ -24,13 +26,6 @@ export default function RoutinesTodos (props) {
         }
     }
   
-    // const readOnlyHandler = (index) => {
-    //     if (index === modalActiveIndex) {
-    //       setModalActiveIndex(null);
-    //     } else {
-    //       setModalActiveIndex(index);
-    //     }
-    //   }
 
     return (
         <div className="todos-list-box" data-todos={todos} key={index}>
@@ -41,13 +36,15 @@ export default function RoutinesTodos (props) {
                         index={index}
                         readOnly={readOnly}
                         setReadOnly={setReadOnly}
-                        isTodoSelected={isTodoSelected}
+                        editContents={editContents} 
+                        setEditContents={setEditContents}
                         enterKeyEventHandler={enterKeyEventHandler} />
                         
                     </div>
                     {!readOnly ? (<>
-                    <EditRoutinesForm todos={todos} goalId={todos.goalId} todoId={todos.id} set
-                    ReadOnly={setReadOnly} /> 
+                    <EditRoutinesForm todos={todos} goalId={todos.goalId} todoId={todos.id} 
+                    // editContents로 contents를 보냄
+                    editContents={editContents} setReadOnly={setReadOnly} /> 
                     </>) :
                     null} 
                     
@@ -62,10 +59,17 @@ const TodoList = React.forwardRef((props, ref) => {
     const index = parseInt(props.index-1);
     const readOnly = props.readOnly;
     const setReadOnly = props.setReadOnly;
-    const isTodoSelected = props.isTodoSelected;
-    
+    const editContents = props.editContents;
+    const setEditContents = props.setEditContents;
+
     const todoSelectedHandler = () => {
       setReadOnly(false)
+    }
+
+    // routines contents 부분 단독 수정 처리 
+    const editRoutinesContents = (e) => {
+        const copy_editContents = e.target.value;
+        setEditContents(copy_editContents);
     }
 
     return (
@@ -80,9 +84,10 @@ const TodoList = React.forwardRef((props, ref) => {
         data-orderno={todos.orderNo}
         data-goalid={todos.goalId} 
         data-todoid={todos.id} 
-        value={todos.contents} 
+        value={editContents} 
         readOnly={readOnly}
         onClick={todoSelectedHandler}
+        onChange={editRoutinesContents}
         />
         
         </>
