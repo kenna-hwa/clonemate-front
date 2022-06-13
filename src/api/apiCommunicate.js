@@ -227,13 +227,13 @@ export const getTodosData = async (numUserId,localDate) => {
 
 //POST objTodosDataResult 추가하기
 
-export const postTodoCreateData = async (data) => {
+export const postTodoCreateData = async (param) => {
   //axios
   await axios({
     method: `POST`,
     url: `${todoHost}/todos`,
     params: {
-      data
+      param
     }
   })
   .then(Response => console.log("res", Response.data))
@@ -245,7 +245,43 @@ export const postTodoCreateData = async (data) => {
 
 //PATCH objTodosDataResult 날짜로 수정하기
 //date=yyyy-mm-dd
-//checkYn=y or n
+//isChecked bool
+
+//미완료 할 일 오늘 하기
+export const PatchTodosAllChecked = async (date) => {
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos?date=${date}&isChecked=true`,
+  })
+  .then(Response => console.log("res", Response.data))
+};
+
+//미완료 할 일 다른 날 하기
+// params 로 날짜를 지정하는걸까?
+// 그러면 date 만 바꿔주면 될까?
+
+//미완료 할 일 삭제
+export const DeleteTodosNotChecked = async (date) => {
+  //axios
+  await axios({
+    method: `DELETE`,
+    url: `${todoHost}/todos?date=${date}&isChecked=false`,
+  })
+  .then(Response => console.log("res", Response.data))
+};
+
+//모든 할 일 삭제
+export const DeleteAllTodos = async (date) => {
+  //axios
+  await axios({
+    method: `DELETE`,
+    url: `${todoHost}/todos?date=${date}`,
+  })
+  .then(Response => console.log("res", Response.data))
+};
+
+
 
 //DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기
 

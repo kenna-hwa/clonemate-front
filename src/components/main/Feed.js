@@ -16,7 +16,8 @@ import BackspaceIcon from '@material-ui/icons/Backspace';
 
 import { objTodosDataResult, objDatesData } from "../../atoms/todoData";
 import CreateTodoForm from "./CreateTodoForm";
-import '../../stylesheets/Feed.css'
+import { PatchTodosAllChecked, DeleteTodosNotChecked, DeleteAllTodos } from "../../api/apiCommunicate";
+import "../../stylesheets/Feed.css";
 
 export default function Feed() {
 
@@ -44,7 +45,6 @@ let history = useHistory();
     let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
     let dtDate = useRecoilValue(objDatesData);
-    console.log("todoData", dtTodos)
 /* atom 종료 */
 
 //날짜 정보값 dtToday 오늘 dtTomorrow 내일 dtFeedCalendarDate 캘린더에서 선택한 날짜
@@ -74,14 +74,17 @@ const createTodoFieldReset = (e) => {
 //모달 내부 함수 시작
 
 //미완료 할 일 오늘 하기
-//만약 checkYn이 Y가 아니면 Y로 바꾸고 dtTodos 업데이트
+//만약 isChecked가 false가 아니면 true로 바꾸고 dtTodos 업데이트
 const checkNdoitToday = () => {
+    const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
     todoDataArray.map(data=>
         data.todos.map((todo)=>{
-            return todo.checkYn !== true ? todo.checkYn = true : null
+            return todo.isChecked !== true ? todo.isChecked = true : null
         })
     )
     setDtTodos(todoDataArray);
+    // api로 전달
+    PatchTodosAllChecked(todayDate)
     setAllTodoModalActive(false);
 }
 
@@ -100,13 +103,13 @@ const checkNdoitCalendarOn = () => {
 
 //미완료 할 일 다른 날 하기 확인 클릭
 //캘린더에서 선택한 selectedDate를 YYYY-MM-DD 방식으로 바꿔서
-//checkYn 이 N인 것들에 적용해준다.
+//isChecked 이 N인 것들에 적용해준다.
 const submitDoitOtherDay = (selectedDate) => {
     const newDate = selectedDate.toJSON().substring(0, 10);
-
+    
     todoDataArray.map(data=>
         data.todos.map((todo)=>{
-            return todo.checkYn !== true ? todo.date = newDate : null;
+            return todo.isChecked !== true ? todo.date = newDate : null;
            //endRepeatDate 가 같은 날일 경우도 처리해야 하나?
            //todo.endRepeatDate = newDate
         })
@@ -118,25 +121,33 @@ const submitDoitOtherDay = (selectedDate) => {
 
 //미완료 할 일 삭제
 //checkYn이 N이 아닌 것들만 모아서 (filter) todos를 바꿔준다
-const checkNdelete = () => {
+const checkNdelete = (selectedDate) => {
+    const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
+
     todoDataArray.map(data=> {
             const checkedArr = data.todos.filter(todo=> todo.checkYn !== false)
             data.todos = checkedArr;
         }
     )
     setDtTodos(todoDataArray);
+    // api로 전달
+    DeleteTodosNotChecked(todayDate);
     setAllTodoModalActive(false);
 }
 
 //모든 할 일 삭제
 //todos를 빈 배열로 변경해서 todos 를 비워버림
-const allTodoDelete = () => {
+const allTodoDelete = (selectedDate) => {
+    const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
     todoDataArray.map(data=> {
         const cleanArr = [];
         data.todos = cleanArr;
         }
     )
+
     setDtTodos(todoDataArray);
+    // api로 전달
+    DeleteAllTodos(todayDate);
     setAllTodoModalActive(false);
 }
 
@@ -206,16 +217,16 @@ export function AllTodoEditModal (props) {
             <div className="all-todo-modal-wrap" >
                 <p className="all-todo-modal-head">현재 날짜의 모든 할 일 수정</p>
                 <div className="all-todo-modal-icon-wrap">
-                    <button className="all-todo-modal-icon" onClick={checkNdoitToday}>
+                    <button className="all-todo-modal-icon" onClick={()=>{checkNdoitToday()}}>
                        <EventAvailableIcon className="feed-modal-icon" /><span>미완료 할 일<br/>전부 완료 하기</span>
                     </button>
                     <button className="all-todo-modal-icon" onClick={()=>{checkNdoitCalendarOn()}}>
                        <EventNoteIcon className="feed-modal-icon" /><span>미완료 할 일<br/>다른 날 하기</span>
                     </button>
-                    <button className="all-todo-modal-icon" onClick={checkNdelete}>
+                    <button className="all-todo-modal-icon" onClick={()=>{checkNdelete()}}>
                        <EventBusyIcon className="feed-modal-icon" /><span>미완료 할 일<br/>삭제</span>
                     </button>
-                    <button className="all-todo-modal-icon" onClick={allTodoDelete}>
+                    <button className="all-todo-modal-icon" onClick={()=>{allTodoDelete()}}>
                        <BackspaceIcon className="feed-modal-icon" /><span>모든 할 일<br/>삭제</span>
                     </button>
                 </div>
