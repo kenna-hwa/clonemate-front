@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { Button } from "@mui/material";
 
 import { objDatesData, objTodosDataResult } from "../../atoms/todoData";
-import { patchTodoEditData } from "../../api/apiCommunicate";
+import { patchTodosChangeDate } from "../../api/apiCommunicate";
 
 import RoutineDayModal from './RoutineDayModal';
 import RoutineDateModal from './RoutineDateModal';
@@ -92,7 +92,7 @@ export default function EditRoutinesForm(props) {
             setDtTodos(copy_todo_state);
 
             // createRoutine API로 보내기
-            patchTodoEditData(todos.id, translateSendData);
+            patchTodosChangeDate(todos.id, translateSendData);
             
             // form 종료
             setReadOnly(true)

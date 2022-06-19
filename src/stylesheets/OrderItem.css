@@ -183,9 +183,7 @@
 }
 
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: auto;
   position: relative;
   border: 0;
   border-bottom: 0px solid #00000000;

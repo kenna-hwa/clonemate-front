@@ -235,14 +235,15 @@ const TodoList = React.forwardRef((props, ref) => {
       key={todos.todoId}
       id="todo-input"
       type="text"
-      maxLength="50"
+      maxLength="100"
       size={inputRef.current?.value.length}
       ref={inputRef}
       name={todos.title}
       data-orderno={todos.orderNo}
       data-goalid={todos.goalId}
-      data-todoid={todos.todoId}
+      data-todoid={todos.id}
       value={todos.title}
+      style={{'width':inputRef.current?.value.length * 13 + 'px'}}
       readOnly
     />
   );

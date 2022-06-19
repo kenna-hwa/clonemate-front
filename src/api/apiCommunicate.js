@@ -221,12 +221,10 @@ export const getTodosData = async (numUserId,localDate) => {
   .catch((Error)=>{console.log(Error)})
   
     //완료 되면 res.data가 success true 인지 확인하고 null 부분에 todoData에 objFeedCalendarOverview 값을 바꿔줘야 한다
-  return Response.data
-
+  return Response.data;
 } 
 
 //POST objTodosDataResult 추가하기
-
 export const postTodoCreateData = async (param) => {
   //axios
   await axios({
@@ -240,8 +238,6 @@ export const postTodoCreateData = async (param) => {
   .then(Error => console.log("error : ", Error))
 
 }
-
-//PATCH objTodosDataResult id값으로 수정하기
 
 //PATCH objTodosDataResult 날짜로 수정하기
 //date=yyyy-mm-dd
@@ -261,7 +257,7 @@ export const PatchTodosAllChecked = async (date) => {
 // params 로 날짜를 지정하는걸까?
 // 그러면 date 만 바꿔주면 될까?
 
-export const patchTodoEditData = async (date, newDate) => {
+export const patchTodosChangeDate = async (date, newDate) => {
   console.log("todayDate", date, "newDate", newDate);
   //axios
   await axios({
@@ -272,7 +268,6 @@ export const patchTodoEditData = async (date, newDate) => {
     }
   })
   .then(Response => Response.data);
-
 }
 
 //미완료 할 일 삭제
@@ -282,26 +277,85 @@ export const DeleteTodosNotChecked = async (date) => {
     method: `DELETE`,
     url: `${todoHost}/todos?date=${date}&isChecked=false`,
   })
-  .then(Response => console.log("res", Response.data))
+  .then(Response => console.log("res", Response.data));
 };
 
 
+//DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기
 //모든 할 일 삭제
-export const DeleteAllTodos = async (date) => {
+export const DeleteTodosAll = async (date) => {
   //axios
   await axios({
     method: `DELETE`,
     url: `${todoHost}/todos?date=${date}`,
   })
-  .then(Response => console.log("res", Response.data))
+  .then(Response => console.log("res", Response.data));
 };
 
+//할 일 checkbox 클릭하기
+export const patchChangeCheckedTodo = async (id,isChecked) => {
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos/${id}`,
+    body: {
+      'isChecked	': isChecked,
+    }
+  })
+  .then(Response => Response.data);
+}
+
+//할 일 클릭해서 contents 수정하기
+export const patchChangeContentsTodo = async (id, contents) => {  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos/${id}`,
+    body: {
+      'contents': contents,
+    }
+  })
+  .then(Response => Response.data);
+}
+
+//할 일 클릭해서 내일 하기
+export const patchTomorrowTodo = async (id, newDate) => {
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos/${id}`,
+    body: {
+      'date': newDate,
+      'endRepeatDate': newDate
+    }
+  })
+  .then(Response => Response.data);
+}
+
+//할 일 클릭해서 날짜 바꾸기
+export const patchChangeDateTodo = async (id, newDate) => {
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos/${id}`,
+    body: {
+      'date': newDate,
+      'endRepeatDate': newDate
+    }
+  })
+  .then(Response => Response.data);
+}
 
 
+//할 일 클릭해서 1개 삭제
+//목표는 설정 안해도 될까요ㅠㅠ
+export const DeleteTodo = async (id) => {
+  //axios
+  await axios({
+    method: `DELETE`,
+    url: `${todoHost}/todos/${id}`,
+  })
+  .then(Response => console.log("res", Response.data));
+}
 
-//DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기
-
-//DELETE objTodosDataResult 날짜로 모든 todo값 삭제하기
 
 /* 투두 API 통신 끝 */
 
