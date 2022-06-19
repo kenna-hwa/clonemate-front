@@ -16,7 +16,7 @@ import BackspaceIcon from '@material-ui/icons/Backspace';
 
 import { objTodosDataResult, objDatesData } from "../../atoms/todoData";
 import CreateTodoForm from "./CreateTodoForm";
-import { PatchTodosAllChecked, DeleteTodosNotChecked, DeleteAllTodos } from "../../api/apiCommunicate";
+import { PatchTodosAllChecked, patchTodoEditData, DeleteTodosNotChecked, DeleteAllTodos } from "../../api/apiCommunicate";
 import "../../stylesheets/Feed.css";
 
 export default function Feed() {
@@ -91,10 +91,11 @@ const checkNdoitToday = () => {
 
 //할 일 다른 날 하기 캘린더 on
 const checkNdoitCalendarOn = () => {
+    console.log("dd")
     todoDataArray.map(data=>
         //N이 없으면 나타나지 않아야 한다!!!
         data.todos.map((todo)=>{
-            if(todo.checkYn !== false) return false
+            if(todo.isChecked !== false) return false
             else setAllTodoCalendarActive(true);
         })
     )
@@ -103,8 +104,9 @@ const checkNdoitCalendarOn = () => {
 
 //미완료 할 일 다른 날 하기 확인 클릭
 //캘린더에서 선택한 selectedDate를 YYYY-MM-DD 방식으로 바꿔서
-//isChecked 이 N인 것들에 적용해준다.
+//isChecked 이 false인 것들에 적용해준다.
 const submitDoitOtherDay = (selectedDate) => {
+    const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
     const newDate = selectedDate.toJSON().substring(0, 10);
     
     todoDataArray.map(data=>
@@ -115,17 +117,19 @@ const submitDoitOtherDay = (selectedDate) => {
         })
     )
     setDtTodos(todoDataArray);
+    //api 전달
+    patchTodoEditData(todayDate,newDate);
     setAllTodoCalendarActive(false);
     setAllTodoModalActive(false);
 }
 
 //미완료 할 일 삭제
 //checkYn이 N이 아닌 것들만 모아서 (filter) todos를 바꿔준다
-const checkNdelete = (selectedDate) => {
+const checkNdelete = () => {
     const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
 
-    todoDataArray.map(data=> {
-            const checkedArr = data.todos.filter(todo=> todo.checkYn !== false)
+    todoDataArray.map(data => {
+            const checkedArr = data.todos.filter(todo=> todo.isChecked !== false)
             data.todos = checkedArr;
         }
     )

@@ -261,6 +261,20 @@ export const PatchTodosAllChecked = async (date) => {
 // params 로 날짜를 지정하는걸까?
 // 그러면 date 만 바꿔주면 될까?
 
+export const patchTodoEditData = async (date, newDate) => {
+  console.log("todayDate", date, "newDate", newDate);
+  //axios
+  await axios({
+    method: `PATCH`,
+    url: `${todoHost}/todos?date=${date}&isChecked=false`,
+    body: {
+      'date': newDate
+    }
+  })
+  .then(Response => Response.data);
+
+}
+
 //미완료 할 일 삭제
 export const DeleteTodosNotChecked = async (date) => {
   //axios
@@ -270,6 +284,7 @@ export const DeleteTodosNotChecked = async (date) => {
   })
   .then(Response => console.log("res", Response.data))
 };
+
 
 //모든 할 일 삭제
 export const DeleteAllTodos = async (date) => {
@@ -281,22 +296,6 @@ export const DeleteAllTodos = async (date) => {
   .then(Response => console.log("res", Response.data))
 };
 
-export const patchTodoEditData = async (todoId, data) => {
-  console.log("data", data)
-  //axios
-  await axios({
-    method: `PATCH`,
-    url: `${todoHost}/todos`,
-    params:{
-      id : todoId 
-    },
-    body: {
-      data
-    }
-  })
-  .then(Response => Response.data)
-
-}
 
 
 
