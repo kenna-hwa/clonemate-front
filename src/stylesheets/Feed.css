@@ -259,9 +259,7 @@
 }
 
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-input {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: auto;
   position: relative;
   border: 0;
   border-bottom: 1px solid #00000000;
@@ -274,8 +272,6 @@
   -webkit-transform: rotate(0.04deg);
           transform: rotate(0.04deg);
   cursor: pointer;
-  padding: 6px 0;
-  margin: 5px 5px 5px 15px;
 }
 
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-wrap .todos-list-input::-ms-value {

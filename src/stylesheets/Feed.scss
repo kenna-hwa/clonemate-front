@@ -138,8 +138,7 @@
                 align-items: center;
 
                 .todos-list-input{
-                  
-                    width: fit-content;
+                    width: auto;
                     position: relative;
                     border: 0;
                     border-bottom: 1px solid #00000000;
@@ -150,8 +149,8 @@
                     font-weight: 600;
                     transform: rotate(0.04deg);
                     cursor: pointer;
-                    padding: 6px 0;
-                    margin: 5px 5px 5px 15px;
+                    // padding: 6px 0;
+                    // margin: 5px 5px 5px 15px;
 
                     &::-ms-value{
                         font-size: 14px;

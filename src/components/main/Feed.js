@@ -16,7 +16,7 @@ import BackspaceIcon from '@material-ui/icons/Backspace';
 
 import { objTodosDataResult, objDatesData } from "../../atoms/todoData";
 import CreateTodoForm from "./CreateTodoForm";
-import { PatchTodosAllChecked, patchTodoEditData, DeleteTodosNotChecked, DeleteAllTodos } from "../../api/apiCommunicate";
+import { PatchTodosAllChecked, patchTodosChangeDate, DeleteTodosNotChecked, DeleteTodosAll } from "../../api/apiCommunicate";
 import "../../stylesheets/Feed.css";
 
 export default function Feed() {
@@ -118,13 +118,13 @@ const submitDoitOtherDay = (selectedDate) => {
     )
     setDtTodos(todoDataArray);
     //api 전달
-    patchTodoEditData(todayDate,newDate);
+    patchTodosChangeDate(todayDate,newDate);
     setAllTodoCalendarActive(false);
     setAllTodoModalActive(false);
 }
 
 //미완료 할 일 삭제
-//checkYn이 N이 아닌 것들만 모아서 (filter) todos를 바꿔준다
+//isChecked가 true이 아닌 것들만 모아서 (filter) todos를 바꿔준다
 const checkNdelete = () => {
     const todayDate = dtDate.dtFeedCalendarDate.toJSON().substring(0, 10);
 
@@ -151,7 +151,7 @@ const allTodoDelete = (selectedDate) => {
 
     setDtTodos(todoDataArray);
     // api로 전달
-    DeleteAllTodos(todayDate);
+    DeleteTodosAll(todayDate);
     setAllTodoModalActive(false);
 }
 

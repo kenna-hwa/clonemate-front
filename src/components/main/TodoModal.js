@@ -16,7 +16,7 @@ import WrapTextIcon from '@material-ui/icons/WrapText';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 import { objTodosDataResult, objDatesData } from "../../atoms/todoData";
-
+import { patchTomorrowTodo, DeleteTodo, } from "../../api/apiCommunicate";
 
 export function TodoModal (props) {
 
@@ -38,34 +38,53 @@ export function TodoModal (props) {
 
     const index = props.index;
     const todos = props.todos;
-    const [calendarActiveIndex, setCalendarActiveIndex] = useState(null);
 
 
     /* 함수 선언 시작 */
 
     //모달 onoff 핸들러
     const modalActive = props.modalActive;
+    const setModalActiveIndex = props.setModalActiveIndex;
 
     //캘린더 onoff 핸들러
-    const setModalActiveIndex = props.setModalActiveIndex;
+    const calendarActiveIndex = props.calendarActiveIndex;
+    const setCalendarActiveIndex = props.setCalendarActiveIndex;
 
     //모달 수정 클릭 핸들러
     const todoModalEditHandler = props.todoModalEditHandler;
 
 
+
     //모달 내일하기 클릭 핸들러 
     const todoModalDelayHandler = (e) => {
+    const todayDate = dtDate.dtFeedCalendarDate;
+    const tomorrowDate = new Date(todayDate);
+    tomorrowDate.setDate(todayDate.getDate()+1)
+
+
+    console.log("tomorrowDate" , tomorrowDate)
     const goal_id = parseInt(e.currentTarget.dataset.goalid);
     const todo_id = parseInt(e.currentTarget.dataset.todoid);
         todoDataArray.map(data=>
             data.todos.map(todo=>{
                 if(todo.goalId === goal_id && todo.todoId === todo_id && todo.date === todo.endRepeatDate){
-                todo.date = dtDate.dtTomorrow;
-                todo.endRepeatDate = dtDate.dtTomorrow;
+                    todo.date = tomorrowDate;
+                    todo.endRepeatDate = tomorrowDate;
+                } else if(todo.goalId === goal_id && todo.todoId === todo_id && todo.date != todo.endRepeatDate){
+                    todo.date = tomorrowDate;
                 }
             })
-        )
-        setModalActiveIndex(null)
+        );
+
+        //api로 전달
+        patchTomorrowTodo(todo_id, tomorrowDate);
+        setModalActiveIndex(false);
+    }
+
+
+    //모달 날짜 바꾸기 클릭 모달 onoff 핸들러
+    const todoModalDateChangeModalHandler = () => {
+        setCalendarActiveIndex(true)
     }
     
     //모달 순서 변경 클릭 핸들러
@@ -78,14 +97,19 @@ export function TodoModal (props) {
     const todoModalDeleteHandler = (e) => {
         const goal_id = parseInt(e.currentTarget.dataset.goalid);
         const todo_id = parseInt(e.currentTarget.dataset.todoid);
-
+        const findIdx = todoDataArray.map(data=>{
+            return data.id === goal_id ? data.todos.findIndex(todo => todo.id === todo_id) : null;
+        })
         todoDataArray.map(data=>
-            data.todos.map((todo, index)=>{
-                if(todo.goalId === goal_id && todo.todoId === todo_id)  data.todos.splice(index, 1)
-            })
+            data.todos.map((todo)=>{
+                if(todo.goalId === goal_id && todo.id === todo_id)  data.todos.splice(findIdx.toString(), 1)
+        })
         )
+
+        //api로 전달
+        DeleteTodo(todo_id);
         setDtTodos(todoDataArray) ;//setDtTodos 이용해 state 변경
-        setModalActiveIndex();
+        setModalActiveIndex(false);
     }
 
     /* 함수 선언 종료 */
@@ -98,18 +122,17 @@ export function TodoModal (props) {
         setCalendarActiveIndex={setCalendarActiveIndex}
         setModalActiveIndex={setModalActiveIndex}
         todos={todos}
-        calendarActive={index === calendarActiveIndex? true : false}
         /> 
 
         <Modal open={modalActive}
-        onClose={()=>{setModalActiveIndex(null)}}
+        onClose={()=>{setModalActiveIndex(false)}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         className="feed-todo-modal-box"
          >
         
             <div className="feed-todo-modal-wrap" >
-                <p className="feed-todo-modal-head">{todos.title}</p>
+                <p className="feed-todo-modal-head">{todos.contents}</p>
                 <div className="feed-todo-modal-icon-wrap">
                     <button className="feed-todo-modal-icon feed-todo-edit-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.id} 
@@ -125,10 +148,7 @@ export function TodoModal (props) {
                     </button>
                     <button className="feed-todo-modal-icon feed-todo-date-change-icon" 
                     data-goalid={todos.goalId} data-todoid={todos.id} 
-                    onClick={()=>{
-                        setCalendarActiveIndex(todos.id)
-                        //  console.log(todos.todoId, calendarActiveIndex)
-                        }}
+                    onClick={todoModalDateChangeModalHandler}
                     >
                         <SyncAltIcon className="feed-modal-icon" /><span>날짜 바꾸기</span>
                     </button>
@@ -161,9 +181,8 @@ export function DatePickerCalender(props) {
 
     const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
-    const calendarActive = props.calendarActive;
+    const calendarActiveIndex = props.calendarActiveIndex;
     const setCalendarActiveIndex = props.setCalendarActiveIndex;
-
 
     //모달 내 선택한 날짜 상단 표시
     const selectedDate = newDate.toJSON().substring(0,10);
@@ -187,13 +206,15 @@ export function DatePickerCalender(props) {
                     }
                 })
             )
-            setCalendarActiveIndex(null)
+            //api로 전달
+            patchTomorrowTodo(todo_id, selectedDate);
+            setCalendarActiveIndex(false)
         }
 
 
     return (
-        <Modal open={calendarActive}
-        onClose={()=>{setCalendarActiveIndex(null)}}
+        <Modal open={calendarActiveIndex}
+        onClose={()=>{setCalendarActiveIndex(false)}}
         aria-labelledby="calendar-title"
         aria-describedby="calendar-description"
         className="calendar-wrap"
@@ -214,7 +235,7 @@ export function DatePickerCalender(props) {
                         확인
                     </button> 
                     <button className="calendar-cancel-btn" 
-                    onClick={()=>{setCalendarActiveIndex(null)}}>
+                    onClick={()=>{setCalendarActiveIndex(false)}}>
                         취소
                 </button>
                 </div>

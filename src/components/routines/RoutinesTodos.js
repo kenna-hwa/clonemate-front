@@ -76,7 +76,7 @@ const TodoList = React.forwardRef((props, ref) => {
         <>
         <input
         className="todos-list-input" key={todos.id} id="todo-input" type="text" 
-        maxLength="50"
+        maxLength="100"
         size={inputRef.current?.value.length}
         ref={inputRef}
         name={todos.contents} 
@@ -85,6 +85,7 @@ const TodoList = React.forwardRef((props, ref) => {
         data-goalid={todos.goalId} 
         data-todoid={todos.id} 
         value={editContents} 
+        style={{'width':inputRef.current?.value.length * 13 + 'px'}}
         readOnly={readOnly}
         onClick={todoSelectedHandler}
         onChange={editRoutinesContents}
