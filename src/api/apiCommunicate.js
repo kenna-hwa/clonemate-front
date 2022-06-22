@@ -375,24 +375,38 @@ export const DeleteTodo = async (id) => {
 /* 팔로우 API 통신 시작 */
 
 //GET followers 가져오기
+export const getFollowersData = async () => {
 
-export async function axiosGetFollowers () {
   //axios
+  await axios({
+   method: `GET`,
+   url: `${todoHost}/follows/followers`
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
 
-  await axios.get(`/follow/followers`)
-  .then((Response)=>{console.log(Response.data)})
-  .catch((Error)=>{console.log(Error)})
-} 
+ return Response.data;
+}
+
+
 
 //GET following 가져오기
 
-export async function axiosGetFollowing () {
-  //axios
+export const getFollowingsData = async () => {
 
-  await axios.get(`/follow/followings`)
-  .then((Response)=>{console.log(Response.data)})
-  .catch((Error)=>{console.log(Error)})
-} 
+  //axios
+  await axios({
+   method: `GET`,
+   url: `${todoHost}/follow/followings`
+ })
+ .then(Response => Response.data)
+ .then(Response => !Response.success ? alert("데이터를 받아오지 못했습니다.") : null)
+ .catch((Error)=>{console.log(Error)})
+
+ return Response.data;
+}
+
 
 //POST 팔로워 수정하기
 
