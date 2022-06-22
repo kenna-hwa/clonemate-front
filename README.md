@@ -17,7 +17,7 @@ CloneTodo 웹 페이지 구성
       ◾ 버전관리툴 : 깃허브GitHub
       ◾ 개발 환경 : npm, CRA(Create-React-App)
       ◾ UI 라이브러리 : MUI
-      ◾ 캘린더 라이브러리(택1) : ToastUI-Calendar
+      ◾ 캘린더 라이브러리 (택1) : ToastUI-Calendar
       ◾ 알람 라이브러리 : Firebase Cloud Messaging API
       ◾ 입력유효성관리 라이브러리 : React Hook Form
       ◾ 상태관리 라이브러리 : Recoil

@@ -45,7 +45,7 @@ export default function MainNavBar() {
     window.location.replace(`/exploreSearch`)
   }
   const moveGoals = (e) => {
-    window.location.replace(`/`)
+    window.location.replace(`/goals`)
   }
   const moveRoutines = (e) => {
     window.location.replace(`/routines`)
@@ -129,7 +129,7 @@ export default function MainNavBar() {
         <section className='snb-goal-wrap'>
           <Box display="flex" justifyContent="space-between">
             <p className='snb-goal-title'>목표</p>
-            <IconButton size="small" edge="end" color="inherit" aria-label="back">
+            <IconButton onClick={moveGoals} size="small" edge="end" color="inherit" aria-label="back">
               <NavigateNextIcon className='snb-title-nav-icon' />
             </IconButton>
           </Box>

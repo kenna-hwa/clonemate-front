@@ -8,27 +8,46 @@ import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
 
 import '../../stylesheets/Follow.css';
+import { testFollowerData } from "../../atoms/todoData";
+import { useRecoilState } from "recoil";
 
 
+export default function FollowerTest(data) {
 
-export default function FollowerTest(data, index, deleteArr) {
+    let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
+    let testarray = JSON.parse(JSON.stringify(testFollower));
+    //let followerData = JSON.parse(JSON.stringify(data));
 
-    // state 테스트 더미 데이터 시작 
+// state 테스트 더미 데이터 시작 
+// usestate 생성 -> 팔로워 삭제 시 화면에서만 일시적으로 저장되도록 우선 구현 
 
-    console.log('test id', data.index);
-    //console.log('index', index);
+    //const follower = Object.values(data);
+    const followerId = parseInt(data.data.id);
+    const followerList = data.data;
+    console.log('testarray type', typeof data.data);
+    console.log('testarray id', followerId);
+    //console.log('data', followerList);
    
+    function deleteArr(e) {
+        //const copy_data = Array.from(data);
+        //const copy_data = Object.values(data);
+        const copy_data = [...testarray]
+        console.log('copydata type', typeof copy_data); // obejct
+        console.log('data', copy_data);
+        
+        let selectedId = e.target.id;
+        console.log('e', e.target.id)
+        //console.log('data with index', copy_data[id]) // undefined
+        //const removeArr = copy_data.splice(copy_data[selectedId], 1)
+       
+        const removeArr = copy_data.filter(followers => followers.id !== parseInt(selectedId));
 
-    const getAPI = () => {
+        setTestFollower(removeArr); //setTestFollower를 이용해 state 변경
+        console.log('newarray', removeArr);
+        //deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
+        setOpen(false);
+    }
 
-        axios.get("https://clonetodo.herokuapp.com/api/v1/todos/1").then(
-            (response) => {
-                console.log(response);
-            }
-        );
-    };
-
-  
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = (e) => {
@@ -39,67 +58,48 @@ export default function FollowerTest(data, index, deleteArr) {
     };
 
 
-
-    
-   
-
     return (
-        <>
-         {/* <div><button onClick={getAPI}>getAPI</button></div> */}
-         
-        
-                    <React.Fragment>
+            <React.Fragment>
 
-                        <List // 넓이 조정 
-                        sx={{ width: '100%' }}
+                <List // 넓이 조정 
+                    sx={{ width: '100%' }}
                         style={{ position: 'relative' }}
-                        key={data.data.id} disablePadding id={data.data.id} >
+                    key={followerList.id} disablePadding id={followerList.id} >
 
                         {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
 
+                        <div className="follow-list-box" key={followerList.following.account} id={followerList.following.id} >
 
-                        <div className="follow-list-box" key={data.data.account} id={data.data.id} >
-
-                            <div className='setting-settings-list-wrap' id={data.data.id} name={data.data.name} >
+                            <div className='setting-settings-list-wrap' id={followerList.following.id} name={followerList.following.name} >
                                 <div className="setting-list-box" >
-
-
-                                    <div className="settings-list-text" sx={{ color: "black" }}><p>{data.data.name}</p></div>
+                                    <div className="settings-list-text" sx={{ color: "black" }}><p>{followerList.following.name}</p></div>
                                     <div className="follow-list-name-icon-wrap" onClick={handleClickOpen} sx={{ color: "black" }}>
                                         <MoreHorizIcon color="disabled" className="follow-list-name-icon" /></div>
-
                                 </div>
                                 
-                                        <div className="follows-list-box" id={data.data.id}>
-                                            <div className="follow-list-button" id={data.data.id}>
-
-                                                <p className="follow-list-text" >{data.data.introText}</p>
-
-                                            </div> 
-                                        </div>
+                                <div className="follows-list-box" id={followerList.following.id}>
+                                    <div className="follow-list-button" id={followerList.following.id}>
+                                        <p className="follow-list-text" >{followerList.following.introText}</p>
+                                    </div> 
+                                </div>
            
                             </div>
-
-
 
 
                             {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
                             <Dialog
                                 sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
-                                maxWidth="sm" index={index}
-                                open={open}
-                            >
+                                maxWidth="sm" 
+                                open={open}>
                                 <Stack spacing={1}>
-                                    <Button autoFocus index={index} id={data.data.id} 
-                                    onChange={()=>deleteArr(data.index) } color="error">팔로워 삭제</Button>
+                                    <Button autoFocus  id={followerList.following.id} key={followerList.following.id}
+                                    onClick={deleteArr} color="error">팔로워 삭제</Button>
                                     <Button onClick={handleClose}>취소</Button>
                                 </Stack>
-
                             </Dialog>
+
                         </div>
 
-                    </List></React.Fragment> 
-                                   
-        </>
+            </List></React.Fragment> 
     )
 }
