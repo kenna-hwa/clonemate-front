@@ -1,0 +1,49 @@
+@import './abstracts/variables';
+@import './abstracts/font';
+@import './abstracts/mixin';
+
+.text-form {
+  margin: 0 auto;
+  width: 100%;
+}
+.text-use {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 15px; 
+  font-weight: 300;
+  font-size: 14px;
+}
+
+/* 모바일 넓이 - 비율이 다름 -> 수정필요 */
+.announce-wrap {
+  margin: 0 auto;
+  width: 100%;
+  //padding: 0 10px 0 10px;
+
+    .announce-text {
+        padding: 0 50px 0 50px;
+        
+        margin-top: 10px;
+        margin-bottom: 1px;
+        //font-size: 14.8px;
+
+        /* background: ivory; */
+        font-size: 16px;
+
+        font-family: 'Pretendard';
+        font-weight: 300;
+        font-size: 15px;
+        color:$text-black;
+    }
+    .announce-date {
+        font-family: 'Pretendard';
+        font-weight: 300;
+        font-size: 13px;
+        color:$text-gray;
+        //margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .announce-divider{
+        margin-bottom: 20px;
+    }
+}

@@ -8,9 +8,9 @@ function TermUse(){
     // 2) 스크롤바 모양 변경 하기 
     return (
 
-    <form className='formOfText'>
+    <form className='text-form'>
       <BasicNavBar/>
-      <div className='textOfUse'>
+      <div className='text-use'>
           
         "todo list" Term of Use <br />
         <br />

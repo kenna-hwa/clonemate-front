@@ -70,7 +70,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 0px 0px 0px;
   margin: 0 auto;
   width: 65%;
 }
@@ -95,7 +95,7 @@
 }
 
 .setting-settings-list-wrap .setting-list-box .setting-list-button {
-  padding: 5px 2px;
+  padding: 4px 2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -109,7 +109,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 0;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   width: 100%;
 }
 
@@ -132,6 +132,7 @@
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-icon {
   font-size: 1.5em;
   color: #1c1c1c;
+  stroke-width: 2;
 }
 
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-text {
@@ -154,11 +155,17 @@
 }
 
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .setting-list-arrow {
-  color: lightgrey;
   font-size: 17px;
-  font-weight: 100;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-version {
+  color: #1c1c1c;
+  opacity: 0.9;
+  font-size: 13px;
+  font-weight: 300;
+  font-family: 'Pretendard';
 }
 /*# sourceMappingURL=Setting.css.map */
