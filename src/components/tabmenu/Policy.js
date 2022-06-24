@@ -10,9 +10,9 @@ function Policy(){
     // 3) NavBar fontsize 변경 하기 
     return (
 
-    <form className='formOfText'>
+    <form className='text-form'>
       <BasicNavBar/>
-      <div className='textOfUse'>
+      <div className='text-use'>
           
       Personal Information Processing Policy (Privacy Policy) <br />
       <br />

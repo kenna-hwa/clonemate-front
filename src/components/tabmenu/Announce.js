@@ -12,11 +12,11 @@ function Announce(){
     
     return (
 
-    <form className='formOfAnnounce'>
+    <form className='announce-wrap'>
       <BasicNavBar/>
-      <Container maxWidth="md" className='textOfAnnounce'>
+      <Container maxWidth="lg" className="announce-text">
 
-        <Typography  color="text.primary" variant="body2">
+        <div  color="text.primary" variant="body2">
         Premium 구독 기능이 추가되었습니다. Premium 구독을 이용하시면 광고가 제거되고 추가
         스티커를 이용하실 수 있으며 향후 Premium 사용자만을 위한 기능을 이용하실 수 있습니다.
         모바일 기기에서 우측 상단의 세줄 버튼을 누르신 후 하단 메뉴 중에 Premium 메뉴를 이용
@@ -28,29 +28,29 @@ function Announce(){
         투두 리스트 계정 이메일 주소와 함께 부탁드립니다. 감사합니다. <br />
         <br />
             
-        </Typography>
-        <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
-        
-        <Typography  color="text.primary" variant="body2">
+        </div>
+        <div className="announce-date" color="text.secondary" variant="body2"> 2022. 1. 17.</div>
+        <Divider className="announce-divider"  light="true" />
+
+        <div  color="text.primary" variant="body2">
         국내 통신사 문제로 이미지 파일 접근이 불가했던 문제가 해결되어 잘 동작하는 것을 확인했습니다. 
         혹시라도 스티커가 계속 보이지 않는 경우 앱 강제 종료 후 재실행을 부탁드리며 
         추가 문의가 있으시면 언제나 문의하기 기능을 통해 말씀 부탁드립니다. 감사합니다. <br />
         <br />
             
-        </Typography>
-        <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
+        </div>
+        <div className="announce-date" color="text.secondary" variant="body2"> 2022. 1. 17.</div>
+        <Divider className="announce-divider"  light="true" />
 
-        <Typography  color="text.primary" variant="body2">
+        <div  color="text.primary" variant="body2">
         현재 국내 통신사 문제로 인해 스티커 및 사진 첨부에 대한 기능에 제한이 있습니다.
         투두 리스트 측에선 상황을 계속 주시하며 조속히 해결될 수 있는 방안을 찾도록 노력하
         겠습니다. 문제가 해결되는대로 앱 내의 공지사항을 통해 알려드리도록 하겠습니다. 감사합니다. <br />
         <br />
             
-        </Typography>
-        <Typography color="text.secondary" variant="body2"> 2022. 1. 17.</Typography>
-        <Divider />
+        </div>
+        <div className="announce-date" color="text.secondary" variant="body2"> 2022. 1. 17.</div>
+        <Divider className="announce-divider"  light="true" />
       
 
       </Container>

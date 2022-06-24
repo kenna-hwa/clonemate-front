@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { objTodosDataResult, userIdInfo } from "../../atoms/todoData";
+import { objTodosDataResult, userIdInfo, testFollowerData } from "../../atoms/todoData";
 
 import '../../stylesheets/Nav.css';
 
@@ -31,6 +31,9 @@ export default function MainNavBar() {
     let userData = JSON.parse(JSON.stringify(dtUser));
     //console.log(userData)
 
+    let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
+    //let testarray = JSON.parse(JSON.stringify(testFollower));
+    const isThereFollower = testFollower.length;
 
 /* atom 종료 */
 
@@ -116,8 +119,10 @@ export default function MainNavBar() {
         <section className='snb_user_follow_info_wrap'>
           {/* Box -> hover 옵션 추가 or Button-> CSS 변경 */}
           <div className='snb-follow-box' display="flex" justifyContent="flex-start" onClick={moveFollowing} fontSize="small">
-            <p className='snb-follow-title' style={{paddingRight: "20px" }}>{`0`}팔로워</p>
-            <p className='snb-follow-title'>{`0`}팔로잉</p>
+            
+            <p className='snb-follow-title' style={{paddingRight: "20px" }}>{isThereFollower} 팔로워</p>
+            <p className='snb-follow-title'>{isThereFollower} 팔로잉</p>
+                 
           </div>  
           
         </section>
