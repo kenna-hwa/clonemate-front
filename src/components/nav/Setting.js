@@ -18,16 +18,16 @@ export default function Setting() {
 
   //컴포넌트로 이동 함수 (파라미터 추가)
   const moveFeedSetting = (e) => {
-    window.location.replace(`/clonemate-front/feedsetting`)
+    window.location.replace(`/feedsetting`)
   }
   const moveText = (e) => {
-    window.location.replace(`/clonemate-front/text`)
+    window.location.replace(`/text`)
   }
   const moveAnnouncements = (e) => {
-    window.location.replace(`/clonemate-front/announcements`)
+    window.location.replace(`/announcements`)
   }
   const moveHome = (e) => {
-    window.location.replace(`/clonemate-front/`)
+    window.location.replace(`/`)
   }
   // 오픈소스 부분 추가 
 
