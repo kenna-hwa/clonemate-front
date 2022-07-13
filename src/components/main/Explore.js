@@ -1,13 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import { Avatar, Stack } from '@mui/material';
-import AddIcon from '@material-ui/icons/Add';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import CalendarBox from './CalendarBox';
 
 import { userIdInfo, testFollowerData } from "../../atoms/todoData";
 import { useRecoilState } from "recoil";
+
 
 export default function Explore(props) {
 
@@ -25,7 +25,10 @@ export default function Explore(props) {
     
     //const name = testarray.following.name;
     //const nickName = name.charAt(0);
-    //console.log(nickName);
+    
+    //const result = Object.keys(testarray).map((id) => testarray[following]);
+    //console.log(result);
+    //console.log(typeof testarray.following);
    
 
 
@@ -55,10 +58,11 @@ export default function Explore(props) {
                     <NavigateNextIcon onClick={moveExForm} />
                 </Avatar>
             </Stack>
-            { userData.map((data, idx)=>{
+            { userData.map((data)=>{
                     return (
                         <React.Fragment >
-                            <h1 className='explore-user-nickname' id={idx} >{data.name}</h1>
+                            <h3 className='explore-user-nickname' id={data.id}>{data.name}</h3>
+                            <p className='explore-user-nickname' id={data.id}>{data.introText}</p>
                         </React.Fragment>
                      
                     )

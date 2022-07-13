@@ -47,13 +47,20 @@ body{
             justify-content: flex-start;
             .snb-user-info-text{
                 justify-content: flex-start;
-                p {
+                p:first-child {
                     justify-content: flex-start;
                     font-family: 'Pretendard';
-                    font-weight: 600;
+                    font-weight: 800;
                     font-size: 16px;
                     color:$text-black;
-                    
+                }
+                p:last-child {
+                    justify-content: flex-start;
+                    font-family: 'Pretendard';
+                    font-weight: 300;
+                    font-size: 14px;
+                    color:gray; 
+                    margin-top: -8px;
                 }
             }
         }

@@ -24,11 +24,11 @@ export default function FollowerTest(data) {
     //const follower = Object.values(data);
     const followerId = parseInt(data.data.id);
     const followerList = data.data;
-    console.log('testarray type', typeof data.data);
-    console.log('testarray id', followerId);
+    //console.log('testarray type', typeof data.data);
+    //console.log('testarray id', followerId);
     //console.log('data', followerList);
    
-    function deleteArr(e) {
+    function deleteFollower(e) {
         //const copy_data = Array.from(data);
         //const copy_data = Object.values(data);
         const copy_data = [...testarray]
@@ -93,7 +93,7 @@ export default function FollowerTest(data) {
                                 open={open}>
                                 <Stack spacing={1}>
                                     <Button autoFocus  id={followerList.following.id} key={followerList.following.id}
-                                    onClick={deleteArr} color="error">팔로워 삭제</Button>
+                                    onClick={deleteFollower} color="error">팔로워 삭제</Button>
                                     <Button onClick={handleClose}>취소</Button>
                                 </Stack>
                             </Dialog>
