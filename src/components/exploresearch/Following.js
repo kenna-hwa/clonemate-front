@@ -53,7 +53,7 @@ export default function Following() {
 
   let [following, setFollowing] = useState(FollowingData);
   let testarray = JSON.parse(JSON.stringify(following));
-  const isThereFollower = testarray.length;
+  const isThereFollowing = testarray.length;
 
   const [open, setOpen] = React.useState(false);
 
@@ -70,7 +70,7 @@ const deleteFollowing = (e) => {
     console.log('selected', selectedId);
     const thisData = [...following];
 
-    const removeArr = thisData.filter(followers => followers.id !== parseInt(selectedId));
+    const removeArr = thisData.filter(followings => followings.id !== parseInt(selectedId));
 
     setFollowing(removeArr); 
     console.log('newarray', removeArr);
@@ -84,7 +84,7 @@ const deleteFollowing = (e) => {
     return (
       <div className="follow-follow-list-wrap" >
 
-        {isThereFollower ? <React.Fragment>
+        {isThereFollowing ? <React.Fragment>
 
           {testarray.map((data, index) => { 
           
@@ -93,12 +93,12 @@ const deleteFollowing = (e) => {
               <List 
                 sx={{ width: '100%'}}
                 style={{position:'relative'}} 
-                key={data.strUserName}  disablePadding>
+                key={data.id}  disablePadding>
                       
                 <div className="follow-list-box" key={data.id}>      
                   <div className='setting-settings-list-wrap' id={data.id} >
 
-                    <div className="setting-list-box" >
+                    <div className="setting-list-box" id={data.following.id}>
                       <div className="settings-list-text" ><p>{data.following.name}</p></div>
                       <div className="follow-list-name-icon-wrap"  onClick={handleClickOpen} sx={{ color:"black"}}>
                       <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></div>

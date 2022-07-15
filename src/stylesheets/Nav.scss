@@ -47,6 +47,7 @@ body{
             justify-content: flex-start;
             .snb-user-info-text{
                 justify-content: flex-start;
+                
                 p:first-child {
                     justify-content: flex-start;
                     font-family: 'Pretendard';
@@ -75,7 +76,7 @@ body{
             p {
             font-family: 'Pretendard';
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             color:$text-black;
             }
         }
@@ -170,5 +171,25 @@ body{
                 font-weight: 300;
             }
         }
+    }
+}
+
+// explore
+
+.explore-wrap{
+
+    .explore-user-name{
+        font-family: 'Pretendard';
+        font-weight: 800;
+        font-size: 16px;
+        color:$text-black;
+    }
+    .explore-user-nickname{
+        justify-content: flex-start;
+        font-family: 'Pretendard';
+        font-weight: 300;
+        font-size: 14px;
+        color:gray; 
+        margin-top: -8px;
     }
 }

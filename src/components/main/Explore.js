@@ -2,35 +2,24 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { Avatar, Stack } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Button } from "@mui/material";
 
 import CalendarBox from './CalendarBox';
 
 import { userIdInfo, testFollowerData } from "../../atoms/todoData";
 import { useRecoilState } from "recoil";
 
+import '../../stylesheets/Nav.css';
+
 
 export default function Explore(props) {
 
-    // MainNavBar에 있는 로그인한 유저 임시 정보 -> 파라미터 
-    // 팔로잉 한 유저 리스트 불러와서 -> 철자의 앞자만 표현하기 
 
     let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
     let testarray = JSON.parse(JSON.stringify(testFollower));
 
     let [dtUser, setDtUser] = useRecoilState(userIdInfo);
     let userData = JSON.parse(JSON.stringify(dtUser));
-    
-    // const 를 사용으로 map 데이터를 받고 변수로 받아오는 함수는 생성하고 
-    // 함수를 return 안에 적용하기 
-    
-    //const name = testarray.following.name;
-    //const nickName = name.charAt(0);
-    
-    //const result = Object.keys(testarray).map((id) => testarray[following]);
-    //console.log(result);
-    //console.log(typeof testarray.following);
-   
-
 
     let calendarData = props.calendarData;
      //목표 생성 페이지 이동
@@ -39,35 +28,49 @@ export default function Explore(props) {
     }
 
     return (
-        <Box className='explore-wrap' 
-        sx={{ position: 'relative', width: '24vw', minWidth: '350px', top: 0, padding: '2em'}} >        
+        <Box 
+            className='explore-wrap' 
+            sx={{ position: 'relative', width: '24vw', minWidth: '350px', top: 0, padding: '2em'}} >        
+            
             <Stack direction="row" spacing={1}>
-                {/* Following users data 필요 */}
+                
+            { userData.map((user, idx)=>{
+                return (
+                    <React.Fragment >
+                        
+                        <Avatar id={idx} sx={{ backgroundColor: '#f5f5f5', color: '#111', fontWeight: 'bold', border: '2px solid #222', zIndex: 1 }}>
+                            {user.name.charAt(0)}</Avatar>
+                    </React.Fragment>
+                     
+                )
+            }) }
+
                 { testarray.map((data, idx)=>{
                     return (
                         <React.Fragment >
                             <Avatar id={idx} 
-                            sx={{ backgroundColor: '#fff', color: '#111', fontWeight: 'bold', border: '2px solid #222', zIndex: 1 }}>{data.following.name}</Avatar>
+                            sx={{ backgroundColor: '#f5f5f5', color: '#111', fontWeight: 'bold', border: '2px solid #222', zIndex: 1 }}>{data.following.name.charAt(0)}</Avatar>
                         </React.Fragment>
                      
                     )
-                }) 
-                }
-                <Avatar sx={{ backgroundColor: '#fff', color: '#111', fontWeight: 'bold', border: '2px solid #222' }}>N</Avatar>
-                <Avatar sx={{ backgroundColor: '#fff', color: '#111', fontWeight: 'bold', border: '2px solid #222' }}>
-                    <NavigateNextIcon onClick={moveExForm} />
+                })}
+                
+                <Avatar sx={{ backgroundColor: '#f5f5f5', color: '#111', fontWeight: 'bold', border: '2px solid #f5f5f5' }}>
+                    <NavigateNextIcon onClick={moveExForm} color="disabled"/>
                 </Avatar>
+
             </Stack>
-            { userData.map((data)=>{
+
+                { userData.map((user)=>{
                     return (
                         <React.Fragment >
-                            <h3 className='explore-user-nickname' id={data.id}>{data.name}</h3>
-                            <p className='explore-user-nickname' id={data.id}>{data.introText}</p>
+                            <p className='explore-user-name' id={user.id}>{user.name}</p>
+                            <p className='explore-user-nickname' id={user.id}>{user.introText}</p>
                         </React.Fragment>
                      
                     )
-                }) 
-                }
+                }) }
+
             <CalendarBox calendarData={calendarData} />       
         </Box>
     );

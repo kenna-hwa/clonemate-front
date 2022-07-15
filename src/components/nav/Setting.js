@@ -110,6 +110,14 @@ export default function Setting() {
             <Divider  light="true" />
 
             <div className="setting-list-box" >
+                <div className='setting-list-button-wrap'>
+                    <div className="settings-list-text">
+                    </div>
+                </div>
+                <p className="setting-list-version"></p>  
+            </div>
+
+            <div className="setting-list-box" >
                 <Button className="setting-list-button" >
                     <div className='setting-list-button-wrap'>
                         <div className="settings-list-text"><p>버전</p>
