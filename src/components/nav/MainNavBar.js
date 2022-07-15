@@ -98,13 +98,13 @@ export default function MainNavBar() {
           </IconButton>
         </Box>
           {/*<button className='snb_user_setting_btn'><SettingsIcon fontSize="small" /></button>*/}
-          <div className="snb-user-info-box" display="flex" justifyContent="flex-start">
-            {userData.map((data, idx)=>{
+          <div className="snb-user-info-box">
+            { userData.map((data)=>{
                     return (
                         <React.Fragment >
-                          <div className="snb-user-info-text" id={idx}>
-                            <p className='snb-user-info-name'>{data.name}</p>
-                            <p className='snb-user-info-mail'>{data.email}</p>
+                          <div className="snb-user-info-text" id={data.id}>
+                            <p className='snb-user-info-name'id={data.id}>{data.name}</p>
+                            <p className='snb-user-info-mail'id={data.id}>{data.email}</p>
                           </div>
                         </React.Fragment>
                      
