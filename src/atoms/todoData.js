@@ -1,4 +1,5 @@
-import { atom } from "recoil";
+import axios from "axios";
+import { atom, selector } from "recoil";
 
 //아톰 예시 입니다.
 export const textState = atom({
@@ -325,3 +326,29 @@ export const testFollowerData = atom({
   ],
 })
 
+
+
+//수정 중
+//유저 정보
+export const userInfoState = atom({
+  key: "userInformation",
+  default: { userId : '', date : '' }
+});
+
+
+export const getTodoData = selector({
+  key: "todos-data/get",
+  get: async ({ get }) => {
+    try{
+      const { userId, date } = get(userInfoState);
+      if (!userId || !date) return;
+      const { result } = await axios.get(`https://clonetodo.herokuapp.com/api/v1/todos?userId=${userId}&dateYm=${date}`);    
+      return result.data;
+    } catch (err) {
+    	throw err;
+    }
+  },
+  set: ({set}, newValue)=> {
+    set(userInfoState, newValue)
+  }
+});
