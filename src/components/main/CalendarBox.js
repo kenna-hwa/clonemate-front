@@ -221,7 +221,7 @@ const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.numTodoDay)
     /* 함수 선언 종료 */
 
     return(
-          <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils} >
+          <MuiPickersUtilsProvider id='calendarBox' locale={ko} utils={DateFnsUtils} >
                 <DatePicker
                     value={selectedDate}
                     onChange={setselectedDate} //클릭하면 selectedDate (선택한 날짜로 보냄)
