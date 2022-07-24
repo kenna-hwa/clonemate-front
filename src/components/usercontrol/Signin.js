@@ -19,13 +19,16 @@ function Signin() {
     axios({
       method: `POST`,
       url: `https://clonetodo.herokuapp.com/login`,
-      data: userdata,
+      data: {
+        "account" : "test",
+        "password" : "1234"
+      },
       header: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => {
-        if (res.status != 200) {
+        if (res.status !== 200) {
           alert("서버 상태를 확인해주세요.");
           console.log("error", res.statusText);
         } else {

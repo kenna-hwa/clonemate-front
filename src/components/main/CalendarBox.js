@@ -106,7 +106,7 @@ export const styles = makeStyles(() => ({ //define CSS for different date types
 
 }));
 
-export default function CalendarBox(props) {
+export default function CalendarBox({ calendarData }) {
 
 /* state 선언 시작 */
 
@@ -173,7 +173,6 @@ const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.numTodoDay)
     //날짜 타일 변경 함수
     function getDayElement(day, selectedDate, isInCurrentMonth, dayComponent) {
 
-
         //boolean 으로 바꿔주는 작업
         //데이터가 있을 때 (todoData = todo 데이터가 있는 날짜) -> true
         const isHasTodoData = theDayhasTodoArr.includes(day.getDate()); 
@@ -184,14 +183,10 @@ const theDayhasTodoArr = dtFeedCalendarOverview.map((data,i) => data.numTodoDay)
 
         //dateTile 생성
         let dateTile
-
         if (isInCurrentMonth) { //데이터 타일 반환
             if (isHasTodoData) { //HasTodoData가 있을 때 = todo가 있는 날 -> 갯수 표시 todoChecked가 y 면 색상변환 
 
                 let d = day.getDate();
-                // console.log(todoObj, d)
-                // console.log('todoObj[d]', todoObj[d])
-
                 dateTile = (
                     <Paper className={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected ? classes.selectedDayPaper : isToday ? classes.todayPaper : classes.normalDayPaper } ref={isNaN(todoObj[d])? classes.CheckedTodoDayPaper : isHasTodoData? classes.hasTodoDayPaper : isSelected? classes.selectedDayPaper : isToday? classes.todayPaper : classes.normalDayPaper}>
                         <Grid className={isNaN(todoObj[d])? classes.CheckedTodoDayNum : isHasTodoData? classes.hasTodoDayNum : isSelected? classes.selectedDayNum : isToday? classes.todayNum : classes.normalDayNum}>

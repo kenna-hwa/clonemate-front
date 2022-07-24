@@ -23,10 +23,6 @@ import Policy from "./tabmenu/Policy";
 import Announce from "./tabmenu/Announce";
 import FeedSetting from "./tabmenu/FeedSetting";
 
-import "../stylesheets/App.css";
-
-import { goalsData } from "../atoms/todoData";
-
 const theme = createTheme({
   components: {
     MuiTypography: {

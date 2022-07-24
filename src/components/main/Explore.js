@@ -2,8 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { Avatar, Stack } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Button } from "@mui/material";
-
 import CalendarBox from './CalendarBox';
 
 import { userIdInfo, testFollowerData } from "../../atoms/todoData";
@@ -12,7 +10,7 @@ import { useRecoilState } from "recoil";
 import '../../stylesheets/Nav.css';
 
 
-export default function Explore(props) {
+export default function Explore({ calendarData }) {
 
 
     let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
@@ -21,7 +19,6 @@ export default function Explore(props) {
     let [dtUser, setDtUser] = useRecoilState(userIdInfo);
     let userData = JSON.parse(JSON.stringify(dtUser));
 
-    let calendarData = props.calendarData;
      //목표 생성 페이지 이동
     function moveExForm(){
         window.location.replace("/exploreSearch")
