@@ -27,8 +27,8 @@ import FeedTodoData  from "./FeedTodoData";
                 {data.todos.map((data, idx)=>{
                     return (
                     <React.Fragment key={idx}>
-                    <FeedTodoData todos={data} modalOpen={modalOpen} key={'key'+data.id}
-                    />
+                        <FeedTodoData todos={data} modalOpen={modalOpen} key={'key'+data.id}
+                        />
                     </React.Fragment>
                     )
                 }) 

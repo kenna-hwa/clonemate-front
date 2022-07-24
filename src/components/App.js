@@ -21,10 +21,7 @@ import Text from "./tabmenu/Text";
 import TermUse from "./tabmenu/TermUse";
 import Policy from "./tabmenu/Policy";
 import Announce from "./tabmenu/Announce";
-
-import "../stylesheets/App.css";
-
-import { goalsData } from "../atoms/todoData";
+import FeedSetting from "./tabmenu/FeedSetting";
 
 const theme = createTheme({
   components: {
@@ -163,6 +160,10 @@ function App() {
         <Route exact path="/setting">
         <BasicNavBar/>
           <Setting />
+        </Route>
+        <Route exact path="/feedsetting">
+        <BasicNavBar/>
+          <FeedSetting />
         </Route>
         <Route exact path="/text">
         <BasicNavBar/>

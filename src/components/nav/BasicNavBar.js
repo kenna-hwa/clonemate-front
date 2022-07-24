@@ -51,8 +51,9 @@ export default function BasicNavBar () {
              : urlPath.includes(`goals`)? `목표` : urlPath.includes(`exploreSearch`)? `팔로우` 
              : urlPath.includes(`termUse`)? `이용약관` : urlPath.includes(`policy`)? `개인정보 정책` 
              : urlPath.includes(`setting`)? `설정` : urlPath.includes(`text`)? `정보` 
-             : urlPath.includes(`announcements`)? `공지사항` : urlPath.includes(`routines`) ? `기한이 있는 할 일 설정` : 
-             urlPath.includes(`orderitem`) ? `순서 수정` : null
+             : urlPath.includes(`feedsetting`)? `화면` 
+             : urlPath.includes(`announcements`)? `공지사항` : urlPath.includes(`routines`) ? `기한이 있는 할 일 설정` 
+             : urlPath.includes(`orderitem`) ? `순서 수정` : null
            }
           </Typography>
           

@@ -7,7 +7,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import '../../stylesheets/Setting.css';
 
 
-export default function TextInfo() {
+export default function Text() {
 
 /* 함수 시작 */
 
@@ -17,9 +17,6 @@ export default function TextInfo() {
   }
   const movePolicy = (e) => {
     window.location.replace(`/policy`)
-  }
-  const moveAnnouncements = (e) => {
-    window.location.replace(`/`)
   }
 
  /* 함수 종료 */
@@ -38,7 +35,7 @@ export default function TextInfo() {
                 <NavigateNextIcon className="setting-list-arrow" fontSize="small" sx={{ color: "lightgray" }} />
             
             </Button>
-            <Divider/>
+            <Divider light="true"/>
             
             <Button className="setting-list-box" onClick={movePolicy} sx={{ color: "black" }}>
                 <div className="setting-list-button" >
@@ -49,7 +46,7 @@ export default function TextInfo() {
                 </div>
                 <NavigateNextIcon className="setting-list-arrow" fontSize="small" sx={{ color: "lightgray" }} />
             </Button>
-            <Divider/>
+            <Divider light="true"/>
 
             <Button className="setting-list-box" sx={{ color: "black" }}>
                 <div className="setting-list-button" >
@@ -61,7 +58,7 @@ export default function TextInfo() {
                 
                 <NavigateNextIcon className="setting-list-arrow" fontSize="small" sx={{ color: "lightgray" }} />
             </Button>
-            <Divider />
+            <Divider light="true"/>
 
     
 

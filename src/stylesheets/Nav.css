@@ -120,14 +120,25 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
           justify-content: flex-start;
 }
 
-.snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text p {
+.snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text p:first-child {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   font-family: 'Pretendard';
-  font-weight: 600;
+  font-weight: 800;
   font-size: 16px;
   color: #1c1c1c;
+}
+
+.snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text p:last-child {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-size: 14px;
+  color: gray;
+  margin-top: -8px;
 }
 
 .snb_wrap .snb_user_follow_info_wrap .snb-follow-box {
@@ -143,7 +154,7 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
 .snb_wrap .snb_user_follow_info_wrap .snb-follow-box p {
   font-family: 'Pretendard';
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   color: #1c1c1c;
 }
 
@@ -266,5 +277,23 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   color: #1c1c1c;
   font-size: 16px;
   font-weight: 300;
+}
+
+.explore-wrap .explore-user-name {
+  font-family: 'Pretendard';
+  font-weight: 800;
+  font-size: 16px;
+  color: #1c1c1c;
+}
+
+.explore-wrap .explore-user-nickname {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-size: 14px;
+  color: gray;
+  margin-top: -8px;
 }
 /*# sourceMappingURL=Nav.css.map */

@@ -1,217 +1,129 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { getTodosDataSample } from "../../api/apiCommunicate";
 
 import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-
 
 import "../../stylesheets/Follow.css";
 
-//  ** 할일 **
-// 유저 버튼 -> 언팔로우 시 => isfollowing:false 로 변경 이 아니고 !
-// 유저 버튼 -> 해당 유저를 불러온 데이터에서 제외하고, update된 usestate의 데이터 갱신 
+// usestate 생성 -> 팔로워 삭제 시 화면에서만 일시적으로 저장되도록 우선 구현 
 // 각 유저 클릭 -> 해당 유저 feed로 이동 
+// Dialog> 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경
 
 
-
+// state 테스트 더미 데이터 시작 
 const FollowingData = [
-    {
-    "strUserName": "🍈메로나",
-    "strUserId" : "merona",
-    "strUserEmail": "useremail@email.com",
-    "strUserInfo": "🍈메로나의 투두리스트입니다",
-    "dtTodo": [{
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일",
-          "ynComplete": "Y",
-      },
-    {
-          "goal_id": 1,
-          "todo_id": 1,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일2",
-          "ynComplete": "N",
-      },
-      {
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일",
-          "ynComplete": "Y",
-      }],
-    "isFollower": true,
-    "isFollowing": true,
-  },
-  
   {
-    "strUserName": "두두",
-    "strUserId" : "dodo",
-    "strUserEmail": "useremail@email.com",
-    "strUserInfo": "dodo의 투두리스트입니다",
-    "dtTodo": [{
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일",
-          "ynComplete": "Y",
-      },
-    {
-          "goal_id": 1,
-          "todo_id": 1,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일2",
-          "ynComplete": "N",
-      },
-      {
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "sample의 할 일",
-          "ynComplete": "Y",
-      }],
-    "isFollower": true,
-    "isFollowing": true,
+    "following": {
+        "introText": "팔로우테스트1 투두입니다~~",
+        "email": "77777@gmail.com",
+        "account": "test1",
+        "name": "팔로우테스트1",
+        "id": 1
+    },
+    "id": 1
   },
   {
-    "strUserName": "주영",
-    "strUserId" : "주영",
-    "strUserEmail": "useremail@email.com",
-    "strUserInfo": "주영의 투두리스트입니다",
-    "dtTodo": [{
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "🥛우유마시기",
-          "ynComplete": "Y",
-      },
-    {
-          "goal_id": 1,
-          "todo_id": 1,
-          "bg_color": "#2121fe",
-          "todo_title": "스터디카페가기",
-          "ynComplete": "N",
-      },
-      {
-          "goal_id": 1,
-          "todo_id": 0,
-          "bg_color": "#2121fe",
-          "todo_title": "햄버거 냠냠🍔",
-          "ynComplete": "Y",
-      }],
-    "isFollower": false,
-    "isFollowing": true,
-  }  
-            
+    "following": {
+      "introText": "🥛팔로우테스트2 투두입니다~~",
+      "email": "5555@gmail.com",
+      "account": "test1",
+      "name": "팔로우테스트2",
+      "id": 2
+    },
+    "id": 2
+  },
+  {
+    "following": {
+       "introText": "팔로우테스트3 투두입니다~~",
+        "email": "6666@gmail.com",
+        "account": "test1",
+        "name": "팔로우테스트3",
+        "id": 3
+    },
+    "id": 3
+  },
 ]
-
 
 
 export default function Following() {
 
+  let [following, setFollowing] = useState(FollowingData);
+  let testarray = JSON.parse(JSON.stringify(following));
+  const isThereFollowing = testarray.length;
 
-/* atom 시작 */
-//let [following, setFollowing] = useRecoilState(followData); // 팔로우data
-let [following, setFollowing] = useState(FollowingData);
+  const [open, setOpen] = React.useState(false);
 
-
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
+  const handleClickOpen = () => {
       setOpen(true);
-    };
-    const handleClose = () => {
+  };
+  const handleClose = () => {
       setOpen(false);
-    };
+  };
 
- 
-
-const handleFollowingChange = (e) => {
+const deleteFollowing = (e) => {
     
-      let userId = e.target.dataset.index;
-      console.log('current user', userId);
+    let selectedId = e.target.id;
+    console.log('selected', selectedId);
+    const thisData = [...following];
 
-      const thisData = [...following];
-      let newFollowing = thisData.filter(item => item.strUserId !== userId)
+    const removeArr = thisData.filter(followings => followings.id !== parseInt(selectedId));
 
-      setFollowing(newFollowing);
-      console.log(newFollowing)
-
-      setOpen(false);
-      //window.location.replace(`/exploreSearch/`);
+    setFollowing(removeArr); 
+    console.log('newarray', removeArr);
+     
+    setOpen(false);
+    //window.location.replace(`/exploreSearch/`);
       
   };
 
 
     return (
       <div className="follow-follow-list-wrap" >
-       
-      {/* useRecoilState 로는 작동하는 false의 목록없음이 dummy data 로는 작동 X 왜?? */}
-      {following.map((data => data.strUserId.length > 0 ? (
+
+        {isThereFollowing ? <React.Fragment>
+
+          {testarray.map((data, index) => { 
+          
+            return (
            
-              <List // 넓이 조정 
-                  sx={{ width: '100%'}}
-                  style={{position:'relative'}} 
-                  key={data.strUserName}  disablePadding>
+              <List 
+                sx={{ width: '100%'}}
+                style={{position:'relative'}} 
+                key={data.id}  disablePadding>
                       
-                          {/* isfollowing 값을 true/false ? -> 문법 오류 해결 */}
-                  
-                      
-                              <div className="follow-list-box" key={data.strUserId}> 
-                               
-                              <div className='setting-settings-list-wrap' id={data.strUserName} name={data.strUserName}>
-                                            <div className="setting-list-box" >
-                
-                                        
-                                            <div className="settings-list-text" ><p>{data.strUserName}</p></div>
-                                            <div className="follow-list-name-icon-wrap"  onClick={handleClickOpen} sx={{ color:"black"}}>
-                                                <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></div>
-            
-                                            </div>
-                                            {data.dtTodo.map(e => {
-                                                return e.ynComplete === "Y" ? 
-                                                    <div className="follows-list-box" id={e.goal_id}>
-                                                        <div  className="follow-list-button" id={e.goal_id}>
-                                                            
-                                                            <p className="follow-list-text" >{e.todo_title}</p>
-                                                                
-                                                        </div> 
-                                                    </div>: null}
-                                      
-                                            )}
+                <div className="follow-list-box" key={data.id}>      
+                  <div className='setting-settings-list-wrap' id={data.id} >
 
-                                        </div>
+                    <div className="setting-list-box" id={data.following.id}>
+                      <div className="settings-list-text" ><p>{data.following.name}</p></div>
+                      <div className="follow-list-name-icon-wrap"  onClick={handleClickOpen} sx={{ color:"black"}}>
+                      <MoreHorizIcon color="disabled" className="follow-list-name-icon"/></div>
+                    </div>
+                                            
+                    <div className="follows-list-box" id={data.following.id}>
+                      <div  className="follow-list-button" id={data.following.id}>
+                          <p className="follow-list-text" >{data.following.introText}</p>
+                      </div> 
+                    </div>
 
-                
-                              {/* 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경 */}
-                              <Dialog
-                                  sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
-                                  maxWidth="sm"
-                                  open={open}
-                                  >
-                                  <Stack spacing={1} >
-                                      <Button autoFocus data-index={data.strUserId} onClick={handleFollowingChange}  color="error">언팔로우</Button>
-                                      <Button onClick={handleClose}>취소</Button>
-                                  </Stack>
-                                 
-                              </Dialog>
-                              </div> 
-                           
-                          
-                      
-                   
-                      
-              </List> ) : <p>"목록 없음"</p> )
-      )}
+                  </div>
 
-  </div>
+                  <Dialog
+                     sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 432 } }}
+                    maxWidth="sm" open={open} >
+                      <Stack spacing={1} >
+                        <Button autoFocus id={data.following.id} key={data.following.id} onClick={deleteFollowing}  color="error">언팔로우</Button>
+                        <Button onClick={handleClose}>취소</Button>
+                      </Stack>           
+                  </Dialog>
 
-    
+                </div> 
+ 
+              </List>  )})}</React.Fragment> : <div className="null-text">목록 없음</div> }
+
+      </div>
     )} 
