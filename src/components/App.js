@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { Suspense, useRef, useState } from "react";
+import React from "react";
 import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { koKR } from '@mui/material/locale';
@@ -123,9 +123,7 @@ function App() {
           </div>
         </Route>
         <Route exact path="/main">
-          <Suspense fallback={<div>Loading... </div>}>
           <Main />
-          </Suspense>
         </Route>
         <Route exact path="/join">
         <BasicNavBar/>

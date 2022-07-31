@@ -24,7 +24,6 @@ export default function Feed() {
 
   return (
   <section id="Feed">
-    
         <FeedTodoGoal />
     </section>
   );
