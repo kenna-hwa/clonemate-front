@@ -16,6 +16,7 @@ export default function Main() {
   /* props 선언 시작 */
 
   let [atomCalendarData, setAtomCalendarDate] = useRecoilState(objFeedCalendarOverview)
+  console.log('atomCalendarData: ', atomCalendarData);
 
   /* props 선언 끝 */
 

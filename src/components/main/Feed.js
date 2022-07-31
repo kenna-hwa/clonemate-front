@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, Suspense } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import { useHistory } from "react-router-dom";
 import { getTodoData } from "../../atoms/todoData";
@@ -23,10 +23,9 @@ export default function Feed() {
   /* 함수 선언 끝 */
 
   return (
-    <Suspense fallback={<div> Data loading... </div>}>
-    <section id="Feed">
+  <section id="Feed">
+    
         <FeedTodoGoal />
     </section>
-    </Suspense>
   );
 }
