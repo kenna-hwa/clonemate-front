@@ -288,6 +288,41 @@ export const userIdInfo = atom({
   ]
 })
 
+export const searchState = atom({
+  key: "searchState",
+  default: [
+      {
+        "id": 1,
+        "userId": "test",
+        "name": "test123",
+        "introText": "hello",
+        "emailSearchYn": "N",
+        "randomYn": "Y"
+      },
+      {
+        "id": 2,
+        "userId": "test1",
+        "name": "팔로우테스트1",
+        "introText": "팔로우테스트1 투두입니다~~",
+        "emailSearchYn": "Y",
+        "randomYn": "Y"
+      },
+      {
+        "id": 3,
+        "userId": "test2",
+        "name": "팔로우테스트2",
+        "introText": "팔로우테스트2 투두입니다~~",
+        "emailSearchYn": "Y",
+        "randomYn": "Y"
+      },
+    ],
+  });
+
+export const selectedDataState = atom({
+  key: "selectedDataSate",
+  default: null,
+});
+
 
 // Followers 테스트 더미 
 export const testFollowerData = atom({
