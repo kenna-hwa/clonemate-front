@@ -17,11 +17,11 @@ import GoalEditForm from "./goal/GoalEditForm";
 import ExploreSearch from "./exploresearch/ExploreSearch";
 import Routines from "./routines/Routines";
 import Setting from "./nav/Setting";
-import Text from "./tabmenu/Text";
-import TermUse from "./tabmenu/TermUse";
-import Policy from "./tabmenu/Policy";
-import Announce from "./tabmenu/Announce";
-import FeedSetting from "./tabmenu/FeedSetting";
+import Text from "./navsetting/Text";
+import TermUse from "./navsetting/TermUse";
+import Policy from "./navsetting/Policy";
+import Announce from "./navsetting/Announce";
+import FeedSetting from "./navsetting/FeedSetting";
 
 const theme = createTheme({
   components: {

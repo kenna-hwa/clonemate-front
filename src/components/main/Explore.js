@@ -2,6 +2,8 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { Avatar, Stack } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Button } from "@mui/material";
+
 import CalendarBox from './CalendarBox';
 
 import { userIdInfo, testFollowerData } from "../../atoms/todoData";
@@ -10,7 +12,7 @@ import { useRecoilState } from "recoil";
 import '../../stylesheets/Nav.css';
 
 
-export default function Explore({ calendarData }) {
+export default function Explore(props) {
 
 
     let [testFollower, setTestFollower] = useRecoilState(testFollowerData);
@@ -19,6 +21,7 @@ export default function Explore({ calendarData }) {
     let [dtUser, setDtUser] = useRecoilState(userIdInfo);
     let userData = JSON.parse(JSON.stringify(dtUser));
 
+    let calendarData = props.calendarData;
      //목표 생성 페이지 이동
     function moveExForm(){
         window.location.replace("/exploreSearch")
@@ -29,7 +32,7 @@ export default function Explore({ calendarData }) {
             className='explore-wrap' 
             sx={{ position: 'relative', width: '24vw', minWidth: '350px', top: 0, padding: '2em'}} >        
             
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} className='avatar-wrap'>
                 
             { userData.map((user, idx)=>{
                 return (
@@ -58,6 +61,7 @@ export default function Explore({ calendarData }) {
 
             </Stack>
 
+            <div className='explore-user-wrap'>
                 { userData.map((user)=>{
                     return (
                         <React.Fragment >
@@ -67,8 +71,7 @@ export default function Explore({ calendarData }) {
                      
                     )
                 }) }
-
-            <CalendarBox calendarData={calendarData} />       
+            </div>      
         </Box>
     );
 }
