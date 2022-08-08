@@ -1,7 +1,8 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useHistory } from "react-router-dom";
 import { getTodoData } from "../../atoms/todoData";
+import { GoalsDataState, TodosDataState  } from '../../api/apiCommunicate'
 import FeedTodoGoal from "../main/FeedTodoGoal";
 
 export default function Feed() {
@@ -13,8 +14,10 @@ export default function Feed() {
 
   /* state 선언 시작 */
 
-  const [userTodoData, setUserTodoData] = useRecoilState(getTodoData);
-  console.log('userTodoData: ', userTodoData);
+  // const [userTodoData, setUserTodoData] = useRecoilState(getTodoData);
+  // console.log('userTodoData: ', userTodoData);
+  const goalState = useRecoilValue(GoalsDataState);
+  const todoState = useRecoilValue(TodosDataState);
  
   /* state 선언 종료 */
 

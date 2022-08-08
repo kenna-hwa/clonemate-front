@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useRecoilState, useRecoilValue } from "recoil";
+import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import { objFeedCalendarOverview , objDatesData} from "../atoms/todoData";
 
 
@@ -202,6 +202,423 @@ export const deleteGoalData = async (goalId) => {
 /* 투두 API 통신 시작 */
 
 //GET objTodosDataResult id 값으로 받아오기
+
+//수정 중
+//유저 정보
+export const userInfoState = atom({
+  key: "userInformation",
+  default: { userId : 'test', date : '2022-07-11' }
+});
+
+
+//default Goal Atom
+export const GoalsDataState = atom({
+  key: 'atom/goals-data',
+  default: {
+    "goal_1": [
+        {
+            "id": 1,
+            "orderNo": 1,
+            "contents": "목표 1",
+            "privacy": "PUBLIC",
+            "color": "#cccccc",
+            "todos": [
+                {
+                    "id": 1,
+                    "goalId": 1,
+                    "orderNo": 1,
+                    "contents": "오늘의 투두1-1",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": true,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": true,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                },
+                {
+                    "id": 2,
+                    "goalId": 1,
+                    "orderNo": -1,
+                    "contents": "오늘의 투두1-2",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": false,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": false,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                },
+                {
+                    "id": 6,
+                    "goalId": 1,
+                    "orderNo": -2,
+                    "contents": "오늘의 투두1-3",
+                    "date": "2022-03-29",
+                    "startRepeatDate": "2022-03-29",
+                    "endRepeatDate": "2022-03-29",
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": false,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": false,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                },
+                {
+                    "id": 7,
+                    "goalId": 1,
+                    "orderNo": 4,
+                    "contents": "오늘의 투두1-4",
+                    "date": "2022-05-29",
+                    "startRepeatDate": "2022-05-29",
+                    "endRepeatDate": "2022-05-29",
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": false,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": false,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                }
+            ]
+        }
+    ],
+    "goal_2": [
+        {
+            "id": 2,
+            "orderNo": 2,
+            "contents": "목표 2",
+            "privacy": "PUBLIC",
+            "color": "#cccccc",
+            "todos": [
+                {
+                    "id": 1,
+                    "goalId": 2,
+                    "orderNo": 1,
+                    "contents": "오늘의 투두2-1",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": true,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": true,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                },
+                {
+                    "id": 2,
+                    "goalId": 2,
+                    "orderNo": 2,
+                    "contents": "오늘의 투두2-1",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": true,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": true,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                }
+            ]
+        }
+    ],
+    "goal_3": [
+        {
+            "id": 3,
+            "orderNo": 3,
+            "contents": "목표 3",
+            "privacy": "PUBLIC",
+            "color": "#cccccc",
+            "todos": [
+                {
+                    "id": 1,
+                    "goalId": 3,
+                    "orderNo": 1,
+                    "contents": "오늘의 투두3-1",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": true,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": true,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                },
+                {
+                    "id": 2,
+                    "goalId": 3,
+                    "orderNo": 2,
+                    "contents": "오늘의 투두3-1",
+                    "date": "2022-05-11",
+                    "startRepeatDate": null,
+                    "endRepeatDate": null,
+                    "repeatDays": {
+                        "THU": false,
+                        "TUE": true,
+                        "WED": false,
+                        "SAT": false,
+                        "FRI": true,
+                        "MON": false,
+                        "SUN": false
+                    },
+                    "isChecked": false,
+                    "likes": null
+                }
+            ]
+        }
+    ]
+},
+});
+
+//default Todo Atom
+export const TodosDataState = atom({
+  key: 'atom/todos-data',
+  default: {
+    "todo_1": [
+        {
+            "id": 1,
+            "goalId": 1,
+            "orderNo": 1,
+            "contents": "오늘의 투두1-1",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": true,
+                "WED": false,
+                "SAT": false,
+                "FRI": true,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 2,
+            "goalId": 1,
+            "orderNo": -1,
+            "contents": "오늘의 투두1-2",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": false,
+                "WED": false,
+                "SAT": false,
+                "FRI": false,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 6,
+            "goalId": 1,
+            "orderNo": -2,
+            "contents": "오늘의 투두1-3",
+            "date": "2022-03-29",
+            "startRepeatDate": "2022-03-29",
+            "endRepeatDate": "2022-03-29",
+            "repeatDays": {
+                "THU": false,
+                "TUE": false,
+                "WED": false,
+                "SAT": false,
+                "FRI": false,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 7,
+            "goalId": 1,
+            "orderNo": 4,
+            "contents": "오늘의 투두1-4",
+            "date": "2022-05-29",
+            "startRepeatDate": "2022-05-29",
+            "endRepeatDate": "2022-05-29",
+            "repeatDays": {
+                "THU": false,
+                "TUE": false,
+                "WED": false,
+                "SAT": false,
+                "FRI": false,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        }
+    ],
+    "todo_2": [
+        {
+            "id": 1,
+            "goalId": 2,
+            "orderNo": 1,
+            "contents": "오늘의 투두2-1",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": true,
+                "WED": false,
+                "SAT": false,
+                "FRI": true,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 2,
+            "goalId": 2,
+            "orderNo": 2,
+            "contents": "오늘의 투두2-1",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": true,
+                "WED": false,
+                "SAT": false,
+                "FRI": true,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        }
+    ],
+    "todo_3": [
+        {
+            "id": 1,
+            "goalId": 3,
+            "orderNo": 1,
+            "contents": "오늘의 투두3-1",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": true,
+                "WED": false,
+                "SAT": false,
+                "FRI": true,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 2,
+            "goalId": 3,
+            "orderNo": 2,
+            "contents": "오늘의 투두3-1",
+            "date": "2022-05-11",
+            "startRepeatDate": null,
+            "endRepeatDate": null,
+            "repeatDays": {
+                "THU": false,
+                "TUE": true,
+                "WED": false,
+                "SAT": false,
+                "FRI": true,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        }
+    ]
+},
+});
+
+
+//Todo 받아오기
+export const getTodoData = selector({
+  key: "get/todo-data",
+  get: async ({ get }) => {
+    try{
+      const { userId, date } = get(userInfoState);
+      if (!userId || !date) return;
+      const result = await axios.get(`https://api.github.com/repos/kenna-hwa/clonemate-front`);
+      return result?.data;
+    } catch (err) {
+    	throw err;
+    }
+  },
+  set: ({set}, todos) => {
+    const todosCopy = [...todos];
+    set(
+      GoalsDataState,
+      ()=>{
+        for(let i = 0; i < todosCopy.length; i++){
+          let goalid = 'goal_'+todosCopy[i].id;
+          let todoid = 'todo_'+todosCopy[i].id;
+          let todos = todosCopy[i].todos
+
+          if(!GoalsDataState[goalid]){
+            GoalsDataState[goalid] = []
+          }
+          GoalsDataState[goalid].push(todosCopy[i]);
+          TodosDataState[todoid] = todos;
+        }
+      }
+    );
+  }
+});
+
 
 //GET objTodosDataResult 캘린더 날짜로 받아오기
 //date=yyyy-mm-dd

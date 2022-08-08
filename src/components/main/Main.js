@@ -16,7 +16,6 @@ export default function Main() {
   /* props 선언 시작 */
 
   let [atomCalendarData, setAtomCalendarDate] = useRecoilState(objFeedCalendarOverview)
-  console.log('atomCalendarData: ', atomCalendarData);
 
   /* props 선언 끝 */
 
@@ -29,7 +28,7 @@ export default function Main() {
     }
 
   return (
-    <Suspense fallback={<div>Loading... </div>}>
+
     <section id="main">
       <MainNavBar />
       <section id="content">
@@ -72,6 +71,5 @@ export default function Main() {
         <Feed />
       </section>
     </section>
-    </Suspense>
   );
 }
