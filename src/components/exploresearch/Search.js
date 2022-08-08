@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 
+import { useRecoilState, useResetRecoilState } from "recoil";
+import { searchState, selectedDataState } from "../../atoms/todoData";
+
+
 import { Button, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+
+import SearchUsers from './SearchUsers';
 
 import '../../stylesheets/Search.css';
 
@@ -17,84 +23,111 @@ import '../../stylesheets/Search.css';
 // 받아와야 하는 값 
 // -user id 입력-> filter -> 출력 user nickname 
 
-// < style 수정사항 >
-// ✔ search 검색 input 높이 조절
-// 항목 선택시 default 색 변경 
 
-const Data = [
-  { "strUserName": "주영", "todo_id": "0", "title": "🥛우유마시기" },
-  { "strUserName": "🍈메로나", "todo_id": "1", "title": "공부하기" },
-  { "strUserName": "두두", "todo_id": "5", "title": "스터디카페가기" },
-  { "strUserName": "나야", "todo_id": "7", "title": "8시간 자기" }
+// state 테스트 더미 데이터 시작 
+const usersData = [
+  {
+    "id": 1,
+    "userId": "test",
+    "name": "test123",
+    "introText": "hello",
+    "emailSearchYn": "N",
+    "randomYn": "Y"
+  },
+  {
+    "id": 2,
+    "userId": "test1",
+    "name": "팔로우테스트1",
+    "introText": "팔로우테스트1 투두입니다~~",
+    "emailSearchYn": "Y",
+    "randomYn": "Y"
+  },
+  {
+    "id": 3,
+    "userId": "test2",
+    "name": "팔로우테스트2",
+    "introText": "팔로우테스트2 투두입니다~~",
+    "emailSearchYn": "Y",
+    "randomYn": "Y"
+  },
 ]
-//console.log(Data);
 
 export default function Search() {
 
     const [searchTerm, setSearchTerm] = useState("");
-  
+    const [searchedUsers, setSearchedUsers] = useRecoilState(searchState);
+    
+    const [searchingUsers, setSearchingUsers] = useState([]);
+
+    console.log('searchedUsers', searchedUsers);
+    
+    //const [search, setSearch] = useRecoilState(searchState);
+    //console.log('search', search)
+    //let testSearch = JSON.parse(JSON.stringify(search));
+    //const resetSelectedData = useResetRecoilState(selectedDataState);
+    
+    const onInputChange = (e) => {
+      setSearchTerm(e.target.value);
+    };
+
+    const keyPressed = (event) => {
+      if (event.key === "Enter") {
+        //setSearchedUsers(searchContact(searchedUsers))
+        //const searching = searchContact(searchedUsers);
+        //console.log('searching', searchedUsers);
+        //setSearchedUsers(searching);
+        setSearchingUsers(searchContact(searchedUsers))
+        console.log('searchinggg', searchingUsers);
+        setSearchTerm("");
+      }
+    }
+
+
+  const searchContact = (dataset) => {
+
+    return dataset.filter((data)=> {
+      if (searchTerm === "") {
+        return null
+      } else if (
+      data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      data.userId.toLowerCase().includes(searchTerm.toLowerCase())
+      ) return data
+     
+    })}
+      
+
     return (
       <div className="search-search-list-wrap" >
-            {/* textfield underline 색상 변경 */}
-            <TextField 
-                className="search-blank"
-                fullWidth  
-                hiddenLabel
-                id="filled-basic"
-                size="small"
-                variant="filled"
-                placeholder="email ,ID 검색"
-                sx={{ boxShadow: 'none',
-                '& .MuiFilledInput-root': {
-                  backgroundColor:'#f5f5f5',
-                  borderRadius: 2,
-                  fontSize: 14,
-                  color: '#080808',}
-                }}    
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-        
-                InputProps={{
-                  disableUnderline: true,
+        <TextField className="search-blank" fullWidth hiddenLabel id="filled-basic"
+                size="small" variant="filled" placeholder="email ,ID 검색"
+                sx={{ boxShadow: 'none', '& .MuiFilledInput-root': { backgroundColor:'#f5f5f5', borderRadius: 2, fontSize: 14, color: '#080808' }}}    
+                
+                type="text"
+                
+                onChange={onInputChange}
+                onKeyPress={keyPressed}
+                value={searchTerm}
+
+                InputProps={{ disableUnderline: true,
                 startAdornment: (
                   <InputAdornment position="start">
                     <SearchIcon fontSize="small" className="search-list-icon" />
                   </InputAdornment>
-                ),
-              }}
-            >
-            </TextField>
-
-            {Data.filter((data)=> {
-              if (searchTerm === "") {
-                return data
-              } else if (data.strUserName.toLowerCase().includes(searchTerm.toLowerCase())) {
-                return data
-              } else if (data.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-                return data
-              }
-            }).map(data=>{
-              return(
-                <React.Fragment key={data.todo_id}>
-                  <div className="search-list-box" key={data.todo_id}>
-                    <Button className="search-list-button" id={data.todo_id} name={data.todo_id}>
-                        <div className="search-list-name" id={data.strUserName} name={data.strUserName}>
-                          <p>{data.strUserName}</p>
-                        </div>
-                        <div className="search-list-text" id={data.title} name={data.title}>
-                          <p>{data.title}</p>
-                        </div>
-                    </Button>
-                  </div>
-
-                </React.Fragment>
-               
-               );
-
-              })}
-                
+                ),}}> 
+        </TextField>
     
+        {/*<SearchUsers data={searchContact(searchedUsers)}/> */}
+       
+      { searchingUsers.length > 0 ? 
+        
+        <React.Fragment>
+
+        { searchingUsers.map((data) => {
+            return (
+              <SearchUsers data={data} searchTerm={searchTerm} key={data.id}/>
+            )})}</React.Fragment> : <div className="null-text">목록 없음</div> }
+  
       </div>
     
-    )}
+    )
+  }
