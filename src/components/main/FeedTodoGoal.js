@@ -6,6 +6,7 @@ import { GoalsDataState }from '../../api/apiCommunicate'
 
  export default function FeedTodoGoal() {
 
+
     const goalState = useRecoilValue(GoalsDataState);
     console.log('goalState: ', goalState.goal_1);
     // const goalList = goalState.map((goal) => <li>{ goal.contents }</li>);
