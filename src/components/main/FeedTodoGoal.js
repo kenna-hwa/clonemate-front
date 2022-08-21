@@ -7,15 +7,18 @@ import { GoalsDataState, TodosDataState } from "../../api/apiCommunicate";
 export default function FeedTodoGoal() {
   const goalState = useRecoilValue(GoalsDataState);
   const TodoState = useRecoilValue(TodosDataState);
-
-  return (
-    <div className="goals-list-box">
-        {goalState.map(goal => {
-            return <Button>{goal.contents
-            
-            }</Button>
-        })
-        }
+    // const goalList = goalState.map((goal) => <li>{ goal.contents }</li>);
+        
+    return (
+        <div className="goals-list-box">
+            <Button className="goals-list-button">
+                
+            </Button>
+            <div className="todos-list-cont">
+               
+            </div>
+        </div>
+    )
 
 {TodoState.map((todo)=>{ console.log("todo",todo)})}
 

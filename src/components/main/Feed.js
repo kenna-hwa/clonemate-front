@@ -28,6 +28,8 @@ export default function Feed() {
 
   return (
   <section id="Feed">
+    {/* {'userTodoData'}{userTodoData.node_id}
+    {'getTodoDataResult'}{ getTodoDataResult.node_id} */}
         <FeedTodoGoal />
   </section>
   );

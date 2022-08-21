@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily, useRecoilState } from "recoil";
 
 //아톰 예시 입니다.
 export const textState = atom({
@@ -333,6 +333,66 @@ export const createRepeatDay = atom({
 });
 
 
+export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린더에서 날짜 클릭하면 해당 날짜로 값 받아오기 // 더미 데이터는 2022-02-05
+  key: "todoData",
+  default: [
+    {
+    "todo_id": 0,
+    "goal_id": 0, //묶여있는 goal id
+    "next_todo_id": 1, //다음 todo id (순서지정용)
+    "title": "첫 번째 목표의 할 일 0",
+    "date": "2022-02-05",
+    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+    "repeat_days": {
+        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+        "mon": "N",
+        "tue": "N",
+        "wed": "N",
+        "thu": "N",
+        "fri": "N",
+        "sat": "N",
+    },
+    "check_yn" : "N" //달성여부
+  },
+  {
+    "todo_id": 1,
+    "goal_id": 0, //묶여있는 goal id
+    "next_todo_id": 2, //다음 todo id (순서지정용)
+    "title": "첫 번째 목표의 할 일 1",
+    "date": "2022-02-05",
+    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+    "repeat_days": {
+        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+        "mon": "N",
+        "tue": "N",
+        "wed": "N",
+        "thu": "N",
+        "fri": "N",
+        "sat": "N",
+    },
+    "check_yn" : "N" //달성여부
+  },
+  {
+    "todo_id": 0,
+    "goal_id": 1, //묶여있는 goal id
+    "next_todo_id": 1, //다음 todo id (순서지정용)
+    "title": "두 번째 목표의 할 일 1",
+    "date": "2022-02-05",
+    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
+    "repeat_days": {
+        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
+        "mon": "N",
+        "tue": "N",
+        "wed": "N",
+        "thu": "N",
+        "fri": "N",
+        "sat": "N",
+    },
+    "check_yn" : "N" //달성여부
+  }
+]
+})
+
 export const todoReadOnly = atom({
   key: "todoReadOnly",
   default: true
@@ -439,3 +499,4 @@ export const testFollowerData = atom({
     },
   ],
 })
+

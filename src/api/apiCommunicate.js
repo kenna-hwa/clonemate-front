@@ -210,7 +210,6 @@ export const userInfoState = atom({
   default: { userId : 'test', date : '2022-07-11' }
 });
 
-
 //default Goal Atom
 export const GoalsDataState = atom({
   key: 'atom/goals-data',
@@ -446,7 +445,7 @@ export const GoalsDataState = atom({
 });
 
 //default Todo Atom
-export const TodosDataState = atom({
+export const TodosDataStates = atom({
   key: 'atom/todos-data',
   default: [
     [
@@ -659,6 +658,12 @@ export const TodosDataState = atom({
 });
 
 
+//default Todo Atom
+export const TodosDataState = atom({
+  key: 'atom/todos-data',
+  default: {},
+});
+
 //Todo 받아오기
 export const getTodoData = selector({
   key: "get/todo-data",
@@ -672,6 +677,7 @@ export const getTodoData = selector({
     	throw err;
     }
   },
+
   set: ({set}, todos) => {
     const todosCopy = [...todos];
     set(
