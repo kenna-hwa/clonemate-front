@@ -2,23 +2,26 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useRecoilValue } from "recoil";
 
-import { GoalsDataState }from '../../api/apiCommunicate'
+import { GoalsDataState, TodosDataState } from "../../api/apiCommunicate";
 
- export default function FeedTodoGoal() {
+export default function FeedTodoGoal() {
+  const goalState = useRecoilValue(GoalsDataState);
+  const TodoState = useRecoilValue(TodosDataState);
 
-    const goalState = useRecoilValue(GoalsDataState);
-    console.log('goalState: ', goalState.goal_1);
-    // const goalList = goalState.map((goal) => <li>{ goal.contents }</li>);
-        
-    return (
-        <div className="goals-list-box">
-            <Button className="goals-list-button">
-                
-            </Button>
-            <div className="todos-list-cont">
-               
-            </div>
-        </div>
-    )
+  return (
+    <div className="goals-list-box">
+        {goalState.map(goal => {
+            return <Button>{goal.contents
+            
+            }</Button>
+        })
+        }
 
-} 
+{TodoState.map((todo)=>{ console.log("todo",todo)})}
+
+      <div className="todos-list-cont">
+
+      </div>
+    </div>
+  );
+}

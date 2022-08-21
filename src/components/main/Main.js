@@ -10,6 +10,8 @@ import { objFeedCalendarOverview } from "../../atoms/todoData";
 import { Avatar, Stack } from '@mui/material';
 import AddIcon from '@material-ui/icons/Add';
 
+import "../../stylesheets/Main.scss"
+
 
 export default function Main() {
 
@@ -29,17 +31,11 @@ export default function Main() {
 
   return (
 
-    <section id="main">
+    <section id="Main">
       <MainNavBar />
-      <section id="content">
+      <section id="Content">
         <section
           id="Explore"
-          sx={{
-            position: "relative",
-            width: "24vw",
-            top: 0,
-            padding: "2em",
-          }}
         >
           <Stack direction="row" spacing={1}>
             {/* Following users data 필요 */}

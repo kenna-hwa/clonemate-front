@@ -5,6 +5,8 @@ import { getTodoData } from "../../atoms/todoData";
 import { GoalsDataState, TodosDataState  } from '../../api/apiCommunicate'
 import FeedTodoGoal from "../main/FeedTodoGoal";
 
+
+
 export default function Feed() {
   /* hook 선언 시작 */
 
@@ -18,7 +20,6 @@ export default function Feed() {
   // console.log('userTodoData: ', userTodoData);
   const goalState = useRecoilValue(GoalsDataState);
   const todoState = useRecoilValue(TodosDataState);
- 
   /* state 선언 종료 */
 
   /* 함수 선언 시작 */
@@ -28,6 +29,6 @@ export default function Feed() {
   return (
   <section id="Feed">
         <FeedTodoGoal />
-    </section>
+  </section>
   );
 }
