@@ -213,213 +213,247 @@ export const userInfoState = atom({
 //default Goal Atom
 export const GoalsDataState = atom({
   key: 'atom/goals-data',
-  default: {
-    "goal_1": [
-        {
-            "id": 1,
-            "orderNo": 1,
-            "contents": "목표 1",
-            "privacy": "PUBLIC",
-            "color": "#cccccc",
-            "todos": [
-                {
-                    "id": 1,
-                    "goalId": 1,
-                    "orderNo": 1,
-                    "contents": "오늘의 투두1-1",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": true,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": true,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
+  default:[
+    {
+        "id": 1,
+        "orderNo": 1,
+        "contents": "목표 1",
+        "privacy": "PUBLIC",
+        "color": "#cccccc",
+        "todos": [
+            {
+                "id": 1,
+                "goalId": 1,
+                "orderNo": 1,
+                "contents": "목표1의 투두1",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": true,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": true,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                    "id": 2,
-                    "goalId": 1,
-                    "orderNo": -1,
-                    "contents": "오늘의 투두1-2",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": false,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": false,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 2,
+                "goalId": 1,
+                "orderNo": 2,
+                "contents": "목표1의 투두2",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                    "id": 6,
-                    "goalId": 1,
-                    "orderNo": -2,
-                    "contents": "오늘의 투두1-3",
-                    "date": "2022-03-29",
-                    "startRepeatDate": "2022-03-29",
-                    "endRepeatDate": "2022-03-29",
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": false,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": false,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 6,
+                "goalId": 1,
+                "orderNo": 3,
+                "contents": "목표1의 투두6",
+                "date": "2022-03-29",
+                "startRepeatDate": "2022-03-29",
+                "endRepeatDate": "2022-03-29",
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                    "id": 7,
-                    "goalId": 1,
-                    "orderNo": 4,
-                    "contents": "오늘의 투두1-4",
-                    "date": "2022-05-29",
-                    "startRepeatDate": "2022-05-29",
-                    "endRepeatDate": "2022-05-29",
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": false,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": false,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
-                }
-            ]
-        }
-    ],
-    "goal_2": [
-        {
-            "id": 2,
-            "orderNo": 2,
-            "contents": "목표 2",
-            "privacy": "PUBLIC",
-            "color": "#cccccc",
-            "todos": [
-                {
-                    "id": 1,
-                    "goalId": 2,
-                    "orderNo": 1,
-                    "contents": "오늘의 투두2-1",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": true,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": true,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 7,
+                "goalId": 1,
+                "orderNo": 4,
+                "contents": "목표1의 투두7",
+                "date": "2022-05-29",
+                "startRepeatDate": "2022-05-29",
+                "endRepeatDate": "2022-05-29",
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                    "id": 2,
-                    "goalId": 2,
-                    "orderNo": 2,
-                    "contents": "오늘의 투두2-1",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": true,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": true,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
-                }
-            ]
-        }
-    ],
-    "goal_3": [
-        {
-            "id": 3,
-            "orderNo": 3,
-            "contents": "목표 3",
-            "privacy": "PUBLIC",
-            "color": "#cccccc",
-            "todos": [
-                {
-                    "id": 1,
-                    "goalId": 3,
-                    "orderNo": 1,
-                    "contents": "오늘의 투두3-1",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": true,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": true,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
+                "isChecked": false,
+                "likes": null
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "orderNo": 2,
+        "contents": "목표 2",
+        "privacy": "PUBLIC",
+        "color": "#cccccc",
+        "todos": [
+            {
+                "id": 1,
+                "goalId": 2,
+                "orderNo": 1,
+                "contents": "목표2의 투두1",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": true,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": true,
+                    "MON": false,
+                    "SUN": false
                 },
-                {
-                    "id": 2,
-                    "goalId": 3,
-                    "orderNo": 2,
-                    "contents": "오늘의 투두3-1",
-                    "date": "2022-05-11",
-                    "startRepeatDate": null,
-                    "endRepeatDate": null,
-                    "repeatDays": {
-                        "THU": false,
-                        "TUE": true,
-                        "WED": false,
-                        "SAT": false,
-                        "FRI": true,
-                        "MON": false,
-                        "SUN": false
-                    },
-                    "isChecked": false,
-                    "likes": null
-                }
-            ]
-        }
-    ]
-},
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 2,
+                "goalId": 2,
+                "orderNo": 2,
+                "contents": "목표2의 투두2",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 3,
+                "goalId": 2,
+                "orderNo": 3,
+                "contents": "목표2의 투두3",
+                "date": "2022-03-29",
+                "startRepeatDate": "2022-03-29",
+                "endRepeatDate": "2022-03-29",
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "orderNo": 3,
+        "contents": "목표 3",
+        "privacy": "PUBLIC",
+        "color": "#cccccc",
+        "todos": [
+            {
+                "id": 2,
+                "goalId": 3,
+                "orderNo": 1,
+                "contents": "목표2의 투두2",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": true,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": true,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 4,
+                "goalId": 3,
+                "orderNo": 2,
+                "contents": "목표3의 투두4",
+                "date": "2022-05-11",
+                "startRepeatDate": null,
+                "endRepeatDate": null,
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            },
+            {
+                "id": 5,
+                "goalId": 3,
+                "orderNo": 3,
+                "contents": "목표3의 투두5",
+                "date": "2022-03-29",
+                "startRepeatDate": "2022-03-29",
+                "endRepeatDate": "2022-03-29",
+                "repeatDays": {
+                    "THU": false,
+                    "TUE": false,
+                    "WED": false,
+                    "SAT": false,
+                    "FRI": false,
+                    "MON": false,
+                    "SUN": false
+                },
+                "isChecked": false,
+                "likes": null
+            }
+        ]
+    }
+]
 });
 
 //default Todo Atom
 export const TodosDataStates = atom({
   key: 'atom/todos-data',
-  default: {
-    "todo_1": [
+  default: [
+    [
         {
             "id": 1,
             "goalId": 1,
             "orderNo": 1,
-            "contents": "오늘의 투두1-1",
+            "contents": "목표1의 투두1",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
@@ -438,8 +472,8 @@ export const TodosDataStates = atom({
         {
             "id": 2,
             "goalId": 1,
-            "orderNo": -1,
-            "contents": "오늘의 투두1-2",
+            "orderNo": 2,
+            "contents": "목표1의 투두2",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
@@ -458,8 +492,8 @@ export const TodosDataStates = atom({
         {
             "id": 6,
             "goalId": 1,
-            "orderNo": -2,
-            "contents": "오늘의 투두1-3",
+            "orderNo": 3,
+            "contents": "목표1의 투두6",
             "date": "2022-03-29",
             "startRepeatDate": "2022-03-29",
             "endRepeatDate": "2022-03-29",
@@ -479,7 +513,7 @@ export const TodosDataStates = atom({
             "id": 7,
             "goalId": 1,
             "orderNo": 4,
-            "contents": "오늘의 투두1-4",
+            "contents": "목표1의 투두7",
             "date": "2022-05-29",
             "startRepeatDate": "2022-05-29",
             "endRepeatDate": "2022-05-29",
@@ -496,12 +530,12 @@ export const TodosDataStates = atom({
             "likes": null
         }
     ],
-    "todo_2": [
+    [
         {
             "id": 1,
             "goalId": 2,
             "orderNo": 1,
-            "contents": "오늘의 투두2-1",
+            "contents": "목표2의 투두1",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
@@ -521,16 +555,36 @@ export const TodosDataStates = atom({
             "id": 2,
             "goalId": 2,
             "orderNo": 2,
-            "contents": "오늘의 투두2-1",
+            "contents": "목표2의 투두2",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
             "repeatDays": {
                 "THU": false,
-                "TUE": true,
+                "TUE": false,
                 "WED": false,
                 "SAT": false,
-                "FRI": true,
+                "FRI": false,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 3,
+            "goalId": 2,
+            "orderNo": 3,
+            "contents": "목표2의 투두3",
+            "date": "2022-03-29",
+            "startRepeatDate": "2022-03-29",
+            "endRepeatDate": "2022-03-29",
+            "repeatDays": {
+                "THU": false,
+                "TUE": false,
+                "WED": false,
+                "SAT": false,
+                "FRI": false,
                 "MON": false,
                 "SUN": false
             },
@@ -538,12 +592,12 @@ export const TodosDataStates = atom({
             "likes": null
         }
     ],
-    "todo_3": [
+    [
         {
-            "id": 1,
+            "id": 2,
             "goalId": 3,
             "orderNo": 1,
-            "contents": "오늘의 투두3-1",
+            "contents": "목표2의 투두2",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
@@ -560,19 +614,39 @@ export const TodosDataStates = atom({
             "likes": null
         },
         {
-            "id": 2,
+            "id": 4,
             "goalId": 3,
             "orderNo": 2,
-            "contents": "오늘의 투두3-1",
+            "contents": "목표3의 투두4",
             "date": "2022-05-11",
             "startRepeatDate": null,
             "endRepeatDate": null,
             "repeatDays": {
                 "THU": false,
-                "TUE": true,
+                "TUE": false,
                 "WED": false,
                 "SAT": false,
-                "FRI": true,
+                "FRI": false,
+                "MON": false,
+                "SUN": false
+            },
+            "isChecked": false,
+            "likes": null
+        },
+        {
+            "id": 5,
+            "goalId": 3,
+            "orderNo": 3,
+            "contents": "목표3의 투두5",
+            "date": "2022-03-29",
+            "startRepeatDate": "2022-03-29",
+            "endRepeatDate": "2022-03-29",
+            "repeatDays": {
+                "THU": false,
+                "TUE": false,
+                "WED": false,
+                "SAT": false,
+                "FRI": false,
                 "MON": false,
                 "SUN": false
             },
@@ -580,7 +654,7 @@ export const TodosDataStates = atom({
             "likes": null
         }
     ]
-},
+]
 });
 
 
@@ -610,15 +684,9 @@ export const getTodoData = selector({
       GoalsDataState,
       ()=>{
         for(let i = 0; i < todosCopy.length; i++){
-          let goalid = 'goal_'+todosCopy[i].id;
-          let todoid = 'todo_'+todosCopy[i].id;
           let todos = todosCopy[i].todos
-
-          if(!GoalsDataState[goalid]){
-            GoalsDataState[goalid] = []
-          }
-          GoalsDataState[goalid].push(todosCopy[i]);
-          TodosDataState[todoid] = todos;
+          GoalsDataState.push(todosCopy[i]);
+          TodosDataState[i] = todos;
         }
       }
     );
