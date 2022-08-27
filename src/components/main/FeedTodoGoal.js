@@ -7,7 +7,6 @@ import { GoalsDataState, TodosDataState } from "../../api/apiCommunicate";
 export default function FeedTodoGoal() {
   const goalState = useRecoilValue(GoalsDataState);
   const TodoState = useRecoilValue(TodosDataState);
-  console.log("TodoState: ", TodoState);
 
   return (
     <div className="goals-list-box">
@@ -75,5 +74,5 @@ export default function FeedTodoGoal() {
         );
       })}
     </div>
-  );
+  );\
 }
