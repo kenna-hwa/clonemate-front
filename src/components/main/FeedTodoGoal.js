@@ -20,11 +20,5 @@ export default function FeedTodoGoal() {
         </div>
     )
 
-{TodoState.map((todo)=>{ console.log("todo",todo)})}
 
-      <div className="todos-list-cont">
-
-      </div>
-    </div>
-  );
 }
