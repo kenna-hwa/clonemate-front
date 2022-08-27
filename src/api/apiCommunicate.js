@@ -219,7 +219,7 @@ export const GoalsDataState = atom({
         "orderNo": 1,
         "contents": "목표 1",
         "privacy": "PUBLIC",
-        "color": "#cccccc",
+        "color": "#a70000",
         "todos": [
             {
                 "id": 1,
@@ -308,7 +308,7 @@ export const GoalsDataState = atom({
         "orderNo": 2,
         "contents": "목표 2",
         "privacy": "PUBLIC",
-        "color": "#cccccc",
+        "color": "#0119cb",
         "todos": [
             {
                 "id": 1,
@@ -377,7 +377,7 @@ export const GoalsDataState = atom({
         "orderNo": 3,
         "contents": "목표 3",
         "privacy": "PUBLIC",
-        "color": "#cccccc",
+        "color": "#ca69e3",
         "todos": [
             {
                 "id": 2,
@@ -445,7 +445,7 @@ export const GoalsDataState = atom({
 });
 
 //default Todo Atom
-export const TodosDataStates = atom({
+export const TodosDataState = atom({
   key: 'atom/todos-data',
   default: [
     [
@@ -466,7 +466,7 @@ export const TodosDataStates = atom({
                 "MON": false,
                 "SUN": false
             },
-            "isChecked": false,
+            "isChecked": true,
             "likes": null
         },
         {
@@ -650,7 +650,7 @@ export const TodosDataStates = atom({
                 "MON": false,
                 "SUN": false
             },
-            "isChecked": false,
+            "isChecked": true,
             "likes": null
         }
     ]
@@ -659,10 +659,10 @@ export const TodosDataStates = atom({
 
 
 //default Todo Atom
-export const TodosDataState = atom({
-  key: 'atom/todos-data',
-  default: {},
-});
+// export const TodosDataState = atom({
+//   key: 'atom/todos-data',
+//   default: {},
+// });
 
 //Todo 받아오기
 export const getTodoData = selector({
