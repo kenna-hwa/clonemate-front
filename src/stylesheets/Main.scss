@@ -45,23 +45,78 @@
         width: auto;
 
         button{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
             background: $goal-btn-gray;
             font-size: 14px;
             font-weight: bold;
             color: black;
             padding: 8px 15px;
+            margin-bottom: 12px;
             .goals-list-icon{
                 display: block;
                 margin-right: 10px;
+                > svg{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 12px;
+                    height: 12px;
+                }
             }
             .goals-add-icon{
                 display: block;
                 margin-left: 10px;
+                > svg{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 10px;
+                    height: 10px;
+                }
             }
         }
     }
     .todos-list-cont{
         width: auto;
-    
+        >li{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            font-size: 13px;
+            margin-bottom: 12px;
+            input[type="checkbox"]{
+                display: none;
+            }
+            input[type="checkbox"]+label{
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border: 1.5px solid #bebebe;
+                border-radius: 3px;
+                margin-right: 10px;
+                cursor: pointer;            
+            }
+            input[type="checkbox"]:checked + label::after{
+                position: relative;
+                content: "✓";
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 12px;
+                height: 0px;
+                font-size: 15px;
+                color: #bebebe;
+                margin-right: 10px;
+                cursor: pointer;     
+                top: -2px;       
+            }
+        }
     }
 }
