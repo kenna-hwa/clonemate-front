@@ -5,6 +5,7 @@ import { Button, TextField } from '@mui/material';
 
 import { postUserJoin } from '../../api/apiCommunicate'
 import '../../stylesheets/Signin.css';
+import axios from 'axios';
 
 export default function Join(){
 
@@ -12,10 +13,25 @@ export default function Join(){
     const [result, setResult] = useState("");
     console.log("watch",watch())
 
-    const onSubmit = (data) => {
-      setResult(JSON.stringify(data));
-      console.log(result, errors)
-      postUserJoin(JSON.stringify(data))
+    const onSubmit = async () => {
+      // setResult(JSON.stringify(data));
+      //axios
+      const data = {
+        "userId": "test5",
+        "email": "test5@gmail.com",
+        "name": "이메일테스트",
+        "password": "1234",
+        "introText": "im test"
+    };
+
+    console.log("요청시작 : loading 을 보여주거나 확인버튼 막기");
+      try {
+        const result = await axios.post('http://13.125.221.64:8080/users', data);
+
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
     }
     const onError = (error) => {
       console.log(error)

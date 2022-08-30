@@ -15,11 +15,6 @@ export const getTodosDataSample = async () => {
 } 
 
 
-/* ------------------------------------예시 종료---------------------------------------- */
-
-/* state 관리 */
-
-
 /* 공통 변수 선언 */
 
 const headers = {
@@ -30,6 +25,11 @@ const headers = {
 
 const userHost = 'https://clonetodo.herokuapp.com';
 const todoHost = 'https://clonetodo.herokuapp.com/api/v1';
+
+
+/* ------------------------------------예시 종료---------------------------------------- */
+
+/* state 관리 */
 
 //POST 메서드로 전송할 데이터
 // let formData = new FormData(); 
@@ -671,7 +671,7 @@ export const getTodoData = selector({
     try{
       const { userId, date } = get(userInfoState);
       if (!userId || !date) return;
-      const result = await axios.get(`https://api.github.com/repos/kenna-hwa/clonemate-front`);
+      const result = await axios.get(`${todoHost}/todos`);
       return result?.data;
     } catch (err) {
     	throw err;
