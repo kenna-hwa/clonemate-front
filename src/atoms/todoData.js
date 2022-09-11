@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom, selector, selectorFamily, useRecoilState } from "recoil";
+import { atom } from "recoil";
 
 //아톰 예시 입니다.
 export const textState = atom({
@@ -29,8 +29,8 @@ export const objDatesData = atom({
 })
 
 // Feed 좌측 캘린더 state -> CalendarBox 컴포넌트에서 dtFeedCalendarOverview 로 사용
-export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기
-    key: 'objFeedCalendarOverview', // unique ID (with respect to other atoms/selectors)
+export const objFeedCalendarDateData = atom({ // 로딩 시 현재 달의 데이터 전부 // <> 클릭하면 다시 데이터 받기
+    key: 'objFeedCalendarDateData', // unique ID (with respect to other atoms/selectors)
     default: [ 
           {
             "numTodoDay": 11,
@@ -45,19 +45,16 @@ export const objFeedCalendarOverview = atom({ // 로딩 시 현재 달의 데이
         ]
   });// default value (aka initial value)
 
-// todo 더미데이터 수정 220304
-
-
-// todo api
-export const objTodosDataResult = atom({
-  key: 'objTodosDataResult',
+// 할 일 todos data
+export const objTodosData = atom({
+  key: 'objTodosData',
   default: [
     {
       "id": 1,
-      "orderNo": 1,
-      "contents": "목표 1",
+      "orderNo": 1,      
+      "contents": "첫 번째 목표",
       "privacy": "PUBLIC",
-      "color": "#cccccc",
+      "color": "#ff0000",
       "todos": [
           {
               "id": 1,
@@ -144,9 +141,9 @@ export const objTodosDataResult = atom({
     {
       "id": 2,
       "orderNo": 2,
-      "contents": "목표 2",
+      "contents": "두 번째 목표",
       "privacy": "PUBLIC",
-      "color": "#cccccc",
+      "color": "#ff873d",
       "todos": [
           {
               "id": 1,
@@ -213,9 +210,9 @@ export const objTodosDataResult = atom({
     {
       "id": 3,
       "orderNo": 3,
-      "contents": "목표 3",
-      "privacy": "PUBLIC",
-      "color": "#cccccc",
+      "contents": "세 번째 목표",
+      "privacy": "FOLLOWING",
+      "color": "#0119cb",
       "todos": [
           {
               "id": 2,
@@ -278,14 +275,82 @@ export const objTodosDataResult = atom({
               "likes": null
           }
       ]
+    },
+    {
+      "id": 4,
+      "orderNo": 4,
+      "contents": "네 번째 목표",
+      "privacy": "PRIVATE",
+      "color": "#77ab59",
+      "todos": [
+          {
+              "id": 1,
+              "goalId":4,
+              "orderNo": 1,
+              "contents": "목표4의 투두2",
+              "date": "2022-05-31",
+              "startRepeatDate": null,
+              "endRepeatDate": null,
+              "repeatDays": {
+                  "THU": false,
+                  "TUE": true,
+                  "WED": true,
+                  "SAT": true,
+                  "FRI": true,
+                  "MON": false,
+                  "SUN": false
+              },
+              "isChecked": true,
+              "likes": null
+          },
+          {
+              "id": 4,
+              "goalId": 4,
+              "orderNo": 2,
+              "contents": "목표4의 투두4",
+              "date": "2022-05-11",
+              "startRepeatDate": null,
+              "endRepeatDate": null,
+              "repeatDays": {
+                  "THU": true,
+                  "TUE": false,
+                  "WED": true,
+                  "SAT": false,
+                  "FRI": false,
+                  "MON": false,
+                  "SUN": false
+              },
+              "isChecked": true,
+              "likes": null
+          },
+          {
+              "id": 5,
+              "goalId": 4,
+              "orderNo": 3,
+              "contents": "목표4의 투두5",
+              "date": "2022-09-11",
+              "startRepeatDate": "2022-09-09",
+              "endRepeatDate": "2022-09-29",
+              "repeatDays": {
+                  "THU": true,
+                  "TUE": false,
+                  "WED": false,
+                  "SAT": true,
+                  "FRI": false,
+                  "MON": false,
+                  "SUN": true
+              },
+              "isChecked": false,
+              "likes": null
+          }
+      ]
     }
 ]
 })
 
-
-
-export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
-  key: "goalsData",
+// 목표 goals data
+export const objGoalsData = atom({
+  key: "objGoalsData",
   default: [
     {
       "contents": "첫 번째 목표",
@@ -318,9 +383,9 @@ export const goalsData = atom({ // 로딩 시 모든 목표 뿌리기
   ]
 })
 
-
-export const createRepeatDay = atom({
-  key: "createRepeatDay",
+//반복 날짜 repeats days data
+export const objRepeatDays = atom({
+  key: "objRepeatDays",
   default: {
   "SUN": false, //y 면 일요일 반복, n 이면 반복 x
   "MON": false,
@@ -332,86 +397,8 @@ export const createRepeatDay = atom({
 }
 });
 
+/* ------------------------------------------------------------------ */
 
-export const todoData = atom({ // 로딩 시 오늘 값 받아오기 // 캘린더에서 날짜 클릭하면 해당 날짜로 값 받아오기 // 더미 데이터는 2022-02-05
-  key: "todoData",
-  default: [
-    {
-    "todo_id": 0,
-    "goal_id": 0, //묶여있는 goal id
-    "next_todo_id": 1, //다음 todo id (순서지정용)
-    "title": "첫 번째 목표의 할 일 0",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  },
-  {
-    "todo_id": 1,
-    "goal_id": 0, //묶여있는 goal id
-    "next_todo_id": 2, //다음 todo id (순서지정용)
-    "title": "첫 번째 목표의 할 일 1",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  },
-  {
-    "todo_id": 0,
-    "goal_id": 1, //묶여있는 goal id
-    "next_todo_id": 1, //다음 todo id (순서지정용)
-    "title": "두 번째 목표의 할 일 1",
-    "date": "2022-02-05",
-    "end_repeat_date": "2022-02-05", //반복 종료 일자. 반복 없으면 date 와 값이 같거나 없음
-    "repeat_days": {
-        "sun": "N", //y 면 일요일 반복, n 이면 반복 x
-        "mon": "N",
-        "tue": "N",
-        "wed": "N",
-        "thu": "N",
-        "fri": "N",
-        "sat": "N",
-    },
-    "check_yn" : "N" //달성여부
-  }
-]
-})
-
-export const todoReadOnly = atom({
-  key: "todoReadOnly",
-  default: true
-})
-
-export const dateCalendarOpen = atom({
-  key: "dateCalendarOpen",
-  default: false
-})
-
-export const endRepeatDateCalendarOpen = atom({
-  key: "endRepeatDateCalendarOpen",
-  default: false
-})
-
-export const repeatDayCalendarOpen = atom({
-  key: "repeatDayCalendarOpen",
-  default: false
-})
 
 // User API 테스트 더미 
 export const userIdInfo = atom({
@@ -461,7 +448,6 @@ export const selectedDataState = atom({
   key: "selectedDataSate",
   default: null,
 });
-
 
 // Followers 테스트 더미 
 export const testFollowerData = atom({

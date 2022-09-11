@@ -5,12 +5,12 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 import EditRoutinesForm from './EditRoutinesForm';
-import { objTodosDataResult } from "../../atoms/todoData";
+import { objTodosData } from "../../atoms/todoData";
 
 
 export default function RoutinesTodos (props) {
     
-    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosData);
 
 
     const todos = props.todos; 

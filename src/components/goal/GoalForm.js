@@ -10,8 +10,7 @@ import { useRecoilState } from "recoil";
 
 import '../../stylesheets/GoalForm.css';
 
-import { goalsData } from "../../atoms/todoData";
-import { postGoalRegister } from "../../api/apiCommunicate";
+import { objGoalsData } from "../../atoms/todoData";
 import { useHistory } from "react-router-dom";
 
 export default function GoalForm(){
@@ -20,7 +19,7 @@ export default function GoalForm(){
     let history = useHistory();
     /* atom 시작 */
     
-    let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
+    let [goal, setGoal] = useRecoilState(objGoalsData);// 목표goals 아이템
 
     let [createGoalState, setCreactGoalState] = useState(
         {
@@ -107,7 +106,7 @@ export default function GoalForm(){
     // 확인 클릭 함수 실행 함수
     const clickOkbtn = (data) => { //react-form-hook submit 함수
         setGoal(createGoalState);
-        postGoalRegister(createGoalState);
+        // postGoalRegister(createGoalState);
         window.location.replace("/goals")
     }
 

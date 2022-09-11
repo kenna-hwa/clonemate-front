@@ -5,8 +5,7 @@ import {  Button, List  } from "@mui/material";
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';import '../../stylesheets/Goal.css';
 
-import { getGoalsData } from "../../api/apiCommunicate";
-import { objTodosDataResult, goalsData } from "../../atoms/todoData";
+import { objTodosDataResult, objGoalsData } from "../../atoms/todoData";
 
 
 export default function Goals() {
@@ -17,7 +16,7 @@ export default function Goals() {
 
    /* atom 시작 */
   
-  let [dtGoals, setDtGoals] = useRecoilState(goalsData);// 목표goals 아이템
+  let [dtGoals, setDtGoals] = useRecoilState(objGoalsData);// 목표goals 아이템
   let goalDataArray = JSON.parse(JSON.stringify(dtGoals));
 
   console.log("goalDataArray", goalDataArray)
@@ -26,10 +25,8 @@ export default function Goals() {
   
   useEffect(()=>{
     // recoil 에서 정보 갱신이 되었으면 하는데..?
-    const goalItems = getGoalsData();
-    console.log("goal", goalItems.data)
-    typeof goalItems.data === 'object'? setDtGoals(goalItems.data) : console.log("goal 데이터가 업데이트 되지 못했어요.");
-    // console.log("dtGoals", dtGoals)
+    // const goalItems = getGoalsData();
+    // typeof goalItems.data === 'object'? setDtGoals(goalItems.data) : console.log("goal 데이터가 업데이트 되지 못했어요.");
   },[setDtGoals]);
 
   /* Hook 선언 끝 */

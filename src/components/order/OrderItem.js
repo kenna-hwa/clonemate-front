@@ -14,10 +14,8 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
 import {
-  objTodosDataResult,
-  goalsData,
-  todoData,
   objDatesData,
+  objTodosData,
 } from "../../atoms/todoData";
 
 import "../../stylesheets/OrderItem.css";
@@ -34,7 +32,7 @@ export default function OrderItem() {
   /* atom 시작 */
   let dateData = useRecoilValue(objDatesData);
   // atom에서 goal+todo 데이터 가져오기
-  let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+  let [dtTodos, setDtTodos] = useRecoilState(objTodosData);
   const todoDataArray = JSON.parse(JSON.stringify(dtTodos));
   /* atom 종료 */
 

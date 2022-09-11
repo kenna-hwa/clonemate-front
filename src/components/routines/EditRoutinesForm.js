@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Button } from "@mui/material";
 
-import { objDatesData, objTodosDataResult } from "../../atoms/todoData";
-import { patchTodosChangeDate } from "../../api/apiCommunicate";
+import { objDatesData, objTodosData } from "../../atoms/todoData";
+// import { patchTodosChangeDate } from "../../api/apiCommunicate";
 
 import RoutineDayModal from './RoutineDayModal';
 import RoutineDateModal from './RoutineDateModal';
@@ -15,7 +15,7 @@ export default function EditRoutinesForm(props) {
 
         /* atom 선언 시작 */
         const [dtDate, setDtDate] = useRecoilState(objDatesData);
-        const [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+        const [dtTodos, setDtTodos] = useRecoilState(objTodosData);
         /* atom 선언 종료 */
 
         /* state 선언 시작 */
@@ -92,7 +92,7 @@ export default function EditRoutinesForm(props) {
             setDtTodos(copy_todo_state);
 
             // createRoutine API로 보내기
-            patchTodosChangeDate(todos.id, translateSendData);
+            // patchTodosChangeDate(todos.id, translateSendData);
             
             // form 종료
             setReadOnly(true)

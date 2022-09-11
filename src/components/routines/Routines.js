@@ -5,7 +5,7 @@ import {  Button } from "@mui/material";
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-import { objTodosDataResult, objDatesData, } from "../../atoms/todoData";
+import { objDatesData, objTodosData, } from "../../atoms/todoData";
 import '../../stylesheets/Routines.css';
 
 import RoutinesTodos from "./RoutinesTodos";
@@ -21,7 +21,7 @@ let history = useHistory();
 
 /* atom 시작 */
 
-let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+let [dtTodos, setDtTodos] = useRecoilState(objTodosData);
 let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 let dtDate = useRecoilValue(objDatesData);
 

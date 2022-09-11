@@ -24,7 +24,6 @@ export default function Join(){
         "introText": "im test"
     };
 
-    console.log("요청시작 : loading 을 보여주거나 확인버튼 막기");
       try {
         const result = await axios.post('http://13.125.221.64:8080/users', data);
 

@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { objTodosDataResult, userIdInfo, testFollowerData } from "../../atoms/todoData";
+import { objTodosData, userIdInfo, testFollowerData } from "../../atoms/todoData";
 
 import '../../stylesheets/Nav.css';
 
@@ -22,7 +22,7 @@ export default function MainNavBar() {
   /* atom 시작 */
 
     // atom에서 goal+todo 데이터 가져오기
-    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosData);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
     const isThereGoal = todoDataArray.length;
 
@@ -92,7 +92,7 @@ export default function MainNavBar() {
 
         <section className='snb_user_info_wrap' style={{'background': ''}}>
         {/* if 로그인 된 경우 */}
-        <Box display="flex" justifyContent="flex-end" >
+        <Box display="flex" >
           <IconButton onClick={moveSetting} size="small" edge="end" aria-label="back" style={{ marginRight: "0px" }}>
             <SettingsIcon fontSize="small" sx={{ color:"white", stroke: "black", strokeWidth:1.5 }} />
           </IconButton>
@@ -118,7 +118,7 @@ export default function MainNavBar() {
        
         <section className='snb_user_follow_info_wrap'>
           {/* Box -> hover 옵션 추가 or Button-> CSS 변경 */}
-          <div className='snb-follow-box' display="flex" justifyContent="flex-start" onClick={moveFollowing} fontSize="small">
+          <div className='snb-follow-box' display="flex" onClick={moveFollowing} fontSize="small">
             
             <p className='snb-follow-title' style={{paddingRight: "20px" }}>{isThereFollower} 팔로워</p>
             <p className='snb-follow-title'>{isThereFollower} 팔로잉</p>
@@ -132,7 +132,7 @@ export default function MainNavBar() {
         <Divider  />
       
         <section className='snb-goal-wrap'>
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex">
             <p className='snb-goal-title'>목표</p>
             <IconButton onClick={moveGoals} size="small" edge="end" color="inherit" aria-label="back">
               <NavigateNextIcon className='snb-title-nav-icon' />
@@ -161,7 +161,7 @@ export default function MainNavBar() {
         <Divider />
 
         <section className='snb_routine_wrap'>
-          <Box display="flex" justifyContent="space-between" style={{ height: "42px" }}>
+          <Box display="flex" style={{ height: "42px" }}>
             <p className='snb-goal-title'>기한이 있는 할 일 </p>
             <IconButton onClick={moveRoutines} size="small" edge="end" color="inherit" aria-label="back" >
               <NavigateNextIcon className='snb-title-nav-icon' />

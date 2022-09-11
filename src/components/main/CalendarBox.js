@@ -7,8 +7,8 @@ import { ko } from "date-fns/locale";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import '../../stylesheets/CalendarBox.css';
-import { objFeedCalendarOverview , objDatesData, objTodosDataResult} from "../../atoms/todoData";
-import { getTodosOverviewData, getTodosData } from "../../api/apiCommunicate";
+import { objFeedCalendarDateData , objDatesData, objTodosData} from "../../atoms/todoData";
+// import { getTodosOverviewData, getTodosData } from "../../api/apiCommunicate";
 
 
 
@@ -115,8 +115,8 @@ const USER_NUM_ID = process.env.REACT_APP_USER_NUM_ID;
 
 const [objDate, setObjDate] = useRecoilState(objDatesData);
 const copy_objDate = {...objDate};
-let [dtFeedCalendarOverview, setDtFeedCalendarOverview] = useRecoilState(objFeedCalendarOverview);
-let [dtObjTodosDataResult, setDtObjTodosDataResult] = useRecoilState(objTodosDataResult);
+let [dtFeedCalendarOverview, setDtFeedCalendarOverview] = useRecoilState(objFeedCalendarDateData);
+let [dtObjTodosDataResult, setDtObjTodosDataResult] = useRecoilState(objTodosData);
 
 const today = new Date(); // 오늘 날짜 객체
 const classes = styles(); // import those CSS
@@ -143,12 +143,12 @@ useEffect(()=>{
 
     //한 달 todo 조회 -> 아톰에 캘린더 표시 TODO 값 업데이트
     //objDate.dtFeedCalendarDate로 feed 에서 쓰는 objTodosDataResult 받아와주기
-    const newTodoOverviewData = getTodosOverviewData(USER_NUM_ID, localeSelectedDateYm)
+    // const newTodoOverviewData = getTodosOverviewData(USER_NUM_ID, localeSelectedDateYm)
     //setDtFeedCalendarOverview(newTodoOverviewData);
     //만약 값이 바뀌면 업데이트 해야하나?
 
     //당일 todo 조회하기 -> 아톰에 Feed 표시 TODO 값 업데이트
-    const newTodoData = getTodosData(USER_NUM_ID, localeSelectedDate)
+    // const newTodoData = getTodosData(USER_NUM_ID, localeSelectedDate)
     //setDtObjTodosDataResult(newTodoData)
 
 },[selectedDate])
