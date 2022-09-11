@@ -22,7 +22,7 @@ function Login() {
     }
     //axios
     try {
-      const result = await axios.post('https://clonetodo.herokuapp.com/login', data);
+      const result = await axios.post('/api/login', data);
       console.log('result: ', result);
         if(result.status === 200){
           alert("로그인 완료");

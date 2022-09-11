@@ -45,7 +45,7 @@ export default function Main() {
   const getTodosData = async () => {
     //axios
     try {
-      const result = await axios.get(`https://clonetodo.herokuapp.com/api/v1/todos?userId=1`);
+      const result = await axios.get(`/api/api/v1/todos?userId=1`);
         if(result.status === 200){
           console.log(result)
         }else{
