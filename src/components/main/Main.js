@@ -1,33 +1,70 @@
 import React, { Suspense, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import MainNavBar from "../nav/MainNavBar";
 import CalendarBox from './CalendarBox';
 import Feed from "./Feed";
 
-import { objFeedCalendarOverview } from "../../atoms/todoData";
+import { objFeedCalendarDateData } from "../../atoms/todoData";
 
 
 import { Avatar, Stack } from '@mui/material';
 import AddIcon from '@material-ui/icons/Add';
 
 import "../../stylesheets/Main.scss"
+import axios from "axios";
 
 
 export default function Main() {
 
   /* props 선언 시작 */
 
-  let [atomCalendarData, setAtomCalendarDate] = useRecoilState(objFeedCalendarOverview)
+  let [atomCalendarData] = useRecoilValue(objFeedCalendarDateData)
 
   /* props 선언 끝 */
 
   /* 함수 선언 시작 */
 
   let calendarData = atomCalendarData;
-     //목표 생성 페이지 이동
-    function moveExForm(){
-        window.location.replace("/exploreSearch")
+
+
+    //목표 생성 페이지 이동
+  function moveExForm(){
+      window.location.replace("/exploreSearch")
+  }
+
+
+
+  /* 서버 통신 시작 */
+
+  //캘린더 objFeedCalendarDateData atom에 업데이트 
+  const getCalendarData = () => {
+
+  }
+
+  //투두 objTodosData atom에 업데이트
+  const getTodosData = async () => {
+    //axios
+    try {
+      const result = await axios.get(`https://clonetodo.herokuapp.com/api/v1/todos?userId=1`);
+        if(result.status === 200){
+          console.log(result)
+        }else{
+          console.log('통신 실패 : ',result)
+
+          console.log("error", result.status)
+        }
+    } catch (error) {
+      console.error(error);
+      console.log('통신 실패 : ', error)
     }
+  }
+
+
+  useEffect(()=>{
+
+    getTodosData()
+  },[])
+
 
   return (
 

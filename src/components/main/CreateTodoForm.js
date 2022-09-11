@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-import { objTodosDataResult } from "../../atoms/todoData";
-import { postTodoCreateData } from "../../api/apiCommunicate";
+import { objTodosData } from "../../atoms/todoData";
+// import { postTodoCreateData } from "../../api/apiCommunicate";
 
 
 export default function CreateTodoForm (props) {
@@ -24,7 +24,7 @@ export default function CreateTodoForm (props) {
     /* hook 선언 종료 */
 
     /* atom 시작 */
-    let [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+    let [dtTodos, setDtTodos] = useRecoilState(objTodosData);
     let todoDataArray = JSON.parse(JSON.stringify(dtTodos));
 
     /* atom 종료 */
@@ -80,7 +80,7 @@ export default function CreateTodoForm (props) {
     const createTodoStateSubmit = () => {
         //atom state 변화 없이 api 던져서 새로 받아오기 (atom의 dataset과 create state의 dataset이 서로 다름)
         console.log("투두 생성");
-        postTodoCreateData(createTodoState);
+        // postTodoCreateData(createTodoState);
         createTodoFieldReset();
     }
 

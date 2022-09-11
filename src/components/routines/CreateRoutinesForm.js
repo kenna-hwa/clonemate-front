@@ -6,13 +6,13 @@ import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import RoutineDayModal from "./RoutineDayModal";
 import RoutineDateModal from "./RoutineDateModal";
 
-import { objDatesData, objTodosDataResult } from "../../atoms/todoData";
-import { postTodoCreateData } from "../../api/apiCommunicate";
+import { objDatesData, objTodosData } from "../../atoms/todoData";
+// import { postTodoCreateData } from "../../api/apiCommunicate";
 
 export default function CreateRoutinesForm(props) {
   /* atom 선언 시작 */
   const [dtDate, setDtDate] = useRecoilState(objDatesData);
-  const [dtTodos, setDtTodos] = useRecoilState(objTodosDataResult);
+  const [dtTodos, setDtTodos] = useRecoilState(objTodosData);
 
   /* atom 선언 끝 */
 
@@ -98,7 +98,7 @@ export default function CreateRoutinesForm(props) {
     console.log("copy_todo_state 내부", copy_todo_state)
 
     // createRoutine API로 보내기
-    postTodoCreateData(translateSendData);
+    // postTodoCreateData(translateSendData);
 
     const newArr = Array(todoDataArray.length).fill(false);
     setIsGoalSelected(newArr);

@@ -12,8 +12,8 @@ import FormControl from '@mui/material/FormControl';
 
 import '../../stylesheets/GoalForm.css';
 
-import { goalsData } from "../../atoms/todoData";
-import { patchGoalEdit, deleteGoalData } from "../../api/apiCommunicate";
+import { objGoalsData } from "../../atoms/todoData";
+// import { patchGoalEdit, deleteGoalData } from "../../api/apiCommunicate";
 
 export default function GoalEditForm(){
 
@@ -22,7 +22,7 @@ export default function GoalEditForm(){
 
     /* atom 선언 시작 */
     
-     let [goal, setGoal] = useRecoilState(goalsData);// 목표goals 아이템
+     let [goal, setGoal] = useRecoilState(objGoalsData);// 목표goals 아이템
 
     /* atom 선언 종료 */
 
@@ -96,7 +96,7 @@ export default function GoalEditForm(){
         const copy_goal = [...goal]
         copy_goal.splice(originID-1, 1, copy_editGoalState)
         setGoal(copy_goal); //setGoal를 이용해 state 변경
-        patchGoalEdit(originID, editGoalData) //patchGoalEdit을 이용해 apu 변경
+        // patchGoalEdit(originID, editGoalData) //patchGoalEdit을 이용해 apu 변경
         window.location.replace(`/goals/`);//목표로 돌아가기
     }
 
@@ -106,7 +106,7 @@ export default function GoalEditForm(){
         let newGoalArr = copy_goal.filter(goal =>  goal.id != originID
         )
         setGoal(newGoalArr); //setGoal를 이용해 state 변경
-        deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
+        // deleteGoalData(originID); //deleteGoalData를 이용해 api를 변경
         history.push({pathname: "/goals/"});//목표로 돌아가기
     }
 
