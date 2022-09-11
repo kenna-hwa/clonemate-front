@@ -1,80 +1,63 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Hahmlet';
+  font-family: "Hahmlet";
   src: local(※), url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-ExtraBold.woff2") format("woff2");
   unicode-range: U+0041-005A, U+0061-007A;
   font-weight: 800;
 }
-
 .goals-list-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
 }
-
 .goals-list-wrap .goals-list-box {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -82,7 +65,6 @@
   margin: 15px 0 0 0;
   padding: 0;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button {
   background-color: #f5f5f5;
   border: 1px solid #f3f3f3;
@@ -91,15 +73,9 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 0 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   line-height: 0;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
@@ -109,22 +85,19 @@
   max-width: fit-content;
   margin-bottom: 12px;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button .goals-list-icon {
   font-size: 1em;
   color: #1c1c1c;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button .goals-list-text {
   display: block;
   font-size: 13px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 900;
   max-width: 200px;
   margin: 0 10px;
   overflow: hidden;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button .goals-list-text p {
   max-width: 200px;
   display: block;
@@ -132,22 +105,14 @@
   text-overflow: ellipsis;
   font-weight: 900;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button .goals-list-plus-icon-wrap {
   background-color: #1c1c1c;
   width: 10px;
   height: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .goals-list-wrap .goals-list-box .goals-list-button .goals-list-plus-icon-wrap .goals-list-plus-icon {
   font-size: 1.4em;
   color: #ffffff;
@@ -156,67 +121,50 @@
 .todos-list-cont {
   width: 100vw;
 }
-
 .todos-list-cont .todos-list-box {
   width: 100vw;
 }
-
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: row nowrap;
+  align-items: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
-
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-check-icon {
   color: #afafaf;
   cursor: pointer;
 }
-
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input {
   width: auto;
   position: relative;
   border: 0;
-  border-bottom: 0px solid #00000000;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  border-bottom: 0px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
   outline: none;
   font-size: 14px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
-  -webkit-transform: rotate(0.04deg);
-          transform: rotate(0.04deg);
+  transform: rotate(0.04deg);
   cursor: pointer;
   padding: 6px 0;
   margin: 5px 5px 5px 15px;
 }
-
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input::-ms-value {
   font-size: 14px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
   transform: rotate(0.04deg);
 }
-
 .todos-list-cont .todos-list-box .goals-listItem-text-wrap .todos-list-input:focus-visible {
   position: relative;
-  border-bottom: 0px solid #00000000;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  border-bottom: 0px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
   outline: none;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 14px;
   cursor: pointer;
   padding: 6px 0;
   margin: 5px 5px 5px 15px;
-}
-/*# sourceMappingURL=OrderItem.css.map */
+}/*# sourceMappingURL=OrderItem.css.map */

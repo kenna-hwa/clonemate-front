@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, CircularProgress, Snackbar, TextField } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
-import "../../stylesheets/Signin.css";
+import "../../stylesheets/Login.scss";
 import axios from "axios";
 
-function Signin() {
+function Login() {
 
   // let history = useHistory();
 
@@ -104,4 +104,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Login;

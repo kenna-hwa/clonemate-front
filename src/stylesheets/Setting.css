@@ -1,150 +1,105 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Hahmlet';
+  font-family: "Hahmlet";
   src: local(※), url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-ExtraBold.woff2") format("woff2");
   unicode-range: U+0041-005A, U+0061-007A;
   font-weight: 800;
 }
-
 .setting-settings-list-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
+  flex-flow: column nowrap;
   padding: 0px 0px 0px 0px;
   margin: 0 auto;
   width: 65%;
 }
-
 .setting-settings-list-wrap .setting-list-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
   margin: 10px 0 0 0;
   padding: 0px 0px;
   width: 100%;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button {
   padding: 4px 2px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: space-between;
   line-height: 0;
   margin-bottom: 4px;
   width: 100%;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: space-between;
   color: #1c1c1c;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-icon {
   font-size: 1.5em;
   color: #1c1c1c;
   stroke-width: 2;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-text {
   display: block;
   font-size: 16px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   max-width: 200px;
   margin: 0 10px;
   overflow: hidden;
   color: #1c1c1c;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .settings-list-text p {
   max-width: 200px;
   display: block;
@@ -153,19 +108,14 @@
   font-weight: 300;
   color: #1c1c1c;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-button-wrap .setting-list-arrow {
   font-size: 17px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
-
 .setting-settings-list-wrap .setting-list-box .setting-list-button .setting-list-version {
   color: #1c1c1c;
   opacity: 0.9;
   font-size: 13px;
   font-weight: 300;
-  font-family: 'Pretendard';
-}
-/*# sourceMappingURL=Setting.css.map */
+  font-family: "Pretendard";
+}/*# sourceMappingURL=Setting.css.map */

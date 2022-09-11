@@ -83,7 +83,7 @@ export const postUserJoin = async (data) => {
   })
   .then(res => res.data)
   .then(res => res.data.success ? sessionStorage.setItem("userId", res.data.userId) : console.log("회원가입 실패"))
-  .then(res => !res.success ? alert("회원가입에 실패했습니다. 연결을 확인해주세요") : window.location.reload(`/signin`))
+  .then(res => !res.success ? alert("회원가입에 실패했습니다. 연결을 확인해주세요") : window.location.reload(`/login`))
   
 } 
 

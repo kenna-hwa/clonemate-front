@@ -1,98 +1,80 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'Hahmlet';
+  font-family: "Hahmlet";
   src: local(※), url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-ExtraBold.woff2") format("woff2");
   unicode-range: U+0041-005A, U+0061-007A;
   font-weight: 800;
 }
-
 body {
-  font-family: 'Pretendard', 'Egyptian Slate Prot';
+  font-family: "Pretendard", "Egyptian Slate Prot";
 }
-
 body .css-1tddgg8-MuiPaper-root-MuiAppBar-root {
   background: #fafafa;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border-bottom: 1px solid #f1f1f1;
 }
-
 body .basic_nav_box {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
-
 body .basic_nav_box .basic_nav_appbar {
   position: static;
   color: #1c1c1c;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background: #ffffff;
 }
-
 body .basic_nav_box .basic_nav_appbar .navbar_title {
   color: inherit;
   margin: 0 auto;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-  font-family: 'Pretendard';
+  transform: translate(-50%);
+  font-family: "Pretendard";
   font-size: 1em;
   font-weight: 900;
 }
@@ -100,91 +82,58 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
 .snb_wrap {
   padding: 10px 15px 10px 15px;
 }
-
 .snb_wrap .snb_user_info_wrap .snb-user-info-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
-
 .snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
-
 .snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text p:first-child {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  font-family: 'Pretendard';
+  justify-content: flex-start;
+  font-family: "Pretendard";
   font-weight: 800;
   font-size: 16px;
   color: #1c1c1c;
 }
-
 .snb_wrap .snb_user_info_wrap .snb-user-info-box .snb-user-info-text p:last-child {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  font-family: 'Pretendard';
+  justify-content: flex-start;
+  font-family: "Pretendard";
   font-weight: 300;
   font-size: 14px;
   color: gray;
   margin-top: -8px;
 }
-
 .snb_wrap .snb_user_follow_info_wrap .snb-follow-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+  flex-flow: row nowrap;
 }
-
 .snb_wrap .snb_user_follow_info_wrap .snb-follow-box p {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
   font-size: 15px;
   color: #1c1c1c;
 }
-
 .snb_wrap .snb-goal-title {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
   font-size: 16px;
 }
-
 .snb_wrap .snb-title-nav-icon {
   font-weight: 50;
   font-size: 20px;
   color: lightgray;
 }
-
 .snb_wrap .snb-goals-list-box {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0px 0 0 0;
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  flex-flow: row wrap;
 }
-
 .snb_wrap .snb-goals-list-box .snb-list-button {
   background-color: #f5f5f5;
   border: 1px solid #f3f3f3;
@@ -194,15 +143,9 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   width: fit-content;
   padding: 4px 2px;
   padding-right: 2px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   line-height: 0;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
@@ -213,65 +156,43 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   margin-bottom: 12px;
   margin-right: 5px;
 }
-
 .snb_wrap .snb-goals-list-box .snb-list-button .snb-goals-list-text {
   display: block;
   font-size: 13px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
   margin: 0 5px;
   overflow: hidden;
 }
-
 .snb_wrap .snb-goals-list-box .snb-list-button .snb-goals-list-text p {
   max-width: 200px;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .snb_wrap .snb-goals-null-text {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 200;
   font-size: 15px;
-  color: #8c8b8b;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  color: rgb(140, 139, 139);
+  align-items: center;
   padding: 10px 0px 25px 2px;
 }
-
 .snb_wrap .snb-todo-list-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
+  flex-flow: column nowrap;
 }
-
 .snb_wrap .snb-todo-list-box .goals-listItem-text-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  flex-flow: row nowrap;
+  align-items: center;
   padding: 0px 0px;
   height: 40px;
 }
-
 .snb_wrap .snb-todo-list-box .goals-listItem-text-wrap .todos-list-check-icon {
   color: #afafaf;
 }
-
 .snb_wrap .snb-todo-list-box .goals-listItem-text-wrap p {
   padding: 0px 5px;
   color: #1c1c1c;
@@ -280,20 +201,16 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
 }
 
 .explore-wrap .explore-user-name {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 800;
   font-size: 16px;
   color: #1c1c1c;
 }
-
 .explore-wrap .explore-user-nickname {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  font-family: 'Pretendard';
+  justify-content: flex-start;
+  font-family: "Pretendard";
   font-weight: 300;
   font-size: 14px;
   color: gray;
   margin-top: -8px;
-}
-/*# sourceMappingURL=Nav.css.map */
+}/*# sourceMappingURL=Nav.css.map */

@@ -47,7 +47,7 @@ export default function BasicNavBar () {
 
           {/* 삼항연산자로 navbar 제목 붙이기 */}
           {
-             urlPath.includes(`signin`)? `로그인` : urlPath.includes(`join`)?  `가입하기` 
+             urlPath.includes(`Login`)? `로그인` : urlPath.includes(`join`)?  `가입하기` 
              : urlPath.includes(`goals`)? `목표` : urlPath.includes(`exploreSearch`)? `팔로우` 
              : urlPath.includes(`termUse`)? `이용약관` : urlPath.includes(`policy`)? `개인정보 정책` 
              : urlPath.includes(`setting`)? `설정` : urlPath.includes(`text`)? `정보` 

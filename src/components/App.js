@@ -6,7 +6,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { koKR } from '@mui/material/locale';
 import { Switch, Route, useHistory } from "react-router-dom";
 
-import Signin from "./usercontrol/Signin";
+import Login from "./usercontrol/Login";
 import Join from "./usercontrol/Join";
 import BasicNavBar from "./nav/BasicNavBar";
 import Goals from "./goal/Goals";
@@ -92,7 +92,7 @@ function App() {
         <Route exact path="/">
           <div className="App">
             <div className="header">
-              <img className="main_img" src="./images/todomate.jpg" />
+              <img className="main_img" src={'/images/todomate.jpg'} alt={`todomate`} />
               <h1>todo mate</h1>
               <h3>할 일을 작성, 계획, 관리하세요.</h3>
             </div>
@@ -114,7 +114,7 @@ function App() {
                 variant="contained"
                 sx={{ boxShadow: 'none'}}
                 onClick={() => {
-                  history.push("/signin");
+                  history.push("/login");
                 }}
               >
                 로그인
@@ -129,9 +129,9 @@ function App() {
         <BasicNavBar/>
           <Join />
         </Route>
-        <Route exact path="/signin">
+        <Route exact path="/login">
         <BasicNavBar/>
-          <Signin />
+          <Login />
         </Route>
         <Route exact path="/goals">
         <BasicNavBar/>
