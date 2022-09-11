@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 
 import { postUserJoin } from '../../api/apiCommunicate'
-import '../../stylesheets/Signin.css';
+import '../../stylesheets/Login.scss';
 import axios from 'axios';
 
 export default function Join(){
