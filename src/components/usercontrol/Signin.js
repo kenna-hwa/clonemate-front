@@ -1,51 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, Snackbar, TextField } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
 import "../../stylesheets/Signin.css";
 import axios from "axios";
 
 function Signin() {
-  let history = useHistory();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm();
-  console.log("watch: ", watch());
-  const onSubmit = (userdata) => {
-    //axios
-    axios({
-      method: `POST`,
-      url: `https://clonetodo.herokuapp.com/login`,
-      data: {
-        "account" : "test",
-        "password" : "1234"
-      },
-      header: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          alert("서버 상태를 확인해주세요.");
-          console.log("error", res.statusText);
-        } else {
-          if (!res.data.success) {
-            alert("아이디와 비밀번호를 확인해주세요", res.data.errorMessage);
-          } else {
-            sessionStorage.setItem("userId", res.data.data.account);
-            history.push({
-              pathname: "/main",
-              search: ``,
-            });
-          }
-        }
-      })
-      .catch((error) => console.log("error", error));
-  };
 
+  // let history = useHistory();
+
+  const { register, handleSubmit } = useForm();
+  const [isLogging, setIsLogging] = useState(false);
+  const history = useHistory();
+
+  console.log('isLoading: ', isLogging);
+
+  const onSubmit = async (data) => {
+
+    if(data){
+      setIsLogging(true); 
+    }
+    //axios
+    try {
+      const result = await axios.post('https://clonetodo.herokuapp.com/login', data);
+      console.log('result: ', result);
+        if(result.status === 200){
+          alert("로그인 완료");
+          console.log("로그인 완료 / 유저 id" , result.data.data.id)
+          setIsLogging(false);
+          sessionStorage.setItem("user", result.data.data.id);
+          history.push("/main");
+        }else{
+          setIsLogging(true);
+          alert("로그인 실패!", result.statusText);
+          console.log("error", result.status)
+        }
+    } catch (error) {
+      console.error(error);
+      alert("로그인 실패!", error);
+      setIsLogging(false);
+    }
+  };
+  // isLoading 값이 바뀌면 실행
+  useEffect(() => {
+    if(isLogging){
+      console.log('isLoading: ', isLogging);
+      <Snackbar
+      open={isLogging}
+      autoHideDuration={3000}
+      message="로그인 중"
+      />
+    }
+  }, [isLogging]);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
@@ -60,9 +66,9 @@ function Signin() {
         margin="dense"
         fullWidth
       />
-      {errors.account?.type === "required" && (
+      {/* {errors.account?.type === "required" && (
         <span className="error_message">아이디를 입력해주세요.</span>
-      )}
+      )} */}
       <TextField
         {...register("password", { required: true })}
         id="standard-password-input"
@@ -74,12 +80,23 @@ function Signin() {
         margin="dense"
         fullWidth
       />
-      {errors.password?.type === "required" && (
+      {/* {errors.password?.type === "required" && (
         <span className="error_message">비밀번호를 입력해주세요.</span>
-      )}
-      <Button type="submit" id="submit_btn">
+      )} */}
+        {isLogging ? 
+        <Button type="submit" id="submit_btn" disabled>
+        <CircularProgress className="logging-progress"
+        sx={{
+          width: '12px',
+          color: 'gray',
+        }}/> 
+        </Button>
+        : 
+        <Button type="submit" id="submit_btn">
         확인
-      </Button>
+        </Button>
+        
+        }
       <Link to="/">
         <p className="forgotPwd">비밀번호를 잊었다면?</p>
       </Link>
