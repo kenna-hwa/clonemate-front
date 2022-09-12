@@ -1,10 +1,10 @@
 import React, { Suspense, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import MainNavBar from "../nav/MainNavBar";
 import CalendarBox from './CalendarBox';
 import Feed from "./Feed";
 
-import { objFeedCalendarDateData } from "../../atoms/todoData";
+import { objTodosData, objFeedCalendarDateData } from "../../atoms/todoData";
 
 
 import { Avatar, Stack } from '@mui/material';
@@ -18,7 +18,9 @@ export default function Main() {
 
   /* props 선언 시작 */
 
-  let [atomCalendarData] = useRecoilValue(objFeedCalendarDateData)
+  let [atomCalendarData] = useRecoilValue(objFeedCalendarDateData);
+  let [atomTodosData, setAtomTodosData] = useRecoilState(objTodosData);
+  console.log('atomTodosData: ', atomTodosData);
 
   /* props 선언 끝 */
 
@@ -47,7 +49,10 @@ export default function Main() {
     try {
       const result = await axios.get(`/api/api/v1/todos?userId=1`);
         if(result.status === 200){
-          console.log(result)
+          console.log(result.data.data);
+          let gettingData = result.data.data;
+          setAtomTodosData(gettingData);
+          console.log('atomTodosData change: ', atomTodosData);
         }else{
           console.log('통신 실패 : ',result)
 
@@ -61,9 +66,8 @@ export default function Main() {
 
 
   useEffect(()=>{
-
     getTodosData()
-  },[])
+  })
 
 
   return (
